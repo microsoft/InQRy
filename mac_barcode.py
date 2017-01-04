@@ -5,7 +5,7 @@ from qrcode import QRCode
 
 cmd_subfolder = os.path.realpath(os.path.abspath(os.path.join(os.path.split(
     inspect.getfile(inspect.currentframe()))[0],
-    "/Users/erichanko/Projects/AutoInfra/mbu/modules/Infrastructure/InfraTi/Client/Environment")))
+    "/Users/erichanko/Dropbox/Projects/AutoInfra/mbu/modules/Infrastructure/InfraTi/Client/Environment")))
 if cmd_subfolder not in sys.path:
     sys.path.insert(0, cmd_subfolder)
 
@@ -24,10 +24,10 @@ data_list = ['serial_number', 'machine_model', 'physical_memory', 'cpu_type',
 
 
 hardware = system_data[0]['_items'][0]
-if system_data[1]['_items'][1]['com.apple.corestorage.lvg']:
-    storage = system_data[1]['_items'][1]['com.apple.corestorage.lvg']
-else:
+if system_data[1]['_items'][0]['com.apple.corestorage.lvg']:
     storage = system_data[1]['_items'][0]['com.apple.corestorage.lvg']
+else:
+    storage = system_data[1]['_items'][1]['com.apple.corestorage.lvg']
 
 
 unique_component_list = []
@@ -54,7 +54,9 @@ def multidata_barcode():
         else:
             unique_component = storage.get(component)
         qr_code.add_data(unique_component)
-        img = qr_code.make_image()
+        qr_code.add_data('\x09')
+
+    img = qr_code.make_image()
     img.show()
 
 
