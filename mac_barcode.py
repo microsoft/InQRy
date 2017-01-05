@@ -16,7 +16,7 @@ system_data = SystemProfiler().profile_for_data_type(
     ['SPHardwareDataType', 'SPStorageDataType'])
 
 
-data_list = ['serial_number', 'machine_model', 'physical_memory', 'cpu_type',
+data_list = ['machine_model', 'serial_number', 'physical_memory', 'cpu_type',
              'current_processor_speed', 'machine_name',
              'com.apple.corestorage.lvg.name',
              'com.apple.corestorage.lvg.size',
@@ -24,15 +24,9 @@ data_list = ['serial_number', 'machine_model', 'physical_memory', 'cpu_type',
 
 
 hardware = system_data[0]['_items'][0]
-if system_data[1]['_items'][0]['com.apple.corestorage.lvg']:
-    storage = system_data[1]['_items'][0]['com.apple.corestorage.lvg']
-else:
-    storage = system_data[1]['_items'][1]['com.apple.corestorage.lvg']
+storage = system_data[1]['_items'][1]['com.apple.corestorage.lvg']
 
-
-unique_component_list = []
-
-qr_code = QRCode()
+qr = QRCode()
 
 
 def singledata_barcode():
@@ -41,10 +35,10 @@ def singledata_barcode():
             unique_component = hardware.get(component)
         else:
             unique_component = storage.get(component)
-        qr_code.add_data(unique_component)
-        img = qr_code.make_image()
+        qr.add_data(unique_component)
+        img = qr.make_image()
         img.show()
-        qr_code.clear()
+        qr.clear()
 
 
 def multidata_barcode():
@@ -53,10 +47,10 @@ def multidata_barcode():
             unique_component = hardware.get(component)
         else:
             unique_component = storage.get(component)
-        qr_code.add_data(unique_component)
-        qr_code.add_data('\x09')
+        qr.add_data(unique_component)
+        qr.add_data('\x09')
 
-    img = qr_code.make_image()
+    img = qr.make_image()
     img.show()
 
 
@@ -64,4 +58,40 @@ def error_code(reason):
     print(reason)
 
 
-multidata_barcode()
+def master_scan():
+    qr.code.add_data(hardware.get(data_list[1]))
+
+singledata_barcode()
+
+# GENERIC
+# Asset Tag
+# Model
+# Status
+# Serial
+# Asset Name
+# Company
+# Purchase Date
+# Supplier
+# Order Number
+# Purchase Cost
+# Warranty
+# Notes
+# Default Location
+
+# COMPUTER
+# Asset Tag
+# Model
+# Processor
+# RAM
+# Storage
+# Status
+# Serial
+# Asset Name
+# Company
+# Purchase Date
+# Supplier
+# Order Number
+# Purchase Cost
+# Warranty
+# Notes
+# Default Location
