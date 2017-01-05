@@ -1,2 +1,5 @@
 .DS_Store
+mac_barcode_old.py
 *.pyc
+*.pdf
+*.js
