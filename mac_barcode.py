@@ -1,16 +1,16 @@
-import os
-import sys
-import inspect
+# import os
+# import sys
+# import inspect
 from qrcode import QRCode
-
-cmd_subfolder = os.path.realpath(os.path.abspath(os.path.join(os.path.split(
-    inspect.getfile(inspect.currentframe()))[0],
-    "/Users/erichanko/Dropbox/Projects/AutoInfra/mbu/modules/Infrastructure/InfraTi/Client/Environment")))
-if cmd_subfolder not in sys.path:
-    sys.path.insert(0, cmd_subfolder)
-
-from system_profiler_report_data import SystemProfilerReportData
+# from system_profiler_report_data import SystemProfilerReportData
 from system_profiler import SystemProfiler
+
+
+# cmd_subfolder = os.path.realpath(os.path.abspath(os.path.join(os.path.split(
+#     inspect.getfile(inspect.currentframe()))[0],
+#     "/Users/erichanko/Dropbox/Projects/AutoInfra/mbu/modules/Infrastructure/InfraTi/Client/Environment")))
+# if cmd_subfolder not in sys.path:
+#     sys.path.insert(0, cmd_subfolder)
 
 system_data = SystemProfiler().profile_for_data_type(
     ['SPHardwareDataType', 'SPStorageDataType'])
@@ -60,6 +60,7 @@ def error_code(reason):
 
 def master_scan():
     qr.code.add_data(hardware.get(data_list[1]))
+
 
 singledata_barcode()
 
