@@ -1,102 +1,100 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Objects>
-  <Object Type="Microsoft.Management.Infrastructure.CimInstance">
-    <Property Name="Caption" Type="System.String">Intel64 Family 6 Model 69 Stepping 1</Property>
-    <Property Name="Description" Type="System.String">Intel64 Family 6 Model 69 Stepping 1</Property>
-    <Property Name="InstallDate" Type="CimInstance#DateTime" />
-    <Property Name="Name" Type="System.String">Intel(R) Core(TM) i7-4650U CPU @ 1.70GHz</Property>
-    <Property Name="Status" Type="System.String">OK</Property>
-    <Property Name="Availability" Type="System.UInt16">3</Property>
-    <Property Name="ConfigManagerErrorCode" Type="uint32" />
-    <Property Name="ConfigManagerUserConfig" Type="bool" />
-    <Property Name="CreationClassName" Type="System.String">Win32_Processor</Property>
-    <Property Name="DeviceID" Type="System.String">CPU0</Property>
-    <Property Name="ErrorCleared" Type="bool" />
-    <Property Name="ErrorDescription" Type="string" />
-    <Property Name="LastErrorCode" Type="uint32" />
-    <Property Name="PNPDeviceID" Type="string" />
-    <Property Name="PowerManagementCapabilities" Type="uint16[]" />
-    <Property Name="PowerManagementSupported" Type="System.Boolean">False</Property>
-    <Property Name="StatusInfo" Type="System.UInt16">3</Property>
-    <Property Name="SystemCreationClassName" Type="System.String">Win32_ComputerSystem</Property>
-    <Property Name="SystemName" Type="System.String">DESKTOP-J67B1KV</Property>
-    <Property Name="AddressWidth" Type="System.UInt16">64</Property>
-    <Property Name="CurrentClockSpeed" Type="System.UInt32">1500</Property>
-    <Property Name="DataWidth" Type="System.UInt16">64</Property>
-    <Property Name="Family" Type="System.UInt16">198</Property>
-    <Property Name="LoadPercentage" Type="System.UInt16">4</Property>
-    <Property Name="MaxClockSpeed" Type="System.UInt32">2301</Property>
-    <Property Name="OtherFamilyDescription" Type="string" />
-    <Property Name="Role" Type="System.String">CPU</Property>
-    <Property Name="Stepping" Type="string" />
-    <Property Name="UniqueId" Type="string" />
-    <Property Name="UpgradeMethod" Type="System.UInt16">6</Property>
-    <Property Name="Architecture" Type="System.UInt16">9</Property>
-    <Property Name="AssetTag" Type="System.String">00</Property>
-    <Property Name="Characteristics" Type="System.UInt32">4</Property>
-    <Property Name="CpuStatus" Type="System.UInt16">1</Property>
-    <Property Name="CurrentVoltage" Type="System.UInt16">10</Property>
-    <Property Name="ExtClock" Type="System.UInt32">100</Property>
-    <Property Name="L2CacheSize" Type="System.UInt32">512</Property>
-    <Property Name="L2CacheSpeed" Type="uint32" />
-    <Property Name="L3CacheSize" Type="System.UInt32">4096</Property>
-    <Property Name="L3CacheSpeed" Type="System.UInt32">0</Property>
-    <Property Name="Level" Type="System.UInt16">6</Property>
-    <Property Name="Manufacturer" Type="System.String">GenuineIntel</Property>
-    <Property Name="NumberOfCores" Type="System.UInt32">2</Property>
-    <Property Name="NumberOfEnabledCore" Type="System.UInt32">2</Property>
-    <Property Name="NumberOfLogicalProcessors" Type="System.UInt32">4</Property>
-    <Property Name="PartNumber" Type="System.String">00</Property>
-    <Property Name="ProcessorId" Type="System.String">BFEBFBFF00040651</Property>
-    <Property Name="ProcessorType" Type="System.UInt16">3</Property>
-    <Property Name="Revision" Type="System.UInt16">17665</Property>
-    <Property Name="SecondLevelAddressTranslationExtensions" Type="System.Boolean">False</Property>
-    <Property Name="SerialNumber" Type="System.String">
-    </Property>
-    <Property Name="SocketDesignation" Type="System.String">SOCKET 0</Property>
-    <Property Name="ThreadCount" Type="System.UInt32">4</Property>
-    <Property Name="Version" Type="System.String">
-    </Property>
-    <Property Name="VirtualizationFirmwareEnabled" Type="System.Boolean">False</Property>
-    <Property Name="VMMonitorModeExtensions" Type="System.Boolean">False</Property>
-    <Property Name="VoltageCaps" Type="uint32" />
-    <Property Name="PSComputerName" Type="string" />
-    <Property Name="CimClass" Type="Microsoft.Management.Infrastructure.CimClass">
-      <Property Name="CimClassName" Type="System.String">Win32_Processor</Property>
-      <Property Name="CimSuperClassName" Type="System.String">CIM_Processor</Property>
-      <Property Name="CimSuperClass" Type="Microsoft.Management.Infrastructure.CimClass">
-        <Property Name="CimClassName" Type="System.String">CIM_Processor</Property>
-        <Property Name="CimSuperClassName" Type="System.String">CIM_LogicalDevice</Property>
-        <Property Name="CimSuperClass" Type="Microsoft.Management.Infrastructure.CimClass">ROOT/cimv2:CIM_LogicalDevice</Property>
-        <Property Name="CimClassProperties" Type="Microsoft.Management.Infrastructure.Internal.Data.CimClassPropertiesCollection" />
-        <Property Name="CimClassQualifiers" Type="Microsoft.Management.Infrastructure.Internal.Data.CimClassQualifierCollection" />
-        <Property Name="CimClassMethods" Type="Microsoft.Management.Infrastructure.Internal.Data.CimMethodDeclarationCollection" />
-        <Property Name="CimSystemProperties" Type="Microsoft.Management.Infrastructure.CimSystemProperties">Microsoft.Management.Infrastructure.CimSystemProperties</Property>
-      </Property>
-      <Property Name="CimClassProperties" Type="Microsoft.Management.Infrastructure.Internal.Data.CimClassPropertiesCollection">
-        <Property Name="Count" Type="System.Int32">57</Property>
-      </Property>
-      <Property Name="CimClassQualifiers" Type="Microsoft.Management.Infrastructure.Internal.Data.CimClassQualifierCollection">
-        <Property Name="Count" Type="System.Int32">4</Property>
-      </Property>
-      <Property Name="CimClassMethods" Type="Microsoft.Management.Infrastructure.Internal.Data.CimMethodDeclarationCollection">
-        <Property Name="Count" Type="System.Int32">2</Property>
-      </Property>
-      <Property Name="CimSystemProperties" Type="Microsoft.Management.Infrastructure.CimSystemProperties">
-        <Property Name="Namespace" Type="System.String">root/cimv2</Property>
-        <Property Name="ServerName" Type="System.String">DESKTOP-J67B1KV</Property>
-        <Property Name="ClassName" Type="System.String">Win32_Processor</Property>
-        <Property Name="Path" Type="System.String" />
-      </Property>
-    </Property>
-    <Property Name="CimInstanceProperties" Type="Microsoft.Management.Infrastructure.Internal.Data.CimPropertiesCollection">
-      <Property Name="Count" Type="System.Int32">57</Property>
-    </Property>
-    <Property Name="CimSystemProperties" Type="Microsoft.Management.Infrastructure.CimSystemProperties">
-      <Property Name="Namespace" Type="System.String">root/cimv2</Property>
-      <Property Name="ServerName" Type="System.String">DESKTOP-J67B1KV</Property>
-      <Property Name="ClassName" Type="System.String">Win32_Processor</Property>
-      <Property Name="Path" Type="System.String" />
-    </Property>
-  </Object>
+    <Object Type="Microsoft.Management.Infrastructure.CimInstance">
+        <Property Name="Caption" Type="System.String">Intel64 Family 6 Model 69 Stepping 1</Property>
+        <Property Name="Description" Type="System.String">Intel64 Family 6 Model 69 Stepping 1</Property>
+        <Property Name="InstallDate" Type="CimInstance#DateTime"/>
+        <Property Name="Name" Type="System.String">Intel(R) Core(TM) i7-4650U CPU @ 1.70GHz</Property>
+        <Property Name="Status" Type="System.String">OK</Property>
+        <Property Name="Availability" Type="System.UInt16">3</Property>
+        <Property Name="ConfigManagerErrorCode" Type="uint32"/>
+        <Property Name="ConfigManagerUserConfig" Type="bool"/>
+        <Property Name="CreationClassName" Type="System.String">Win32_Processor</Property>
+        <Property Name="DeviceID" Type="System.String">CPU0</Property>
+        <Property Name="ErrorCleared" Type="bool"/>
+        <Property Name="ErrorDescription" Type="string"/>
+        <Property Name="LastErrorCode" Type="uint32"/>
+        <Property Name="PNPDeviceID" Type="string"/>
+        <Property Name="PowerManagementCapabilities" Type="uint16[]"/>
+        <Property Name="PowerManagementSupported" Type="System.Boolean">False</Property>
+        <Property Name="StatusInfo" Type="System.UInt16">3</Property>
+        <Property Name="SystemCreationClassName" Type="System.String">Win32_ComputerSystem</Property>
+        <Property Name="SystemName" Type="System.String">DESKTOP-J67B1KV</Property>
+        <Property Name="AddressWidth" Type="System.UInt16">64</Property>
+        <Property Name="CurrentClockSpeed" Type="System.UInt32">1500</Property>
+        <Property Name="DataWidth" Type="System.UInt16">64</Property>
+        <Property Name="Family" Type="System.UInt16">198</Property>
+        <Property Name="LoadPercentage" Type="System.UInt16">4</Property>
+        <Property Name="MaxClockSpeed" Type="System.UInt32">2301</Property>
+        <Property Name="OtherFamilyDescription" Type="string"/>
+        <Property Name="Role" Type="System.String">CPU</Property>
+        <Property Name="Stepping" Type="string"/>
+        <Property Name="UniqueId" Type="string"/>
+        <Property Name="UpgradeMethod" Type="System.UInt16">6</Property>
+        <Property Name="Architecture" Type="System.UInt16">9</Property>
+        <Property Name="AssetTag" Type="System.String">00</Property>
+        <Property Name="Characteristics" Type="System.UInt32">4</Property>
+        <Property Name="CpuStatus" Type="System.UInt16">1</Property>
+        <Property Name="CurrentVoltage" Type="System.UInt16">10</Property>
+        <Property Name="ExtClock" Type="System.UInt32">100</Property>
+        <Property Name="L2CacheSize" Type="System.UInt32">512</Property>
+        <Property Name="L2CacheSpeed" Type="uint32"/>
+        <Property Name="L3CacheSize" Type="System.UInt32">4096</Property>
+        <Property Name="L3CacheSpeed" Type="System.UInt32">0</Property>
+        <Property Name="Level" Type="System.UInt16">6</Property>
+        <Property Name="Manufacturer" Type="System.String">GenuineIntel</Property>
+        <Property Name="NumberOfCores" Type="System.UInt32">2</Property>
+        <Property Name="NumberOfEnabledCore" Type="System.UInt32">2</Property>
+        <Property Name="NumberOfLogicalProcessors" Type="System.UInt32">4</Property>
+        <Property Name="PartNumber" Type="System.String">00</Property>
+        <Property Name="ProcessorId" Type="System.String">BFEBFBFF00040651</Property>
+        <Property Name="ProcessorType" Type="System.UInt16">3</Property>
+        <Property Name="Revision" Type="System.UInt16">17665</Property>
+        <Property Name="SecondLevelAddressTranslationExtensions" Type="System.Boolean">False</Property>
+        <Property Name="SerialNumber" Type="System.String"></Property>
+        <Property Name="SocketDesignation" Type="System.String">SOCKET 0</Property>
+        <Property Name="ThreadCount" Type="System.UInt32">4</Property>
+        <Property Name="Version" Type="System.String"></Property>
+        <Property Name="VirtualizationFirmwareEnabled" Type="System.Boolean">False</Property>
+        <Property Name="VMMonitorModeExtensions" Type="System.Boolean">False</Property>
+        <Property Name="VoltageCaps" Type="uint32"/>
+        <Property Name="PSComputerName" Type="string"/>
+        <Property Name="CimClass" Type="Microsoft.Management.Infrastructure.CimClass">
+            <Property Name="CimClassName" Type="System.String">Win32_Processor</Property>
+            <Property Name="CimSuperClassName" Type="System.String">CIM_Processor</Property>
+            <Property Name="CimSuperClass" Type="Microsoft.Management.Infrastructure.CimClass">
+                <Property Name="CimClassName" Type="System.String">CIM_Processor</Property>
+                <Property Name="CimSuperClassName" Type="System.String">CIM_LogicalDevice</Property>
+                <Property Name="CimSuperClass" Type="Microsoft.Management.Infrastructure.CimClass">ROOT/cimv2:CIM_LogicalDevice</Property>
+                <Property Name="CimClassProperties" Type="Microsoft.Management.Infrastructure.Internal.Data.CimClassPropertiesCollection"/>
+                <Property Name="CimClassQualifiers" Type="Microsoft.Management.Infrastructure.Internal.Data.CimClassQualifierCollection"/>
+                <Property Name="CimClassMethods" Type="Microsoft.Management.Infrastructure.Internal.Data.CimMethodDeclarationCollection"/>
+                <Property Name="CimSystemProperties" Type="Microsoft.Management.Infrastructure.CimSystemProperties">Microsoft.Management.Infrastructure.CimSystemProperties</Property>
+            </Property>
+            <Property Name="CimClassProperties" Type="Microsoft.Management.Infrastructure.Internal.Data.CimClassPropertiesCollection">
+                <Property Name="Count" Type="System.Int32">57</Property>
+            </Property>
+            <Property Name="CimClassQualifiers" Type="Microsoft.Management.Infrastructure.Internal.Data.CimClassQualifierCollection">
+                <Property Name="Count" Type="System.Int32">4</Property>
+            </Property>
+            <Property Name="CimClassMethods" Type="Microsoft.Management.Infrastructure.Internal.Data.CimMethodDeclarationCollection">
+                <Property Name="Count" Type="System.Int32">2</Property>
+            </Property>
+            <Property Name="CimSystemProperties" Type="Microsoft.Management.Infrastructure.CimSystemProperties">
+                <Property Name="Namespace" Type="System.String">root/cimv2</Property>
+                <Property Name="ServerName" Type="System.String">DESKTOP-J67B1KV</Property>
+                <Property Name="ClassName" Type="System.String">Win32_Processor</Property>
+                <Property Name="Path" Type="System.String"/>
+            </Property>
+        </Property>
+        <Property Name="CimInstanceProperties" Type="Microsoft.Management.Infrastructure.Internal.Data.CimPropertiesCollection">
+            <Property Name="Count" Type="System.Int32">57</Property>
+        </Property>
+        <Property Name="CimSystemProperties" Type="Microsoft.Management.Infrastructure.CimSystemProperties">
+            <Property Name="Namespace" Type="System.String">root/cimv2</Property>
+            <Property Name="ServerName" Type="System.String">DESKTOP-J67B1KV</Property>
+            <Property Name="ClassName" Type="System.String">Win32_Processor</Property>
+            <Property Name="Path" Type="System.String"/>
+        </Property>
+    </Object>
 </Objects>

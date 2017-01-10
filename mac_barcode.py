@@ -24,7 +24,7 @@ data_list = ['machine_model', 'serial_number', 'physical_memory', 'cpu_type',
 
 
 hardware = system_data[0]['_items'][0]
-storage = system_data[1]['_items'][1]['com.apple.corestorage.lvg']
+storage = system_data[1]['_items'][0]['com.apple.corestorage.lvg']
 
 qr = QRCode()
 
@@ -61,8 +61,6 @@ def error_code(reason):
 def master_scan():
     qr.code.add_data(hardware.get(data_list[1]))
 
-
-singledata_barcode()
 
 # GENERIC
 # Asset Tag
