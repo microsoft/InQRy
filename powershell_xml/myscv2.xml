@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Objects>
+  <Object Type="Microsoft.Management.Infrastructure.CimInstance">
+    <Property Name="Caption" Type="System.String">3.11.1550</Property>
+    <Property Name="Description" Type="System.String">3.11.1550</Property>
+    <Property Name="InstallDate" Type="CimInstance#DateTime" />
+    <Property Name="Name" Type="System.String">3.11.1550</Property>
+    <Property Name="Status" Type="System.String">OK</Property>
+    <Property Name="BuildNumber" Type="string" />
+    <Property Name="CodeSet" Type="string" />
+    <Property Name="IdentificationCode" Type="string" />
+    <Property Name="LanguageEdition" Type="string" />
+    <Property Name="Manufacturer" Type="System.String">American Megatrends Inc.</Property>
+    <Property Name="OtherTargetOS" Type="string" />
+    <Property Name="SerialNumber" Type="System.String">000048250353</Property>
+    <Property Name="SoftwareElementID" Type="System.String">3.11.1550</Property>
+    <Property Name="SoftwareElementState" Type="System.UInt16">3</Property>
+    <Property Name="TargetOperatingSystem" Type="System.UInt16">0</Property>
+    <Property Name="Version" Type="System.String">OEMC - 300</Property>
+    <Property Name="PrimaryBIOS" Type="System.Boolean">True</Property>
+    <Property Name="BiosCharacteristics" Type="System.UInt16[]">
+      <Property Type="System.UInt16">7</Property>
+      <Property Type="System.UInt16">11</Property>
+      <Property Type="System.UInt16">12</Property>
+      <Property Type="System.UInt16">15</Property>
+      <Property Type="System.UInt16">16</Property>
+      <Property Type="System.UInt16">17</Property>
+      <Property Type="System.UInt16">19</Property>
+      <Property Type="System.UInt16">23</Property>
+      <Property Type="System.UInt16">24</Property>
+      <Property Type="System.UInt16">25</Property>
+      <Property Type="System.UInt16">26</Property>
+      <Property Type="System.UInt16">27</Property>
+      <Property Type="System.UInt16">28</Property>
+      <Property Type="System.UInt16">29</Property>
+      <Property Type="System.UInt16">32</Property>
+      <Property Type="System.UInt16">33</Property>
+      <Property Type="System.UInt16">40</Property>
+      <Property Type="System.UInt16">42</Property>
+      <Property Type="System.UInt16">43</Property>
+    </Property>
+    <Property Name="BIOSVersion" Type="System.String[]">
+      <Property Type="System.String">OEMC - 300</Property>
+      <Property Type="System.String">3.11.1550</Property>
+      <Property Type="System.String">American Megatrends - 50008</Property>
+    </Property>
+    <Property Name="CurrentLanguage" Type="System.String">en|US|iso8859-1</Property>
+    <Property Name="EmbeddedControllerMajorVersion" Type="System.Byte">32</Property>
+    <Property Name="EmbeddedControllerMinorVersion" Type="System.Byte">0</Property>
+    <Property Name="InstallableLanguages" Type="System.UInt16">1</Property>
+    <Property Name="ListOfLanguages" Type="System.String[]">
+      <Property Type="System.String">en|US|iso8859-1</Property>
+    </Property>
+    <Property Name="ReleaseDate" Type="System.DateTime">6/29/2016 5:00:00 PM</Property>
+    <Property Name="SMBIOSBIOSVersion" Type="System.String">3.11.1550</Property>
+    <Property Name="SMBIOSMajorVersion" Type="System.UInt16">2</Property>
+    <Property Name="SMBIOSMinorVersion" Type="System.UInt16">8</Property>
+    <Property Name="SMBIOSPresent" Type="System.Boolean">True</Property>
+    <Property Name="SystemBiosMajorVersion" Type="System.Byte">3</Property>
+    <Property Name="SystemBiosMinorVersion" Type="System.Byte">11</Property>
+    <Property Name="PSComputerName" Type="string" />
+    <Property Name="CimClass" Type="Microsoft.Management.Infrastructure.CimClass">
+      <Property Name="CimClassName" Type="System.String">Win32_BIOS</Property>
+      <Property Name="CimSuperClassName" Type="System.String">CIM_BIOSElement</Property>
+      <Property Name="CimSuperClass" Type="Microsoft.Management.Infrastructure.CimClass">
+        <Property Name="CimClassName" Type="System.String">CIM_BIOSElement</Property>
+        <Property Name="CimSuperClassName" Type="System.String">CIM_SoftwareElement</Property>
+        <Property Name="CimSuperClass" Type="Microsoft.Management.Infrastructure.CimClass">ROOT/cimv2:CIM_SoftwareElement</Property>
+        <Property Name="CimClassProperties" Type="Microsoft.Management.Infrastructure.Internal.Data.CimClassPropertiesCollection" />
+        <Property Name="CimClassQualifiers" Type="Microsoft.Management.Infrastructure.Internal.Data.CimClassQualifierCollection" />
+        <Property Name="CimClassMethods" Type="Microsoft.Management.Infrastructure.Internal.Data.CimMethodDeclarationCollection" />
+        <Property Name="CimSystemProperties" Type="Microsoft.Management.Infrastructure.CimSystemProperties">Microsoft.Management.Infrastructure.CimSystemProperties</Property>
+      </Property>
+      <Property Name="CimClassProperties" Type="Microsoft.Management.Infrastructure.Internal.Data.CimClassPropertiesCollection">
+        <Property Name="Count" Type="System.Int32">31</Property>
+      </Property>
+      <Property Name="CimClassQualifiers" Type="Microsoft.Management.Infrastructure.Internal.Data.CimClassQualifierCollection">
+        <Property Name="Count" Type="System.Int32">4</Property>
+      </Property>
+      <Property Name="CimClassMethods" Type="Microsoft.Management.Infrastructure.Internal.Data.CimMethodDeclarationCollection">
+        <Property Name="Count" Type="System.Int32">0</Property>
+      </Property>
+      <Property Name="CimSystemProperties" Type="Microsoft.Management.Infrastructure.CimSystemProperties">
+        <Property Name="Namespace" Type="System.String">root/cimv2</Property>
+        <Property Name="ServerName" Type="System.String">DESKTOP-J67B1KV</Property>
+        <Property Name="ClassName" Type="System.String">Win32_BIOS</Property>
+        <Property Name="Path" Type="System.String" />
+      </Property>
+    </Property>
+    <Property Name="CimInstanceProperties" Type="Microsoft.Management.Infrastructure.Internal.Data.CimPropertiesCollection">
+      <Property Name="Count" Type="System.Int32">31</Property>
+    </Property>
+    <Property Name="CimSystemProperties" Type="Microsoft.Management.Infrastructure.CimSystemProperties">
+      <Property Name="Namespace" Type="System.String">root/cimv2</Property>
+      <Property Name="ServerName" Type="System.String">DESKTOP-J67B1KV</Property>
+      <Property Name="ClassName" Type="System.String">Win32_BIOS</Property>
+      <Property Name="Path" Type="System.String" />
+    </Property>
+  </Object>
+</Objects>
