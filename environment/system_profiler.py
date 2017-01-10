@@ -14,7 +14,7 @@ class SystemProfiler:
                 data = Popen(["/usr/sbin/system_profiler", "-xml"] +
                              data_types, stdout=PIPE,
                              stderr=ignoresWrites).communicate()[0]
-                return readPlistFromString(data)
+                return readPlist(data)
         except Exception as ex:
             print('InfraTi: Could not start system_profiler to collect \
                    environment info: {}'.format(ex))
