@@ -3,7 +3,7 @@
 # import inspect
 from qrcode import QRCode
 # from system_profiler_report_data import SystemProfilerReportData
-from system_profiler import SystemProfiler
+from environment.system_profiler import SystemProfiler
 
 
 # cmd_subfolder = os.path.realpath(os.path.abspath(os.path.join(os.path.split(
