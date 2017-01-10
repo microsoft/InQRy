@@ -3,3 +3,5 @@ mac_barcode_old.py
 *.pyc
 *.pdf
 *.js
+*.cache
+*.cache/
