@@ -24,21 +24,9 @@ data_list = ['machine_model', 'serial_number', 'physical_memory', 'cpu_type',
 
 
 hardware = system_data[0]['_items'][0]
-storage = system_data[1]['_items'][0]['com.apple.corestorage.lvg']
+storage = system_data[1]['_items'][1]['com.apple.corestorage.lvg']
 
 qr = QRCode()
-
-
-def singledata_barcode():
-    for component in data_list:
-        if hardware.get(component):
-            unique_component = hardware.get(component)
-        else:
-            unique_component = storage.get(component)
-        qr.add_data(unique_component)
-        img = qr.make_image()
-        img.show()
-        qr.clear()
 
 
 def multidata_barcode():
