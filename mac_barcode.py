@@ -11,6 +11,8 @@
 # if cmd_subfolder not in sys.path:
 #     sys.path.insert(0, cmd_subfolder)
 
+from qrcode import QRCode
+
 system_data = SystemProfiler().profile_for_data_type(
     ['SPHardwareDataType', 'SPStorageDataType'])
 
