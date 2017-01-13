@@ -3,7 +3,11 @@
 # import inspect
 from qrcode import QRCode
 # from system_profiler_report_data import SystemProfilerReportData
-from environment.system_profiler import SystemProfiler
+from import
+from import 
+from InfraTi import Client
+from Client import Environment
+import mbu.modules.Infrastructure.InfraTi.Client.Environment
 
 
 # cmd_subfolder = os.path.realpath(os.path.abspath(os.path.join(os.path.split(
@@ -24,7 +28,7 @@ data_list = ['machine_model', 'serial_number', 'physical_memory', 'cpu_type',
 
 
 hardware = system_data[0]['_items'][0]
-storage = system_data[1]['_items'][1]['com.apple.corestorage.lvg']
+storage = system_data[1]['_items'][0]['com.apple.corestorage.lvg']
 
 qr = QRCode()
 
