@@ -1,4 +1,8 @@
 import subprocess
 from xml.etree.ElementTree import parse
 
-subprocess.call(['Get-CimInstance', 'Win32_Processor', '|' 'ConvertTo-XML'])
+processor = subprocess.call(
+    ["C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\powershell.exe",
+     "Get-CimInstance", "Win32_Processor"])
+
+print(processor)
