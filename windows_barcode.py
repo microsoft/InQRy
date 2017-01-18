@@ -8,4 +8,6 @@ def xml_data(hardware_property):
          "Get-CimInstance", hardware_property, "|",
          "ConvertTo-XML", "-As", "String"])
 
-xml_data("Win32_Processor")
+
+processor = xml_data("Win32_Processor")
+print(processor)
