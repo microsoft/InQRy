@@ -2,22 +2,11 @@ import os
 import sys
 from qrcode import QRCode
 
-sys.path.append(os.path.abspath('../../../../mbu/modules'))
-from Infrastructure.InfraTi.Client.Environment.system_profiler import SystemProfiler
-
-system_data = SystemProfiler().profile_for_data_type(
-    ['SPHardwareDataType', 'SPStorageDataType'])
-
-
 components = ['machine_model', 'serial_number', 'physical_memory', 'cpu_type',
-              'current_processor_speed', 'machine_name',
-              'com.apple.corestorage.lvg.name',
-              'com.apple.corestorage.lvg.size',
-              'com.apple.corestorage.lvg.freeSpace']
 
 
-hardware = system_data[0]['_items'][0]
-storage = system_data[1]['_items'][0]['com.apple.corestorage.lvg']
+# hardware = system_data[0]['_items'][0]
+# storage = system_data[1]['_items'][0]['com.apple.corestorage.lvg']
 
 qr = QRCode()
 
