@@ -9,11 +9,11 @@ system_data = SystemProfiler().profile_for_data_type(
     ['SPHardwareDataType', 'SPStorageDataType'])
 
 
-data_list = ['machine_model', 'serial_number', 'physical_memory', 'cpu_type',
-             'current_processor_speed', 'machine_name',
-             'com.apple.corestorage.lvg.name',
-             'com.apple.corestorage.lvg.size',
-             'com.apple.corestorage.lvg.freeSpace']
+components = ['machine_model', 'serial_number', 'physical_memory', 'cpu_type',
+              'current_processor_speed', 'machine_name',
+              'com.apple.corestorage.lvg.name',
+              'com.apple.corestorage.lvg.size',
+              'com.apple.corestorage.lvg.freeSpace']
 
 
 hardware = system_data[0]['_items'][0]
@@ -23,7 +23,7 @@ qr = QRCode()
 
 
 def multidata_barcode():
-    for component in data_list:
+    for component in components:
         if hardware.get(component):
             unique_component = hardware.get(component)
         else:
