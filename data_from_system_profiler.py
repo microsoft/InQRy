@@ -1,7 +1,7 @@
 import sys
 import os
 
-sys.path.append(os.path.abspath('./mbu/modules/Infrastructure'))
+sys.path.append(os.path.abspath('../../../../mbu/modules/Infrastructure'))
 from InfraTi.Client.Environment.system_profiler import SystemProfiler
 
 
