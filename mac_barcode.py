@@ -1,11 +1,16 @@
-from data_from_system_profiler import data_from_system_profiler
+from data_from_system_profiler import get_system_info_from_datatype
 from qrcode import QRCode
+
+# datatypes = ['SPHardwareDataType'], ['SPStorageDataType']
 
 components = ['machine_model', 'serial_number', 'physical_memory', 'cpu_type',
               'current_processor_speed', 'machine_name',
               'com.apple.corestorage.lvg.name',
               'com.apple.corestorage.lvg.size',
               'com.apple.corestorage.lvg.freeSpace']
+
+hardware_specs = get_system_info_from_datatype('Hardware')
+storage_specs = get_system_info_from_datatype('Storage')
 
 # hardware = system_data[0]['_items'][0]
 # storage = system_data[1]['_items'][0]['com.apple.corestorage.lvg']
