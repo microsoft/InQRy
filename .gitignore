@@ -3,6 +3,5 @@ mac_barcode_old.py
 test-scripts/
 *.pyc
 *.pdf
-*.js
 *.cache
 *.cache/
