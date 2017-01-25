@@ -1,8 +1,8 @@
 import sys
 import os
 
-sys.path.append(os.path.abspath('../../../../mbu/modules/Infrastructure'))
-from InfraTi.Client.Environment.system_profiler import SystemProfiler
+sys.path.append(os.path.abspath(os.path.abspath("../../../../mbu/modules")))
+from Infrastructure.InfraTi.Client.Environment.system_profiler import SystemProfiler
 
 
 def system_info_for_datatype(type_of_data):
