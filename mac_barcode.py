@@ -4,43 +4,48 @@ from qrcode import QRCode
 
 system_categories = ['SerialATA', 'Hardware', 'Network']
 
-hardware_components = ['machine_model', 'serial_number', 'physical_memory',
-                       'cpu_type', 'current_processor_speed', 'machine_name']
+hardware_components = ['machine_model', 'serial_number', 'machine_name',
+                       'physical_memory', 'cpu_type',
+                       'current_processor_speed']
 
 
 hardware_specs = system_info_for_datatype('Hardware')
-storage_specs = system_info_for_datatype('SerialATA')
-network_specs = system_info_for_datatype('Network')
+
 
 hardware = hardware_specs[0]['_items'][0]
+
+storage_specs = system_info_for_datatype('SerialATA')
 storage_keys = storage_specs[0]['_items'][0]['_items'][0].keys()
+
+
+def generate_item_list(datatype):
+    data = system_info_for_datatype(datatype)
+    items = data[0]['_items'][0]
+    return items
+
+
+unique_hardware_values = generate_item_list('Hardware')
 storage = storage_specs[0]['_items'][0]['_items'][0]['device_model']
+
+system_spec = [unique_hardware_values[hwc] for hwc in hardware_components]
+system_spec.append(storage.strip())
+
+print(system_spec)
 
 
 # qr = QRCode()
-#
-#
-# def generate_item_list(datatype):
-#     data = system_info_for_datatype(datatype)
-#     items = data[0]['_items'][0]
-#     print(type(items))
-#     return items
-#
-#
-# generate_item_list('Hardware')
-
 
 # for system_category in system_categories:
 #     generate_item_list(system_category)
 
 # empty_dict = {}
 # for component in hardware_components:
-#     unique_hardware_values = generate_item_list('Hardware')
+
 #     empty_dict[component] = unique_hardware_values[component]
 #
 # for component in storage_components:
 #     unique_storage_values = generate_item_list('Storage')
-#     empty_dict[component] = unique_storage_values[component]
+#     empty_dict[component] =
 
 
 # def multidata_barcode():
