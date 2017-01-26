@@ -11,7 +11,5 @@
 rules_onDecode = function(a)
 {
 	a.data = a.data.replace(/\x09/g, "\x01X\x1ean//t\x04");
-	a.data = a.data.replace(/\x13/g, "\x01X\x1ean//n\x04");
-	a.data = a.data.replace(/\x54/g, "\x01X\x1ean//,\x04");
 	return a;
 }
