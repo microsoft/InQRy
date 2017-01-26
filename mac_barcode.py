@@ -33,7 +33,7 @@ system_spec.append(storage.strip())
 print(system_spec)
 
 
-# qr = QRCode()
+qr = QRCode()
 
 # for system_category in system_categories:
 #     generate_item_list(system_category)
@@ -46,6 +46,31 @@ print(system_spec)
 # for component in storage_components:
 #     unique_storage_values = generate_item_list('Storage')
 #     empty_dict[component] =
+
+
+def test_barcode():
+    qr.add_data("New tab")
+    qr.add_data('\x09')
+    qr.add_data('\x09')
+    qr.add_data('\x09')
+    qr.add_data('\x09')
+    qr.add_data('\x09')
+    qr.add_data("Delay 500ms")
+    qr.add_data('\x54')
+    qr.add_data('\x54')
+    qr.add_data('\x54')
+    qr.add_data('\x54')
+    qr.add_data('\x54')
+    qr.add_data("Carraige return")
+    qr.add_data('\x13')
+    qr.add_data('\x13')
+    qr.add_data('\x13')
+    qr.add_data('\x13')
+    img = qr.make_image()
+    img.show()
+
+
+test_barcode()
 
 
 # def multidata_barcode():
