@@ -49,28 +49,24 @@ qr = QRCode()
 
 
 def test_barcode():
-    qr.add_data("New tab")
-    qr.add_data('\x09')
-    qr.add_data('\x09')
-    qr.add_data('\x09')
-    qr.add_data('\x09')
-    qr.add_data('\x09')
-    qr.add_data("Delay 500ms")
-    qr.add_data('\x54')
-    qr.add_data('\x54')
-    qr.add_data('\x54')
-    qr.add_data('\x54')
-    qr.add_data('\x54')
-    qr.add_data("Carraige return")
-    qr.add_data('\x13')
-    qr.add_data('\x13')
-    qr.add_data('\x13')
-    qr.add_data('\x13')
+    qr.add_data('First data')
+    qr.add_data('500ms')
+    qr.add_data('500ms')
+    qr.add_data('500ms')
+    qr.add_data('500ms')
+    qr.add_data('Second data')
     img = qr.make_image()
     img.show()
 
 
 test_barcode()
+
+
+#
+# def hex_codes():
+#     for n in range(1, 10):
+#         qr.add_data('\\x' + str(n))
+#         print('\\x' + str(n))
 
 
 # def multidata_barcode():
