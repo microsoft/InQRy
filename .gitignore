@@ -5,3 +5,8 @@ test-scripts/
 *.pdf
 *.cache
 *.cache/
+*.cre
+*.default
+*.settings
+cr8000
+translate.xml
