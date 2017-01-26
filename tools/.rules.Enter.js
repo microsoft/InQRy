@@ -1,5 +1,5 @@
-rules_onDecode = function(a)
+rules_onDecode = function(decode)
 {
-	a.data = a.data.replace(/\x54/g, "\x01X\x1ean//,\x04");
-	return a;
+	decode.data = decode.data.replace(/\x54/g, "\x01X\x1ean//,\x04");
+	return decode;
 }
