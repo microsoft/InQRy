@@ -8,3 +8,4 @@ def xml_data(hardware_property):
          "Get-CimInstance", hardware_property, "|",
          "ConvertTo-XML", "-As", "String"])
     print(output)
+    return output
