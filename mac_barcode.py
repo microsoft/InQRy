@@ -8,63 +8,48 @@ hardware_components = ['machine_model', 'serial_number', 'machine_name',
                        'physical_memory', 'cpu_type',
                        'current_processor_speed']
 
-
+# Hardware
 hardware_specs = system_info_for_datatype('Hardware')
+hardware_list = hardware_specs[0]['_items'][0]
 
+# Hardware - components
+machine_model = hardware_list['machine_model']
+serial_number = hardware_list['serial_number']
+machine_name = hardware_list['machine_name']
+memory = hardware_list['physical_memory']
+cpu_type = hardware_list['cpu_type']
+processor_speed = hardware_list['current_processor_speed']
 
-hardware = hardware_specs[0]['_items'][0]
-
+# Storage
 storage_specs = system_info_for_datatype('SerialATA')
+storage_bay_1 = storage_specs[0]['_items'][0]['_items'][0]['device_model']
+# storage_bay_2 = storage_specs[0]['_items'][0]['_items'][0]['device_model']
+# storage_bay_3 = storage_specs[0]['_items'][0]['_items'][0]['device_model']
+# storage_bay_4 = storage_specs[0]['_items'][0]['_items'][0]['device_model']
 storage_keys = storage_specs[0]['_items'][0]['_items'][0].keys()
-
-
-def generate_item_list(datatype):
-    data = system_info_for_datatype(datatype)
-    items = data[0]['_items'][0]
-    return items
-
-
-unique_hardware_values = generate_item_list('Hardware')
-storage = storage_specs[0]['_items'][0]['_items'][0]['device_model']
-
-system_spec = [unique_hardware_values[hwc] for hwc in hardware_components]
-system_spec.append(storage.strip())
-
-print(system_spec)
-
 
 qr = QRCode()
 
-# for system_category in system_categories:
-#     generate_item_list(system_category)
 
-# empty_dict = {}
-# for component in hardware_components:
-
-#     empty_dict[component] = unique_hardware_values[component]
-#
-# for component in storage_components:
-#     unique_storage_values = generate_item_list('Storage')
-#     empty_dict[component] =
-
-
-def test_barcode():
-    qr.add_data('00001')
+def master_barcode():
+    qr.add_data('64655638')
     qr.add_data('\x09')
     qr.add_data('delay500ms')
     qr.add_data('\x20')
     qr.add_data('delay500ms')
-    qr.add_data('MacPro6,1')
+    qr.add_data(machine_model)
     qr.add_data('delay500ms')
     qr.add_data('enter_key')
     qr.add_data('delay500ms')
     qr.add_data('\x09')
     qr.add_data('\x09')
-    qr.add_data('down_arrow')
+    qr.add_data(memory)
     qr.add_data('\x09')
-    qr.add_data('down_arrow')
+    qr.add_data(processor_speed)
     qr.add_data('\x09')
-    qr.add_data('down_arrow')
+    qr.add_data(cpu_type)
+    qr.add_data('\x09')
+    qr.add_data(storage_bay_1)
     qr.add_data('\x09')
     qr.add_data('delay500ms')
     qr.add_data('\x20')
@@ -76,80 +61,16 @@ def test_barcode():
     qr.add_data('\x09')
     qr.add_data('\x20')
     qr.add_data('delay500ms')
-    qr.add_data('Hanko')
+    qr.add_data('maclab')
     qr.add_data('enter_key')
     qr.add_data('\x09')
     qr.add_data('\x09')
-    qr.add_data('87ASDFHJ134')
+    qr.add_data(serial_number)
     qr.add_data('\x09')
-    qr.add_data('Mac Pro')
+    qr.add_data(machine_name)
+    qr.add_data('enter_key')
     img = qr.make_image()
     img.show()
 
 
-test_barcode()
-
-
-#
-# def hex_codes():
-#     for n in range(1, 10):
-#         qr.add_data('\\x' + str(n))
-#         print('\\x' + str(n))
-
-
-# def multidata_barcode():
-#     for component in components:
-#         if hardware.get(component):
-#             unique_component = hardware.get(component)
-#         else:
-#             unique_component = storage.get(component)
-#         qr.add_data(unique_component)
-#         qr.add_data('\x09')
-#
-#     img = qr.make_image()
-#     img.show()
-
-
-# def error_code(reason):
-#     print(reason)
-
-
-# data_list = []
-
-
-# def master_scan():
-#     qr.code.add_data(hardware.get(data_list[1]))
-
-
-# GENERIC
-# Asset Tag
-# Model
-# Status
-# Serial
-# Asset Name
-# Company
-# Purchase Date
-# Supplier
-# Order Number
-# Purchase Cost
-# Warranty
-# Notes
-# Default Location
-
-# COMPUTER
-# Asset Tag
-# Model
-# Processor
-# RAM
-# Storage
-# Status
-# Serial
-# Asset Name
-# Company
-# Purchase Date
-# Supplier
-# Order Number
-# Purchase Cost
-# Warranty
-# Notes
-# Default Location
+master_barcode()
