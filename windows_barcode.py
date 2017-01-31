@@ -13,11 +13,27 @@ def xml_data(hardware_property):
     return output
 
 
-def get_ciminstance(args, component):
+def get_ciminstance(class_name, class_object):
     item = subprocess.check_output(
-        [powershell, "Get-CimInstance", args, "|", "Select-Object", component])
+        [powershell, "Get-CimInstance", class_name, "|",
+         "Select-Object", class_object])
     return item
 
 
-print(get_ciminstance("CIM_ComputerSystem", "Name"))
-print(get_ciminstance("CIM_BIOSElement", "SerialNumber"))
+def assign_variable(var, cim_args):
+    subprocess.check_output(
+        ["$" + var, "=", "Get-CimInstance", cim_args])
+    return
+
+
+variables = ["system", "bios", "os", "cpu", "hdd"]
+class_objects = ["CIM_ComputerSystem", "CIM_BIOSElement",
+                 "CIM_OperatingSystem", "CIM_Processor", "CIM_LogicalDisk"]
+
+
+def all_variables():
+    for variable, class_object in variables, class_objects:
+        assign_variable(variable, class_object)
+
+
+all_variables()
