@@ -1,4 +1,6 @@
-#!/bin/bash 
+#!/bin/bash
+
+serial_number=$(system_profiler SPHardwareDataType | awk ':' {print $2} )
 
 model_name=$(
     apple_url='http://support-sp.apple.com/sp/product/?cc='
