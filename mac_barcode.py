@@ -31,7 +31,7 @@ storage_keys = storage_specs[0]['_items'][0]['_items'][0].keys()
 qr = QRCode()
 
 
-def master_barcode():
+def mac_desktop():
     qr.add_data('64655638')
     qr.add_data('\x09')
     qr.add_data('delay500ms')
@@ -73,4 +73,9 @@ def master_barcode():
     img.show()
 
 
-master_barcode()
+def mac_laptop():
+    pass
+
+
+def ios_device():
+    pass
