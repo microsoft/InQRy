@@ -1,0 +1,149 @@
+SATA/SATA Express:
+
+    Apple SSD Controller:
+
+      Vendor: Apple
+      Product: SSD Controller
+      Physical Interconnect: PCI
+      Link Width: x4
+      Link Speed: 5.0 GT/s
+      Description: AHCI Version 1.30 Supported
+
+        APPLE SSD SM1024G:
+
+          Capacity: 1 TB (1,000,555,581,440 bytes)
+          Model: APPLE SSD SM1024G
+          Revision: BXW8SA0Q
+          Serial Number: S218NYAH104801
+          Native Command Queuing: Yes
+          Queue Depth: 32
+          Removable Media: No
+          Detachable Drive: No
+          BSD Name: disk0
+          Medium Type: Solid State
+          TRIM Support: Yes
+          Partition Map Type: GPT (GUID Partition Table)
+          S.M.A.R.T. status: Verified
+          Volumes:
+            EFI:
+              Capacity: 209.7 MB (209,715,200 bytes)
+              BSD Name: disk0s1
+              Content: EFI
+              Volume UUID: 0E239BC6-F960-3107-89CF-1C97F78BB46B
+            disk0s2:
+              Capacity: 999.7 GB (999,695,822,848 bytes)
+              BSD Name: disk0s2
+              Content: Apple_CoreStorage
+            Recovery HD:
+              Capacity: 650 MB (650,002,432 bytes)
+              BSD Name: disk0s3
+              Content: Apple_Boot
+              Volume UUID: 1C6B40E0-7CC6-36C3-B0C8-206E0045C89C
+
+    Thunderbolt AHCI Controller:
+
+      Vendor: Thunderbolt
+      Product: AHCI Controller
+      Link Speed: 6 Gigabit
+      Negotiated Link Speed: 6 Gigabit
+      Physical Interconnect: SATA
+      Description: AHCI Version 1.20 Supported
+
+        HGST HTS721010A9E630:
+
+          Capacity: 1 TB (1,000,204,886,016 bytes)
+          Model: HGST HTS721010A9E630
+          Revision: JB0OA3J0
+          Serial Number: JR10004M1T288E
+          Native Command Queuing: Yes
+          Queue Depth: 32
+          Removable Media: No
+          Detachable Drive: No
+          BSD Name: disk3
+          Rotational Rate: 7200
+          Medium Type: Rotational
+          Partition Map Type: GPT (GUID Partition Table)
+          S.M.A.R.T. status: Verified
+          Volumes:
+            EFI:
+              Capacity: 209.7 MB (209,715,200 bytes)
+              BSD Name: disk3s1
+              Content: EFI
+              Volume UUID: 0E239BC6-F960-3107-89CF-1C97F78BB46B
+            disk3s2:
+              Capacity: 999.86 GB (999,860,912,128 bytes)
+              BSD Name: disk3s2
+              Content: Apple_RAID
+            Boot OS X:
+              Capacity: 134.2 MB (134,217,728 bytes)
+              BSD Name: disk3s3
+              Content: Apple_Boot
+              Volume UUID: 12E0605F-7DFA-3268-899B-1B672CBA5183
+
+    Thunderbolt AHCI Controller:
+
+      Vendor: Thunderbolt
+      Product: AHCI Controller
+      Link Speed: 6 Gigabit
+      Negotiated Link Speed: 6 Gigabit
+      Physical Interconnect: SATA
+      Description: AHCI Version 1.20 Supported
+
+        HGST HTS721010A9E630:
+
+          Capacity: 1 TB (1,000,204,886,016 bytes)
+          Model: HGST HTS721010A9E630
+          Revision: JB0OA3J0
+          Serial Number: JR10004M1SR4EE
+          Native Command Queuing: Yes
+          Queue Depth: 32
+          Removable Media: No
+          Detachable Drive: No
+          BSD Name: disk2
+          Rotational Rate: 7200
+          Medium Type: Rotational
+          Partition Map Type: GPT (GUID Partition Table)
+          S.M.A.R.T. status: Verified
+          Volumes:
+            EFI:
+              Capacity: 209.7 MB (209,715,200 bytes)
+              BSD Name: disk2s1
+              Content: EFI
+              Volume UUID: 0E239BC6-F960-3107-89CF-1C97F78BB46B
+            disk2s2:
+              Capacity: 999.86 GB (999,860,912,128 bytes)
+              BSD Name: disk2s2
+              Content: Apple_RAID
+            Boot OS X:
+              Capacity: 134.2 MB (134,217,728 bytes)
+              BSD Name: disk2s3
+              Content: Apple_Boot
+              Volume UUID: 91A9C07E-444B-339C-8EEE-4DD005A2C6F8
+
+    Thunderbolt AHCI Controller:
+
+      Vendor: Thunderbolt
+      Product: AHCI Controller
+      Link Speed: 6 Gigabit
+      Description: AHCI Version 1.20 Supported
+
+    Thunderbolt AHCI Controller:
+
+      Vendor: Thunderbolt
+      Product: AHCI Controller
+      Link Speed: 6 Gigabit
+      Description: AHCI Version 1.20 Supported
+
+    Thunderbolt AHCI Controller:
+
+      Vendor: Thunderbolt
+      Product: AHCI Controller
+      Link Speed: 6 Gigabit
+      Description: AHCI Version 1.20 Supported
+
+    Thunderbolt AHCI Controller:
+
+      Vendor: Thunderbolt
+      Product: AHCI Controller
+      Link Speed: 6 Gigabit
+      Description: AHCI Version 1.20 Supported

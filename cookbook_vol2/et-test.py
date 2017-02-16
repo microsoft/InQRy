@@ -28,6 +28,7 @@ def find_it():
     root.findall("dict")
 
 
+key = 'Lightshow_version'
 detail = -2
 command = 'system_profiler -xml -detailLevel %d' % detail
 command_list = [i for i in command.split(' ')]
@@ -59,14 +60,17 @@ print(type(root))
 find_it()
 print(root.findall("."))
 print("\n")
-key = 'os_version'
 found = root.findall('.//dict[key=%r]' % key)
 print(found)
+print(root.getchildren())
 
-
-
-
-
+for child in found:
+    grandchildren = child.getchildren()
+    print("Child tag: %r" % child.tag)
+    print("Child text: %r" % child.text)
+    for grandchild in grandchildren:
+        print("Grandchild tag: %r" % grandchild.tag)
+        print("Grandchild text: %r" % grandchild.text)
 
 
 # All 'neighbor' grand-children of 'country' children of the top-level
