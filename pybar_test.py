@@ -1,5 +1,6 @@
 import pytest
 from PyBar.pybar import Asset
+from system_profile import SystemProfile
 
 test_data = {
     'owner': 'Hanko',
@@ -18,3 +19,8 @@ class TestAsset:
 
     def test_asset_is_valid_with_known_good_test_data(self):
         pass
+
+
+class TestSystemProfile:
+    def test_empty_profile_instantiation_works(self):
+        SystemProfile()
