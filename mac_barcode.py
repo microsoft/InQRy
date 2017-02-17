@@ -4,9 +4,9 @@ from qrcode import QRCode
 
 system_categories = ['SerialATA', 'Hardware', 'Network']
 
-hardware_components = ['machine_model', 'serial_number', 'machine_name',
-                       'physical_memory', 'cpu_type',
-                       'current_processor_speed']
+# hardware_components = ['machine_model', 'serial_number', 'machine_name',
+#                        'physical_memory', 'cpu_type',
+#                        'current_processor_speed']
 
 # Hardware
 hardware_specs = system_info_for_datatype('Hardware')

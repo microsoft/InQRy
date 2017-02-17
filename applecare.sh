@@ -8,6 +8,5 @@ model_name=$(
     curl -s "$apple_url$(echo "$serial_number" | cut -c 9-)" |
     sed 's|.*<configCode>\(.*\)</configCode>.*|\1|')
 
-
 echo $serial_number
 echo $model_name
