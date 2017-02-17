@@ -1,6 +1,20 @@
+import pytest
 from PyBar.pybar import Asset
 
+test_data = {
+    'owner': 'Hanko',
+    'serial': 'HZ1KF3L90',
+    'cpu': ('Intel', 'Core i7', '2.9GHz')
+}
 
-class AssetTest:
-    def asset_object_is_able_to_be_instantiated():
+
+class TestAsset:
+    def test_empty_asset_instantiation_works(self):
         Asset()
+
+    def test_empty_asset_is_not_valid(self):
+        asset = Asset()
+        assert not asset.is_valid()
+
+    def test_asset_is_valid_with_known_good_test_data(self):
+        pass
