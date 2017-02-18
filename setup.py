@@ -10,5 +10,7 @@ setup(name='PyBar',
       author_email='v-erhank@microsoft.com',
       packages=['pybar'],
       long_description=open('README.md').read(),
-      install_requires=[
-        "qrcode >= 5.3.0"])
+      install_requires=["qrcode >= 5.3.0"],
+      setup_requires=['pytest-runner'],
+      tests_require=['pytest'],
+      )
