@@ -1,0 +1,30 @@
+array {
+    background-color: yellow;
+    color: blue;
+    /*width: 100%;*/
+}
+dict {
+    background-color: red;
+    color: yellow;
+    /*display: block;
+    margin-bottom: 20pt;
+    margin-left: 0;*/
+}
+string {
+    /*display: block;*/
+    background-color: green;
+    color: white;
+    /*font-size: 20pt;
+    margin-right: 0;*/
+}
+key {
+    /*display: block;*/
+    background-color: blue;
+    color: yellow;
+    /*font-size: 10pt;*/
+}
+/*COUNTRY, PRICE, YEAR, COMPANY {
+    display: block;
+    color: #000000;
+    margin-left: 20pt;
+}*/

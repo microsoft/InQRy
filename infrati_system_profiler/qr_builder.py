@@ -32,7 +32,6 @@ qr = QRCode()
 
 
 def mac_desktop():
-    qr.add_data('64655638')
     qr.add_data('\x09')
     qr.add_data('delay500ms')
     qr.add_data('\x20')
