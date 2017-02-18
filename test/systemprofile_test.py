@@ -1,5 +1,5 @@
 import pytest
-from pybar.system_profile import SystemProfile
+from pybar.system_profiler import SystemProfile
 
 
 class TestSystemProfile:
