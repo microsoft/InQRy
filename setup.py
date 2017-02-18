@@ -8,4 +8,5 @@ setup(name='PyBar',
       author='Eric Hanko',
       author_email='v-erhank@microsoft.com',
       packages=['pybar'],
+      long_description=open('README.md').read(),
      )
