@@ -10,3 +10,5 @@ test-scripts/
 *.settings.js
 cr8000.js
 translate.xml
+.installed.cfg
+*.egg-info/
