@@ -1,5 +1,5 @@
 import pytest
-from PyBar.pybar import Asset
+from pybar.asset import Asset
 
 test_data = {
     'owner': 'Hanko',

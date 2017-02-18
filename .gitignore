@@ -1,6 +1,7 @@
 test-scripts/
 *.cache/
 *.egg-info/
+*.eggs/
 
 *.pyc
 *.pdf
