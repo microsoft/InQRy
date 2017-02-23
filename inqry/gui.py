@@ -1,7 +1,7 @@
 import tkinter as tk
 
 win = tk.Tk()
-win.title("PyBar")
+win.title("InQRy")
 # tk.Label()(win, text="Label").grid(column=0, row=0)
 label = tk.Label(win, text="Hello")
 label.grid(column=0, row=0)
