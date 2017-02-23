@@ -56,8 +56,7 @@ def test_only_physical_drives_included():
     expected_physical_disks_multiple_disks = [
         '/dev/disk0', '/dev/disk2', '/dev/disk3']
 
-    identifiers = diskutil.get_physical_disk_identifiers(
-        diskutil_output_multiple_disks)
+    identifiers = diskutil.get_physical_disk_identifiers(diskutil_output_multiple_disks)
 
     assert expected_physical_disks_multiple_disks == identifiers
 
