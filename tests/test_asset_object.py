@@ -1,6 +1,6 @@
 import pytest
-from pybar.asset import Asset
-from pybar.systemprofile import SystemProfile
+from inqry.asset import Asset
+from inqry.systemprofile import SystemProfile
 
 
 sp = SystemProfile()

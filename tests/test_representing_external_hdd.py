@@ -1,4 +1,4 @@
-from pybar import macdisk
+from inqry import macdisk
 
 diskutil_output = '''   Device Identifier:        disk5
    Device Node:              /dev/disk5

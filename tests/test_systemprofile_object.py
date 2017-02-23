@@ -1,5 +1,5 @@
 import pytest
-from pybar.systemprofile import SystemProfile, mac_hardware
+from inqry.systemprofile import SystemProfile, mac_hardware
 
 hardware_test_data_as_dict = {
     'Hardware':

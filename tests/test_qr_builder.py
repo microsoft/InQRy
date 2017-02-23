@@ -1,4 +1,4 @@
-from pybar.qr_builder import AssetQRCode
+from inqry.qr_builder import AssetQRCode
 
 
 def test_empty_asset_qr_code_can_be_instantiated():

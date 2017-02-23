@@ -1,4 +1,4 @@
-from pybar import diskutil
+from inqry import diskutil
 
 diskutil_list_output = '''/dev/disk0 (internal, physical):
    #:                       TYPE NAME                    SIZE       IDENTIFIER
