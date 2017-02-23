@@ -1,3 +1,4 @@
+from inqry import macdisk
 import platform
 import subprocess
 import yaml
@@ -101,10 +102,7 @@ def mac_hardware():
 
 
 def mac_storage():
-    """
-    This function will be used as the primary means of obtaining data about
-    the a Mac's storage specifications.
-    """
+    macdisk.disk_factory()
     pass
 
 
