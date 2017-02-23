@@ -13,7 +13,7 @@ setup(name='PyBar',
       long_description=open('README.md').read(),
       install_requires=[
           "qrcode",
-          "PyYAML",
+          "pyyaml",
           "pytest-runner",
           "pytest"],
       setup_requires=['pytest-runner'],
