@@ -3,13 +3,13 @@ try:
 except ImportError:
     from distutils.core import setup
 
-setup(name='PyBar',
-      version='0.0.2',
+setup(name='InQRy',
+      version='0.0.3',
       license='MIT',
-      description='Generates QRCodes for a physical inventory',
+      description='Gets machine specs and generates a QR code containing them',
       author='Eric Hanko',
       author_email='v-erhank@microsoft.com',
-      packages=['pybar'],
+      packages=['inqry'],
       long_description=open('README.md').read(),
       install_requires=[
           "qrcode",
