@@ -1,0 +1,6 @@
+qrcode
+pyyaml
+pytest-runner
+pytest
+six
+pybar
