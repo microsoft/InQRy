@@ -6,7 +6,7 @@ except ImportError:
 setup(name='PyBar',
       version='0.0.2',
       license='MIT',
-      description='Generate QRCodes for a physical inventory',
+      description='Generates QRCodes for a physical inventory',
       author='Eric Hanko',
       author_email='v-erhank@microsoft.com',
       packages=['pybar'],
