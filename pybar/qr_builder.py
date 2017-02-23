@@ -1,6 +1,9 @@
-import instructions
+from qrcode import QRCode
 
-fieldset = {'trashcan': instructions.trashcan}
 
-for fieldset in fieldsets:
-    pass
+class AssetQRCode(QRCode):
+    """TODO"""
+
+    def __init__(self):
+        """TODO"""
+        pass

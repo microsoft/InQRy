@@ -1,5 +1,5 @@
 # PyBar
-Generate asset QR codes for a physical inventory procedure
+Generate a QR code for a physical inventory procedure based on an individual asset's hardware specifications
 
 ### Install
 
@@ -8,4 +8,4 @@ Generate asset QR codes for a physical inventory procedure
 
 ### Test
 
-`python3 setup.py pytest`
+`python3 setup.py test`
