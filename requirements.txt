@@ -1,6 +1,5 @@
 qrcode
-pyyaml
+six
 pytest-runner
 pytest
-six
-pybar
+pyyaml
