@@ -1,6 +1,6 @@
 import re
 import yaml
-from pybar import diskutil
+from inqry import diskutil
 
 
 def create_from_diskutil_info_output(output):
