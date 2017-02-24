@@ -1,6 +1,6 @@
 import pytest
 from inqry.asset import Asset
-from inqry.systemprofile import SystemProfile
+from inqry.system_summary import SystemProfile
 
 
 sp = SystemProfile()

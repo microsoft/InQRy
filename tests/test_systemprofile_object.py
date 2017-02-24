@@ -1,5 +1,5 @@
 import pytest
-from inqry.systemprofile import SystemProfile, mac_hardware
+from inqry.system_summary import SystemProfile, mac_hardware
 
 hardware_test_data_as_dict = {
     'Hardware':
