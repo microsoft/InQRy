@@ -6,20 +6,20 @@ class Asset(object):
     attributes, which is then used to assemble the QR code.
     """
 
-    def __init__(self, systemprofile):
+    def __init__(self, systemspecs):
         """
         Instantiates an Asset object with several attributes,
         all which can be used to build a QR code.
         """
-        self.systemprofile = systemprofile
-        self.cpu_name = systemprofile.cpu_name
-        self.cpu_processors = systemprofile.cpu_processors
-        self.cpu_speed = systemprofile.cpu_speed
-        self.cpu_cores = systemprofile.cpu_cores
-        self.memory = systemprofile.memory
-        self.serial = systemprofile.serial
-        self.model = systemprofile.model
-        self.name = systemprofile.name
+        self.systemspecs = systemspecs
+        self.cpu_name = systemspecs.cpu_name
+        self.cpu_processors = systemspecs.cpu_processors
+        self.cpu_speed = systemspecs.cpu_speed
+        self.cpu_cores = systemspecs.cpu_cores
+        self.memory = systemspecs.memory
+        self.serial = systemspecs.serial
+        self.model = systemspecs.model
+        self.name = systemspecs.name
 
     @staticmethod
     def is_valid():
