@@ -1,5 +1,5 @@
 import pytest
-from inqry.system_summary import SystemProfile, mac_hardware
+from inqry.system_summary import SystemSpecs, mac_hardware
 
 hardware_test_data_as_dict = {
     'Hardware':
@@ -22,65 +22,65 @@ hardware_test_data_as_dict = {
 
 @pytest.mark.skip
 def test_empty_profile_instantiation_works():
-    SystemProfile()
+    SystemSpecs()
 
 
 @pytest.mark.skip
 def test_that_system_profile_object_operating_system_attribute():
-    sp = SystemProfile()
+    sp = SystemSpecs()
     assert hasattr(sp, "operating_system")
 
 
 @pytest.mark.skip
 def test_that_system_profile_object_has_storage_attribute():
-    sp = SystemProfile()
+    sp = SystemSpecs()
     assert hasattr(sp, "storage")
 
 
 @pytest.mark.skip
 def test_that_system_profile_object_has_serial_attribute():
-    sp = SystemProfile()
+    sp = SystemSpecs()
     assert hasattr(sp, "serial")
 
 @pytest.mark.skip
 def test_that_system_profile_object_has_cpu_name_attribute():
-    sp = SystemProfile()
+    sp = SystemSpecs()
     assert hasattr(sp, "cpu_name")
 
 
 @pytest.mark.skip
 def test_that_system_profile_object_has_cpu_speed_attribute():
-    sp = SystemProfile()
+    sp = SystemSpecs()
     assert hasattr(sp, "cpu_speed")
 
 
 @pytest.mark.skip
 def test_that_system_profile_object_has_cpu_processors_attribute():
-    sp = SystemProfile()
+    sp = SystemSpecs()
     assert hasattr(sp, "cpu_processors")
 
 
 @pytest.mark.skip
 def test_that_system_profile_object_has_cpu_cores_attribute():
-    sp = SystemProfile()
+    sp = SystemSpecs()
     assert hasattr(sp, "cpu_cores")
 
 
 @pytest.mark.skip
 def test_that_system_profile_object_has_model_attribute():
-    sp = SystemProfile()
+    sp = SystemSpecs()
     assert hasattr(sp, "model")
 
 
 @pytest.mark.skip
 def test_that_system_profile_object_has_name_attribute():
-    sp = SystemProfile()
+    sp = SystemSpecs()
     assert hasattr(sp, "name")
 
 
 @pytest.mark.skip
 def test_that_system_profile_object_has_memory_attribute():
-    sp = SystemProfile()
+    sp = SystemSpecs()
     assert hasattr(sp, "memory")
 
 
@@ -101,13 +101,13 @@ def test_mac_hardware_method_output_data_type_is_dictionary():
 
 @pytest.mark.skip
 def test_system_profiler_has_os_type_attribute():
-    sp = SystemProfile()
+    sp = SystemSpecs()
     assert sp.os_type
 
 
 @pytest.mark.skip
 def test_operating_system_method_fails_when_operating_system_is_not_darwin_or_windows():
-    sp = SystemProfile()
+    sp = SystemSpecs()
     sp.os_type = 'Linux'
     with pytest.raises(OSError):
         sp.operating_system()
