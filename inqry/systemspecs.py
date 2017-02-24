@@ -12,13 +12,13 @@ from inqry import system_profiler
 #   import linux_sysinfo as sysinfo
 #  etc
 
-def mac_hardware():
-    # return create_specs_from_system_profiler_hardware_output(
-    return system_profiler.hardware()
+def create_specs_from_system_profiler_hardware_output(output):
+    return SystemSpecs(output)
 
 
-# def create_specs_from_system_profiler_hardware_output(output):
-#     return SystemSpecs(yaml.load(output))
+def get_mac_hardware():
+    return create_specs_from_system_profiler_hardware_output(
+        system_profiler.hardware())
 
 
 def mac_storage():
@@ -47,62 +47,57 @@ class SystemSpecs(object):
     A SystemSpecs object should also be able to be used the same way,
     regardless of which operating system the specs were generated from"""
 
-    def __init__(self):
+    def __init__(self, attributes):
         """TODO"""
         self.os_type = platform.system()
-
-    def operating_system(self):
-        if self.os_type == 'Darwin':
-            mac_hardware()
-        elif self.os_type == 'Windows':
-            windows()
-        else:
-            raise OSError(
-                '{os}: Unknown operating system'.format(os=self.os_type))
+        self.attributes = attributes
 
     def storage(self):
+        pass
+
+    def operating_system(self):
         pass
 
     @property
     def serial(self):
         # assert isinstance(serial, str)
-        return mac_hardware().get('Serial Number (system)')
+        return self.attributes.get('Serial Number (system)')
 
     @property
     def cpu_name(self):
-        name = mac_hardware().get('Processor Name')
+        name = self.attributes.get('Processor Name')
         assert isinstance(name, str)
         return name
 
     @property
     def cpu_processors(self):
-        processors = mac_hardware().get('Number of Processors')
+        processors = self.attributes.get('Number of Processors')
         assert isinstance(processors, int)
         return processors
 
     @property
     def cpu_cores(self):
-        cores = mac_hardware().get('Total Number of Cores')
+        cores = self.attributes.get('Total Number of Cores')
         assert isinstance(cores, int)
         return cores
 
     @property
     def cpu_speed(self):
-        speed = mac_hardware().get('Processor Speed')
+        speed = self.attributes.get('Processor Speed')
         assert isinstance(speed, str)
         return speed
 
     @property
     def memory(self):
-        memory = mac_hardware().get('Memory')
+        memory = self.attributes.get('Memory')
         return memory
 
     @property
     def model(self):
-        model = mac_hardware().get('Model Identifier')
+        model = self.attributes.get('Model Identifier')
         return model
 
     @property
     def name(self):
-        name = mac_hardware().get('Model Name')
+        name = self.attributes.get('Model Name')
         return name
