@@ -16,7 +16,8 @@ diskutil_output = '''   Device Identifier:        disk5
    Protocol:                 SATA
    SMART Status:             Verified
 
-   Disk Size:                2.0 TB (2000179691520 Bytes) (exactly 3906600960 512-Byte-Units)
+   Disk Size:                2.0 TB (2000179691520 Bytes) (exactly \
+   3906600960 512-Byte-Units)
    Device Block Size:        512 Bytes
 
    Read-Only Media:          No

@@ -2,7 +2,6 @@ import pytest
 from inqry.asset import Asset
 from inqry.system_summary import SystemSpecs
 
-
 sp = SystemSpecs()
 asset = Asset(sp)
 

@@ -18,7 +18,8 @@ diskutil_output = '''   Device Identifier:        disk0
    Protocol:                 SATA
    SMART Status:             Verified
 
-   Total Size:               751.3 GB (751277983744 Bytes) (exactly 1467339812 512-Byte-Units)
+   Total Size:               751.3 GB (751277983744 Bytes) (exactly \
+   1467339812 512-Byte-Units)
    Volume Free Space:        Not applicable (no file system)
    Device Block Size:        512 Bytes
 

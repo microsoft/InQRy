@@ -42,6 +42,7 @@ def test_that_system_profile_object_has_serial_attribute():
     sp = SystemSpecs()
     assert hasattr(sp, "serial")
 
+
 @pytest.mark.skip
 def test_that_system_profile_object_has_cpu_name_attribute():
     sp = SystemSpecs()
