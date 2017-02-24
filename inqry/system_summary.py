@@ -2,6 +2,14 @@ import platform
 import yaml
 from inqry import system_profiler
 
+# import sys
+# if sys.platform == 'win32':
+#   import win32_sysinfo as sysinfo
+# elif sys.platform == 'darwin':
+#   import mac_sysinfo as sysinfo
+# elif 'linux' in sys.platform:
+#   import linux_sysinfo as sysinfo
+#  etc
 
 class SystemSpecs(object):
     """Represents the machine's system specifications before it's data is used
