@@ -18,8 +18,5 @@ def _get_system_profiler_output(arguments=None):
 
 
 def _hardware_parser(system_profiler_output):
-    hardware_dict = yaml.load(system_profiler_output)
-    try:
-        return hardware_dict['Hardware']['Hardware Overview']
-    except:
-        raise KeyError("Keys 'Hardware' and 'Hardware Overview' do not exist")
+    return yaml.safe_load(system_profiler_output)['Hardware'][
+        'Hardware Overview']
