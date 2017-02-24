@@ -1,10 +1,9 @@
-from inqry import macdisk
 import platform
-import subprocess
 import yaml
+from inqry import system_profiler
 
 
-class SystemProfile(object):
+class SystemSummary(object):
     """Represents the machine's "system profile" before it is parsed and
     converted into an Asset object.
 
@@ -32,9 +31,8 @@ class SystemProfile(object):
 
     @property
     def serial(self):
-        serial = mac_hardware().get('Serial Number (system)')
-        assert isinstance(serial, str)
-        return serial
+        # assert isinstance(serial, str)
+        return mac_hardware().get('Serial Number (system)')
 
     @property
     def cpu_name(self):
@@ -76,33 +74,21 @@ class SystemProfile(object):
         return name
 
 
-def _mac_system_profiler(data_type):
-    """
-    This function is passed one of several strings that is then parsed using
-    the yaml module and can then be utilized in other mac_data_type functions.
-
-    Used only for '/usr/sbin/system_profiler' argument 'SPHardwareDataType'
-    :param data_type:
-    :return: data
-    """
-    command = [
-        '/usr/sbin/system_profiler', 'SP' + str.title(data_type) + 'DataType']
-    data = yaml.load(subprocess.check_output(command))
-    return data
+def _mac_system_profiler():
+    return yaml.load(system_profiler.hardware())
 
 
-def mac_hardware():
-    """
-    This function is used as the primary means of obtaining basic Mac
-    hardware components.
-    """
-    system_profiler_hardware = _mac_system_profiler('hardware')
-    hardware_components = system_profiler_hardware['Hardware']['Hardware Overview']
+def mac_hardware(output):
+    system_profiler_hardware = output
+
     return hardware_components
 
 
 def mac_storage():
-    macdisk.disk_factory()
+    """
+    This function is used as the primary means of obtaining a Mac's
+    physical storage information.
+    """
     pass
 
 
