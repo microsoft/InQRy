@@ -3,14 +3,14 @@ import yaml
 from inqry import system_profiler
 
 
-class SystemSummary(object):
-    """Represents the machine's "system profile" before it is parsed and
-    converted into an Asset object.
+class SystemSpecs(object):
+    """Represents the machine's system specifications before it's data is used
+    to form an asset object.
 
-    A SystemProfile object should be able to be used to access several system
+    A SystemSpecs object should be able to be used to access several system
     profile specs, even if they are not used by the Asset class.
 
-    A SystemProfile object should also be able to be used the same way,
+    A SystemSpecs object should also be able to be used the same way,
     regardless of which operating system the specs were generated from"""
 
     def __init__(self):
@@ -74,14 +74,8 @@ class SystemSummary(object):
         return name
 
 
-def _mac_system_profiler():
-    return yaml.load(system_profiler.hardware())
-
-
-def mac_hardware(output):
-    system_profiler_hardware = output
-
-    return hardware_components
+def mac_hardware():
+    return system_profiler.hardware()
 
 
 def mac_storage():
@@ -98,3 +92,7 @@ def windows():
     machine hardware components.
     """
     pass
+
+
+def _mac_system_profiler():
+    return yaml.load(system_profiler.hardware())

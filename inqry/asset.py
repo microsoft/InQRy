@@ -2,7 +2,7 @@ class Asset(object):
     """
     Represents the object to be entered into a Snipe-IT inventory database.
 
-    An Asset object is built from a SystemProfile object and it's
+    An Asset object is built from a SystemSpecs object and it's
     attributes, which is then used to assemble the QR code.
     """
 
