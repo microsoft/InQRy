@@ -1,5 +1,4 @@
 from inqry import macdisk
-import pytest
 
 diskutil_output = '''   Device Identifier:        disk5
    Device Node:              /dev/disk5
@@ -32,29 +31,24 @@ diskutil_output = '''   Device Identifier:        disk5
    Low Level Format:         Not supported
 '''
 
-# test_disk = macdisk.disk_factory(diskutil_output)
+test_disk = macdisk.create_from_diskutil_info_output(diskutil_output)
 
 
-@pytest.mark.skip
 def test_disk_is_not_internal():
     assert test_disk.is_internal is False
 
 
-@pytest.mark.skip
 def test_disk_is_external():
     assert test_disk.is_external
 
 
-@pytest.mark.skip
 def test_device_name_is_correct():
     assert test_disk.device_name == 'G-DRIVE PRO Thunderbolt'
 
 
-@pytest.mark.skip
 def test_disk_is_not_ssd():
     assert test_disk.is_ssd is False
 
 
-@pytest.mark.skip
 def test_size_is_correct():
     assert test_disk.size == '2.0 TB'
