@@ -2,6 +2,7 @@ import platform
 import yaml
 from inqry import system_profiler
 
+
 # import sys
 # if sys.platform == 'win32':
 #   import win32_sysinfo as sysinfo
@@ -12,12 +13,12 @@ from inqry import system_profiler
 #  etc
 
 def mac_hardware():
-    return create_specs_from_system_profiler_hardware_output(
-        system_profiler.hardware())
+    # return create_specs_from_system_profiler_hardware_output(
+    return system_profiler.hardware()
 
 
-def create_specs_from_system_profiler_hardware_output(output):
-    return SystemSpecs(yaml.load(output))
+# def create_specs_from_system_profiler_hardware_output(output):
+#     return SystemSpecs(yaml.load(output))
 
 
 def mac_storage():
@@ -46,10 +47,9 @@ class SystemSpecs(object):
     A SystemSpecs object should also be able to be used the same way,
     regardless of which operating system the specs were generated from"""
 
-    def __init__(self, attributes=None):
+    def __init__(self):
         """TODO"""
         self.os_type = platform.system()
-        self.attributes = attributes
 
     def operating_system(self):
         if self.os_type == 'Darwin':
