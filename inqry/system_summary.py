@@ -11,6 +11,31 @@ from inqry import system_profiler
 #   import linux_sysinfo as sysinfo
 #  etc
 
+def mac_hardware():
+    return create_specs_from_system_profiler_hardware_output(
+        system_profiler.hardware())
+
+
+def create_specs_from_system_profiler_hardware_output(output):
+    return SystemSpecs(yaml.load(output))
+
+
+def mac_storage():
+    """
+    This function is used as the primary means of obtaining a Mac's
+    physical storage information.
+    """
+    pass
+
+
+def windows():
+    """
+    This function is used as the primary means of obtaining basic Windows
+    machine hardware components.
+    """
+    pass
+
+
 class SystemSpecs(object):
     """Represents the machine's system specifications before it's data is used
     to form an asset object.
@@ -21,9 +46,10 @@ class SystemSpecs(object):
     A SystemSpecs object should also be able to be used the same way,
     regardless of which operating system the specs were generated from"""
 
-    def __init__(self):
+    def __init__(self, attributes=None):
         """TODO"""
         self.os_type = platform.system()
+        self.attributes = attributes
 
     def operating_system(self):
         if self.os_type == 'Darwin':
@@ -80,27 +106,3 @@ class SystemSpecs(object):
     def name(self):
         name = mac_hardware().get('Model Name')
         return name
-
-
-def mac_hardware():
-    return system_profiler.hardware()
-
-
-def mac_storage():
-    """
-    This function is used as the primary means of obtaining a Mac's
-    physical storage information.
-    """
-    pass
-
-
-def windows():
-    """
-    This function is used as the primary means of obtaining basic Windows
-    machine hardware components.
-    """
-    pass
-
-
-def _mac_system_profiler():
-    return yaml.load(system_profiler.hardware())

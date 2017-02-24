@@ -1,5 +1,6 @@
 import pytest
 from inqry import system_profiler
+from inqry.system_summary import SystemSpecs
 
 
 # system_profiler_hardware_data_type_output = """
@@ -26,3 +27,8 @@ from inqry import system_profiler
 @pytest.fixture
 def system_profiler_hardware_data_type_output():
     return system_profiler.hardware()
+
+
+@pytest.mark.skip
+def test_parsing_fixture(system_profiler_hardware_data_type_output):
+    pass
