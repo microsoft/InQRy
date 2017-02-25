@@ -60,36 +60,28 @@ class SystemSpecs(object):
         mac_hardware['Internal Disks'] = _get_internal_storage()
         return mac_hardware.get('Internal Disks')
 
-    def operating_system(self):
-        pass
-
     @property
     def serial(self):
-        # assert isinstance(serial, str)
         return self.attributes.get('Serial Number (system)')
 
     @property
     def cpu_name(self):
-        name = self.attributes.get('Processor Name')
-        assert isinstance(name, str)
-        return name
+        hw = self.attributes
+        return hw.get('Processor Name')
 
     @property
     def cpu_processors(self):
         processors = self.attributes.get('Number of Processors')
-        assert isinstance(processors, int)
         return processors
 
     @property
     def cpu_cores(self):
         cores = self.attributes.get('Total Number of Cores')
-        assert isinstance(cores, int)
         return cores
 
     @property
     def cpu_speed(self):
         speed = self.attributes.get('Processor Speed')
-        assert isinstance(speed, str)
         return speed
 
     @property

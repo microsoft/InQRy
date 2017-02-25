@@ -14,3 +14,4 @@ dist/
 **.pyc
 *.pyc
 .python-version
+qrtest.py
