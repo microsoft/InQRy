@@ -1,6 +1,7 @@
 import platform
 import yaml
 from inqry import system_profiler
+from inqry import macdisk
 
 
 # import sys
@@ -26,7 +27,7 @@ def mac_storage():
     This function is used as the primary means of obtaining a Mac's
     physical storage information.
     """
-    pass
+    return macdisk.get_all_physical_disks()
 
 
 def windows():
@@ -52,8 +53,15 @@ class SystemSpecs(object):
         self.os_type = platform.system()
         self.attributes = attributes
 
+    @property
     def storage(self):
-        pass
+        disk_list = mac_storage()
+        internal_disks = []
+        for disk in disk_list:
+            if disk.is_internal == True:
+                internal_disks.append(disk)
+        assert isinstance(internal_disks, list)
+        return internal_disks
 
     def operating_system(self):
         pass

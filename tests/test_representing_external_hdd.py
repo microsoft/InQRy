@@ -1,6 +1,7 @@
 from inqry import macdisk
 
-diskutil_output = '''   Device Identifier:        disk5
+diskutil_output = '''
+   Device Identifier:        disk5
    Device Node:              /dev/disk5
    Whole:                    Yes
    Part of Whole:            disk2
@@ -30,7 +31,7 @@ diskutil_output = '''   Device Identifier:        disk5
    Virtual:                  No
    OS 9 Drivers:             No
    Low Level Format:         Not supported
-'''
+   '''
 
 test_disk = macdisk.create_from_diskutil_info_output(diskutil_output)
 
