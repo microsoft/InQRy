@@ -15,7 +15,7 @@ hw_test_data = {'Model Name': 'Mac Pro', 'Model Identifier': 'MacPro6,1',
 
 
 # noinspection PyShadowingNames
-@pytest.fixture()
+@pytest.fixture(scope='session')
 def systemspec_object():
     """Used as data for testing with a system profiler object"""
     return systemspecs.create_specs_from_system_profiler_hardware_output(
@@ -34,7 +34,7 @@ def test_profile_instantiation_works():
 
 # noinspection PyShadowingNames
 def test_operating_system_attribute(systemspec_object):
-    assert hasattr(systemspec_object, "operating_system")
+    assert hasattr(systemspec_object, "os_type")
 
 
 # noinspection PyShadowingNames
