@@ -1,5 +1,4 @@
 import platform
-import yaml
 from inqry import system_profiler
 from inqry import macdisk
 
@@ -13,21 +12,23 @@ from inqry import macdisk
 #   import linux_sysinfo as sysinfo
 #  etc
 
-def create_specs_from_system_profiler_hardware_output(output):
+def _create_specs_from_system_profiler_hardware_output(output):
     return SystemSpecs(output)
 
 
-def get_mac_hardware():
-    return create_specs_from_system_profiler_hardware_output(
+def mac_os():
+    """
+    This function is used as the primary means of obtaining basic Mac
+    hardware components.
+    """
+    return _create_specs_from_system_profiler_hardware_output(
         system_profiler.hardware())
 
 
-def mac_storage():
-    """
-    This function is used as the primary means of obtaining a Mac's
-    physical storage information.
-    """
-    return macdisk.get_all_physical_disks()
+def _get_internal_storage():
+    disk_list = macdisk.get_all_physical_disks()
+    internal_disks = [disk for disk in disk_list if disk.is_internal]
+    return internal_disks
 
 
 def windows():
@@ -55,13 +56,9 @@ class SystemSpecs(object):
 
     @property
     def storage(self):
-        disk_list = mac_storage()
-        internal_disks = []
-        for disk in disk_list:
-            if disk.is_internal == True:
-                internal_disks.append(disk)
-        assert isinstance(internal_disks, list)
-        return internal_disks
+        mac_hardware = self.attributes
+        mac_hardware['Internal Disks'] = _get_internal_storage()
+        return mac_hardware.get('Internal Disks')
 
     def operating_system(self):
         pass
