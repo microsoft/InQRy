@@ -88,7 +88,7 @@ def test_ability_to_get_components_from_system_profile_object():
 
 
 def test_mac_hardware_method_output_data_type_is_system_specs_class():
-    assert isinstance(systemspecs.get_mac_hardware(), systemspecs.SystemSpecs)
+    assert isinstance(systemspecs.mac_os(), systemspecs.SystemSpecs)
 
 
 # def test_if_disk_list_is_list(test_disk):

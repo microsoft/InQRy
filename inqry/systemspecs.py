@@ -12,7 +12,7 @@ from inqry import macdisk
 #   import linux_sysinfo as sysinfo
 #  etc
 
-def _create_specs_from_system_profiler_hardware_output(output):
+def create_specs_from_system_profiler_hardware_output(output):
     return SystemSpecs(output)
 
 
@@ -21,7 +21,7 @@ def mac_os():
     This function is used as the primary means of obtaining basic Mac
     hardware components.
     """
-    return _create_specs_from_system_profiler_hardware_output(
+    return create_specs_from_system_profiler_hardware_output(
         system_profiler.hardware())
 
 
