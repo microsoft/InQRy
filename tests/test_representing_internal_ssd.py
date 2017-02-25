@@ -1,3 +1,4 @@
+import pytest
 from inqry import macdisk
 
 diskutil_output = '''
@@ -36,24 +37,27 @@ diskutil_output = '''
    Low Level Format:         Not supported
    '''
 
-test_disk = macdisk.create_from_diskutil_info_output(diskutil_output)
+
+@pytest.fixture(scope="session")
+def test_disk():
+    return macdisk.create_from_diskutil_info_output(diskutil_output)
 
 
-def test_disk_is_internal():
+def test_disk_is_internal(test_disk):
     assert test_disk.is_internal
 
 
-def test_disk_is_not_external():
+def test_disk_is_not_external(test_disk):
     assert test_disk.is_external is False
 
 
-def test_device_name_is_correct():
+def test_device_name_is_correct(test_disk):
     assert test_disk.device_name == 'APPLE SSD SM768E'
 
 
-def test_disk_is_ssd():
+def test_disk_is_ssd(test_disk):
     assert test_disk.is_ssd
 
 
-def test_size_is_correct():
+def test_size_is_correct(test_disk):
     assert test_disk.size == '751.3 GB'
