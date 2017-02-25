@@ -1,76 +1,74 @@
 import pytest
-from inqry import system_profiler
 from inqry import systemspecs
 
-
-# noinspection PyUnusedLocal
-@pytest.fixture(scope="session")
-def hw_data_fixture():
-    """Used as data for testing with system profiler output"""
-    return system_profiler.hardware()
+hw_test_data = {'Model Name': 'Mac Pro', 'Model Identifier': 'MacPro6,1', 'Processor Name': 'Quad-Core Intel Xeon E5',
+                'Processor Speed': '3.7 GHz', 'Number of Processors': 1, 'Total Number of Cores': 4,
+                'L2 Cache (per Core)': '256 KB', 'L3 Cache': '10 MB', 'Memory': '32 GB',
+                'Boot ROM Version': 'MP61.0116.B21', 'SMC Version (system)': '2.20f18', 'Illumination Version': '1.4a6',
+                'Serial Number (system)': 'F5KQH0P9F9VN', 'Hardware UUID': '4D4C19C7-19C4-5678-A936-A419C4609AFD'}
 
 
 # noinspection PyShadowingNames,PyUnusedLocal
 @pytest.fixture(scope="session")
-def profile_fixture(hw_data_fixture):
+def systemspec_object():
     """Used as data for testing with a system profiler object"""
     return systemspecs.create_specs_from_system_profiler_hardware_output(
-        hw_data_fixture)
+        hw_test_data)
 
 
 # noinspection PyShadowingNames
-def test_getting_value_from_key(hw_data_fixture):
-    assert hw_data_fixture.get('Boot ROM Version') == 'MBP112.0138.B21'
+def test_getting_value_from_key():
+    assert hw_test_data.get('Boot ROM Version') == 'MP61.0116.B21'
 
 
 # noinspection PyShadowingNames
 def test_profile_instantiation_works():
-    systemspecs.SystemSpecs(hw_data_fixture)
+    systemspecs.SystemSpecs(hw_test_data)
 
 
 # noinspection PyShadowingNames
-def test_operating_system_attribute(profile_fixture):
-    assert hasattr(profile_fixture, "operating_system")
+def test_operating_system_attribute(systemspec_object):
+    assert hasattr(systemspec_object, "operating_system")
 
 
 # noinspection PyShadowingNames
-def test_that_system_profile_object_has_storage_attribute(profile_fixture):
-    assert hasattr(profile_fixture, "storage")
+def test_that_system_profile_object_has_storage_attribute(systemspec_object):
+    assert hasattr(systemspec_object, "storage")
 
 
 # noinspection PyShadowingNames
-def test_that_system_profile_object_has_serial_attribute(profile_fixture):
-    assert hasattr(profile_fixture, "serial")
+def test_that_system_profile_object_has_serial_attribute(systemspec_object):
+    assert hasattr(systemspec_object, "serial")
 
 
 # noinspection PyShadowingNames
-def test_that_system_profile_object_has_cpu_name_attribute(profile_fixture):
-    assert hasattr(profile_fixture, "cpu_name")
+def test_that_system_profile_object_has_cpu_name_attribute(systemspec_object):
+    assert hasattr(systemspec_object, "cpu_name")
 
 
 # noinspection PyShadowingNames
-def test_that_system_profile_object_has_cpu_speed_attribute(profile_fixture):
-    assert hasattr(profile_fixture, "cpu_speed")
+def test_that_system_profile_object_has_cpu_speed_attribute(systemspec_object):
+    assert hasattr(systemspec_object, "cpu_speed")
 
 
 # noinspection PyShadowingNames
 def test_that_system_profile_object_has_cpu_processors_attribute(
-        profile_fixture):
-    assert hasattr(profile_fixture, "cpu_processors")
+        systemspec_object):
+    assert hasattr(systemspec_object, "cpu_processors")
 
 
 # noinspection PyShadowingNames
-def test_system_profiler_has_os_type_attribute(profile_fixture):
-    assert bool(profile_fixture.os_type) is True
+def test_system_profiler_has_os_type_attribute(systemspec_object):
+    assert bool(systemspec_object.os_type) is True
 
 
 # noinspection PyShadowingNames
 @pytest.mark.skip
 def test_operating_system_fails_when_os_is_not_darwin_or_windows(
-        profile_fixture):
-    profile_fixture.os_type = 'Linux'
+        systemspec_object):
+    systemspec_object.os_type = 'Linux'
     with pytest.raises(OSError):
-        profile_fixture.operating_system()
+        systemspec_object.operating_system()
 
 
 @pytest.mark.skip
