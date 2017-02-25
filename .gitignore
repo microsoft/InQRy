@@ -11,4 +11,5 @@ build/
 dist/
 **/__pycache__/
 **.pyc
+*.pyc
 .python-version
