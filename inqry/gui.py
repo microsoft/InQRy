@@ -1,15 +1,14 @@
 import tkinter as tk
+from inqry.qr_builder import AssetQRCode
+from inqry import systemspecs
 
 win = tk.Tk()
 win.title("InQRy")
-# tk.Label()(win, text="Label").grid(column=0, row=0)
-label = tk.Label(win, text="Hello")
-label.grid(column=0, row=0)
 
 
 def click():
-    action.configure()
-    label.configure(foreground="red")
+    asset = AssetQRCode(systemspecs.mac_os())
+    asset.build_serial()
 
 
 action = tk.Button(win, text="Generate QR Code", command=click)
