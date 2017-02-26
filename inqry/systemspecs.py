@@ -54,6 +54,17 @@ class SystemSpecs(object):
         self.os_type = platform.system()
         self.attributes = attributes
 
+    def list_all(self):
+        return [self.storage,
+                self.name,
+                self.model,
+                self.serial,
+                self.cpu_name,
+                self.cpu_speed,
+                self.cpu_processors,
+                self.cpu_cores,
+                self.memory]
+
     @property
     def storage(self):
         mac_hardware = self.attributes

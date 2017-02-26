@@ -8,7 +8,7 @@ win.title("InQRy")
 
 def click():
     asset = AssetQRCode(systemspecs.mac_os())
-    asset.build_serial()
+    asset.build()
 
 
 action = tk.Button(win, text="Generate QR Code", command=click)

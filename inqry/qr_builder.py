@@ -9,12 +9,8 @@ class AssetQRCode(QRCode):
         super(AssetQRCode, self).__init__()
         self.profile = profile
 
-    def build_serial(self):
-        self.qr.add_data(self.profile.serial)
+    def build(self):
+        attribute_list = self.profile.list_all()
+        for attribute in attribute_list:
+            self.qr.add_data(attribute)
         return self.qr.make_image().show()
-
-    def build_more(self):
-        for prop in self.profile:
-            self.qr.add_data(prop)
-            return self.qr
-        return self.qr.make_image.show()
