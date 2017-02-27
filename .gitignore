@@ -15,3 +15,6 @@ dist/
 *.pyc
 .python-version
 qrtest.py
+htmlcov/
+!.coverage
+!python.ini
