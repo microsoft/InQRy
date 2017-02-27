@@ -4,3 +4,4 @@ pytest-runner
 pytest
 pyyaml
 Pillow
+wmi
