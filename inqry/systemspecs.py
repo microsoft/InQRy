@@ -3,15 +3,6 @@ from inqry import system_profiler
 from inqry import macdisk
 
 
-# import sys
-# if sys.platform == 'win32':
-#   import win32_sysinfo as sysinfo
-# elif sys.platform == 'darwin':
-#   import mac_sysinfo as sysinfo
-# elif 'linux' in sys.platform:
-#   import linux_sysinfo as sysinfo
-#  etc
-
 def create_specs_from_system_profiler_hardware_output(output):
     return SystemSpecs(output)
 
