@@ -9,13 +9,13 @@ def create_from_diskutil_info_output(output):
 
 def get_all_physical_disks():
     return [
-        create_from_diskutil_info_output(diskutil.get_disk_info(disk_identifier))
+        create_from_diskutil_info_output(
+            diskutil.get_disk_info(disk_identifier))
         for disk_identifier in diskutil.get_physical_disk_identifiers()
-    ]
+        ]
 
 
 class Disk:
-
     def __init__(self, attributes=None):
         self.attributes = attributes or {}
 
@@ -41,7 +41,8 @@ class Disk:
 
     @property
     def verbose_disk_size(self):
-        return self.attributes.get('Disk Size') or self.attributes.get('Total Size')
+        return self.attributes.get('Disk Size') or self.attributes.get(
+            'Total Size')
 
     @property
     def size(self):
