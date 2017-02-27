@@ -3,3 +3,4 @@ six
 pytest-runner
 pytest
 pyyaml
+Pillow
