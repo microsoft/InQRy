@@ -27,8 +27,9 @@ def mac_os():
 
 def _get_internal_storage():
     disk_list = macdisk.get_all_physical_disks()
-    internal_disks = [disk for disk in disk_list if disk.is_internal]
-    return internal_disks
+    # internal_disks = [disk for disk in disk_list if disk.is_internal]
+    # return internal_disks
+    return disk_list
 
 
 def windows():
@@ -55,21 +56,30 @@ class SystemSpecs(object):
         self.attributes = attributes
 
     def list_all(self):
-        return [self.storage,
-                self.name,
+        return [self.name,
                 self.model,
                 self.serial,
                 self.cpu_name,
                 self.cpu_speed,
                 self.cpu_processors,
                 self.cpu_cores,
-                self.memory]
+                self.memory,
+                self.drive_count,
+                self.storage_list]
 
     @property
-    def storage(self):
-        mac_hardware = self.attributes
-        mac_hardware['Internal Disks'] = _get_internal_storage()
-        return mac_hardware.get('Internal Disks')
+    def storage_list(self):
+        storage = {}
+        internal_disk_list = _get_internal_storage()
+        internal_disk_count = 0
+        for internal_disk in internal_disk_list:
+            internal_disk_count += 1
+            storage['Drive {}'.format(internal_disk_count)] = internal_disk
+        return storage
+
+    @property
+    def drive_count(self):
+        return len(_get_internal_storage())
 
     @property
     def serial(self):
