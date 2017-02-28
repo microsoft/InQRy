@@ -18,3 +18,4 @@ qrtest.py
 htmlcov/
 .coverage
 !python.ini
+coverage_html/

@@ -3,3 +3,6 @@ six
 pytest-runner
 pytest
 pyyaml
+Pillow
+wmi
+pypiwin32

@@ -28,7 +28,9 @@ memory_data_type_command_output = '''Memory:
           Serial Number: -
 '''
 
-result = mac_system_profiler.parse_command_output(memory_data_type_command_output)['Memory']['Memory Slots']
+result = \
+    mac_system_profiler.parse_command_output(memory_data_type_command_output)[
+        'Memory']['Memory Slots']
 
 
 def test_parsing_memory_data_returns_dict():
