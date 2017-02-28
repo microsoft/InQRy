@@ -45,7 +45,7 @@ class Disk:
             return 'Unknown'
 
     @property
-    def name(self):
+    def device_name(self):
         return self.attributes.get('Device / Media Name')
 
     @property
