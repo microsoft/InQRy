@@ -1,4 +1,4 @@
-import sys
+# import sys
 
 # if sys.platform == 'win32':
 #     import win32_sysinfo as sysinfo
