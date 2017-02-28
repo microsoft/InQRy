@@ -4,7 +4,7 @@ except ImportError:
     from distutils.core import setup
 
 setup(name='InQRy',
-      version='0.0.3',
+      version='0.4',
       license='MIT',
       description='Gets machine specs and generates a QR code containing them',
       author='Eric Hanko',
@@ -16,8 +16,8 @@ setup(name='InQRy',
           "pyyaml",
           "pytest-runner",
           "pytest",
-          "Pillow",
-          "wmi"],
+          "wmi",
+          "Pillow"],
       setup_requires=['pytest-runner'],
       tests_require=['pytest'],
       )
