@@ -12,7 +12,7 @@ except ImportError:
 
 try:
     version_git = subprocess.check_output(
-        ["git", "describe", "--tags"]).rstrip()
+        ["git", "describe", "--tags"]).rstrip().decode("utf-8")
 except:
     with open(version_py, 'r') as fh:
         version_git = open(version_py).read().strip().split('=')[-1].replace(
