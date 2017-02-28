@@ -12,12 +12,16 @@ def get_all_physical_disks():
         create_from_diskutil_info_output(
             diskutil.get_disk_info(disk_identifier))
         for disk_identifier in diskutil.get_physical_disk_identifiers()
-        ]
+    ]
 
 
 class Disk:
+
     def __init__(self, attributes=None):
         self.attributes = attributes or {}
+
+    # def __getitem__(self, attributes):
+    #     return self.size, self.type
 
     @property
     def device_location(self):
@@ -32,7 +36,16 @@ class Disk:
         return self.device_location == 'External'
 
     @property
-    def device_name(self):
+    def type(self):
+        if self.is_ssd:
+            return 'SSD'
+        elif not self.is_ssd:
+            return 'HDD'
+        else:
+            return 'Unknown'
+
+    @property
+    def name(self):
         return self.attributes.get('Device / Media Name')
 
     @property
