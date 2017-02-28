@@ -5,3 +5,4 @@ pytest
 pyyaml
 Pillow
 wmi
+pypiwin32

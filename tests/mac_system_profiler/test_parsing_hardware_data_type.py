@@ -19,7 +19,10 @@ hardware_data_type_command_output = '''Hardware:
       Hardware UUID: 59CA6E54-8427-544E-8287-E02A0AD40F51
 '''
 
-result = mac_system_profiler.parse_command_output(hardware_data_type_command_output)['Hardware']['Hardware Overview']
+result = \
+    mac_system_profiler.parse_command_output(
+        hardware_data_type_command_output)[
+        'Hardware']['Hardware Overview']
 
 
 def test_parsing_hardware_data_returns_dict():
