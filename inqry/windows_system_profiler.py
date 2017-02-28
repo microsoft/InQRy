@@ -29,5 +29,15 @@ print()
 
 
 def serial():
-    bios = c.Win32_BIOS()[0]
-    return bios.SerialNumber
+    serial = c.Win32_BIOS()[0].SerialNumber
+    return print(serial)
+
+
+def manufacturer():
+    sysinfo = c.Win32_ComputerSystem()[0].Manufacturer
+    return sysinfo.Manufacturer
+
+
+def model():
+    sysinfo = c.Win32_ComputerSystem()[0].Model
+    return sysinfo.Model
