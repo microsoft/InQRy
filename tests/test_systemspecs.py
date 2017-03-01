@@ -120,5 +120,10 @@ def test_ability_to_get_components_from_system_profile_object():
 def test_mac_hardware_method_output_data_type_is_system_specs_class():
     assert isinstance(systemspecs.mac_os(), systemspecs.SystemSpecs)
 
+
 # def test_if_disk_list_is_list(test_disk):
 #     assert hasattr(systemspecs.storage.internal_disks, list)
+
+
+def test_asset_qr_code_as_list_all_method():
+    assert hasattr(systemspec_object(), 'list_all')

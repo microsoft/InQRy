@@ -41,7 +41,8 @@ def parse_command_output(output):
 
 
 def _get_command_output(*arguments):
-    return subprocess.check_output([BASE_COMMAND] + list(arguments)).decode('utf-8')
+    return subprocess.check_output([BASE_COMMAND] + list(arguments)).decode(
+        'utf-8')
 
 
 def _yamlize_output(output):

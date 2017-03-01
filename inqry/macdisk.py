@@ -12,11 +12,10 @@ def get_all_physical_disks():
         create_from_diskutil_info_output(
             diskutil.get_disk_info(disk_identifier))
         for disk_identifier in diskutil.get_physical_disk_identifiers()
-    ]
+        ]
 
 
 class Disk:
-
     def __init__(self, attributes=None):
         self.attributes = attributes or {}
 

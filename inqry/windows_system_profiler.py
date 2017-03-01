@@ -9,7 +9,6 @@ CPUINFO = c.Win32_Processor()[0]
 HDDINFO = c.Win32_LogicalDisk()[0]
 RAMINFO = c.Win32_PhysicalMemory()[0]
 
-
 RAMTOTAL = int(SYSINFO.TotalPhysicalMemory)
 HDDTOTAL = int(HDDINFO.size)
 RAMSIZE = round(RAMTOTAL)
