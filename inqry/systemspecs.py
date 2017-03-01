@@ -1,5 +1,5 @@
 import platform
-from inqry import system_profiler
+from inqry import mac_system_profiler as sp
 from inqry import macdisk
 
 
@@ -12,14 +12,14 @@ def mac_os():
     This function is used as the primary means of obtaining basic Mac
     hardware components.
     """
-    return create_specs_from_system_profiler_hardware_output(
-        system_profiler.hardware())
+    return create_specs_from_system_profiler_hardware_output(sp.hardware())
 
 
 def _get_mac_internal_storage():
     disk_list = macdisk.get_all_physical_disks()
     internal_disks = [disk for disk in disk_list if disk.is_internal]
     return internal_disks
+
 
 def windows():
     """
