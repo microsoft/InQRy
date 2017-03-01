@@ -60,3 +60,7 @@ def _yamlize_line(line):
 
 def _remove_dash_after_first_colon(line):
     return re.sub(pattern=r'(.+: )-', repl=r'\1', string=line)
+
+
+def hardware():
+    return get_data(DataTypes.HARDWARE)['Hardware']['Hardware Overview']
