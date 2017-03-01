@@ -1,6 +1,6 @@
 import platform
-from inqry import mac_system_profiler as sp
-from inqry import macdisk
+from inqry.system_specs import macdisk
+from inqry.system_specs import mac_system_profiler as sp
 
 
 def create_specs_from_system_profiler_hardware_output(output):

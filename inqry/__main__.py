@@ -1,7 +1,7 @@
-from inqry import system_profiler
-from inqry import systemspecs
+from inqry.system_specs import mac_system_profiler as sp
+from inqry.system_specs import systemspecs
 
 if __name__ == '__main__':
-    sp = systemspecs.mac_os()
-    print(sp.cpu_name)
-    print(system_profiler.hardware())
+    ss = systemspecs.mac_os()
+    print(ss.cpu_name)
+    print(sp.hardware())

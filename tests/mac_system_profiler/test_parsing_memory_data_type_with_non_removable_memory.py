@@ -1,4 +1,4 @@
-from inqry import mac_system_profiler
+from inqry.system_specs import mac_system_profiler
 
 memory_data_type_command_output = '''Memory:
 

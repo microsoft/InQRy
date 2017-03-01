@@ -1,5 +1,5 @@
 import pytest
-from inqry import diskutil
+from inqry.system_specs import diskutil
 
 diskutil_output_multiple_disks = '''
 /dev/disk0 (internal, physical):

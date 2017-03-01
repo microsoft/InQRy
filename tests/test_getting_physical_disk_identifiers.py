@@ -1,4 +1,4 @@
-from inqry import diskutil
+from inqry.system_specs import diskutil
 
 diskutil_list_output = '''/dev/disk0 (internal, physical):
    #:                       TYPE NAME                    SIZE       IDENTIFIER

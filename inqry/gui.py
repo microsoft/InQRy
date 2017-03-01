@@ -1,6 +1,6 @@
 import tkinter as tk
 from inqry.qr_builder import AssetQRCode
-from inqry import systemspecs
+from inqry.system_specs import systemspecs
 
 win = tk.Tk()
 win.title("InQRy")

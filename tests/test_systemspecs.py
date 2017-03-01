@@ -1,5 +1,5 @@
 import pytest
-from inqry import systemspecs
+from inqry.system_specs import systemspecs
 
 hw_test_data = {'Model Name': 'Mac Pro', 'Model Identifier': 'MacPro6,1',
                 'Processor Name': 'Quad-Core Intel Xeon E5',

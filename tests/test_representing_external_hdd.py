@@ -1,4 +1,4 @@
-from inqry import macdisk
+from inqry.system_specs import macdisk
 
 diskutil_output = '''
    Device Identifier:        disk5

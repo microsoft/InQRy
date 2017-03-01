@@ -1,4 +1,4 @@
-from inqry import mac_system_profiler
+from inqry.systemspecs import mac_system_profiler
 
 
 def test_getting_all_defined_data_types_succeeds_and_returns_a_dict():
