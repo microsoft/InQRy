@@ -25,6 +25,8 @@ with open(version_py, 'w') as f:
     f.write(version_msg + os.linesep + "__version__ = '{ver}'".format(
         ver=version_git) + '\n')
 
+windows_packages = ["pypiwin32", "wmi"]
+
 setup(name='InQRy',
       version="{ver}".format(ver=version_git),
       license='MIT',
@@ -33,14 +35,12 @@ setup(name='InQRy',
       author_email='v-erhank@microsoft.com',
       packages=['inqry'],
       long_description=open('README.md').read(),
-      install_requires=[
-          "qrcode",
-          "pyyaml",
-          "pytest-runner",
-          "pytest",
-          "Pillow",
-          "pypiwin32",
-          "wmi"] + (["pypiwin32", "wmi"] if sys.platform == 'win32' else []),
+      install_requires=["pytest-runner",
+                        "pytest",
+                        "qrcode",
+                        "PyYAML",
+                        "Pillow"] + (
+                           windows_packages if sys.platform == 'win32' else []),
       setup_requires=['pytest-runner'],
       tests_require=['pytest'],
       )

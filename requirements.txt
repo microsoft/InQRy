@@ -1,8 +1,5 @@
-qrcode
-six
-pytest-runner
 pytest
+pytest-runner
+qrcode
 pyyaml
 Pillow
-wmi
-pypiwin32
