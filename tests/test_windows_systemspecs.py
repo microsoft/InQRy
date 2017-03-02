@@ -1,10 +1,13 @@
 import pytest
 from inqry.system_specs import systemspecs
 
-hw_test_data = {'Model Name': 'Surface_Pro_3', 'Manufacturer': 'Microsoft Corporation',
-                'Serial Number (system)': '000048250353', 'Model Identifier': 'Surface Pro 3',
+hw_test_data = {'Model Name': 'Surface_Pro_3',
+                'Manufacturer': 'Microsoft Corporation',
+                'Serial Number (system)': '000048250353',
+                'Model Identifier': 'Surface Pro 3',
                 'Number of Processors': 1, 'Total Number of Cores': 2,
-                'Processor Speed': 'Intel(R) Core(TM) i7-4650U CPU @ 1.70GHz', 'Memory': '8 GB',
+                'Processor Speed': 'Intel(R) Core(TM) i7-4650U CPU @ 1.70GHz',
+                'Memory': '8 GB',
                 'Processor Name': 'Intel(R) Core(TM) i7-4650U CPU @ 1.70GHz'}
 
 
@@ -111,8 +114,9 @@ def test_ability_to_get_components_from_system_profile_object():
     pass
 
 
+@pytest.mark.skip
 def test_mac_hardware_method_output_data_type_is_system_specs_class():
-    assert isinstance(systemspecs.mac_os(), systemspecs.SystemSpecs)
+    assert isinstance(systemspecs.windows(), systemspecs.SystemSpecs)
 
 
 # def test_if_disk_list_is_list(test_disk):
