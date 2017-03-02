@@ -3,37 +3,56 @@ import wmi
 
 c = wmi.WMI()
 
-bios_output = c.Win32_BIOS()[0]
-processor_output = c.Win32_Processor()[0]
-disk_drive_output = c.Win32_DiskDrive()[0]
-logical_disk_output = c.Win32_LogicalDisk()[0]
-computer_system_output = c.Win32_ComputerSystem()[0]
-physical_memory_output = c.Win32_PhysicalMemory()[0]
+bios = c.Win32_BIOS()[0]
+processor = c.Win32_Processor()[0]
+disk_drive = c.Win32_DiskDrive()[0]
+logical_disk = c.Win32_LogicalDisk()[0]
+computer_system = c.Win32_ComputerSystem()[0]
+physical_memory = c.Win32_PhysicalMemory()[0]
 
 
 def manufacturer():
-    pass
+    return computer_system.Manufacturer
 
 
 def name():
-    pass
+    return computer_system.SystemSKUNumber
 
 
 def model():
-    pass
+    return computer_system.Model
 
 
 def serial():
+<<<<<<< Updated upstream:inqry/windows_system_profiler.py
     pass
+=======
+    return bios.SerialNumber
+>>>>>>> Stashed changes:inqry/system_specs/windows_system_profiler.py
 
 
-def cpu():
-    pass
+def cpu_name():
+    return processor.Name
+
+
+def cpu_cores():
+    return processor.NumberOfCores
 
 
 def memory():
-    pass
+    total_physical_memory = computer_system.TotalPhysicalMemory
+    rounded_memory = str(round(total_physical_memory / 10 ** 9))
+    return rounded_memory + " GB"
 
 
-def storage():
-    pass
+def storage_model():
+    return disk_drive.Model
+
+
+def storage_size():
+    return disk_drive.TotalPhysicalMemory
+
+
+def user():
+    full_username = computer_system.UserName
+    return full_username.split('\\')[1]
