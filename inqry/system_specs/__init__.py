@@ -7,6 +7,3 @@ elif sys.platform == 'darwin':
     from inqry.system_specs import macdisk
 else:
     raise OSError('Operating system unknown')
-
-# if __name__ == '__main__':
-#     main()
