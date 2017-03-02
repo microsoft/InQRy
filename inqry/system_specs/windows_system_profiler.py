@@ -54,7 +54,7 @@ class WindowsProfile:
 
     @property
     def memory(self):
-        return self._human_readable(self.win32_computer_system.TotalPhysicalMemory)
+        return self.human_readable(self.win32_computer_system.TotalPhysicalMemory)
 
     @property
     def storage_model(self):
@@ -62,16 +62,19 @@ class WindowsProfile:
 
     @property
     def storage_size(self):
-        return self._human_readable(self.win32_disk_drive.Size)
+        return self.human_readable(self.win32_disk_drive.Size)
 
     @property
     def user(self):
-        full_username = self.win32_computer_system.UserName
-        return full_username.split('\\')[1]
+        return self.split_name(self.win32_computer_system.UserName)
 
     @staticmethod
-    def _human_readable(component):
+    def human_readable(component):
         return str(round(int(component) / 10 ** 9)) + " GB"
+
+    @staticmethod
+    def split_name(name):
+        return name.split('\\')[1]
 
 
 def hardware():
