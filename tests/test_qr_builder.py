@@ -1,5 +1,5 @@
 import pytest
-from tests.test_systemspecs import systemspec_object
+from tests.test_mac_systemspecs import systemspec_object
 from inqry.qr_builder import AssetQRCode
 
 sp = systemspec_object()
