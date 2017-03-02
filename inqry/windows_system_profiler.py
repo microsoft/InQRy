@@ -24,11 +24,7 @@ def model():
 
 
 def serial():
-<<<<<<< Updated upstream:inqry/windows_system_profiler.py
-    pass
-=======
     return bios.SerialNumber
->>>>>>> Stashed changes:inqry/system_specs/windows_system_profiler.py
 
 
 def cpu_name():
