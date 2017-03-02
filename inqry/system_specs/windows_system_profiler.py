@@ -2,6 +2,9 @@ import wmi
 
 
 class WindowsProfile:
+    """A WindowsProfile instance uses the third-party module "wmi". When
+    instantiated, the instance gets all needed attribute data structures
+    from the appropriate WMI classes."""
     wmi_data = {}
 
     def __init__(self):
@@ -54,7 +57,8 @@ class WindowsProfile:
 
     @property
     def memory(self):
-        return self.human_readable(self.win32_computer_system.TotalPhysicalMemory)
+        return self.human_readable(
+            self.win32_computer_system.TotalPhysicalMemory)
 
     @property
     def storage_model(self):
@@ -78,5 +82,6 @@ class WindowsProfile:
 
 
 def hardware():
-    win = WindowsProfile()
-    return win.get_all_windows_system_components()
+    """Returns all components from a WindowsProfile instance a dictionary
+    with the same keys as a Mac system profile"""
+    return WindowsProfile().get_all_windows_system_components()
