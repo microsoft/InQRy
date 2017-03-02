@@ -1,4 +1,3 @@
-import os
 import wmi
 
 
@@ -10,7 +9,6 @@ class WindowsProfile:
         self.win32_bios = c.Win32_BIOS()[0]
         self.win32_processor = c.Win32_Processor()[0]
         self.win32_disk_drive = c.Win32_DiskDrive()[0]
-        self.win32_logical_disk = c.Win32_LogicalDisk()[0]
         self.win32_computer_system = c.Win32_ComputerSystem()[0]
         self.win32_physical_memory = c.Win32_PhysicalMemory()[0]
 
