@@ -1,7 +1,5 @@
 import platform
-from inqry.system_specs import macdisk
-from inqry.system_specs import mac_system_profiler as sp
-from inqry.system_specs import windows_system_profiler as wsp
+from inqry.system_specs import sp
 
 
 def create_specs_from_system_profiler_hardware_output(output):
@@ -16,18 +14,12 @@ def mac_os():
     return create_specs_from_system_profiler_hardware_output(sp.hardware())
 
 
-def _get_mac_internal_storage():
-    disk_list = macdisk.get_all_physical_disks()
-    internal_disks = [disk for disk in disk_list if disk.is_internal]
-    return internal_disks
-
-
 def windows():
     """
     This function is used as the primary means of obtaining basic Windows
     machine hardware components.
     """
-    return create_specs_from_system_profiler_hardware_output(wsp.hardware())
+    return create_specs_from_system_profiler_hardware_output(sp.hardware())
 
 
 class SystemSpecs(object):
@@ -103,7 +95,7 @@ class SystemSpecs(object):
     @property
     def drive_count(self):
         if self.os_type == 'Darwin':
-            return len(_get_mac_internal_storage())
+            return len(sp.get_mac_internal_storage())
         else:
             pass
 
@@ -111,7 +103,7 @@ class SystemSpecs(object):
     def storage(self):
         storage = {}
         if self.os_type == 'Darwin':
-            internal_disk_list = _get_mac_internal_storage()
+            internal_disk_list = sp.get_mac_internal_storage()
             internal_disk_count = 0
             for internal_disk in internal_disk_list:
                 internal_disk_count += 1
