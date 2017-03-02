@@ -39,7 +39,8 @@ setup(name='InQRy',
                         "pytest",
                         "qrcode",
                         "PyYAML",
-                        "Pillow"] + (
+                        "Pillow",
+                        "inqry.system_specs"] + (
                            windows_packages if sys.platform == 'win32' else []),
       setup_requires=['pytest-runner'],
       tests_require=['pytest'],
