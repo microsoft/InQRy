@@ -1,56 +1,51 @@
 import os
-import wmi
-
-c = wmi.WMI()
-
-bios = c.Win32_BIOS()[0]
-processor = c.Win32_Processor()[0]
-disk_drive = c.Win32_DiskDrive()[0]
-logical_disk = c.Win32_LogicalDisk()[0]
-computer_system = c.Win32_ComputerSystem()[0]
-physical_memory = c.Win32_PhysicalMemory()[0]
+from wmi import WMI
 
 
-def manufacturer():
-    return computer_system.Manufacturer
+class WindowsProfile(WMI):
+    windows_system_profiler = {}
 
+    def __init__(self):
+        self.bios = self.Win32_BIOS()[0]
+        self.processor = self.Win32_Processor()[0]
+        self.disk_drive = self.Win32_DiskDrive()[0]
+        self.logical_disk = self.Win32_LogicalDisk()[0]
+        self.computer_system = self.Win32_ComputerSystem()[0]
+        self.physical_memory = self.Win32_PhysicalMemory()[0]
 
-def name():
-    return computer_system.SystemSKUNumber
+    def get_all_windows_system_components(self):
+        self.windows_system_profiler['Model'] = self.model()
 
+    def manufacturer(self):
+        return self.computer_system.Manufacturer
 
-def model():
-    return computer_system.Model
+    def name(self):
+        return self.computer_system.SystemSKUNumber
 
+    def model(self):
+        return self.computer_system.Model
 
-def serial():
-    return bios.SerialNumber
+    def serial(self):
+        return self.bios.SerialNumber
 
+    def cpu_name(self):
+        return self.processor.Name
 
-def cpu_name():
-    return processor.Name
+    def cpu_cores(self):
+        return self.processor.NumberOfCores
 
+    def memory(self):
+        return self.human_readable(self.computer_system.TotalPhysicalMemory)
 
-def cpu_cores():
-    return processor.NumberOfCores
+    def human_readable(self, component):
+        return str(round(int(component) / 10 ** 9)) + " GB"
 
+    def storage_model(self):
+        return self.disk_drive.Model
 
-def memory():
-    return human_readable(computer_system.TotalPhysicalMemory)
+    def storage_size(self):
+        return self.human_readable(self.disk_drive.Size)
 
-
-def human_readable(component):
-    return str(round(int(component) / 10 ** 9)) + " GB"
-
-
-def storage_model():
-    return disk_drive.Model
-
-
-def storage_size():
-    return human_readable(disk_drive.Size)
-
-
-def user():
-    full_username = computer_system.UserName
-    return full_username.split('\\')[1]
+    def user(self):
+        full_username = self.computer_system.UserName
+        return full_username.split('\\')[1]
