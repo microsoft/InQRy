@@ -19,9 +19,6 @@ class Disk:
     def __init__(self, attributes=None):
         self.attributes = attributes or {}
 
-    # def __getitem__(self, attributes):
-    #     return self.size, self.type
-
     @property
     def device_location(self):
         return self.attributes.get('Device Location')
