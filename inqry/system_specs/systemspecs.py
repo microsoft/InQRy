@@ -1,25 +1,5 @@
 import platform
-from inqry.system_specs import sp
-
-
-def create_specs_from_system_profiler_hardware_output(output):
-    return SystemSpecs(output)
-
-
-def mac_os():
-    """
-    This function is used as the primary means of obtaining basic Mac
-    hardware components.
-    """
-    return create_specs_from_system_profiler_hardware_output(sp.hardware())
-
-
-def windows():
-    """
-    This function is used as the primary means of obtaining basic Windows
-    machine hardware components.
-    """
-    return create_specs_from_system_profiler_hardware_output(sp.hardware())
+from inqry.system_specs import system_profiler
 
 
 class SystemSpecs(object):
@@ -95,7 +75,7 @@ class SystemSpecs(object):
     @property
     def drive_count(self):
         if self.os_type == 'Darwin':
-            return len(sp.get_mac_internal_storage())
+            return len(system_profiler.get_mac_internal_storage())
         else:
             pass
 
@@ -103,7 +83,7 @@ class SystemSpecs(object):
     def storage(self):
         storage = {}
         if self.os_type == 'Darwin':
-            internal_disk_list = sp.get_mac_internal_storage()
+            internal_disk_list = system_profiler.get_mac_internal_storage()
             internal_disk_count = 0
             for internal_disk in internal_disk_list:
                 internal_disk_count += 1
@@ -146,3 +126,11 @@ class SystemSpecs(object):
             return self.storage['Drive 5'].device_name
         except KeyError:
             return None
+
+
+def create_specs_from_system_profiler_hardware_output(output):
+    return SystemSpecs(output)
+
+
+if __name__ == '__main__':
+    ss = SystemSpecs(system_profiler.hardware())
