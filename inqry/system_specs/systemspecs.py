@@ -85,42 +85,42 @@ class SystemSpecs(object):
                 storage['Drive {}'.format(internal_disk_count)] = internal_disk
                 return storage
         else:
-            pass
+            return str("")
 
     @property
     def drive1_model(self):
         try:
             return self.storage['Drive 1'].device_name
         except KeyError:
-            return None
+            return str("")
 
     @property
     def drive2_model(self):
         try:
             return self.storage['Drive 2'].device_name
         except KeyError:
-            return None
+            return str("")
 
     @property
     def drive3_model(self):
         try:
             return self.storage['Drive 3'].device_name
         except KeyError:
-            return None
+            return str("")
 
     @property
     def drive4_model(self):
         try:
             return self.storage['Drive 4'].device_name
         except KeyError:
-            return None
+            return str("")
 
     @property
     def drive5_model(self):
         try:
             return self.storage['Drive 5'].device_name
         except KeyError:
-            return None
+            return str("")
 
 
 def create_specs_from_system_profiler_hardware_output(output):
