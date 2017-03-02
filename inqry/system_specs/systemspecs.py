@@ -1,6 +1,7 @@
 import platform
 from inqry.system_specs import macdisk
 from inqry.system_specs import mac_system_profiler as sp
+from inqry.system_specs import windows_system_profiler as wsp
 
 
 def create_specs_from_system_profiler_hardware_output(output):
@@ -26,7 +27,7 @@ def windows():
     This function is used as the primary means of obtaining basic Windows
     machine hardware components.
     """
-    pass
+    return create_specs_from_system_profiler_hardware_output(wsp.hardware())
 
 
 class SystemSpecs(object):

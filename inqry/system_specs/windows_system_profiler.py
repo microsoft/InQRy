@@ -71,3 +71,8 @@ class WindowsProfile:
     @staticmethod
     def _human_readable(component):
         return str(round(int(component) / 10 ** 9)) + " GB"
+
+
+def hardware():
+    win = WindowsProfile()
+    return win.get_all_windows_system_components()
