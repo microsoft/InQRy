@@ -2,7 +2,7 @@ import wmi
 
 
 class WindowsProfile:
-    windows_system_profiler = {}
+    wmi_data = {}
 
     def __init__(self):
         c = wmi.WMI()
@@ -13,15 +13,16 @@ class WindowsProfile:
         self.win32_physical_memory = c.Win32_PhysicalMemory()[0]
 
     def get_all_windows_system_components(self):
-        self.windows_system_profiler['Model Name'] = self.name
-        self.windows_system_profiler['Manufacturer'] = self.manufacturer
-        self.windows_system_profiler['Serial Number (system)'] = self.serial
-        self.windows_system_profiler['Model Identifier'] = self.model
-        self.windows_system_profiler['Number of Processors'] = self.cpu_processors
-        self.windows_system_profiler['Total Number of Cores'] = self.cpu_cores
-        self.windows_system_profiler['Processor Speed'] = self.cpu_name
-        self.windows_system_profiler['Memory'] = self.memory
-        return self.windows_system_profiler
+        self.wmi_data['Model Name'] = self.name
+        self.wmi_data['Manufacturer'] = self.manufacturer
+        self.wmi_data['Serial Number (system)'] = self.serial
+        self.wmi_data['Model Identifier'] = self.model
+        self.wmi_data['Number of Processors'] = self.cpu_processors
+        self.wmi_data['Total Number of Cores'] = self.cpu_cores
+        self.wmi_data['Processor Speed'] = self.cpu_name
+        self.wmi_data['Memory'] = self.memory
+        self.wmi_data['Processor Name'] = self.cpu_name
+        return self.wmi_data
 
     @property
     def manufacturer(self):
