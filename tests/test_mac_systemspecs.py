@@ -117,6 +117,7 @@ def test_ability_to_get_components_from_system_profile_object():
     pass
 
 
+@pytest.mark.skip
 def test_mac_hardware_method_output_data_type_is_system_specs_class():
     assert isinstance(systemspecs.mac_os(), systemspecs.SystemSpecs)
 
