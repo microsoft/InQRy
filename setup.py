@@ -1,4 +1,5 @@
 import os
+import sys
 import subprocess
 
 # Fetch version from git tags, and write to version.py.
@@ -39,7 +40,7 @@ setup(name='InQRy',
           "pytest",
           "Pillow",
           "pypiwin32",
-          "wmi"],
+          "wmi"] + (["pypiwin32", "wmi"] if sys.platform == 'win32' else []),
       setup_requires=['pytest-runner'],
       tests_require=['pytest'],
       )
