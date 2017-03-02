@@ -15,7 +15,7 @@ class WindowsProfile:
     def get_all_windows_system_components(self):
         self.windows_system_profiler['Model Name'] = self.name
         self.windows_system_profiler['Manufacturer'] = self.manufacturer
-        self.windows_system_profiler['Serial Number (system'] = self.serial
+        self.windows_system_profiler['Serial Number (system)'] = self.serial
         self.windows_system_profiler['Model Identifier'] = self.model
         self.windows_system_profiler['Number of Processors'] = self.cpu_processors
         self.windows_system_profiler['Total Number of Cores'] = self.cpu_cores
