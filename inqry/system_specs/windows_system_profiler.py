@@ -24,7 +24,7 @@ def model():
 
 
 def serial():
-    pass
+    return bios_output.SerialNumber
 
 
 def cpu():
