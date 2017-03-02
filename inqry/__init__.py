@@ -11,13 +11,3 @@ __license__ = "MIT"
 __email__ = "apxlab@microsoft.com"
 __status__ = "Alpha"
 
-# if sys.platform == 'win32':
-#     import windows_system_profiler as sysinfo
-# elif sys.platform == 'darwin':
-#     import mac_system_profiler as sysinfo
-# elif 'linux' in sys.platform:
-#     import linux_sysinfo as sysinfo
-# etc
-
-# if __name__ == '__main__':
-#     main()
