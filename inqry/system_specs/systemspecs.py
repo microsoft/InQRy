@@ -3,21 +3,23 @@ from inqry.system_specs import system_profiler
 
 
 class SystemSpecs(object):
-    """Represents the machine's system specifications before it's data is used
-    to form an asset object.
-
-    A SystemSpecs object should be able to be used to access several system
-    profile specs, even if they are not used by the Asset class.
+    """Represents the machine's system specifications. A SystemSpec instance
+     has several machine components that are accessible via simple property
+     methods.
 
     A SystemSpecs object should also be able to be used the same way,
-    regardless of which operating system the specs were generated from"""
+    regardless of which operating system the specs were generated from.
+
+    A SystemSpecs instance is platform agnostic, but does contain the os_type
+    attribute"""
 
     def __init__(self, attributes):
-        """TODO"""
         self.os_type = platform.system()
         self.attributes = attributes
 
     def list_all(self):
+        """Returns all the components of a SystemSpec instance as a list. This
+        method can be iterated through and added to a QR code"""
         return [self.name,
                 self.model,
                 self.serial,
@@ -35,13 +37,11 @@ class SystemSpecs(object):
 
     @property
     def name(self):
-        name = self.attributes.get('Model Name')
-        return name
+        return self.attributes.get('Model Name')
 
     @property
     def model(self):
-        model = self.attributes.get('Model Identifier')
-        return model
+        return self.attributes.get('Model Identifier')
 
     @property
     def serial(self):
@@ -49,28 +49,23 @@ class SystemSpecs(object):
 
     @property
     def cpu_name(self):
-        hw = self.attributes
-        return hw.get('Processor Name')
+        return self.attributes.get('Processor Name')
 
     @property
     def cpu_processors(self):
-        processors = self.attributes.get('Number of Processors')
-        return processors
+        return self.attributes.get('Number of Processors')
 
     @property
     def cpu_cores(self):
-        cores = self.attributes.get('Total Number of Cores')
-        return cores
+        return self.attributes.get('Total Number of Cores')
 
     @property
     def cpu_speed(self):
-        speed = self.attributes.get('Processor Speed')
-        return speed
+        return self.attributes.get('Processor Speed')
 
     @property
     def memory(self):
-        memory = self.attributes.get('Memory')
-        return memory
+        return self.attributes.get('Memory')
 
     @property
     def drive_count(self):
@@ -129,8 +124,13 @@ class SystemSpecs(object):
 
 
 def create_specs_from_system_profiler_hardware_output(output):
+    """This method is used primary for testing."""
     return SystemSpecs(output)
 
 
+def main():
+    return SystemSpecs(system_profiler.hardware())
+
+
 if __name__ == '__main__':
-    ss = SystemSpecs(system_profiler.hardware())
+    main()
