@@ -36,9 +36,11 @@ def cpu_cores():
 
 
 def memory():
-    total_physical_memory = computer_system.TotalPhysicalMemory
-    rounded_memory = str(round(total_physical_memory / 10 ** 9))
-    return rounded_memory + " GB"
+    return human_readable(computer_system.TotalPhysicalMemory)
+
+
+def human_readable(component):
+    return str(round(int(component) / 10 ** 9)) + " GB"
 
 
 def storage_model():
@@ -46,7 +48,7 @@ def storage_model():
 
 
 def storage_size():
-    return disk_drive.TotalPhysicalMemory
+    return human_readable(disk_drive.Size)
 
 
 def user():
