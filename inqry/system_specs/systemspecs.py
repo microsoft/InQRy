@@ -20,20 +20,24 @@ class SystemSpecs(object):
     def list_all(self):
         """Returns all the components of a SystemSpec instance as a list. This
         method can be iterated through and added to a QR code"""
-        return [self.name,
-                self.model,
-                self.serial,
-                self.cpu_name,
-                self.cpu_speed,
-                self.cpu_processors,
-                self.cpu_cores,
-                self.memory,
-                self.drive_count,
-                self.drive1_model,
-                self.drive2_model,
-                self.drive3_model,
-                self.drive4_model,
-                self.drive5_model]
+        component_list = [self.name,
+                          self.model,
+                          self.serial,
+                          self.cpu_name,
+                          self.cpu_speed,
+                          self.cpu_processors,
+                          self.cpu_cores,
+                          self.memory]
+
+        if self.os_type == 'Darwin':
+            return component_list + [self.drive_count,
+                                     self.drive1_model,
+                                     self.drive2_model,
+                                     self.drive3_model,
+                                     self.drive4_model,
+                                     self.drive5_model]
+        else:
+            return component_list
 
     @property
     def name(self):
@@ -77,15 +81,12 @@ class SystemSpecs(object):
     @property
     def storage(self):
         storage = {}
-        if self.os_type == 'Darwin':
-            internal_disk_list = system_profiler.get_mac_internal_storage()
-            internal_disk_count = 0
-            for internal_disk in internal_disk_list:
-                internal_disk_count += 1
-                storage['Drive {}'.format(internal_disk_count)] = internal_disk
-                return storage
-        else:
-            return str("")
+        internal_disk_list = system_profiler.get_mac_internal_storage()
+        internal_disk_count = 0
+        for internal_disk in internal_disk_list:
+            internal_disk_count += 1
+            storage['Drive {}'.format(internal_disk_count)] = internal_disk
+            return storage
 
     @property
     def drive1_model(self):
