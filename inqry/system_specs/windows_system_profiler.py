@@ -5,7 +5,6 @@ class WindowsProfile:
     """A WindowsProfile instance uses the third-party module "wmi". When
     instantiated, the instance gets all needed attribute data structures
     from the appropriate WMI classes."""
-    wmi_data = {}
 
     def __init__(self):
         c = wmi.WMI()
@@ -16,49 +15,15 @@ class WindowsProfile:
         self.win32_physical_memory = c.Win32_PhysicalMemory()[0]
 
     def get_all_windows_system_components(self):
-        self.wmi_data['Model Name'] = self.name
-        self.wmi_data['Manufacturer'] = self.manufacturer
-        self.wmi_data['Serial Number (system)'] = self.serial
-        self.wmi_data['Model Identifier'] = self.model
-        self.wmi_data['Number of Processors'] = self.cpu_processors
-        self.wmi_data['Total Number of Cores'] = self.cpu_cores
-        self.wmi_data['Processor Speed'] = self.cpu_name
-        self.wmi_data['Memory'] = self.memory
-        self.wmi_data['Processor Name'] = self.cpu_name
-        return self.wmi_data
-
-    @property
-    def manufacturer(self):
-        return self.win32_computer_system.Manufacturer
-
-    @property
-    def name(self):
-        return self.win32_computer_system.SystemSKUNumber
-
-    @property
-    def model(self):
-        return self.win32_computer_system.Model
-
-    @property
-    def serial(self):
-        return self.win32_bios.SerialNumber
-
-    @property
-    def cpu_name(self):
-        return self.win32_processor.Name
-
-    @property
-    def cpu_cores(self):
-        return self.win32_processor.NumberOfCores
-
-    @property
-    def cpu_processors(self):
-        return self.win32_computer_system.NumberOfProcessors
-
-    @property
-    def memory(self):
-        return self.human_readable(
-            self.win32_computer_system.TotalPhysicalMemory)
+        wmi_data = {'Model Name': self.win32_computer_system.Model,
+                    'Manufacturer': self.win32_computer_system.Manufacturer,
+                    'Serial Number (system)': self.win32_bios.SerialNumber,
+                    'Model Identifier': self.win32_computer_system.SystemSKUNumber,
+                    'Number of Processors': self.win32_computer_system.NumberOfProcessors,
+                    'Total Number of Cores': self.win32_processor.NumberOfCores,
+                    'Memory': self.human_readable(self.win32_computer_system.TotalPhysicalMemory),
+                    'Processor Name': self.win32_processor.Name}
+        return wmi_data
 
     @property
     def storage_model(self):
@@ -81,7 +46,7 @@ class WindowsProfile:
         return name.split('\\')[1]
 
 
-def hardware():
+def collector():
     """Returns all components from a WindowsProfile instance a dictionary
     with the same keys as a Mac system profile"""
     return WindowsProfile().get_all_windows_system_components()
