@@ -8,18 +8,17 @@ the data.
 ### Install
 clone & `python3 setup.py install`
 
-
 ### Test
 `pytest`
 
 
 ### Run
-- TBD
+`python inqry` and click "Generate QR Code"
 
 ## Description
 
-InQRy generates a single QR code when executed, which is designed to be used
-during a physical inventory procedure.
+InQRy is a cross-platform application that generates a single QR code containing the machine's hardware
+specifications. This application is designed primarily to be used during a physical inventory procedure.
 
 The QR code contains detailed information about the client machine or device,
 which can then be scanned it quickly add assets into a Snipe-IT database.
@@ -42,4 +41,3 @@ an initial physical inventory procedure, as well as subsequent hardware audits.
 ## Currently Supported Platforms
 - macOS
 - Windows
-- iOS
