@@ -10,5 +10,12 @@
 build/
 dist/
 **/__pycache__/
+*/__pycache__/
+**.pyc
 *.pyc
 .python-version
+qrtest.py
+htmlcov/
+.coverage
+!python.ini
+coverage_html/
