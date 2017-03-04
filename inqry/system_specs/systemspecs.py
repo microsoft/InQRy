@@ -130,7 +130,7 @@ def create_specs_from_system_profiler_hardware_output(output):
 
 
 def main():
-    return SystemSpecs(system_profiler.hardware())
+    return SystemSpecs(system_profiler.collector())
 
 
 if __name__ == '__main__':
