@@ -1,6 +1,7 @@
-from pybar import macdisk
+from inqry.system_specs import macdisk
 
-diskutil_output = '''   Device Identifier:        disk5
+DISKUTIL_OUTPUT = '''
+   Device Identifier:        disk5
    Device Node:              /dev/disk5
    Whole:                    Yes
    Part of Whole:            disk2
@@ -16,7 +17,8 @@ diskutil_output = '''   Device Identifier:        disk5
    Protocol:                 SATA
    SMART Status:             Verified
 
-   Disk Size:                2.0 TB (2000179691520 Bytes) (exactly 3906600960 512-Byte-Units)
+   Disk Size:                2.0 TB (2000179691520 Bytes) (exactly \
+   3906600960 512-Byte-Units)
    Device Block Size:        512 Bytes
 
    Read-Only Media:          No
@@ -29,9 +31,9 @@ diskutil_output = '''   Device Identifier:        disk5
    Virtual:                  No
    OS 9 Drivers:             No
    Low Level Format:         Not supported
-'''
+   '''
 
-test_disk = macdisk.create_from_diskutil_info_output(diskutil_output)
+test_disk = macdisk.create_from_diskutil_info_output(DISKUTIL_OUTPUT)
 
 
 def test_disk_is_not_internal():

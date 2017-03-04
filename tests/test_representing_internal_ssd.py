@@ -1,6 +1,8 @@
-from pybar import macdisk
+import pytest
+from inqry.system_specs import macdisk
 
-diskutil_output = '''   Device Identifier:        disk0
+DISKUTIL_OUTPUT = '''
+   Device Identifier:        disk0
    Device Node:              /dev/disk0
    Whole:                    Yes
    Part of Whole:            disk0
@@ -18,7 +20,8 @@ diskutil_output = '''   Device Identifier:        disk0
    Protocol:                 SATA
    SMART Status:             Verified
 
-   Total Size:               751.3 GB (751277983744 Bytes) (exactly 1467339812 512-Byte-Units)
+   Total Size:               751.3 GB (751277983744 Bytes) (exactly \
+   1467339812 512-Byte-Units)
    Volume Free Space:        Not applicable (no file system)
    Device Block Size:        512 Bytes
 
@@ -32,27 +35,29 @@ diskutil_output = '''   Device Identifier:        disk0
    Virtual:                  No
    OS 9 Drivers:             No
    Low Level Format:         Not supported
-
-'''
-
-test_disk = macdisk.create_from_diskutil_info_output(diskutil_output)
+   '''
 
 
-def test_disk_is_internal():
+@pytest.fixture(scope="session")
+def test_disk():
+    return macdisk.create_from_diskutil_info_output(DISKUTIL_OUTPUT)
+
+
+def test_disk_is_internal(test_disk):
     assert test_disk.is_internal
 
 
-def test_disk_is_not_external():
+def test_disk_is_not_external(test_disk):
     assert test_disk.is_external is False
 
 
-def test_device_name_is_correct():
+def test_device_name_is_correct(test_disk):
     assert test_disk.device_name == 'APPLE SSD SM768E'
 
 
-def test_disk_is_ssd():
+def test_disk_is_ssd(test_disk):
     assert test_disk.is_ssd
 
 
-def test_size_is_correct():
+def test_size_is_correct(test_disk):
     assert test_disk.size == '751.3 GB'
