@@ -2,9 +2,8 @@ import wmi
 
 
 class WindowsProfile:
-    """A WindowsProfile instance uses the third-party module "wmi". When
-    instantiated, the instance gets all needed attribute data structures
-    from the appropriate WMI classes."""
+    """A WindowsProfile instance uses the third-party module "wmi". When instantiated, the instance gets all needed
+    attribute data structures from the appropriate WMI classes."""
 
     def __init__(self):
         c = wmi.WMI()
@@ -47,6 +46,5 @@ class WindowsProfile:
 
 
 def collector():
-    """Returns all components from a WindowsProfile instance a dictionary
-    with the same keys as a Mac system profile"""
+    """Returns all components from a WindowsProfile instance a dictionary with the same keys as a Mac system profile"""
     return WindowsProfile().get_all_windows_system_components()

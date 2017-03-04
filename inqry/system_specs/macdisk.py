@@ -8,11 +8,8 @@ def create_from_diskutil_info_output(output):
 
 
 def get_all_physical_disks():
-    return [
-        create_from_diskutil_info_output(
-            diskutil.get_disk_info(disk_identifier))
-        for disk_identifier in diskutil.get_physical_disk_identifiers()
-        ]
+    return [create_from_diskutil_info_output(diskutil.get_disk_info(disk_identifier)) for disk_identifier in
+            diskutil.get_physical_disk_identifiers()]
 
 
 class Disk:
@@ -57,6 +54,5 @@ class Disk:
     def size(self):
         disk_size_pattern = re.compile(r'(?P<disk_size>\d+\.?\d* [MGT]?B) .*$')
         disk_size_match = re.match(disk_size_pattern, self.verbose_disk_size)
-
         if disk_size_match:
             return disk_size_match.group('disk_size')

@@ -1,7 +1,7 @@
 import pytest
 from inqry.system_specs import systemspecs
 
-hw_test_data = {'Model Name': 'Surface_Pro_3',
+HW_TEST_DATA = {'Model Name': 'Surface_Pro_3',
                 'Manufacturer': 'Microsoft Corporation',
                 'Serial Number (system)': '000048250353',
                 'Model Identifier': 'Surface Pro 3',
@@ -15,18 +15,17 @@ hw_test_data = {'Model Name': 'Surface_Pro_3',
 @pytest.fixture(scope='session')
 def systemspec_object():
     """Used as data for testing with a system profiler object"""
-    return systemspecs.create_specs_from_system_profiler_hardware_output(
-        hw_test_data)
+    return systemspecs.create_specs_from_system_profiler_hardware_output(HW_TEST_DATA)
 
 
 # noinspection PyShadowingNames
 def test_getting_value_from_key():
-    assert hw_test_data.get('Manufacturer') == 'Microsoft Corporation'
+    assert HW_TEST_DATA.get('Manufacturer') == 'Microsoft Corporation'
 
 
 # noinspection PyShadowingNames
 def test_profile_instantiation_works():
-    systemspecs.SystemSpecs(hw_test_data)
+    systemspecs.SystemSpecs(HW_TEST_DATA)
 
 
 # noinspection PyShadowingNames
@@ -55,8 +54,7 @@ def test_that_system_profile_object_has_cpu_speed_attribute(systemspec_object):
 
 
 # noinspection PyShadowingNames
-def test_that_system_profile_object_has_cpu_processors_attribute(
-        systemspec_object):
+def test_that_system_profile_object_has_cpu_processors_attribute(systemspec_object):
     assert hasattr(systemspec_object, "cpu_processors")
 
 
@@ -97,8 +95,7 @@ def test_cores_is_integer(systemspec_object):
 
 # noinspection PyShadowingNames
 @pytest.mark.skip
-def test_operating_system_fails_when_os_is_not_darwin_or_windows(
-        systemspec_object):
+def test_operating_system_fails_when_os_is_not_darwin_or_windows(systemspec_object):
     systemspec_object.os_type = 'Linux'
     with pytest.raises(OSError):
         systemspec_object.operating_system()
@@ -112,11 +109,6 @@ def test_when_ios_device_is_connected():
 @pytest.mark.skip
 def test_ability_to_get_components_from_system_profile_object():
     pass
-
-
-@pytest.mark.skip
-def test_mac_hardware_method_output_data_type_is_system_specs_class():
-    assert isinstance(systemspecs.windows(), systemspecs.SystemSpecs)
 
 
 # def test_if_disk_list_is_list(test_disk):

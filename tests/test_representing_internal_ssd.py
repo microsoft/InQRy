@@ -1,7 +1,7 @@
 import pytest
 from inqry.system_specs import macdisk
 
-diskutil_output = '''
+DISKUTIL_OUTPUT = '''
    Device Identifier:        disk0
    Device Node:              /dev/disk0
    Whole:                    Yes
@@ -40,7 +40,7 @@ diskutil_output = '''
 
 @pytest.fixture(scope="session")
 def test_disk():
-    return macdisk.create_from_diskutil_info_output(diskutil_output)
+    return macdisk.create_from_diskutil_info_output(DISKUTIL_OUTPUT)
 
 
 def test_disk_is_internal(test_disk):

@@ -125,7 +125,7 @@ class SystemSpecs(object):
 
 
 def create_specs_from_system_profiler_hardware_output(output):
-    """This method is used primary for testing."""
+    """This method is used primarily for testing."""
     return SystemSpecs(output)
 
 
