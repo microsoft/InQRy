@@ -6,14 +6,26 @@ asset = AssetQRCode(systemspecs.main())
 root = tk.Tk()
 
 
+def get_dimensions_to_center_window():
+    pass
+
+
+def calculate_center_coordinates(screen_dimension, current_dimension):
+    return (screen_dimension / 2) - (current_dimension / 2)
+
+
+def obtain_default_dimensions_for_the_root_gui_object():
+    return tuple(int(_) for _ in root.geometry().split('+')[0].split('x'))
+
+
 def center():  # Not used at this time
     root.update_idletasks()
-    screen_width = root.winfo_screenwidth()
-    screen_height = root.winfo_screenheight()
-    size = tuple(int(_) for _ in root.geometry().split('+')[0].split('x'))
-    x = screen_width / 2 - size[0] / 2
-    y = screen_height / 2 - size[1] / 2
-    root.geometry("%dx%d+%d+%d" % (size + (x, y)))
+    size = obtain_default_dimensions_for_the_root_gui_object()
+    height = size[0]
+    width = size[1]
+    x = calculate_center_coordinates(root.winfo_screenwidth(), height)
+    y = calculate_center_coordinates(root.winfo_screenheight(), width)
+    root.geometry(f'{height}x{width}+{x}+{y}')
 
 
 def click():
