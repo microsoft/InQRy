@@ -90,14 +90,6 @@ def test_cores_is_integer(systemspec_object):
     assert isinstance(systemspec_object.cpu_cores, int)
 
 
-# noinspection PyShadowingNames
-@pytest.mark.skip
-def test_operating_system_fails_when_os_is_not_darwin_or_windows(systemspec_object):
-    systemspec_object.os_type = 'Linux'
-    with pytest.raises(OSError):
-        systemspec_object.operating_system()
-
-
 @pytest.mark.skip
 def test_when_ios_device_is_connected():
     pass
@@ -113,8 +105,9 @@ def test_collector_method_output_data_type_is_system_specs_class():
     assert isinstance(systemspec_object.collector(), systemspecs.SystemSpecs)
 
 
-# def test_if_disk_list_is_list(test_disk):
-#     assert hasattr(systemspecs.storage.internal_disks, list)
+@pytest.mark.skip
+def test_if_disk_list_is_list(systemspec_object):
+    assert isinstance(systemspec_object.storage(), list)
 
 
 def test_asset_qr_code_has_list_all_method():
