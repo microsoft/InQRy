@@ -3,7 +3,7 @@ from inqry.qr_builder import AssetQRCode
 from inqry.system_specs import systemspecs
 from inqry.form_instructions import Instructions
 
-AssetQRCode(Instructions(systemspecs.main()))
+ASSET = AssetQRCode(Instructions(systemspecs.main()))
 ROOT = tk.Tk()
 
 
