@@ -1,8 +1,9 @@
 import tkinter as tk
 from inqry.qr_builder import AssetQRCode
 from inqry.system_specs import systemspecs
+from inqry.form_instructions import Instructions
 
-ASSET = AssetQRCode(systemspecs.main())
+AssetQRCode(Instructions(systemspecs.main()))
 ROOT = tk.Tk()
 
 

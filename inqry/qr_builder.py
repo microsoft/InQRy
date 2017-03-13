@@ -1,4 +1,5 @@
 from qrcode import QRCode
+from instructions import Instructions
 
 
 class AssetQRCode(QRCode):
@@ -13,9 +14,9 @@ class AssetQRCode(QRCode):
         self.code = self.build()
 
     def build(self):
-        attribute_list = self.profile.list_all()
-        for attribute in attribute_list:
-            self.qr.add_data(attribute)
+        instructions = Instructions(self.profile.model).instructions()
+        for step in instructions:
+            self.qr.add_data(step)
         return self.qr
 
     def display(self):
