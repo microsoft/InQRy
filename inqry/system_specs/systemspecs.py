@@ -85,44 +85,36 @@ class SystemSpecs(object):
         internal_disk_count = 0
         for internal_disk in internal_disk_list:
             internal_disk_count += 1
-            storage['Drive {}'.format(internal_disk_count)] = internal_disk
-            return storage
+            storage['Drive {}'.format(internal_disk_count)] = "{} {} ({})".format(internal_disk.size, internal_disk.type, internal_disk.device_name)
+        return storage
 
     @property
-    def drive1_model(self):
+    def drive1(self):
         try:
-            return self.storage['Drive 1'].device_name
+            return self.storage['Drive 1']
         except KeyError:
             return str("")
 
     @property
-    def drive2_model(self):
+    def drive2(self):
         try:
-            return self.storage['Drive 2'].device_name
+            return self.storage['Drive 2']
         except KeyError:
             return str("")
 
     @property
-    def drive3_model(self):
+    def drive3(self):
         try:
-            return self.storage['Drive 3'].device_name
+            return self.storage['Drive 3']
         except KeyError:
             return str("")
 
     @property
-    def drive4_model(self):
+    def drive4(self):
         try:
-            return self.storage['Drive 4'].device_name
+            return self.storage['Drive 4']
         except KeyError:
             return str("")
-
-    @property
-    def drive5_model(self):
-        try:
-            return self.storage['Drive 5'].device_name
-        except KeyError:
-            return str("")
-
 
 def create_specs_from_system_profiler_hardware_output(output):
     """This method is used primarily for testing."""
