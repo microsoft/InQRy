@@ -32,23 +32,5 @@ class Instructions:
         status_instructions = [space, delay, status, delay, select, delay, tab]
         user_instructions = [space, delay, user, delay, select, delay, tab]
         serial_instructions = [serial, tab]
-        instructions = common_instructions + spec_instructions + status_instructions + user_instructions
-        # self.qr.add_data('delay500ms')
-        # self.qr.add_data('\x20')
-        # self.qr.add_data('Ready to Deploy')
-        # self.qr.add_data('delay500ms')
-        # self.qr.add_data('enter_key')
-        # self.qr.add_data('delay500ms')
-        # self.qr.add_data('\x09')
-        # self.qr.add_data('\x09')
-        # self.qr.add_data('\x20')
-        # self.qr.add_data('delay500ms')
-        # self.qr.add_data('maclab')
-        # self.qr.add_data('enter_key')
-        # self.qr.add_data('\x09')
-        # self.qr.add_data('\x09')
-        # self.qr.add_data(self.profile.serial)
-        # self.qr.add_data('\x09')
-        # self.qr.add_data(self.profile.name)
-        # self.qr.add_data('enter_key')
-        return instructions
+
+        return common_instructions + spec_instructions + status_instructions + user_instructions + serial_instructions
