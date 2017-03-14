@@ -16,7 +16,7 @@ class Instructions:
         self.drive4 = self.specs.drive4
         self.serial = self.specs.serial
         self.user = user
-        self.model_definitions = {"MacPro6,1":"Desktop", "MacBookPro13,3":"Portable"}
+        self.model_definitions = {"MacPro6,1":"Desktop", "MacBookPro13,3":"Portable", "MacBookPro13,2":"Portable"}
         self.fieldsets = {"Desktop": (
                                         self._text_box(self.processor) +
                                         self._text_box(self.memory) +
