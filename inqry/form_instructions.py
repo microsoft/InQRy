@@ -3,34 +3,38 @@ class Instructions:
 
     def __init__(self, specs):
         self.specs = specs
+        self.delay = 'delay500ms'
+        self.space = '\x20'
+        self.tab = '\x09'
+        self.select = 'enter_key'
+        self.status = 'Ready to Deploy'
+        self.model = self.specs.model
+        self.processor = "{} {}".format(self.specs.cpu_speed, self.specs.cpu_name)
+        self.memory = self.specs.memory
+        self.drive1 = self.specs.drive1
+        self.drive2 = self.specs.drive2
+        self.drive3 = self.specs.drive3
+        self.drive4 = self.specs.drive4
+        self.serial = self.specs.serial
+        self.user = 'jazava'
+        self.assettag = '64655638'
+
+    def _text_box(self, field):
+        return [field, self.tab]
+
+    def _list_box(self, field):
+        return [self.space, self.delay, field, self.delay, self.select, self.delay, self.tab]
 
     def instruction_steps(self):
-        delay = 'delay500ms'
-        space = '\x20'
-        tab = '\x09'
-        select = 'enter_key'
-        status = 'Ready to Deploy'
-        user = 'jazava'
-        assettag = '64655638'
-        model = self.specs.model
-        processor = "{} {}".format(self.specs.cpu_speed, self.specs.cpu_name)
-        memory = self.specs.memory
-        drive1 = self.specs.drive1
-        drive2 = self.specs.drive2
-        drive3 = self.specs.drive3
-        drive4 = self.specs.drive4
-        serial = self.specs.serial
-
-        assettag_instructions = [assettag, tab]
-        model_instructions = [space, delay, model, delay, select, delay, tab]
-        processor_instructions = [processor, tab]
-        memory_instructions = [memory, tab]
-        drive_instructions = [drive1, tab, drive2, tab, drive3, tab, drive4, tab]
-
-        common_instructions = assettag_instructions + model_instructions
-        spec_instructions = processor_instructions + memory_instructions + drive_instructions
-        status_instructions = [space, delay, status, delay, select, delay, tab]
-        user_instructions = [space, delay, user, delay, select, delay, tab]
-        serial_instructions = [serial, tab]
-
-        return common_instructions + spec_instructions + status_instructions + user_instructions + serial_instructions
+        return (self._text_box(self.assettag) +
+                self._list_box(self.specs.model) +
+                self._text_box(self.processor) +
+                self._text_box(self.memory) +
+                self._text_box(self.drive1) +
+                self._text_box(self.drive2) +
+                self._text_box(self.drive3) +
+                self._text_box(self.drive4) +
+                self._list_box(self.status) +
+                self._list_box(self.user) +
+                self._text_box(self.serial)
+                )
