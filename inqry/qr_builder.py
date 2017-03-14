@@ -14,8 +14,8 @@ class AssetQRCode(QRCode):
         self.code = self.build()
 
     def build(self):
-        instructions = self.Instructions.instruction_steps()
-        for step in instructions:
+        instructions_list = self.Instructions.instruction_steps()
+        for step in instructions_list:
             self.qr.add_data(step)
         return self.qr
 
