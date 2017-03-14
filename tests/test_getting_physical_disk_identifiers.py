@@ -1,6 +1,6 @@
-from inqry import diskutil
+from inqry.system_specs import diskutil
 
-diskutil_list_output = '''/dev/disk0 (internal, physical):
+DISKUTIL_LIST_OUTPUT = '''/dev/disk0 (internal, physical):
    #:                       TYPE NAME                    SIZE       IDENTIFIER
    0:      GUID_partition_scheme                        *751.3 GB   disk0
    1:                        EFI EFI                     209.7 MB   disk0s1
@@ -51,8 +51,6 @@ diskutil_list_output = '''/dev/disk0 (internal, physical):
 
 
 def test_only_physical_drives_included():
-    expected_physical_disks = [
-        '/dev/disk0', '/dev/disk4', '/dev/disk5', '/dev/disk6', '/dev/disk7']
+    expected_physical_disks = ['/dev/disk0', '/dev/disk4', '/dev/disk5', '/dev/disk6', '/dev/disk7']
 
-    assert expected_physical_disks == diskutil.get_physical_disk_identifiers(
-        diskutil_list_output)
+    assert expected_physical_disks == diskutil.get_physical_disk_identifiers(DISKUTIL_LIST_OUTPUT)

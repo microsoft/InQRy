@@ -1,6 +1,6 @@
-from inqry import mac_system_profiler
+from inqry.system_specs import mac_system_profiler
 
-memory_data_type_command_output = '''Memory:
+MEMORY_DATA_TYPE_COMMAND_OUTPUT = '''Memory:
 
     Memory Slots:
 
@@ -28,16 +28,16 @@ memory_data_type_command_output = '''Memory:
           Serial Number: -
 '''
 
-result = mac_system_profiler.parse_command_output(memory_data_type_command_output)['Memory']['Memory Slots']
+RESULT = mac_system_profiler.parse_command_output(MEMORY_DATA_TYPE_COMMAND_OUTPUT)['Memory']['Memory Slots']
 
 
 def test_parsing_memory_data_returns_dict():
-    assert isinstance(result, dict)
+    assert isinstance(RESULT, dict)
 
 
 def test_bank_0_is_accessible_as_expected():
-    assert result['BANK 0/DIMM0']
+    assert RESULT['BANK 0/DIMM0']
 
 
 def test_serial_number_is_none():
-    assert result['BANK 0/DIMM0']['Serial Number'] is None
+    assert RESULT['BANK 0/DIMM0']['Serial Number'] is None

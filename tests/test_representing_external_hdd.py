@@ -1,6 +1,6 @@
-from inqry import macdisk
+from inqry.system_specs import macdisk
 
-diskutil_output = '''
+DISKUTIL_OUTPUT = '''
    Device Identifier:        disk5
    Device Node:              /dev/disk5
    Whole:                    Yes
@@ -33,7 +33,7 @@ diskutil_output = '''
    Low Level Format:         Not supported
    '''
 
-test_disk = macdisk.create_from_diskutil_info_output(diskutil_output)
+test_disk = macdisk.create_from_diskutil_info_output(DISKUTIL_OUTPUT)
 
 
 def test_disk_is_not_internal():

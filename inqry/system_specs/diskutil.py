@@ -7,7 +7,8 @@ BASE_COMMAND = '/usr/sbin/diskutil'
 
 def get_physical_disk_identifiers(diskutil_list_output=None):
     diskutil_list_output = diskutil_list_output or list_all()
-    physical_disk_id_pattern = re.compile(r'(/dev/disk\d+) \(\w+, physical\).*')
+    physical_disk_id_pattern = re.compile(
+        r'(/dev/disk\d+) \(\w+, physical\).*')
 
     return re.findall(physical_disk_id_pattern, diskutil_list_output)
 

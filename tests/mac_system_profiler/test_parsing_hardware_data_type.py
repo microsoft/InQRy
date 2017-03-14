@@ -1,6 +1,6 @@
-from inqry import mac_system_profiler
+from inqry.system_specs import mac_system_profiler
 
-hardware_data_type_command_output = '''Hardware:
+HARDWARE_DATA_TYPE_COMMAND_OUTPUT = '''Hardware:
 
     Hardware Overview:
 
@@ -19,12 +19,12 @@ hardware_data_type_command_output = '''Hardware:
       Hardware UUID: 59CA6E54-8427-544E-8287-E02A0AD40F51
 '''
 
-result = mac_system_profiler.parse_command_output(hardware_data_type_command_output)['Hardware']['Hardware Overview']
+RESULT = mac_system_profiler.parse_command_output(HARDWARE_DATA_TYPE_COMMAND_OUTPUT)['Hardware']['Hardware Overview']
 
 
 def test_parsing_hardware_data_returns_dict():
-    assert isinstance(result, dict)
+    assert isinstance(RESULT, dict)
 
 
 def test_model_identifier_is_correct():
-    assert result['Model Identifier'] == 'MacBookPro10,1'
+    assert RESULT['Model Identifier'] == 'MacBookPro10,1'

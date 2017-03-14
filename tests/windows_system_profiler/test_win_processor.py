@@ -1,0 +1,49 @@
+processor_output = """
+instance of Win32_Processor
+{
+    AddressWidth = 64;
+    Architecture = 9;
+    AssetTag = "00";
+    Availability = 3;
+    Caption = "Intel64 Family 6 Model 69 Stepping 1";
+    Characteristics = 4;
+    CpuStatus = 1;
+    CreationClassName = "Win32_Processor";
+    CurrentClockSpeed = 1700;
+    CurrentVoltage = 10;
+    DataWidth = 64;
+    Description = "Intel64 Family 6 Model 69 Stepping 1";
+    DeviceID = "CPU0";
+    ExtClock = 100;
+    Family = 198;
+    L2CacheSize = 512;
+    L3CacheSize = 4096;
+    L3CacheSpeed = 0;
+    Level = 6;
+    LoadPercentage = 28;
+    Manufacturer = "GenuineIntel";
+    MaxClockSpeed = 2301;
+    Name = "Intel(R) Core(TM) i7-4650U CPU @ 1.70GHz";
+    NumberOfCores = 2;
+    NumberOfEnabledCore = 2;
+    NumberOfLogicalProcessors = 4;
+    PartNumber = "00";
+    PowerManagementSupported = FALSE;
+    ProcessorId = "BFEBFBFF00040651";
+    ProcessorType = 3;
+    Revision = 17665;
+    Role = "CPU";
+    SecondLevelAddressTranslationExtensions = FALSE;
+    SerialNumber = "";
+    SocketDesignation = "SOCKET 0";
+    Status = "OK";
+    StatusInfo = 3;
+    SystemCreationClassName = "Win32_ComputerSystem";
+    SystemName = "APEX35-ERHANK-S";
+    ThreadCount = 4;
+    UpgradeMethod = 6;
+    Version = "";
+    VirtualizationFirmwareEnabled = FALSE;
+    VMMonitorModeExtensions = FALSE;
+};
+"""
