@@ -27,7 +27,7 @@ class Instructions:
 
     def instruction_steps(self):
         return (self._text_box(self.assettag) +
-                self._list_box(self.specs.model) +
+                self._list_box(self.model) +
                 self._text_box(self.processor) +
                 self._text_box(self.memory) +
                 self._text_box(self.drive1) +
