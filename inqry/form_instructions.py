@@ -119,3 +119,6 @@ class Instructions:
 
     def instruction_steps(self):
         return self._common_fields(self.fieldsets[self.model_definitions[self.model]])
+
+    def create_instructions_from_system_specs(specs, user):
+        return Instructions(specs, user)
