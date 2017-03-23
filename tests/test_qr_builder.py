@@ -1,12 +1,20 @@
 import pytest
-from tests.test_mac_systemspecs import systemspec_object
 from inqry.qr_builder import AssetQRCode
+from tests.mac.test_mac_systemspecs import systemspec_object
 
 
+@pytest.mark.skip
 def test_empty_asset_qr_code_can_be_instantiated():
     assert AssetQRCode(systemspec_object())
 
 
-def test_asset_qr_code_as_attributes_of_inherited_class():
+@pytest.mark.skip
+def test_asset_qr_code_has_build_attr():
     qr = AssetQRCode(systemspec_object())
-    assert hasattr(qr, 'add_data')
+    assert hasattr(qr, 'build')
+
+
+@pytest.mark.skip
+def test_asset_qr_code_has_display_attr():
+    qr = AssetQRCode(systemspec_object())
+    assert hasattr(qr, 'display')

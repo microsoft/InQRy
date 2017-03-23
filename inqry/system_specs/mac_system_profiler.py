@@ -66,7 +66,6 @@ def collector():
     return get_data(DataTypes.HARDWARE)['Hardware']['Hardware Overview']
 
 
-def get_mac_internal_storage():
-    disk_list = macdisk.get_all_physical_disks()
-    internal_disks = [disk for disk in disk_list if disk.is_internal]
-    return internal_disks
+def get_internal_storage():
+    internal_disks = macdisk.get_all_physical_disks()
+    return [disk for disk in internal_disks if disk.is_internal]

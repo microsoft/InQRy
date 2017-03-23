@@ -17,28 +17,6 @@ class SystemSpecs(object):
         self.os_type = platform.system()
         self.attributes = attributes
 
-    def list_all(self):
-        """Returns all the components of a SystemSpec instance as a list. This
-        method can be iterated through and added to a QR code"""
-        component_list = [self.name,
-                          self.model,
-                          self.serial,
-                          self.cpu_name,
-                          self.cpu_speed,
-                          self.cpu_processors,
-                          self.cpu_cores,
-                          self.memory]
-
-        if self.os_type == 'Darwin':
-            return component_list + [self.drive_count,
-                                     self.drive1_model,
-                                     self.drive2_model,
-                                     self.drive3_model,
-                                     self.drive4_model,
-                                     self.drive5_model]
-        else:
-            return component_list
-
     @property
     def name(self):
         return self.attributes.get('Model Name')
@@ -73,19 +51,17 @@ class SystemSpecs(object):
 
     @property
     def drive_count(self):
-        if self.os_type == 'Darwin':
-            return len(system_profiler.get_mac_internal_storage())
-        else:
-            pass
+        return len(system_profiler.get_internal_storage())
 
     @property
     def storage(self):
         storage = {}
-        internal_disk_list = system_profiler.get_mac_internal_storage()
+        internal_disks = system_profiler.get_internal_storage()
         internal_disk_count = 0
-        for internal_disk in internal_disk_list:
+        for internal_disk in internal_disks:
             internal_disk_count += 1
-            storage['Drive {}'.format(internal_disk_count)] = "{} {} ({})".format(internal_disk.size, internal_disk.type, internal_disk.device_name)
+            storage[
+                f'Drive {internal_disk_count}'] = f'{internal_disk.size} {internal_disk.type} ({internal_disk.device_name})'
         return storage
 
     @property
@@ -115,6 +91,7 @@ class SystemSpecs(object):
             return self.storage['Drive 4']
         except KeyError:
             return str("")
+
 
 def create_specs_from_system_profiler_hardware_output(output):
     """This method is used primarily for testing."""

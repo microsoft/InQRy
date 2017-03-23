@@ -1,5 +1,5 @@
 from qrcode import QRCode
-from form_instructions import Instructions
+# from form_instructions import Instructions
 
 
 class AssetQRCode(QRCode):
