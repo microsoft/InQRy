@@ -6,7 +6,7 @@ class Instructions:
         self.space = '\x20'
         self.tab = '\x09'
         self.select = 'enter_key'
-        self.status = 'Ready to Deploy'
+        self.status = 'Ready'
         self.model = self.specs.model
         self.processor = "{} {}".format(self.specs.cpu_speed, self.specs.cpu_name)
         self.memory = self.specs.memory
