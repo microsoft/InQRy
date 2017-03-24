@@ -5,15 +5,23 @@ the data.
 ### Requirements
 - `Python 3`
 
-### Install
-clone & `python3 setup.py install`
+## Install
+### Mac
+1. clone
+2. `python3 setup.py install`
+
+### Windows
+1. clone  
+2. `pip install pypiwin32`  
+3. `python3 setup.py install`  
 
 ### Test
 `pytest`
 
 
 ### Run
-`python inqry` and click "Generate QR Code"
+1. `python3 inqry`
+2. Click **Generate QR Code**
 
 ## Description
 

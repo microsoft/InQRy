@@ -1,20 +1,19 @@
 class Instructions:
 
     def __init__(self, specs, user):
-        self.specs = specs
         self.delay = 'delay500ms'
         self.space = '\x20'
         self.tab = '\x09'
         self.select = 'enter_key'
-        self.status = 'Ready to Deploy'
-        self.model = self.specs.model
-        self.processor = "{} {}".format(self.specs.cpu_speed, self.specs.cpu_name)
-        self.memory = self.specs.memory
-        self.drive1 = self.specs.drive1
-        self.drive2 = self.specs.drive2
-        self.drive3 = self.specs.drive3
-        self.drive4 = self.specs.drive4
-        self.serial = self.specs.serial
+        self.status = 'Ready'
+        self.model = specs.model
+        self.processor = "{} {}".format(specs.cpu_speed, specs.cpu_name)
+        self.memory = specs.memory
+        self.drive1 = specs.drive1
+        self.drive2 = specs.drive2
+        self.drive3 = specs.drive3
+        self.drive4 = specs.drive4
+        self.serial = specs.serial
         self.user = user
         self.model_definitions = {"MacBookPro13,3":"Portable", # MacBook Pro (15-inch, 2016)
                                   "MacBookPro13,2":"Portable", # MacBook Pro (13-inch, 2016, Four Thunderbolt 3 Ports)
@@ -118,7 +117,10 @@ class Instructions:
         return [self.space, self.delay, field, self.delay, self.select, self.delay, self.tab]
 
     def instruction_steps(self):
-        return self._common_fields(self.fieldsets[self.model_definitions[self.model]])
+        try:
+            return self._common_fields(self.fieldsets[self.model_definitions[self.model]])
+        except KeyError:
+            return self._common_fields(self.fieldsets["Desktop"])
 
     def create_instructions_from_system_specs(specs, user):
         return Instructions(specs, user)

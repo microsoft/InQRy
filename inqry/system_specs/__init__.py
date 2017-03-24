@@ -9,7 +9,6 @@ def install(package):
 
 
 if OS == 'win32':
-    install("pypiwin32")
     install("wmi")
     from inqry.system_specs import windows_system_profiler as system_profiler
 elif OS == 'darwin':

@@ -47,8 +47,7 @@ class Disk:
 
     @property
     def verbose_disk_size(self):
-        return self.attributes.get('Disk Size') or self.attributes.get(
-            'Total Size')
+        return self.attributes.get('Disk Size') or self.attributes.get('Total Size')
 
     @property
     def size(self):

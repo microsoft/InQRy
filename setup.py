@@ -1,5 +1,4 @@
 import os
-import sys
 import subprocess
 
 VERSION_PY = os.path.join(os.path.dirname(__file__), 'version.py')
@@ -24,11 +23,6 @@ def version_writer():
         f.write(message + os.linesep + "__version__ = '{ver}'".format(ver=version_getter()) + '\n')
 
 
-def windows_only(*args):
-    packages = [a for a in args]
-    return packages if sys.platform == 'win32' else []
-
-
 def main():
     return version_writer()
 
@@ -42,7 +36,7 @@ setup(name='InQRy',
       author_email='v-erhank@microsoft.com',
       packages=['inqry', "inqry.system_specs"],
       long_description=open('README.md').read(),
-      install_requires=["pytest-runner", "pytest", "qrcode", "PyYAML", "Pillow"] + windows_only("pypiwin32", "wmi"),
+      install_requires=["pytest-runner", "pytest", "qrcode", "PyYAML", "Pillow"],
       setup_requires=['pytest-runner'],
       tests_require=['pytest'],
       )

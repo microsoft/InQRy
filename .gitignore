@@ -99,6 +99,8 @@ ENV/
 # User-specific stuff:
 .idea/**/workspace.xml
 .idea/**/tasks.xml
+.idea/**/misc.xml
+.idea/**/lab_inventory.iml
 .idea/dictionaries
 
 # Sensitive or high-churn files:
