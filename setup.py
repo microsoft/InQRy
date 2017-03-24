@@ -1,4 +1,5 @@
 import os
+import re
 import subprocess
 
 VERSION_PY = os.path.join(os.path.dirname(__file__), 'version.py')
@@ -11,7 +12,9 @@ except ImportError:
 
 def version_getter():
     try:
-        return subprocess.check_output(["git", "describe", "--tags"]).rstrip().decode("utf-8")
+        pattern = re.compile(r'(v\d+\.\d+\.?\d?).*', re.UNICODE)
+        tag = subprocess.check_output(["git", "describe", "--tags"]).rstrip().decode("utf-8")
+        return re.findall(pattern, tag)[0]
     except:
         with open(VERSION_PY, 'r') as f:
             return f.read().strip().split('=')[-1].replace('"', '')
@@ -25,6 +28,7 @@ def version_writer():
 
 def main():
     return version_writer()
+
 
 main()
 
