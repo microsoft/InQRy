@@ -5,8 +5,14 @@ the data.
 ### Requirements
 - `Python 3`
 
-### Install
+## Install
+### Mac
 clone & `python3 setup.py install`
+
+### Windows
+clone
+`pip install pypiwin32`
+`python3 setup.py install`
 
 ### Test
 `pytest`
