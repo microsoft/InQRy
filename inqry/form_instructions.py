@@ -117,10 +117,7 @@ class Instructions:
         return [self.space, self.delay, field, self.delay, self.select, self.delay, self.tab]
 
     def instruction_steps(self):
-        try:
-            return self._common_fields(self.fieldsets[self.model_definitions[self.model]])
-        except KeyError:
-            return self._common_fields(self.fieldsets["Desktop"])
+        return self._common_fields(self.fieldsets[self.model_definitions].get(self.model, 'Desktop'))
 
     def create_instructions_from_system_specs(specs, user):
         return Instructions(specs, user)
