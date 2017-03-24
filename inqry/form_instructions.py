@@ -5,7 +5,7 @@ class Instructions:
         self.tab = '~t'
         self.enter = '~e'
         self.space = '\x20'
-        self.status = 'Rea'
+        self.status = 'Deploy'
         self.model = specs.model
         self.processor = "{} {}".format(specs.cpu_speed, specs.cpu_name)
         self.memory = specs.memory
@@ -106,7 +106,7 @@ class Instructions:
                 unique_fields +
                 self._list_box(self.status) +
                 self._list_box(self.user) +
-                self._text_box(self.serial)
+                [self.delay, self.serial]
                 )
 
     def _text_box(self, field):
