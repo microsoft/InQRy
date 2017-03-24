@@ -7,12 +7,13 @@ the data.
 
 ## Install
 ### Mac
-clone & `python3 setup.py install`
+1. clone
+2. `python3 setup.py install`
 
 ### Windows
-clone
-`pip install pypiwin32`
-`python3 setup.py install`
+1. clone  
+2. `pip install pypiwin32`  
+3. `python3 setup.py install`  
 
 ### Test
 `pytest`
