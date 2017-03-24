@@ -20,7 +20,8 @@ the data.
 
 
 ### Run
-`python inqry` and click "Generate QR Code"
+1. `python3 inqry`
+2. Click **Generate QR Code**
 
 ## Description
 
