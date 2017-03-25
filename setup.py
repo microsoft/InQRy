@@ -31,7 +31,11 @@ def windows_only():
     return ['wmi', 'pypiwin32'] if sys.platform == 'win32' else []
 
 
-version_writer()
+def main():
+    return version_writer()
+
+
+main()
 
 setup(name='InQRy',
       version="{ver}".format(ver=version_getter()),
