@@ -6,18 +6,9 @@ the data.
 - Python 3.6 or later
 
 ## Install
-
 1. clone the repository
 2. `cd lab_inventory`
 3. `pip3 install -e .`
-
-### Mac
-
-### Windows
-
-#### Powershell
-
-#### Git for Windows
 
 ## Run
 - `python3 inqry`
@@ -46,16 +37,16 @@ InQRy was written to obtain asset information quickly and accurately for both
 an initial physical inventory procedure, as well as subsequent hardware audits.
 
 ## Currently Supported Platforms
-- macOS
-- Windows
+- macOS Sierra
+- Windows 10
+    - PowerShell
+    - Git for Windows
 
 ## Troubleshooting
-### Installation Issues
-##### Try the following:
-- Verify using Python 3.6: `python --version`
-- Verify **pip** is version 9.0.1: `pip --version`
-- Remove all build and setup cache: `rm -rf .eggs/ InQRy.egg-info/ build/ dist/ .cache/`
-- Remove all requirements: `pip3 uninstall -r requirements.txt -y`
-- Overwrite cached dependency installs: `pip3 install -e . --no-cache-dir`
-##### Then retry installation:
-- `pip3 install -e .`
+1. Verify Python version(s): `python3 --version` or `python --version`
+2. Verify using Python 3.6: `python3 --version` or `python --version`
+3. Verify **pip** is version 9.0.1: `pip --version`
+4. Remove all build and setup cache: `rm -rf .eggs/ InQRy.egg-info/ build/ dist/ .cache/`
+5. Overwrite cached dependency installs: `pip3 install -e . --no-cache-dir`
+6. Remove all requirements: `pip3 uninstall -r requirements.txt -y`
+7. Retry installation: `pip3 install -e .` 
