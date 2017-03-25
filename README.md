@@ -2,26 +2,25 @@
 Obtains machine hardware specifications then generates a QR code containing
 the data.
 
-### Requirements
-- `Python 3`
+## Requirements
+- Python 3.6 or later
 
 ## Install
+
+1. clone the repository
+2. `cd` into it newly cloned directory
+3. `pip3 install -e .`
+
 ### Mac
-1. clone
-2. `python3 setup.py install`
 
 ### Windows
-1. clone  
-2. `pip install pypiwin32`  
-3. `python3 setup.py install`  
 
-### Test
-`pytest`
+#### Powershell
 
+#### Git for Windows
 
-### Run
-1. `python3 inqry`
-2. Click **Generate QR Code**
+## Run
+- `python3 inqry`
 
 ## Description
 

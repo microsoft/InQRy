@@ -1,6 +1,5 @@
-pip
-pytest
-pytest-runner
+wmi; sys_platform == 'win32'
+pypiwin32; sys_platform == 'win32'
 qrcode
 pyyaml
 Pillow

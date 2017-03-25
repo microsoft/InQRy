@@ -1,18 +1,10 @@
-import sys
-import pip
+from sys import platform
 
-OS = sys.platform
-
-
-def install(package):
-    pip.main(['install', package])
-
+OS = platform
 
 if OS == 'win32':
-    install("wmi")
     from inqry.system_specs import windows_system_profiler as system_profiler
 elif OS == 'darwin':
     from inqry.system_specs import mac_system_profiler as system_profiler
-    from inqry.system_specs import macdisk
 else:
     raise OSError('Operating system unknown')
