@@ -41,6 +41,7 @@ setup(name='InQRy',
       url="https://office.visualstudio.com/APEX/Lab-Projects/_git/lab_inventory",
       packages=['inqry', "inqry.system_specs"],
       long_description=open('README.md').read(),
-      setup_requires=['pytest-runner'],
+      install_requires=['qrcode', 'PyYAML', 'Pillow'],
+      setup_requires=['qrcode', 'PyYAML', 'Pillow', 'pytest-runner'],
       tests_require=['pytest'],
       )
