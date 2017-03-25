@@ -1,6 +1,6 @@
-from sys import platform
+import sys
 
-OS = platform
+OS = sys.platform
 
 if OS == 'win32':
     from inqry.system_specs import windows_system_profiler as system_profiler
