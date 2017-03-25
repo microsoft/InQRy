@@ -1,5 +1,5 @@
-# wmi; sys_platform == 'win32'
-# pypiwin32; sys_platform == 'win32'
-# qrcode
-# pyyaml
-# Pillow
+wmi; sys_platform == 'win32'
+pypiwin32; sys_platform == 'win32'
+qrcode
+pyyaml
+Pillow
