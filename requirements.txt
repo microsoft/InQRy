@@ -1,6 +1,6 @@
-wmi; sys_platform == 'win32'
-pypiwin32; sys_platform == 'win32'
 qrcode
 PyYAML
 Pillow
 InQRy
+wmi; sys_platform == 'win32'
+pypiwin32; sys_platform == 'win32'
