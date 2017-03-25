@@ -8,7 +8,7 @@ the data.
 ## Install
 
 1. clone the repository
-2. `cd` into it newly cloned directory
+2. `cd lab_inventory`
 3. `pip3 install -e .`
 
 ### Mac
@@ -48,3 +48,14 @@ an initial physical inventory procedure, as well as subsequent hardware audits.
 ## Currently Supported Platforms
 - macOS
 - Windows
+
+## Troubleshooting
+### Installation Issues
+##### Try the following:
+- Verify using Python 3.6: `python --version`
+- Verify **pip** is version 9.0.1: `pip --version`
+- Remove all build and setup cache: `rm -rf .eggs/ InQRy.egg-info/ build/ dist/ .cache/`
+- Remove all requirements: `pip3 uninstall -r requirements.txt -y`
+- Overwrite cached dependency installs: `pip3 install -e . --no-cache-dir`
+##### Then retry installation:
+- `pip3 install -e .`
