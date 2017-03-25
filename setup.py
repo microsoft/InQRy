@@ -2,13 +2,13 @@ import os
 import re
 import subprocess
 import sys
+from setuptools import setup
+
+APP = ['inqry.py']
+DATA_FILES = []
+OPTIONS = {}
 
 VERSION_PY = os.path.join(os.path.dirname(__file__), 'version.py')
-
-try:
-    from setuptools import setup
-except ImportError:
-    from distutils.core import setup
 
 
 def version_getter():
@@ -33,15 +33,19 @@ def windows_only():
 
 version_writer()
 
-setup(name='InQRy',
-      version="{ver}".format(ver=version_getter()),
-      license='MIT',
-      description='Gets machine specs and generates a QR code containing them',
+setup(app=APP,
       author=['OXO Hub Lab', 'Eric Hanko', 'Jacob Zaval'],
       author_email='apxlab@microsoft.com',
-      url="https://office.visualstudio.com/APEX/Lab-Projects/_git/lab_inventory",
-      packages=['inqry', "inqry.system_specs"],
-      long_description=open('README.md').read(),
+      data_files=DATA_FILES,
+      description='Gets machine specs and generates a QR code containing them',
       install_requires=['qrcode', 'PyYAML', 'Pillow'] + windows_only(),
+      license='MIT',
+      long_description=open('README.md').read(),
+      name='InQRy',
+      options={'py2app': OPTIONS},
+      packages=['inqry', "inqry.system_specs"],
+      setup_requires=['py2app'],
       tests_require=['pytest'],
+      url="https://office.visualstudio.com/APEX/Lab-Projects/_git/lab_inventory",
+      version="{ver}".format(ver=version_getter()),
       )
