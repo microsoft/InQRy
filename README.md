@@ -5,16 +5,22 @@ the data.
 ## Requirements
 - Python 3.6 or later
 
-## Install
+## Using InQRy
+### Install
 1. clone the repository
 2. `cd lab_inventory`
 3. `pip3 install -e .`
+4. Run: `python3 inqry`
 
-## Run
-- `python3 inqry`
+### Build (Python 3.6 on macOS only)
+1. clone the repository
+2. `pip3 install py2app`
+3. `python3 setup.py py2app --iconfile inqry.icns`
+4. **InQRy.app** will be located in `dist/`. 
+    - **GUI**: Double-click from Finder to launch
+    - **CLI**: `open dist/InQRy.app`
 
 ## Description
-
 InQRy is a cross-platform application that generates a single QR code containing the machine's hardware
 specifications. This application is designed primarily to be used during a physical inventory procedure.
 
@@ -42,11 +48,17 @@ an initial physical inventory procedure, as well as subsequent hardware audits.
     - PowerShell
     - Git for Windows
 
-## Troubleshooting
+## Troubleshooting 
+### Installing
 1. Verify Python version(s): `python3 --version` or `python --version`
 2. Verify using Python 3.6: `python3 --version` or `python --version`
 3. Verify **pip** is version 9.0.1: `pip --version`
 4. Remove all build and setup cache: `rm -rf .eggs/ InQRy.egg-info/ build/ dist/ .cache/`
 5. Overwrite cached dependency installs: `pip3 install -e . --no-cache-dir`
 6. Remove all requirements: `pip3 uninstall -r requirements.txt -y`
-7. Retry installation: `pip3 install -e .` 
+7. Retry installation: `pip3 install -e .`
+
+### Building
+1. Remove all build and setup cache: `rm -rf .eggs/ InQRy.egg-info/ build/ dist/ .cache/`
+2. Verify Python version(s): `python3 --version` or `python --version`
+3. Verify using Python 3.6: `python3 --version` or `python --version` 
