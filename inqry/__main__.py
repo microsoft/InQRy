@@ -1,4 +1,4 @@
-import tkinter as tk
+import Tkinter as tk
 from inqry.qr_builder import AssetQRCode
 from inqry.system_specs import systemspecs
 from inqry.form_instructions import Instructions
@@ -19,14 +19,14 @@ def obtain_default_dimensions_for_the_root_gui_object():
     return tuple(int(_) for _ in ROOT.geometry().split('+')[0].split('x'))
 
 
-def center():  # Not used at this time
-    ROOT.update_idletasks()
-    size = obtain_default_dimensions_for_the_root_gui_object()
-    height = size[0]
-
-    x = calculate_center_coordinates(ROOT.winfo_screenwidth(), height)
-    y = calculate_center_coordinates(ROOT.winfo_screenheight(), width)
-    ROOT.geometry(f'{height}x{width}+{x}+{y}')
+# def center():  # Not used at this time
+#     ROOT.update_idletasks()
+#     size = obtain_default_dimensions_for_the_root_gui_object()
+#     height = size[0]
+#
+#     x = calculate_center_coordinates(ROOT.winfo_screenwidth(), height)
+#     y = calculate_center_coordinates(ROOT.winfo_screenheight(), width)
+#     ROOT.geometry(f'{height}x{width}+{x}+{y}')
 
 
 def click():
