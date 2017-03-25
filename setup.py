@@ -42,6 +42,5 @@ setup(name='InQRy',
       packages=['inqry', "inqry.system_specs"],
       long_description=open('README.md').read(),
       install_requires=['qrcode', 'PyYAML', 'Pillow'],
-      setup_requires=['qrcode', 'PyYAML', 'Pillow', 'pytest-runner'],
       tests_require=['pytest'],
       )
