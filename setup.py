@@ -7,7 +7,6 @@ from setuptools import setup
 APP = ['inqry.py']
 DATA_FILES = []
 OPTIONS = {}
-
 VERSION_PY = os.path.join(os.path.dirname(__file__), 'version.py')
 
 
@@ -27,25 +26,29 @@ def version_writer():
         return f.write(message + os.linesep + "__version__ = '{ver}'".format(ver=version_getter()) + '\n')
 
 
-def windows_only():
-    return ['wmi', 'pypiwin32'] if sys.platform == 'win32' else []
-
-
 version_writer()
+
+if sys.platform == 'darwin':
+    extra_options = dict(
+        setup_requires=['py2app'],
+        install_requires=['qrcode', 'PyYAML', 'Pillow'],
+    )
+elif sys.platform == 'win32':
+    extra_options = dict(
+        setup_requires=['py2exe'],
+        install_requires=['wmi', 'pypiwin32', 'qrcode', 'PyYAML', 'Pillow'],
+    )
 
 setup(app=APP,
       author=['OXO Hub Lab', 'Eric Hanko', 'Jacob Zaval'],
       author_email='apxlab@microsoft.com',
       data_files=DATA_FILES,
       description='Gets machine specs and generates a QR code containing them',
-      install_requires=['qrcode', 'PyYAML', 'Pillow'] + windows_only(),
       license='MIT',
       long_description=open('README.md').read(),
       name='InQRy',
       options={'py2app': OPTIONS},
       packages=['inqry', "inqry.system_specs"],
-      setup_requires=['py2app'],
       tests_require=['pytest'],
       url="https://office.visualstudio.com/APEX/Lab-Projects/_git/lab_inventory",
-      version="{ver}".format(ver=version_getter()),
-      )
+      version="{ver}".format(ver=version_getter()), **extra_options)
