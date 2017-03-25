@@ -1,6 +1,7 @@
 import os
 import re
 import subprocess
+import sys
 
 VERSION_PY = os.path.join(os.path.dirname(__file__), 'version.py')
 
@@ -26,11 +27,11 @@ def version_writer():
         f.write(message + os.linesep + "__version__ = '{ver}'".format(ver=version_getter()) + '\n')
 
 
-def main():
-    return version_writer()
+def windows_only():
+    return ['wmi', 'pypiwin32'] if sys.platform == 'win32' else []
 
 
-main()
+version_writer()
 
 setup(name='InQRy',
       version="{ver}".format(ver=version_getter()),
@@ -41,6 +42,6 @@ setup(name='InQRy',
       url="https://office.visualstudio.com/APEX/Lab-Projects/_git/lab_inventory",
       packages=['inqry', "inqry.system_specs"],
       long_description=open('README.md').read(),
-      install_requires=['qrcode', 'PyYAML', 'Pillow'],
+      install_requires=['qrcode', 'PyYAML', 'Pillow'] + windows_only(),
       tests_require=['pytest'],
       )
