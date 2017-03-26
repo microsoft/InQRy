@@ -1,10 +1,10 @@
 class Instructions:
     def __init__(self, specs, user):
-        self.delay = 'delay500ms'
+        self.delay = '~d'
+        self.tab = '~t'
+        self.enter = '~e'
         self.space = '\x20'
-        self.tab = '\x09'
-        self.select = 'enter_key'
-        self.status = 'Ready'
+        self.status = 'Deploy'
         self.model = specs.model
         self.processor = "{} {}".format(specs.cpu_speed, specs.cpu_name)
         self.memory = specs.memory
@@ -99,18 +99,18 @@ class Instructions:
 
     def _common_fields(self, unique_fields):
         return (
-            self._list_box(self.model) +
-            unique_fields +
-            self._list_box(self.status) +
-            self._list_box(self.user) +
-            self._text_box(self.serial)
-        )
+                self._list_box(self.model) +
+                unique_fields +
+                self._list_box(self.status) +
+                self._list_box(self.user) +
+                [self.delay, self.serial]
+                )
 
     def _text_box(self, field):
-        return [field, self.tab]
+        return [self.delay, field, self.tab]
 
     def _list_box(self, field):
-        return [self.space, self.delay, field, self.delay, self.select, self.delay, self.tab]
+        return [self.space, self.delay, field, self.delay, self.enter, self.delay, self.tab]
 
     def instruction_steps(self):
         return self._common_fields(self.fieldsets[self.model_definitions.get(self.model, 'Desktop')])

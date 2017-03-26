@@ -1,14 +1,14 @@
-from qrcode import QRCode
+import qrcode
 from inqry.form_instructions import Instructions
 
 
-class AssetQRCode(QRCode):
+class AssetQRCode(qrcode.QRCode):
     """An AssetQRCode instance generates and displays a QR code. At the time
     of writing this. The QR code is built only by being passed a list of string
      objects using the add_data() method"""
 
     def __init__(self, instructions):
-        self.qr = QRCode()
+        self.qr = qrcode.QRCode(error_correction=qrcode.constants.ERROR_CORRECT_L)
         super(AssetQRCode, self).__init__()
         self.Instructions = instructions
         self.code = self.build()
