@@ -7,6 +7,10 @@ ASSET = AssetQRCode(Instructions(systemspecs.main(), "jazava"))
 ROOT = tk.Tk()
 
 
+def show_entry_fields():
+    print("First Name: %s\nLast Name: %s" % (e1.get(), e2.get()))
+
+
 def get_dimensions_to_center_window():
     pass
 
@@ -36,6 +40,12 @@ def click():
 
 def main():
     ROOT.title("InQRy")
+    tk.Label(ROOT, text="First Name").grid(row=0)
+    tk.Label(ROOT, text="Last Name").grid(row=1)
+    e1 = tk.Entry(ROOT)
+    e2 = tk.Entry(ROOT)
+    e1.grid(row=0, column=1)
+    e2.grid(row=1, column=1)
     button = tk.Button(ROOT, text="Generate QR Code", command=click)
     button.grid(column=1, row=0)
     ROOT.focus_force()
@@ -44,3 +54,5 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+
