@@ -1,6 +1,7 @@
+import pytest
 from inqry.system_specs import macdisk
 
-DISKUTIL_INFO = '''
+DISKUTIL_OUTPUT = '''
    Device Identifier:        disk0
    Device Node:              /dev/disk0
    Whole:                    Yes
@@ -32,3 +33,28 @@ DISKUTIL_INFO = '''
    Low Level Format:         Not supported
    Device Location:          "SSD"
 '''
+
+
+@pytest.fixture(scope="session")
+def test_disk():
+    return macdisk.create_from_diskutil_info_output(DISKUTIL_OUTPUT)
+
+
+def test_disk_is_internal(test_disk):
+    assert test_disk.is_internal
+
+
+def test_disk_is_not_external(test_disk):
+    assert test_disk.is_external is False
+
+
+def test_device_name_is_correct(test_disk):
+    assert test_disk.device_name == 'APPLE SSD SM0128G'
+
+
+def test_disk_is_ssd(test_disk):
+    assert test_disk.is_ssd
+
+
+def test_size_is_correct(test_disk):
+    assert test_disk.size == '121.3 GB'
