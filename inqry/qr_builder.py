@@ -1,5 +1,4 @@
 import qrcode
-from inqry.form_instructions import Instructions
 
 
 class AssetQRCode(qrcode.QRCode):
@@ -10,12 +9,10 @@ class AssetQRCode(qrcode.QRCode):
     def __init__(self, instructions):
         self.qr = qrcode.QRCode(error_correction=qrcode.constants.ERROR_CORRECT_L)
         super(AssetQRCode, self).__init__()
-        self.Instructions = instructions
-        self.code = self.build()
+        self.instructions = instructions
 
     def build(self):
-        instructions_list = self.Instructions.instruction_steps()
-        for step in instructions_list:
+        for step in self.instructions:
             self.qr.add_data(step)
         return self.qr
 
