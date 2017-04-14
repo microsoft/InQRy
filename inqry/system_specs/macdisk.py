@@ -21,12 +21,20 @@ class Disk:
         return self.attributes.get('Device Location')
 
     @property
+    def removable_media(self):
+        return self.attributes.get('Removable Media')
+
+    @property
+    def is_fixed(self):
+        return self.removable_media == 'Fixed' or not self.removable_media
+
+    @property
     def is_internal(self):
-        return self.device_location == 'Internal'
+        return self.device_location != 'External'
 
     @property
     def is_external(self):
-        return self.device_location == 'External'
+        return self.device_location == 'External' or self.is_fixed is False
 
     @property
     def type(self):

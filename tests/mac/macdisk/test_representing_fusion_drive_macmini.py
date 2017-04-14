@@ -61,3 +61,11 @@ def test_disk_is_ssd(test_disk):
 
 def test_size_is_correct(test_disk):
     assert test_disk.size == '121.3 GB'
+
+
+def test_removable_media(test_disk):
+    assert test_disk.removable_media is False
+
+
+def test_is_not_removable(test_disk):
+    assert test_disk.is_fixed
