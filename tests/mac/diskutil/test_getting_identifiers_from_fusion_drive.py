@@ -1,6 +1,6 @@
 from inqry.system_specs import diskutil
 
-DISKUTIL_LIST_OUTPUT = """/dev/disk0 (internal, physical):
+DISKUTIL_LIST_OUTPUT_FUSION = """/dev/disk0 (internal, physical):
    #:                       TYPE NAME                    SIZE       IDENTIFIER
    0:      GUID_partition_scheme                        *121.3 GB   disk0
    1:                        EFI EFI                     209.7 MB   disk0s1
@@ -27,3 +27,9 @@ DISKUTIL_LIST_OUTPUT = """/dev/disk0 (internal, physical):
    0:      GUID_partition_scheme                        *8.0 GB     disk3
    1:                        EFI EFI                     209.7 MB   disk3s1
    2:                  Apple_HFS InQRy                   7.7 GB     disk3s2"""
+
+
+def test_only_physical_drives_included():
+    expected_physical_disks_multiple_disks = ['/dev/disk0', '/dev/disk1', '/dev/disk3']
+    identifiers = diskutil.get_physical_disk_identifiers(DISKUTIL_LIST_OUTPUT_FUSION)
+    assert expected_physical_disks_multiple_disks == identifiers
