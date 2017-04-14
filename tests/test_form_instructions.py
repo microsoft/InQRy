@@ -1,14 +1,13 @@
 import pytest
 from inqry import form_instructions
-from tests.mac import test_mac_systemspecs
+from tests.mac.test_mac_systemspecs import SYSTEM_SPECS
 
-TEST_SPECS = test_mac_systemspecs.systemspec_object()
 USER = 'jazava'
 
 
 @pytest.fixture(scope='session')
 def instructions_object():
-    return form_instructions.create_instructions_from_system_specs(TEST_SPECS, USER)
+    return form_instructions.create_instructions_from_system_specs(SYSTEM_SPECS, USER)
 
 
 def test_instructions_object_instantiates():
