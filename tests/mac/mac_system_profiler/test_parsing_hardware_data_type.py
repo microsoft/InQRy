@@ -1,6 +1,7 @@
 from inqry.system_specs import mac_system_profiler
 
-HARDWARE_DATA_TYPE_COMMAND_OUTPUT = '''Hardware:
+HARDWARE_DATA_TYPE_COMMAND_OUTPUT = '''
+Hardware:
 
     Hardware Overview:
 

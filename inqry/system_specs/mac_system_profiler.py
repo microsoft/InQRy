@@ -16,9 +16,9 @@ class DataTypes(Enum):
     DISPLAYS = 'Displays'
     HARDWARE = 'Hardware'
     MEMORY = 'Memory'
-    SERIAL_ATA = 'SerialATA'
+    # SERIAL_ATA = 'SerialATA'
     SOFTWARE = 'Software'
-    STORAGE = 'Storage'
+    # STORAGE = 'Storage'
     THUNDERBOLT = 'Thunderbolt'
 
 

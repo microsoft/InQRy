@@ -1,6 +1,7 @@
 from inqry.system_specs import mac_system_profiler
 
-MEMORY_DATA_TYPE_COMMAND_OUTPUT = '''Memory:
+MEMORY_DATA_TYPE_COMMAND_OUTPUT = '''
+Memory:
 
     Memory Slots:
 
