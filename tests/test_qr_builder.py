@@ -1,7 +1,7 @@
 import pytest
-from tests.test_form_instructions import instructions_object
 from inqry.qr_builder import AssetQRCode
-from tests.mac.test_mac_systemspecs import systemspec_object
+from tests.test_form_instructions import instructions_object
+from tests.mac.test_mac_systemspecs import SYSTEM_SPECS
 
 
 @pytest.mark.skip
@@ -16,5 +16,5 @@ def test_asset_qr_code_as_attributes_of_inherited_class():
 
 @pytest.mark.skip
 def test_asset_qr_code_has_display_attr():
-    qr = AssetQRCode(systemspec_object())
+    qr = AssetQRCode(SYSTEM_SPECS())
     assert hasattr(qr, 'display')
