@@ -102,9 +102,6 @@ ENV/
 
 # Project settings:
 .idea/**/misc.xml
-.idea/**/lab_inventory.iml
-.idea/dictionaries
-.idea/**/codeStyleSettings.xml
 
 # Sensitive or high-churn files:
 .idea/**/dataSources/
@@ -142,4 +139,3 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 /.vs
-.idea/InQRy.iml
