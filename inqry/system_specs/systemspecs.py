@@ -61,7 +61,7 @@ class SystemSpecs(object):
         for internal_disk in internal_disks:
             internal_disk_count += 1
             storage[
-                f'Drive {internal_disk_count}'] = f'{internal_disk.size} {internal_disk.type} ({internal_disk.device_name})'
+                f'Drive {internal_disk_count}'] = f'{internal_disk.size} {internal_disk.type} ({f'internal_disk.device_name})'
         return storage
 
     @property
@@ -91,3 +91,8 @@ class SystemSpecs(object):
             return self.storage['Drive 4']
         except KeyError:
             return str("")
+
+    @staticmethod
+    def _get_internal_storage(internal_storage=None):
+        disks = internal_storage or system_profiler.get_internal_storage()
+        return [(disk.size, disk.type, disk.device_name) for disk in disks]
