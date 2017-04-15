@@ -1,4 +1,3 @@
-import pytest
 from inqry.system_specs.systemspecs import SystemSpecs
 
 DATA = {'Model Name': 'Mac Pro', 'Model Identifier': 'MacPro6,1', 'Processor Name': 'Quad-Core Intel Xeon E5',
@@ -64,16 +63,3 @@ def test_speed_is_string():
 
 def test_cores_is_integer():
     assert isinstance(SYSTEM_SPECS.cpu_cores, int)
-
-
-@pytest.mark.skip
-def test_when_ios_device_is_connected():
-    pass
-
-
-@pytest.mark.skip
-def test_ability_to_get_components_from_system_profile_object():
-    pass
-
-
-
