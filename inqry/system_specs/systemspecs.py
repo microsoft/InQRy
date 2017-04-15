@@ -13,9 +13,9 @@ class SystemSpecs(object):
     A SystemSpecs instance is platform agnostic, but does contain the os_type
     attribute"""
 
-    def __init__(self, attributes):
+    def __init__(self, attributes=None):
         self.os_type = platform.system()
-        self.attributes = attributes
+        self.attributes = attributes or system_profiler.collector()
 
     @property
     def name(self):
@@ -91,16 +91,3 @@ class SystemSpecs(object):
             return self.storage['Drive 4']
         except KeyError:
             return str("")
-
-
-def create_specs_from_system_profiler_hardware_output(output):
-    """This method is used primarily for testing."""
-    return SystemSpecs(output)
-
-
-def main():
-    return SystemSpecs(system_profiler.collector())
-
-
-if __name__ == '__main__':
-    main()
