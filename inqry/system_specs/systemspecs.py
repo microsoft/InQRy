@@ -61,7 +61,7 @@ class SystemSpecs(object):
         for internal_disk in internal_disks:
             internal_disk_count += 1
             storage[
-                f'Drive {internal_disk_count}'] = f'{internal_disk.size} {internal_disk.type} ({f'internal_disk.device_name})'
+                f'Drive {internal_disk_count}'] = f'{internal_disk.size} {internal_disk.type} w({internal_disk.device_name})'
         return storage
 
     @property
