@@ -18,7 +18,7 @@ class DataTypes(Enum):
     MEMORY = 'Memory'
     # SERIAL_ATA = 'SerialATA'
     SOFTWARE = 'Software'
-    # STORAGE = 'Storage'
+    STORAGE = 'Storage'
     THUNDERBOLT = 'Thunderbolt'
 
 
@@ -69,3 +69,12 @@ def collector():
 def get_internal_storage():
     internal_disks = macdisk.get_all_physical_disks()
     return [disk for disk in internal_disks if disk.is_internal]
+
+
+def internal_storage_from_system_profiler():
+    storage_data = get_data(DataTypes.STORAGE)['Storage']
+
+    for drive in storage_data.keys():
+        for prop in storage_data[drive].keys():
+            if prop == 'Physical Drive' or 'Physical Volumes':
+                print(storage_data[drive].keys(), storage_data[drive][prop])
