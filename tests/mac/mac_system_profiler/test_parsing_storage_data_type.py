@@ -36,8 +36,7 @@ Storage:
           PV UUID: F93B31BC-3637-4AA6-8E28-441F155E687C
 '''
 
-RESULT = mac_system_profiler.parse_command_output(STORAGE_DATA_TYPE_COMMAND_OUTPUT)['Storage']['Macintosh HD']
-print(RESULT.keys())
+RESULT = mac_system_profiler.parse_command_output(STORAGE_DATA_TYPE_COMMAND_OUTPUT)['Storage']
 
 
 def test_parsing_memory_data_returns_dict():
@@ -47,8 +46,3 @@ def test_parsing_memory_data_returns_dict():
 @pytest.mark.skip
 def test_bank_0_is_accessible_as_expected():
     assert print(RESULT.keys())
-
-#
-#
-# def test_serial_number_is_none():
-#     assert RESULT['BANK 0/DIMM0']['Serial Number'] is None
