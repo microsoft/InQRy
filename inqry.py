@@ -15,7 +15,7 @@ def obtain_default_dimensions_for_the_root_gui_object():
 
 
 def click():
-    data = Instructions(systemspecs.main(), alias_entry.get())
+    data = Instructions(systemspecs.SystemSpecs(), alias_entry.get())
     AssetQRCode(data).display()
 
 

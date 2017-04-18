@@ -1,11 +1,11 @@
 from inqry.system_specs import macdisk
 
 DISKUTIL_OUTPUT = '''
-   Device Identifier:        disk5
-   Device Node:              /dev/disk5
+   Device Identifier:        disk0
+   Device Node:              /dev/disk0
    Whole:                    Yes
-   Part of Whole:            disk2
-   Device / Media Name:      G-DRIVE PRO Thunderbolt
+   Part of Whole:            disk0
+   Device / Media Name:      APPLE HDD ST3000DM001
 
    Volume Name:              Not applicable (no file system)
    Mounted:                  Not applicable (no file system)
@@ -17,14 +17,13 @@ DISKUTIL_OUTPUT = '''
    Protocol:                 SATA
    SMART Status:             Verified
 
-   Disk Size:                2.0 TB (2000179691520 Bytes) (exactly \
-   3906600960 512-Byte-Units)
+   Disk Size:                3.0 TB (3000592982016 Bytes) (exactly 5860533168 512-Byte-Units)
    Device Block Size:        512 Bytes
 
    Read-Only Media:          No
    Read-Only Volume:         Not applicable (no file system)
 
-   Device Location:          External
+   Device Location:          Internal
    Removable Media:          Fixed
 
    Solid State:              No
@@ -33,19 +32,19 @@ DISKUTIL_OUTPUT = '''
    Low Level Format:         Not supported
    '''
 
-test_disk = macdisk.create_from_diskutil_info_output(DISKUTIL_OUTPUT)
+test_disk = macdisk.create_from_diskutil_output(DISKUTIL_OUTPUT)
 
 
 def test_disk_is_not_internal():
-    assert test_disk.is_internal is False
+    assert test_disk.is_internal
 
 
 def test_disk_is_external():
-    assert test_disk.is_external
+    assert test_disk.is_external is False
 
 
 def test_device_name_is_correct():
-    assert test_disk.device_name == 'G-DRIVE PRO Thunderbolt'
+    assert test_disk.device_name == 'APPLE HDD ST3000DM001'
 
 
 def test_disk_is_not_ssd():
@@ -53,4 +52,8 @@ def test_disk_is_not_ssd():
 
 
 def test_size_is_correct():
-    assert test_disk.size == '2.0 TB'
+    assert test_disk.size == '3.0 TB'
+
+
+def test_removable_media():
+    assert test_disk.removable_media == 'Fixed'

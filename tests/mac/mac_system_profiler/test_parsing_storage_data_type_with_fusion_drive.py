@@ -1,4 +1,3 @@
-import pytest
 from inqry.system_specs import mac_system_profiler
 
 STORAGE_DATA_TYPE_COMMAND_OUTPUT = '''
@@ -79,3 +78,6 @@ Storage:
 
 RESULT = mac_system_profiler.parse_command_output(STORAGE_DATA_TYPE_COMMAND_OUTPUT)['Storage']
 
+
+def test_parsing_storage_data_returns_dict():
+    assert isinstance(RESULT, dict)

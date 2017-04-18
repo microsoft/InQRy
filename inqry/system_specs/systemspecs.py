@@ -56,12 +56,10 @@ class SystemSpecs(object):
     @property
     def storage(self):
         storage = {}
-        internal_disks = system_profiler.get_internal_storage()
-        internal_disk_count = 0
-        for internal_disk in internal_disks:
-            internal_disk_count += 1
-            storage[
-                f'Drive {internal_disk_count}'] = f'{internal_disk.size} {internal_disk.type} w({internal_disk.device_name})'
+        disk_count = 0
+        for disk in system_profiler.get_internal_storage():
+            disk_count += 1
+            storage[f'Drive {disk_count}'] = f'{disk.size} {disk.type} ({disk.device_name})'
         return storage
 
     @property

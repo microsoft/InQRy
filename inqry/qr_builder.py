@@ -9,10 +9,10 @@ class AssetQRCode(qrcode.QRCode):
     def __init__(self, instructions):
         self.qr = qrcode.QRCode(error_correction=qrcode.constants.ERROR_CORRECT_L)
         super(AssetQRCode, self).__init__()
-        self.instructions = instructions
+        self.build(instructions)
 
-    def build(self):
-        for step in self.instructions:
+    def build(self, instructions):
+        for step in instructions.instruction_steps():
             self.qr.add_data(step)
         return self.qr
 

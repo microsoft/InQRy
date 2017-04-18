@@ -1,4 +1,3 @@
-import pytest
 from inqry.system_specs import macdisk
 
 DISKUTIL_OUTPUT = '''
@@ -37,35 +36,32 @@ DISKUTIL_OUTPUT = '''
    Device Location:          "Lower"
 '''
 
-
-@pytest.fixture(scope="session")
-def test_disk():
-    return macdisk.create_from_diskutil_info_output(DISKUTIL_OUTPUT)
+test_disk = macdisk.create_from_diskutil_output(DISKUTIL_OUTPUT)
 
 
-def test_disk_is_internal(test_disk):
+def test_disk_is_internal():
     assert test_disk.is_internal
 
 
-def test_disk_is_not_external(test_disk):
+def test_disk_is_not_external():
     assert test_disk.is_external is False
 
 
-def test_device_name_is_correct(test_disk):
+def test_device_name_is_correct():
     assert test_disk.device_name == 'APPLE SSD SM128E'
 
 
-def test_disk_is_ssd(test_disk):
+def test_disk_is_ssd():
     assert test_disk.is_ssd
 
 
-def test_size_is_correct(test_disk):
+def test_size_is_correct():
     assert test_disk.size == '121.3 GB'
 
 
-def test_removable_media(test_disk):
+def test_removable_media():
     assert test_disk.removable_media is False
 
 
-def test_is_not_removable(test_disk):
+def test_is_not_removable():
     assert test_disk.is_fixed

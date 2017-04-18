@@ -1,7 +1,6 @@
-import pytest
 from inqry.system_specs import diskutil
 
-DISKUTIL_OUTPUT_MULTIPLE_DISKS = '''
+DISKUTIL_LIST_OUTPUT = '''
 /dev/disk0 (internal, physical):
    #:                       TYPE NAME                    SIZE       IDENTIFIER
    0:      GUID_partition_scheme                        *1.0 TB     disk0
@@ -35,35 +34,17 @@ DISKUTIL_OUTPUT_MULTIPLE_DISKS = '''
    0:                  Apple_HFS Builds                 +2.0 TB     disk4
 '''
 
-DISKUTIL_OUTPUT_SINGLE_DISK = '''
-/dev/disk0 (internal, physical):
-   #:                       TYPE NAME                    SIZE       IDENTIFIER
-   0:      GUID_partition_scheme                        *1.0 TB     disk0
-   1:                        EFI EFI                     209.7 MB   disk0s1
-   2:          Apple_CoreStorage Machintosh HD           999.7 GB   disk0s2
-   3:                 Apple_Boot Recovery HD             650.0 MB   disk0s3
 
-/dev/disk1 (internal, virtual):
-   #:                       TYPE NAME                    SIZE       IDENTIFIER
-   0:                            Macintosh HD           +999.3 GB   disk1
-                                 Logical Volume on disk0s2
-                                 05F5DF37-4C54-4810-82CE-9BF556A85116
-                                 Unlocked Encrypted
-'''
-
-
-@pytest.fixture
-def diskutil_output_fixture():
-    return diskutil.get_physical_disk_identifiers(DISKUTIL_OUTPUT_MULTIPLE_DISKS)
+def test_getting_internal_physical_drives():
+    expected_internal_disks = ['/dev/disk0']
+    assert expected_internal_disks == diskutil.get_internal_physical_disk_ids(DISKUTIL_LIST_OUTPUT)
 
 
 def test_only_physical_drives_included():
-    expected_physical_disks_multiple_disks = ['/dev/disk0', '/dev/disk2', '/dev/disk3']
-    identifiers = diskutil.get_physical_disk_identifiers(DISKUTIL_OUTPUT_MULTIPLE_DISKS)
-    assert expected_physical_disks_multiple_disks == identifiers
+    expected_physical_disks_multiple_disks = ['/dev/disk2', '/dev/disk3']
+    assert expected_physical_disks_multiple_disks == diskutil.get_external_physical_disk_ids(DISKUTIL_LIST_OUTPUT)
 
 
-def test_only_single_physical_drives_included():
-    expected_physical_disks_single_disk = ['/dev/disk0']
-    identifier = diskutil.get_physical_disk_identifiers(DISKUTIL_OUTPUT_SINGLE_DISK)
-    assert expected_physical_disks_single_disk == identifier
+def test_all_physical_disk_identifiers():
+    expected_disk_ids = ['/dev/disk0', '/dev/disk2', '/dev/disk3']
+    assert expected_disk_ids == diskutil.get_all_physical_ids(DISKUTIL_LIST_OUTPUT)

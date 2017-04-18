@@ -1,16 +1,14 @@
 from inqry.system_specs import macdisk
 
 DISKUTIL_OUTPUT = '''
-   Device Identifier:        disk0
-   Device Node:              /dev/disk0
+   Device Identifier:        disk5
+   Device Node:              /dev/disk5
    Whole:                    Yes
-   Part of Whole:            disk0
-   Device / Media Name:      APPLE SSD SM768E
+   Part of Whole:            disk2
+   Device / Media Name:      G-DRIVE PRO Thunderbolt
 
    Volume Name:              Not applicable (no file system)
-
    Mounted:                  Not applicable (no file system)
-
    File System:              None
 
    Content (IOContent):      GUID_partition_scheme
@@ -19,17 +17,16 @@ DISKUTIL_OUTPUT = '''
    Protocol:                 SATA
    SMART Status:             Verified
 
-   Total Size:               751.3 GB (751277983744 Bytes) (exactly 1467339812 512-Byte-Units)
-   Volume Free Space:        Not applicable (no file system)
+   Disk Size:                2.0 TB (2000179691520 Bytes) (exactly 3906600960 512-Byte-Units)
    Device Block Size:        512 Bytes
 
    Read-Only Media:          No
    Read-Only Volume:         Not applicable (no file system)
 
-   Device Location:          Internal
-   Removable Media:          No
+   Device Location:          External
+   Removable Media:          Fixed
 
-   Solid State:              Yes
+   Solid State:              No
    Virtual:                  No
    OS 9 Drivers:             No
    Low Level Format:         Not supported
@@ -38,21 +35,25 @@ DISKUTIL_OUTPUT = '''
 test_disk = macdisk.create_from_diskutil_output(DISKUTIL_OUTPUT)
 
 
-def test_disk_is_internal():
-    assert test_disk.is_internal
+def test_disk_is_not_internal():
+    assert test_disk.is_internal is False
 
 
-def test_disk_is_not_external():
-    assert test_disk.is_external is False
+def test_disk_is_external():
+    assert test_disk.is_external
 
 
 def test_device_name_is_correct():
-    assert test_disk.device_name == 'APPLE SSD SM768E'
+    assert test_disk.device_name == 'G-DRIVE PRO Thunderbolt'
 
 
-def test_disk_is_ssd():
-    assert test_disk.is_ssd
+def test_disk_is_not_ssd():
+    assert test_disk.is_ssd is False
 
 
 def test_size_is_correct():
-    assert test_disk.size == '751.3 GB'
+    assert test_disk.size == '2.0 TB'
+
+
+def test_removable_media():
+    assert test_disk.removable_media == 'Fixed'

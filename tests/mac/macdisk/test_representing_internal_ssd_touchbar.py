@@ -1,3 +1,5 @@
+from inqry.system_specs import macdisk
+
 DISKUTIL_OUTPUT = '''
    Device Identifier:        disk0
    Device Node:              /dev/disk0
@@ -28,3 +30,33 @@ DISKUTIL_OUTPUT = '''
    OS 9 Drivers:             No
    Low Level Format:         Not supported
 '''
+
+test_disk = macdisk.create_from_diskutil_output(DISKUTIL_OUTPUT)
+
+
+def test_disk_is_internal():
+    assert test_disk.is_internal
+
+
+def test_disk_is_not_external():
+    assert test_disk.is_external is False
+
+
+def test_device_name_is_correct():
+    assert test_disk.device_name == 'APPLE SSD AP0256J'
+
+
+def test_disk_is_ssd():
+    assert test_disk.is_ssd
+
+
+def test_size_is_correct():
+    assert test_disk.size == '251.0 GB'
+
+
+def test_removable_media():
+    assert test_disk.removable_media == 'Fixed'
+
+
+def test_is_not_removable():
+    assert test_disk.is_fixed

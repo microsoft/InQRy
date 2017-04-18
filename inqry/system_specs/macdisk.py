@@ -3,13 +3,12 @@ import yaml
 from inqry.system_specs import diskutil
 
 
-def create_from_diskutil_info_output(output):
+def create_from_diskutil_output(output):
     return Disk(yaml.load(output))
 
 
-def get_all_physical_disks():
-    return [create_from_diskutil_info_output(diskutil.get_disk_info(disk_identifier)) for disk_identifier in
-            diskutil.get_physical_disk_identifiers()]
+def create_disks_from_physical_disk_ids():
+    return [create_from_diskutil_output(diskutil.get_disk_info(disk_id)) for disk_id in diskutil.get_all_physical_ids()]
 
 
 class Disk:

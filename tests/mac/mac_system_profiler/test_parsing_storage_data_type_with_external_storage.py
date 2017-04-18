@@ -1,4 +1,3 @@
-import pytest
 from inqry.system_specs import mac_system_profiler
 
 STORAGE_DATA_TYPE_COMMAND_OUTPUT = '''
@@ -6,7 +5,7 @@ Storage:
 
     Macintosh HD:
 
-      Available: 87.54 GB (87,536,078,848 bytes)
+      Available: 72.08 GB (72,077,332,480 bytes)
       Capacity: 249.66 GB (249,664,372,736 bytes)
       Mount Point: /
       File System: Journaled HFS+
@@ -34,15 +33,28 @@ Storage:
           Partition Map Type: GPT (GUID Partition Table)
           Status: Online
           PV UUID: F93B31BC-3637-4AA6-8E28-441F155E687C
+
+    InQRy:
+
+      Available: 7.94 GB (7,944,110,080 bytes)
+      Capacity: 8 GB (8,004,300,800 bytes)
+      Mount Point: /Volumes/InQRy
+      File System: Journaled HFS+
+      Writable: Yes
+      Ignore Ownership: Yes
+      BSD Name: disk2s1
+      Volume UUID: 8FA5486A-249D-3BE6-B223-228C72C66133
+      Physical Drive:
+          Device Name: Relay UFD
+          Media Name: Staples Relay UFD Media
+          Protocol: USB
+          Internal: No
+          Partition Map Type: MBR (Master Boot Record)
+
 '''
 
 RESULT = mac_system_profiler.parse_command_output(STORAGE_DATA_TYPE_COMMAND_OUTPUT)['Storage']
 
 
-def test_parsing_memory_data_returns_dict():
+def test_parsing_storage_data_returns_dict():
     assert isinstance(RESULT, dict)
-
-
-@pytest.mark.skip
-def test_bank_0_is_accessible_as_expected():
-    assert print(RESULT.keys())
