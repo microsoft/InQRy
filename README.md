@@ -1,14 +1,13 @@
 # InQRy
-Obtains machine hardware specifications then generates a QR code containing
-the data.
+Obtains machine hardware specifications then generates a QR code containing the data.
 
 ## Requirements
-- Python 3.6 or later
+- Python 3.6 or later ([Homebrew](https://brew.sh/) installed version of Python 3 is recommended)
 
 ## Using InQRy
 ### Install
 1. clone the repository
-2. `cd lab_inventory`
+2. `cd InQRy`
 3. `pip3 install -e .`
 4. Run: `python3 inqry`
 
@@ -48,17 +47,17 @@ an initial physical inventory procedure, as well as subsequent hardware audits.
     - PowerShell
     - Git for Windows
 
-## Troubleshooting 
-### Installing
-1. Verify Python version(s): `python3 --version` or `python --version`
-2. Verify using Python 3.6: `python3 --version` or `python --version`
+## Troubleshooting
+### For issues with Insalling:
+1. Verify Python version(s): `python3 --version`
+2. Verify using Python 3.6: `python3 --version`
 3. Verify **pip** is version 9.0.1: `pip --version`
 4. Remove all build and setup cache: `rm -rf .eggs/ InQRy.egg-info/ build/ dist/ .cache/`
 5. Overwrite cached dependency installs: `pip3 install -e . --no-cache-dir`
 6. Remove all requirements: `pip3 uninstall -r requirements.txt -y`
 7. Retry installation: `pip3 install -e .`
 
-### Building
+### For issues with building:
 1. Remove all build and setup cache: `rm -rf .eggs/ InQRy.egg-info/ build/ dist/ .cache/`
-2. Verify Python version(s): `python3 --version` or `python --version`
-3. Verify using Python 3.6: `python3 --version` or `python --version` 
+2. Verify Python version(s): `python3 --version`
+3. Verify using Python 3.6: `python3 --version` 
