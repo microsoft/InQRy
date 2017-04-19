@@ -21,5 +21,5 @@ def test_if_disk_list_is_dict():
     assert isinstance(SYSTEM_SPECS.storage, dict)
 
 
-def test_get_internal_storage_is_list():
-    assert isinstance(mac_system_profiler.get_internal_storage(), list)
+def test_get_internal_storage_is_not_empty():
+    assert len(mac_system_profiler.get_internal_storage()) > 0
