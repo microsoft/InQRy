@@ -13,41 +13,42 @@ class SystemSpecs(object):
     A SystemSpecs instance is platform agnostic, but does contain the os_type
     attribute"""
 
-    def __init__(self, attributes=None):
+    def __init__(self, hardware_overview=None, internal_storage=None):
         self.os_type = platform.system()
-        self.attributes = attributes or system_profiler.collector()
+        self.internal_storage = internal_storage or system_profiler.get_internal_storage()
+        self.hardware_overview = hardware_overview or system_profiler.get_hardware_overview()
 
     @property
     def name(self):
-        return self.attributes.get('Model Name')
+        return self.hardware_overview.get('Model Name')
 
     @property
     def model(self):
-        return self.attributes.get('Model Identifier')
+        return self.hardware_overview.get('Model Identifier')
 
     @property
     def serial(self):
-        return self.attributes.get('Serial Number (system)')
+        return self.hardware_overview.get('Serial Number (system)')
 
     @property
     def cpu_name(self):
-        return self.attributes.get('Processor Name')
+        return self.hardware_overview.get('Processor Name')
 
     @property
     def cpu_processors(self):
-        return self.attributes.get('Number of Processors')
+        return self.hardware_overview.get('Number of Processors')
 
     @property
     def cpu_cores(self):
-        return self.attributes.get('Total Number of Cores')
+        return self.hardware_overview.get('Total Number of Cores')
 
     @property
     def cpu_speed(self):
-        return self.attributes.get('Processor Speed')
+        return self.hardware_overview.get('Processor Speed')
 
     @property
     def memory(self):
-        return self.attributes.get('Memory')
+        return self.hardware_overview.get('Memory')
 
     @property
     def drive_count(self):
@@ -56,7 +57,7 @@ class SystemSpecs(object):
     @property
     def storage(self):
         return {f'Drive {disk_count}': f'{disk.size} {disk.type} ({disk.device_name})' for disk_count, disk in
-                self._get_internal_storage()}
+                enumerate(self.internal_storage)}
 
     @property
     def drive1(self):
@@ -85,7 +86,3 @@ class SystemSpecs(object):
             return self.storage['Drive 4']
         except KeyError:
             return str("")
-
-    @staticmethod
-    def _get_internal_storage(internal_storage=None):
-        return internal_storage or enumerate(system_profiler.get_internal_storage())
