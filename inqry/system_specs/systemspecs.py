@@ -1,6 +1,6 @@
 import platform
-from inqry.system_specs import system_profiler
 from inqry.system_specs import diskutility
+from inqry.system_specs import system_profiler
 
 
 class SystemSpecs(object):
