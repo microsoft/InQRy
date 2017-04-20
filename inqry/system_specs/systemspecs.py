@@ -52,7 +52,7 @@ class SystemSpecs(object):
 
     @property
     def drive_count(self):
-        return len(system_profiler.get_internal_storage())
+        return len(self.storage)
 
     @property
     def storage(self):
