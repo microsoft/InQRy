@@ -11,6 +11,11 @@ def get_all_physical_disk():
             unique_disk_id in get_physicaldisk.get_physical_disk_identifiers()]
 
 
+def get_internal_storage():
+    internal_disks = get_all_physical_disk()
+    return [disk for disk in internal_disks if disk.is_internal]
+
+
 class Disk(object):
     def __init__(self, windows_disk):
         self.windows_disk = windows_disk

@@ -1,5 +1,6 @@
 import platform
 from inqry.system_specs import system_profiler
+from inqry.system_specs import diskutility
 
 
 class SystemSpecs(object):
@@ -15,8 +16,8 @@ class SystemSpecs(object):
 
     def __init__(self, hardware_overview=None, internal_storage=None):
         self.os_type = platform.system()
-        self.internal_storage = internal_storage or system_profiler.get_internal_storage()
         self.hardware_overview = hardware_overview or system_profiler.get_hardware_overview()
+        self.internal_storage = internal_storage or diskutility.get_internal_storage()
 
     @property
     def name(self):

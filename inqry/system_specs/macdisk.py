@@ -11,6 +11,11 @@ def create_disks_from_physical_disk_ids():
     return [create_from_diskutil_output(diskutil.get_disk_info(disk_id)) for disk_id in diskutil.get_all_physical_ids()]
 
 
+def get_internal_storage():
+    internal_disks = create_disks_from_physical_disk_ids()
+    return [disk for disk in internal_disks if disk.is_internal]
+
+
 class Disk:
     def __init__(self, attributes=None):
         self.attributes = attributes or {}

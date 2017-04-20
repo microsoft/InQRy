@@ -1,5 +1,4 @@
 import wmi
-from inqry.system_specs import windisk
 
 
 class WindowsProfile:
@@ -37,11 +36,6 @@ class WindowsProfile:
 def get_hardware_overview():
     """Returns all components from a WindowsProfile instance a dictionary with the same keys as a Mac system profile"""
     return WindowsProfile().get_all_windows_system_components()
-
-
-def get_internal_storage():
-    internal_disks = windisk.get_all_physical_disk()
-    return [disk for disk in internal_disks if disk.is_internal]
 
 
 def human_readable(component):

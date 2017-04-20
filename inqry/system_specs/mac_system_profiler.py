@@ -2,7 +2,6 @@ from enum import Enum
 import re
 import subprocess
 import yaml
-from inqry.system_specs import macdisk
 
 BASE_COMMAND = '/usr/sbin/system_profiler'
 
@@ -63,8 +62,3 @@ def _remove_dash_after_first_colon(line):
 
 def get_hardware_overview():
     return get_data(DataTypes.HARDWARE)['Hardware']['Hardware Overview']
-
-
-def get_internal_storage():
-    internal_disks = macdisk.create_disks_from_physical_disk_ids()
-    return [disk for disk in internal_disks if disk.is_internal]
