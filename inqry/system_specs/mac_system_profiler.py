@@ -61,7 +61,7 @@ def _remove_dash_after_first_colon(line):
     return re.sub(pattern=r'(.+: )-', repl=r'\1', string=line)
 
 
-def collector():
+def get_hardware_overview():
     return get_data(DataTypes.HARDWARE)['Hardware']['Hardware Overview']
 
 

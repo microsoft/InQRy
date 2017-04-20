@@ -34,7 +34,7 @@ class WindowsProfile:
         return human_readable(disk)
 
 
-def collector():
+def get_hardware_overview():
     """Returns all components from a WindowsProfile instance a dictionary with the same keys as a Mac system profile"""
     return WindowsProfile().get_all_windows_system_components()
 
