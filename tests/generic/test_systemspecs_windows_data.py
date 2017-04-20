@@ -24,5 +24,9 @@ def test_assert_system_specs_storage():
     assert SYSTEM_SPECS.storage
 
 
+def test_system_specs_drive_count_returns_correct_amount():
+    assert SYSTEM_SPECS.drive_count == 1
+
+
 def test_drive_bay_1_returns_correct_data():
     assert SYSTEM_SPECS.drive1 == '512 GB SSD (SAMSUNG MZHPV512HDGL-000H1)'

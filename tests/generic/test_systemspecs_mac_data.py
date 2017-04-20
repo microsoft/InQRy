@@ -26,8 +26,12 @@ def test_system_specs_can_be_instantiated_with_test_data():
     assert SYSTEM_SPECS
 
 
-def test_assert_system_specs_storage():
+def test_system_specs_storage():
     assert SYSTEM_SPECS.storage
+
+
+def test_system_specs_drive_count_returns_correct_amount():
+    assert SYSTEM_SPECS.drive_count == 2
 
 
 def test_drive_bay_1_returns_correct_data():
