@@ -1,5 +1,5 @@
 from inqry import form_instructions
-from tests.test_systemspecs_mac_data import SYSTEM_SPECS
+from tests.generic.test_systemspecs_mac_data import SYSTEM_SPECS
 
 
 INSTRUCTIONS = form_instructions.Instructions(SYSTEM_SPECS)

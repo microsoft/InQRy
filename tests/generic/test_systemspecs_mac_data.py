@@ -1,6 +1,6 @@
 from inqry.system_specs import systemspecs
-from tests.mac.macdisk.test_representing_external_hdd_generic import test_disk as disk1
-from tests.mac.macdisk.test_representing_internal_ssd_touchbar import test_disk as disk2
+from tests.mac.macdisk.test_representing_internal_hdd_fusion_imac import test_disk as disk1
+from tests.mac.macdisk.test_representing_internal_ssd_fusion_imac import test_disk as disk2
 
 HARDWARE = {'Model Name': 'Mac Pro',
             'Model Identifier': 'MacPro6,1',
@@ -24,6 +24,10 @@ SYSTEM_SPECS = systemspecs.SystemSpecs(HARDWARE, INTERNAL_STORAGE)
 
 def test_system_specs_can_be_instantiated_with_test_data():
     assert SYSTEM_SPECS
+
+
+def test_assert_system_specs_storage():
+    assert SYSTEM_SPECS.storage
 
 
 def test_drive_bay_1_returns_correct_data():

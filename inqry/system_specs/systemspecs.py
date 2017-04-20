@@ -57,7 +57,7 @@ class SystemSpecs(object):
     @property
     def storage(self):
         return {f'Drive {disk_count}': f'{disk.size} {disk.type} ({disk.device_name})' for disk_count, disk in
-                enumerate(self.internal_storage)}
+                enumerate(self.internal_storage, 1)}
 
     @property
     def drive1(self):
