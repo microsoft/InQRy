@@ -1,4 +1,5 @@
 import re
+import wmi
 
 
 class WindowsProfile:
