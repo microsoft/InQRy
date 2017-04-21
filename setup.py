@@ -35,8 +35,7 @@ if sys.platform == 'darwin':
     )
 elif sys.platform == 'win32':
     extra_options = dict(
-        setup_requires=['py2exe'],
-        install_requires=['wmi', 'pypiwin32', 'qrcode', 'PyYAML', 'Pillow'],
+        install_requires=['wmi', 'pypiwin32', 'qrcode', 'Pillow'],
     )
 
 setup(app=APP,

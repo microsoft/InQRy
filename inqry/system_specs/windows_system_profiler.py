@@ -1,3 +1,4 @@
+import re
 import wmi
 
 
@@ -21,26 +22,35 @@ class WindowsProfile:
                 'Model Identifier': self.win32_computer_system.SystemSKUNumber,
                 'Number of Processors': self.win32_computer_system.NumberOfProcessors,
                 'Total Number of Cores': self.win32_processor.NumberOfCores,
-                'Memory': human_readable(self.win32_computer_system.TotalPhysicalMemory),
-                'Processor Name': self.win32_processor.Name}
-
-    @property
-    def user(self):
-        return split_name(self.win32_computer_system.UserName)
+                'Memory': self.get_memory_in_gigabytes(self.win32_computer_system.TotalPhysicalMemory),
+                'Processor Name': self.get_cpu_name(self.win32_processor.Name),
+                'Processor Speed': self.get_cpu_speed(self.win32_processor.Name)}
 
     @staticmethod
-    def size(disk):
-        return human_readable(disk)
+    def _human_readable(component):
+        return str(round(int(component) / 1024 ** 3)) + " GB"
+
+    @staticmethod
+    def _split_processor(name):
+        pattern = re.compile(r' @ ')
+        return re.split(pattern, name)
+
+    @staticmethod
+    def get_cpu_name(full_cpu_name):
+        return WindowsProfile._split_processor(full_cpu_name)[0]
+
+    @staticmethod
+    def get_cpu_speed(full_cpu_name):
+        return WindowsProfile._split_processor(full_cpu_name)[1]
+
+    @staticmethod
+    def get_memory_in_gigabytes(memory_bytes):
+        return WindowsProfile._human_readable(memory_bytes)
 
 
 def get_hardware_overview():
-    """Returns all components from a WindowsProfile instance a dictionary with the same keys as a Mac system profile"""
+    """
+    Returns all components from a WindowsProfile instance a dictionary with the same keys as a Mac system profile
+    :return: dict:
+    """
     return WindowsProfile().get_all_windows_system_components()
-
-
-def human_readable(component):
-    return str(round(int(component) / 10 ** 9)) + " GB"
-
-
-def split_name(name):
-    return name.split('\\')[1]
