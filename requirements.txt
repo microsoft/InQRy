@@ -1,5 +1,5 @@
 qrcode
-PyYAML
+PyYAML; sys_platform == 'darwin'
 Pillow
 wmi; sys_platform == 'win32'
 pypiwin32; sys_platform == 'win32'
