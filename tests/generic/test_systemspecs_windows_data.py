@@ -9,7 +9,7 @@ HARDWARE = {'Model Name': 'Surface_Pro_3',
             'Total Number of Cores': 2,
             'Processor Speed': '1.70GHz',
             'Memory': '8 GB',
-            'Processor Name': 'Intel(R) Core(TM) i7-4650U CPU @ 1.70GHz'}
+            'Processor Name': 'Intel(R) Core(TM) i7-4650U CPU'}
 
 INTERNAL_STORAGE = [disk1]
 
@@ -36,5 +36,5 @@ def test_cpu_speed_is_parsed_correctly():
     assert SYSTEM_SPECS.cpu_speed == '1.70GHz'
 
 
-def test_cpu_name_returns_full_name():
-    assert SYSTEM_SPECS.cpu_name == 'Intel(R) Core(TM) i7-4650U CPU @ 1.70GHz'
+def test_cpu_name_returns_name():
+    assert SYSTEM_SPECS.cpu_name == 'Intel(R) Core(TM) i7-4650U CPU'
