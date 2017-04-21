@@ -55,8 +55,12 @@ class Disk(object):
     @property
     def size(self):
         pattern = re.compile(r'(?:Size\s+:\s)([\d]+)')
-        return human_readable(re.findall(pattern, self.windows_disk)[0])
+        return self._human_readable(re.findall(pattern, self.windows_disk)[0])
 
-
-def human_readable(component):
-    return str(round(int(component) / 10 ** 9)) + " GB"
+    @staticmethod
+    def _human_readable(component):
+        size = round(int(component) / 10 ** 9)
+        if size >= 1000:
+            return str(size / 1000) + " TB"
+        else:
+            return str(size) + " GB"
