@@ -1,3 +1,4 @@
+import re
 import wmi
 
 
@@ -22,7 +23,12 @@ class WindowsProfile:
                 'Number of Processors': self.win32_computer_system.NumberOfProcessors,
                 'Total Number of Cores': self.win32_processor.NumberOfCores,
                 'Memory': human_readable(self.win32_computer_system.TotalPhysicalMemory),
-                'Processor Name': self.win32_processor.Name}
+                'Processor Name': self.win32_processor.Name,
+                'Processor Speed': self.get_cpu_speed()}
+
+    def get_cpu_speed(self):
+        pattern = re.compile(r'(?=@ )(.*)')
+        return re.findall(pattern, self.win32_processor.Name)
 
     @property
     def user(self):

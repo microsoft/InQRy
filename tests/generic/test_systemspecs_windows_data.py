@@ -7,7 +7,7 @@ HARDWARE = {'Model Name': 'Surface_Pro_3',
             'Model Identifier': 'Surface Pro 3',
             'Number of Processors': 1,
             'Total Number of Cores': 2,
-            'Processor Speed': 'Intel(R) Core(TM) i7-4650U CPU @ 1.70GHz',
+            'Processor Speed': '1.70GHz',
             'Memory': '8 GB',
             'Processor Name': 'Intel(R) Core(TM) i7-4650U CPU @ 1.70GHz'}
 
@@ -30,3 +30,11 @@ def test_system_specs_drive_count_returns_correct_amount():
 
 def test_drive_bay_1_returns_correct_data():
     assert SYSTEM_SPECS.drive1 == '512 GB SSD (SAMSUNG MZHPV512HDGL-000H1)'
+
+
+def test_cpu_speed_is_parsed_correctly():
+    assert SYSTEM_SPECS.cpu_speed == '1.70GHz'
+
+
+def test_cpu_name_returns_full_name():
+    assert SYSTEM_SPECS.cpu_name == 'Intel(R) Core(TM) i7-4650U CPU @ 1.70GHz'
