@@ -11,7 +11,7 @@ def get_physical_disk_identifiers(unique_id_output=None):
 
 
 def get_disk_info(unique_id):
-    return _get_output_of_get_physical_disk_command(arguments=f'-UniqueID \'{unique_id}\' | Select *')
+    return _get_output_of_get_physical_disk_command(arguments='-UniqueID \'{}\' | Select *'.format(unique_id))
 
 
 def list_all():
