@@ -26,14 +26,6 @@ class WindowsProfile:
                 'Processor Speed': self.get_cpu_speed(self.win32_processor.Name)}
 
     @staticmethod
-    def get_hardware_overview():
-        """
-        Returns all components from a WindowsProfile instance a dictionary with the same keys as a Mac system profile
-        :return: dict:
-        """
-        return WindowsProfile().get_all_windows_system_components()
-
-    @staticmethod
     def _human_readable(component):
         return str(round(int(component) / 10 ** 9)) + " GB"
 
@@ -53,3 +45,11 @@ class WindowsProfile:
     @staticmethod
     def get_memory_in_gigabytes(memory_bytes):
         return WindowsProfile._human_readable(memory_bytes)
+
+
+def get_hardware_overview():
+    """
+    Returns all components from a WindowsProfile instance a dictionary with the same keys as a Mac system profile
+    :return: dict:
+    """
+    return WindowsProfile().get_all_windows_system_components()
