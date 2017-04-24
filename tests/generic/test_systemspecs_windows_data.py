@@ -40,3 +40,11 @@ def test_cpu_speed_is_parsed_correctly():
 
 def test_cpu_name_returns_name():
     assert WINDOWS_SYSTEM_SPECS.cpu_name == 'Intel(R) Core(TM) i7-4650U CPU'
+
+
+def test_system_specs_os_type():
+    assert WINDOWS_SYSTEM_SPECS.os_type == 'win32'
+
+
+def test_instructions_defaults_to_desktop_without_pc_model():
+    assert WINDOWS_SYSTEM_SPECS.form_factor == 'Desktop'
