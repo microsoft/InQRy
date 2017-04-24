@@ -19,20 +19,26 @@ HARDWARE = {'Model Name': 'Mac Pro',
 
 INTERNAL_STORAGE = [disk1, disk2]
 
-SYSTEM_SPECS = systemspecs.SystemSpecs(HARDWARE, INTERNAL_STORAGE)
+OS_TYPE = 'Darwin'
+
+MAC_SYSTEM_SPECS = systemspecs.SystemSpecs(HARDWARE, INTERNAL_STORAGE, OS_TYPE)
 
 
 def test_system_specs_can_be_instantiated_with_test_data():
-    assert SYSTEM_SPECS
+    assert MAC_SYSTEM_SPECS
 
 
 def test_system_specs_storage():
-    assert SYSTEM_SPECS.storage
+    assert MAC_SYSTEM_SPECS.storage
+
+
+def test_system_specs_os_type():
+    assert MAC_SYSTEM_SPECS.os_type == 'Darwin'
 
 
 def test_system_specs_drive_count_returns_correct_amount():
-    assert SYSTEM_SPECS.drive_count == 2
+    assert MAC_SYSTEM_SPECS.drive_count == 2
 
 
 def test_drive_bay_1_returns_correct_data():
-    assert SYSTEM_SPECS.drive1 == '3.0 TB HDD (APPLE HDD ST3000DM001)'
+    assert MAC_SYSTEM_SPECS.drive1 == '3.0 TB HDD (APPLE HDD ST3000DM001)'
