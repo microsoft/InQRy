@@ -1,11 +1,11 @@
-from inqry import form_instructions
+from inqry import instructions
 from tests.generic.test_systemspecs_mac_data import MAC_SYSTEM_SPECS
 
-INSTRUCTIONS = form_instructions.Instructions(MAC_SYSTEM_SPECS)
+INSTRUCTIONS = instructions.Instructions(MAC_SYSTEM_SPECS)
 
 
 def test_instructions_object_instantiates():
-    assert form_instructions.Instructions(MAC_SYSTEM_SPECS)
+    assert instructions.Instructions(MAC_SYSTEM_SPECS)
 
 
 def test_instructions_object_returns_model():
