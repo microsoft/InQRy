@@ -51,7 +51,7 @@ InQRy is a cross-platform application that generates a single QR code containing
 specifications. This application is designed primarily to be used during a physical inventory procedure.
 
 The QR code contains detailed information about the client machine or device,
-which can then be scanned it quickly add assets into a Snipe-IT database.
+which can then be scanned it quickly add assets into a [Snipe-IT](https://github.com/snipe/snipe-it) database.
 
 ### How It Works
 
@@ -62,7 +62,7 @@ on the screen for scanning.
 
 InQRy determines which instructions to follow based on the
 machine itself. Those instructions contain other necessary information that
-allow it to move fluidly through different types of fields in the Snipe-IT asset
+allow it to move fluidly through different types of fields in the [Snipe-IT](https://github.com/snipe/snipe-it) asset
 entry form.
 
 InQRy was written to obtain asset information quickly and accurately for both
