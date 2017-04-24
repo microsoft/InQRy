@@ -23,9 +23,9 @@ Hardware:
 RESULT = mac_system_profiler.parse_command_output(HARDWARE_DATA_TYPE_COMMAND_OUTPUT)['Hardware']['Hardware Overview']
 
 
-def test_parsing_hardware_data_returns_dict():
-    assert isinstance(RESULT, dict)
-
-
 def test_model_identifier_is_correct():
     assert RESULT['Model Identifier'] == 'MacBookPro10,1'
+
+
+def test_serial_number_is_correct():
+    assert RESULT['Serial Number (system)'] == 'C02JL3REDKQ5'
