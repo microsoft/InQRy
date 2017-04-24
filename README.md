@@ -1,14 +1,19 @@
 ## InQRy
 Obtains machine hardware specifications and generates a QR code containing the data.
 
-### Install
+### Install (run from the command line)
+ 
+##### Requirements
+- Python 3.4.4 or later ([Homebrew](https://brew.sh/) installed version of Python 3 is recommended)
+
+##### Instructions
 - clone the repository
 - `cd InQRy`
 - `pip3 install .`
-- `python3 InQRy.py`
+- Run: `python3 InQRy.py`
 - Use the InQRy API from the Python interpreter with `import inqry`
 
-Example usage:
+###### Example API usage:
 ```
 >>> from inqry.system_specs import systemspecs
 >>> ss = systemspecs.SystemSpecs()
@@ -20,10 +25,7 @@ Example usage:
 {'Drive 1': '251.0 GB SSD (APPLE SSD AP0256J)'}
 ```
 
-#### Requirements
-- Python 3.4.4 or later ([Homebrew](https://brew.sh/) installed version of Python 3 is recommended)
-
-### Build
+### Build (run as compiled binary)
 #### Mac
 ##### Requirements
 - OS X 10.10 or later (OS X 10.10 is recommended for forward compatibility)
@@ -38,12 +40,12 @@ Example usage:
 #### Windows
 ##### Requirements
 - Windows 10
-- Python 3.4.4 (required)
-- pyinstaller (3.3dev)
+- Python 3.4 or 3.5 (Will _not_ build on Python 3.6 or later)
+- pyinstaller (3.2.1 or later)
 
 ##### Instructions
 - clone the repository
-- `pyinstaller --onefile --windowed --icon inqry.ico InQRy.py`
+- `pyinstaller --onefile --icon inqry.ico InQRy.py`
 - **InQRy.exe** is in `dist/`
 
 ### Description
@@ -57,7 +59,7 @@ which can then be scanned it quickly add assets into a [Snipe-IT](https://github
 
 InQRy obtains hardware specs using shell commands and parses the output for
 the desired information. It then takes that information, processes it and
-instructs the `qrcode` Python module to create a QR code, which is displayed
+instructs [python-qrcode](https://github.com/lincolnloop/python-qrcode) to create a QR code, which is displayed
 on the screen for scanning.
 
 InQRy determines which instructions to follow based on the
