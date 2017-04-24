@@ -8,12 +8,13 @@ Obtains machine hardware specifications and generates a QR code containing the d
 - clone the repository
 - `cd InQRy`
 - `pip3 install .`
-- `python3 inqry.py`
+- `python3 InQRy.py`
 
 Once InQRy is installed, you can then access the InQRy API from the Python interpreter with `import inqry`
 
-#### Build (Mac Only)
-###### Build Requirements
+#### Build
+##### Mac
+###### Requirements
 - OS X 10.10 or later (OS X 10.10 is recommended for forward compatibility)
 - Xcode Command Line Tools (7.2.0)
 - py2app (0.12) (`pip3 install py2app`)
@@ -22,6 +23,17 @@ Once InQRy is installed, you can then access the InQRy API from the Python inter
 - clone the repository
 - `python3 setup.py py2app --iconfile inqry.icns`
 - **InQRy.app** is in `dist/`
+
+##### Windows
+###### Requirements
+- Windows 10
+- Python 3.4.4 (required)
+- pyinstaller (3.3dev)
+
+###### Instructions
+- clone the repository
+- `pyinstaller --onefile --windowed --icon inqry.ico InQRy.py`
+- **InQRy.exe** is in `dist/`
 
 #### Description
 InQRy is a cross-platform application that generates a single QR code containing the machine's hardware
