@@ -40,7 +40,8 @@ Obtains machine hardware specifications and generates a QR code containing the d
 #### Windows
 ##### Requirements
 - Windows 10
-- Python 3.4 or 3.5 (Will _not_ build on Python 3.6 or later)
+- Python 3.4 or 3.5 (32-bit)
+    - **Note**: InQRy will **not** build on Python 3.6 or later _or_ 64-bit Python)
 - pyinstaller (3.2.1 or later)
 
 ##### Instructions
