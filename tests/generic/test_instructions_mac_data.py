@@ -10,7 +10,3 @@ def test_instructions_object_instantiates():
 
 def test_instructions_object_returns_model():
     assert INSTRUCTIONS.model == 'MacPro6,1'
-
-
-def test_instructions_can_identify_type_of_model():
-    assert INSTRUCTIONS.identify_model() == 'Desktop'
