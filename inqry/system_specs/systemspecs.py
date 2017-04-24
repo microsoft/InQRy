@@ -14,8 +14,8 @@ class SystemSpecs(object):
     A SystemSpecs instance is platform agnostic, but does contain the os_type
     attribute"""
 
-    def __init__(self, hardware_overview=None, internal_storage=None):
-        self.os_type = platform.system()
+    def __init__(self, hardware_overview=None, internal_storage=None, os_type=None):
+        self.os_type = os_type or platform.system()
         self.hardware_overview = hardware_overview or system_profiler.get_hardware_overview()
         self.internal_storage = internal_storage or diskutility.get_internal_storage()
 
