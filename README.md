@@ -46,14 +46,14 @@ Example usage:
 - `pyinstaller --onefile --windowed --icon inqry.ico InQRy.py`
 - **InQRy.exe** is in `dist/`
 
-#### Description
+### Description
 InQRy is a cross-platform application that generates a single QR code containing the machine's hardware
 specifications. This application is designed primarily to be used during a physical inventory procedure.
 
 The QR code contains detailed information about the client machine or device,
 which can then be scanned it quickly add assets into a Snipe-IT database.
 
-##### How It Works
+### How It Works
 
 InQRy obtains hardware specs using shell commands and parses the output for
 the desired information. It then takes that information, processes it and
@@ -68,11 +68,11 @@ entry form.
 InQRy was written to obtain asset information quickly and accurately for both
 an initial physical inventory procedure, as well as subsequent hardware audits.
 
-#### Currently Supported Platforms
+### Currently Supported Platforms
 - OS X 10.10 or later
 - Windows 10
 
-##### Issues? Suggestions? Questions?
+#### Issues? Suggestions? Questions?
 - Submit a bug: [aka.ms/hubenglabsr](https://office.visualstudio.com/DefaultCollection/APEX/Lab-Support/_dashboards?activeDashboardId=88948f37-eb9b-4b40-a59a-b615aff02d4d)
 - Email: [apxlab@microsoft.com](mailto:apxlab@microsoft.com)
 - Slack (apex-autoinfra.slack.com): **#inqry**
