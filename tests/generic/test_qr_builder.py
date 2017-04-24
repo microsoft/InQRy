@@ -1,4 +1,4 @@
-from inqry.qr_builder import AssetQRCode
+from inqry.asset_qrcode import AssetQRCode
 from tests.generic.test_form_instructions import INSTRUCTIONS
 
 QR = AssetQRCode(INSTRUCTIONS)

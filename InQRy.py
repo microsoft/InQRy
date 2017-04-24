@@ -1,5 +1,5 @@
 import tkinter as tk
-from inqry.qr_builder import AssetQRCode
+from inqry.asset_qrcode import AssetQRCode
 from inqry.system_specs import systemspecs
 from inqry.instructions import Instructions
 
