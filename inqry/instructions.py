@@ -1,7 +1,7 @@
 import re
 
 
-class Instructions:
+class FormInstructions:
     def __init__(self, specs, user=None):
         self.delay = '~d'
         self.tab = '~t'

@@ -1,11 +1,11 @@
 from inqry import instructions
 from tests.generic.test_systemspecs_windows_data import WINDOWS_SYSTEM_SPECS
 
-INSTRUCTIONS = instructions.Instructions(WINDOWS_SYSTEM_SPECS)
+INSTRUCTIONS = instructions.FormInstructions(WINDOWS_SYSTEM_SPECS)
 
 
 def test_instructions_object_instantiates():
-    assert instructions.Instructions(WINDOWS_SYSTEM_SPECS)
+    assert instructions.FormInstructions(WINDOWS_SYSTEM_SPECS)
 
 
 def test_instructions_object_returns_model():

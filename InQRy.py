@@ -1,7 +1,7 @@
 import tkinter as tk
 from inqry.asset_qrcode import AssetQRCode
 from inqry.system_specs import systemspecs
-from inqry.instructions import Instructions
+from inqry.instructions import FormInstructions
 
 ROOT = tk.Tk()
 
@@ -15,7 +15,7 @@ def obtain_default_dimensions_for_the_root_gui_object():
 
 
 def click():
-    data = Instructions(systemspecs.SystemSpecs(), alias_entry.get())
+    data = FormInstructions(systemspecs.SystemSpecs(), alias_entry.get())
     AssetQRCode(data).display()
 
 
