@@ -1,7 +1,7 @@
 import tkinter as tk
 from inqry.asset_qrcode import AssetQRCode
 from inqry.system_specs import systemspecs
-from inqry.instructions import FormInstructions
+from inqry.form_instructions import FormInstructions
 
 ROOT = tk.Tk()
 
