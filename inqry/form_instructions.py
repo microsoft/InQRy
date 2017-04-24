@@ -33,7 +33,7 @@ class FormInstructions:
 
     def _identify_pc_model(self):
         pc_portable_pattern = re.compile(r'')
-        return 'Portable' if re.match(pc_portable_pattern, self.model) else 'Desktop'
+        return 'Portable' if not re.match(pc_portable_pattern, self.model) else 'Desktop'
 
     def _common_fields(self, unique_fields):
         return (self._list_box(self.model) + unique_fields + self._list_box(self.status) +
