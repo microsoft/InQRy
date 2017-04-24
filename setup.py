@@ -49,5 +49,5 @@ setup(app=APP,
       options={'py2app': OPTIONS},
       packages=['inqry', "inqry.system_specs"],
       tests_require=['pytest'],
-      url="https://office.visualstudio.com/APEX/Lab-Projects/_git/lab_inventory",
-      version="{ver}".format(ver=version_getter()), **extra_options)
+      url="https://office.visualstudio.com/APEX/Lab-Projects/_git/InQRy",
+      version="{ver}".format(ver=version_getter()))
