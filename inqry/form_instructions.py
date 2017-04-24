@@ -1,4 +1,4 @@
-class Instructions:
+class FormInstructions:
     model_definitions = {"MacBookPro13,3": "Portable",
                          "MacBookPro13,2": "Portable",
                          "MacBookPro13,1": "Portable",
