@@ -2,7 +2,7 @@ from inqry.asset_qrcode import AssetQRCode
 from inqry.form_instructions import FormInstructions
 from inqry.system_specs import systemspecs
 
-DATA = FormInstructions(systemspecs.SystemSpecs(), 'v-erhank')
+DATA = FormInstructions(systemspecs.SystemSpecs(), 'example_alias')
 
 
 def test_instantiation_of_form_instructions_instance_with_systemspecs():
