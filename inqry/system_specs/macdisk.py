@@ -3,13 +3,17 @@ import yaml
 from inqry.system_specs import diskutil
 
 
-def create_from_diskutil_info_output(output):
+def create_from_diskutil_output(output):
     return Disk(yaml.load(output))
 
 
-def get_all_physical_disks():
-    return [create_from_diskutil_info_output(diskutil.get_disk_info(disk_identifier)) for disk_identifier in
-            diskutil.get_physical_disk_identifiers()]
+def create_disks_from_physical_disk_ids():
+    return [create_from_diskutil_output(diskutil.get_disk_info(disk_id)) for disk_id in diskutil.get_all_physical_ids()]
+
+
+def get_internal_storage():
+    internal_disks = create_disks_from_physical_disk_ids()
+    return [disk for disk in internal_disks if disk.is_internal]
 
 
 class Disk:
@@ -21,12 +25,20 @@ class Disk:
         return self.attributes.get('Device Location')
 
     @property
+    def removable_media(self):
+        return self.attributes.get('Removable Media')
+
+    @property
+    def is_fixed(self):
+        return self.removable_media == 'Fixed' or not self.removable_media
+
+    @property
     def is_internal(self):
-        return self.device_location == 'Internal'
+        return self.device_location != 'External'
 
     @property
     def is_external(self):
-        return self.device_location == 'External'
+        return self.device_location == 'External' or self.is_fixed is False
 
     @property
     def type(self):
@@ -47,8 +59,7 @@ class Disk:
 
     @property
     def verbose_disk_size(self):
-        return self.attributes.get('Disk Size') or self.attributes.get(
-            'Total Size')
+        return self.attributes.get('Disk Size') or self.attributes.get('Total Size')
 
     @property
     def size(self):
