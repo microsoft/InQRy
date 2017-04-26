@@ -22,7 +22,7 @@ class Disk(object):
 
     @property
     def bustype(self):
-        pattern = re.compile(r'(?:BusType\s+:\s)([A-Z]+)')
+        pattern = re.compile(r'(?:BusType\s+:\s)([a-zA-Z]+)')
         return re.findall(pattern, self.windows_disk)[0]
 
     @property
@@ -36,7 +36,7 @@ class Disk(object):
 
     @property
     def is_internal(self):
-        valid_bus_types = ['SATA', 'RAID']
+        valid_bus_types = ['SATA', 'RAID', 'NVMe']
         return self.bustype in valid_bus_types
 
     @property

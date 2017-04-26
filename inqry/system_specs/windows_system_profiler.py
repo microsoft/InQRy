@@ -12,14 +12,14 @@ class WindowsProfile:
         self.win32_processor = c.Win32_Processor()[0]
         self.win32_disk_drive = c.Win32_DiskDrive()
         self.win32_computer_system = c.Win32_ComputerSystem()[0]
+        self.win32_computer_system_product = c.Win32_ComputerSystemProduct()[0]
         self.win32_physical_memory = c.Win32_PhysicalMemory()[0]
 
     def get_all_windows_system_components(self):
-        return {'Model Name': self.win32_computer_system.Model,
-                'Model Number': self.win32_computer_system.SystemSKUNumber,
+        return {'Model Name': self._get_model_name(),
+                'Model Identifier': self._get_model_identifier(),
                 'Manufacturer': self.win32_computer_system.Manufacturer,
-                'Serial Number (system)': self.win32_bios.SerialNumber,
-                'Model Identifier': self.win32_computer_system.SystemSKUNumber,
+                'Serial Number (system)': self._get_serial_number(),
                 'Number of Processors': self.win32_computer_system.NumberOfProcessors,
                 'Total Number of Cores': self.win32_processor.NumberOfCores,
                 'Memory': self.get_memory_in_gigabytes(self.win32_computer_system.TotalPhysicalMemory),
@@ -34,6 +34,15 @@ class WindowsProfile:
     def _split_processor(name):
         pattern = re.compile(r' @ ')
         return re.split(pattern, name)
+
+    def _get_model_name(self):
+        return self.win32_computer_system.Model or self.win32_computer_system_product.Name
+
+    def _get_model_identifier(self):
+        return self.win32_computer_system.SystemSKUNumber or self.win32_computer_system_product.Version
+
+    def _get_serial_number(self):
+        return self.win32_bios.SerialNumber or self.win32_computer_system_product.IdentifyingNumber
 
     @staticmethod
     def get_cpu_name(full_cpu_name):
