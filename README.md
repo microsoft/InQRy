@@ -34,7 +34,7 @@ Obtains machine hardware specifications and generates a QR code containing the d
 
 ##### Instructions
 - clone the repository
-- `python3 setup.py py2app --iconfile inqry.icns`
+- `python3 setup.py py2app --iconfile icon/inqry.icns`
 - **InQRy.app** is in `dist/`
 
 #### Windows
@@ -46,7 +46,7 @@ Obtains machine hardware specifications and generates a QR code containing the d
 
 ##### Instructions
 - clone the repository
-- `pyinstaller --onefile --icon inqry.ico InQRy.py`
+- `pyinstaller --onefile --icon icon/inqry.ico InQRy.py`
 - **InQRy.exe** is in `dist/`
 
 ### Description
