@@ -1,11 +1,11 @@
+import pytest
 from inqry.system_specs import systemspecs
 from tests.windows.windisk.test_representing_desktop_sata_ssd import test_disk as disk1
 
-HARDWARE = {'Model Name': 'Surface_Pro_3',
+HARDWARE = {'Model Name': '',
             'Manufacturer': 'Microsoft Corporation',
-            'Serial Number (system)': '000048250353',
-            'Model Identifier': 'Surface Pro 3',
-            'Model Number': 'Surface Pro 3',
+            'Serial Number (system)': '',
+            'Model Identifier': '',
             'Number of Processors': 1,
             'Total Number of Cores': 2,
             'Processor Speed': '1.70GHz',
@@ -25,6 +25,21 @@ def test_system_specs_can_be_instantiated_with_test_data():
 
 def test_assert_system_specs_storage():
     assert WINDOWS_SYSTEM_SPECS.storage
+
+
+def test_assert_blank_model_raises_assertion_error():
+    with pytest.raises(AssertionError):
+        assert WINDOWS_SYSTEM_SPECS.model_identifier
+
+
+def test_assert_blank_name_raises_assertion_error():
+    with pytest.raises(AssertionError):
+        assert WINDOWS_SYSTEM_SPECS.model_name
+
+
+def test_assert_blank_serial_raises_assertion_error():
+    with pytest.raises(AssertionError):
+        assert WINDOWS_SYSTEM_SPECS.serial_number
 
 
 def test_system_specs_drive_count_returns_correct_amount():

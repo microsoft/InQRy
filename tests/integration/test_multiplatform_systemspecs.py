@@ -10,8 +10,12 @@ def test_systemspecs_internal_storage_property():
 
 
 def test_systemspecs_model_property_has_value():
-    assert systemspecs.SystemSpecs().model
+    assert systemspecs.SystemSpecs().model_identifier
 
 
 def test_systemspecs_name_property_has_value():
-    assert systemspecs.SystemSpecs().name
+    assert systemspecs.SystemSpecs().model_name
+
+
+def test_systemspecs_serial_property_has_value():
+    assert systemspecs.SystemSpecs().serial_number
