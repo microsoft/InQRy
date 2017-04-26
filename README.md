@@ -10,7 +10,7 @@ Obtains machine hardware specifications and generates a QR code containing the d
 - clone the repository
 - `cd InQRy`
 - `pip3 install .`
-- Run: `python3 inqry/`
+- Run: `python3 InQRy.py`
 - Use the InQRy API from the Python interpreter with `import inqry`
 
 ###### Example API usage:
@@ -46,7 +46,7 @@ Obtains machine hardware specifications and generates a QR code containing the d
 
 ##### Instructions
 - clone the repository
-- `pyinstaller --onefile --icon icon/inqry.ico inqry/`
+- `pyinstaller --onefile --icon icon/inqry.ico InQRy.py`
 - **InQRy.exe** is in `dist/`
 
 ### Description
