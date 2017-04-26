@@ -5,7 +5,7 @@ class FormInstructions:
         self.enter = '~e'
         self.space = '\x20'
         self.status = 'Deploy'
-        self.model = specs.model
+        self.model = specs.model_identifier
         self.form_factor = specs.form_factor
         self.processor = "{} {}".format(specs.cpu_speed, specs.cpu_name)
         self.memory = specs.memory
@@ -13,7 +13,7 @@ class FormInstructions:
         self.drive2 = specs.drive2
         self.drive3 = specs.drive3
         self.drive4 = specs.drive4
-        self.serial = specs.serial
+        self.serial = specs.serial_number
         self.user = user or ""
         self.fieldsets = {'Desktop': (self._text_box(self.processor) + self._text_box(self.memory) +
                                       self._text_box(self.drive1) + self._text_box(self.drive2) +
