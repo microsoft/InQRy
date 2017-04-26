@@ -60,7 +60,7 @@ def test_creating_a_disk_from_get_physical_disk_output():
 
 
 def test_getting_bus_type_from_a_windows_disk():
-    assert test_disk.bustype == 'SATA'
+    assert test_disk.bustype == 'NVMe'
 
 
 def test_differentiating_between_internal_and_external_drives():
