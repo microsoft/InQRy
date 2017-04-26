@@ -1,5 +1,5 @@
 from inqry.system_specs import systemspecs
-from tests.windows.windisk.test_creating_a_disk_from_get_physical_disk_output import test_disk as disk1
+from tests.windows.windisk.test_representing_desktop_sata_ssd import test_disk as disk1
 
 HARDWARE = {'Model Name': 'Surface_Pro_3',
             'Manufacturer': 'Microsoft Corporation',
