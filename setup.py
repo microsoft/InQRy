@@ -1,7 +1,7 @@
 import sys
 from setuptools import setup
 
-APP = ['inqry/__main__.py']
+APP = ['InQRy.py']
 DATA_FILES = []
 OPTIONS = {}
 
