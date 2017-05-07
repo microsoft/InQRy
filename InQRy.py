@@ -26,5 +26,8 @@ if __name__ == '__main__':
     tk.Label(ROOT, text="Alias").grid(row=0)
     alias_entry = tk.Entry(ROOT)
     alias_entry.grid(row=0, column=1)
+    # v = tk.IntVar()
+    # tk.Radiobutton(ROOT, text="Desktop", variable=v, value=1).pack(anchor=W)
+    # tk.Radiobutton(ROOT, text="Portable", variable=v, value=2).pack()
     ROOT.focus_force()
     ROOT.mainloop()
