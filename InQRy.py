@@ -20,21 +20,22 @@ def click():
 
 
 if __name__ == '__main__':
+
     ROOT.title("InQRy")
 
-    v = tk.IntVar()
+    form_factor = tk.IntVar()
     generate_qr_button = tk.Button(ROOT, text="Generate QR Code", command=click)
-    desktop_radio_button = tk.Radiobutton(ROOT, text="Desktop", variable=v, value=1)
-    portable_radio_button = tk.Radiobutton(ROOT, text="Portable", variable=v, value=2)
+    desktop_radio_button = tk.Radiobutton(ROOT, text="Desktop", variable=form_factor, value=1)
+    portable_radio_button = tk.Radiobutton(ROOT, text="Portable", variable=form_factor, value=2)
 
+    alias_label = tk.Label(ROOT, text="Alias:")
     alias_entry = tk.Entry(ROOT)
-    alias_label = tk.Label(ROOT, text="Alias")
 
-    alias_entry.grid(row=0, column=1)
-    alias_label.grid(row=1, column=1)
-    desktop_radio_button.grid(row=2, column=1)
-    portable_radio_button.grid(row=3, column=1)
-    generate_qr_button.grid(row=4, column=1)
+    alias_label.grid(row=0, column=0, pady=5, sticky=tk.E)
+    alias_entry.grid(row=0, column=1, pady=5)
+    desktop_radio_button.grid(row=1, columnspan=2)
+    portable_radio_button.grid(row=2, columnspan=2)
+    generate_qr_button.grid(row=5, columnspan=2, pady=25)
 
     ROOT.focus_force()
     ROOT.mainloop()
