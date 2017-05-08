@@ -1,5 +1,5 @@
 class FormInstructions:
-    def __init__(self, specs, form_factor, user=None):
+    def __init__(self, specs, form_factor=None, user=None):
         self.delay = '~d'
         self.tab = '~t'
         self.enter = '~e'
