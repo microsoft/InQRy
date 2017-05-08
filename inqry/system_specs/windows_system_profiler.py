@@ -28,7 +28,7 @@ class WindowsProfile:
 
     @staticmethod
     def _human_readable(component):
-        return str(round(int(component) / 1024 ** 3)) + " GB"
+        return str(round(int(component) / 1024 ** 3)) + ' GB'
 
     @staticmethod
     def _split_processor(name):
