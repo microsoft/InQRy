@@ -12,4 +12,4 @@ def test_getting_speed_only_from_wmi32_processor():
 
 def test_getting_name_only_from_wmi32_processor():
     assert windows_system_profiler.WindowsProfile.get_cpu_name(
-        'Intel(R) Xeon(R) CPU E5-1650 v3 @ 3.50GHz') == 'Intel(R) Xeon(R) CPU E5-1650 v3'
+        'Intel(R) Xeon(R) CPU E5-1650 v3 @ 3.50GHz') == 'Intel Xeon CPU E5-1650 v3'

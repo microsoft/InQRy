@@ -28,7 +28,7 @@ class WindowsProfile:
 
     @staticmethod
     def _human_readable(component):
-        return str(round(int(component) / 1024 ** 3)) + " GB"
+        return str(round(int(component) / 1024 ** 3)) + ' GB'
 
     @staticmethod
     def _split_processor(name):
@@ -46,7 +46,8 @@ class WindowsProfile:
 
     @staticmethod
     def get_cpu_name(full_cpu_name):
-        return WindowsProfile._split_processor(full_cpu_name)[0]
+        pattern = re.compile(r'\(\w\)')
+        return re.sub(pattern, '', WindowsProfile._split_processor(full_cpu_name)[0])
 
     @staticmethod
     def get_cpu_speed(full_cpu_name):
