@@ -1,12 +1,12 @@
 class FormInstructions:
-    def __init__(self, specs, user=None):
+    def __init__(self, specs, form_factor, user=None):
         self.delay = '~d'
         self.tab = '~t'
         self.enter = '~e'
         self.space = '\x20'
         self.status = 'Deploy'
         self.model = specs.model_identifier
-        self.form_factor = specs.form_factor
+        self.fieldset = form_factor
         self.processor = "{} {}".format(specs.cpu_speed, specs.cpu_name)
         self.memory = specs.memory
         self.drive1 = specs.drive1
@@ -32,4 +32,4 @@ class FormInstructions:
         return [self.space, self.delay, field, self.delay, self.enter, self.delay, self.tab]
 
     def instruction_steps(self):
-        return self._common_fields(self.fieldsets[self.form_factor])
+        return self._common_fields(self.fieldsets[self.fieldset])
