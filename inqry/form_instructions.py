@@ -32,4 +32,4 @@ class FormInstructions:
         return [self.space, self.delay, field, self.delay, self.enter, self.delay, self.tab]
 
     def instruction_steps(self):
-        return self._common_fields(self.fieldsets[self.fieldset])
+        return self._common_fields(self.fieldsets[self.fieldset or "Desktop"])
