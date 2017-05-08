@@ -15,7 +15,7 @@ def obtain_default_dimensions_for_the_root_gui_object():
 
 
 def click():
-    data = FormInstructions(systemspecs.SystemSpecs(), alias_entry.get())
+    data = FormInstructions(systemspecs.SystemSpecs(), form_factor.get(), alias_entry.get())
     AssetQRCode(data).display()
 
 
@@ -25,8 +25,8 @@ if __name__ == '__main__':
 
     form_factor = tk.IntVar()
     generate_qr_button = tk.Button(ROOT, text="Generate QR Code", command=click)
-    desktop_radio_button = tk.Radiobutton(ROOT, text="Desktop", variable=form_factor, value=1)
-    portable_radio_button = tk.Radiobutton(ROOT, text="Portable", variable=form_factor, value=2)
+    desktop_radio_button = tk.Radiobutton(ROOT, text="Desktop", variable=form_factor, value='Desktop')
+    portable_radio_button = tk.Radiobutton(ROOT, text="Portable", variable=form_factor, value='Portable')
 
     alias_label = tk.Label(ROOT, text="Alias:")
     alias_entry = tk.Entry(ROOT)
