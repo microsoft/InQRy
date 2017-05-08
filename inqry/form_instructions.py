@@ -5,9 +5,10 @@ class FormInstructions:
         self.enter = '~e'
         self.space = '\x20'
         self.status = 'Deploy'
-        self.model = specs.model_identifier
-        self.fieldset = form_factor or 'Desktop'
-        self.processor = '{} {}'.format(specs.cpu_speed, specs.cpu_name)
+        self.model_id = specs.model_identifier
+        self.model_name = specs.model_name
+        self.fieldset = form_factor or "Desktop"
+        self.processor = "{} {}".format(specs.cpu_speed, specs.cpu_name)
         self.memory = specs.memory
         self.drive1 = specs.drive1
         self.drive2 = specs.drive2
@@ -22,10 +23,10 @@ class FormInstructions:
                           'Portable': (self._text_box(self.processor) + self._text_box(self.memory) +
                                        self._text_box(self.drive1)),
 
-                          'New Model': (self._text_box(self.model))}
+                          'New Model': (self._text_box(self.model_name) + [self.tab, self.tab + self.model_id])}
 
     def _common_fields(self, unique_fields):
-        return (self._list_box(self.model) + unique_fields + self._list_box(self.status) +
+        return (self._list_box(self.model_id) + unique_fields + self._list_box(self.status) +
                 self._list_box(self.user) + [self.delay, self.serial])
 
     def _text_box(self, field):
@@ -35,4 +36,7 @@ class FormInstructions:
         return [self.space, self.delay, field, self.delay, self.enter, self.delay, self.tab]
 
     def instruction_steps(self):
-        return self._common_fields(self.fieldsets[self.fieldset])
+        if self.fieldset == 'New Model':
+            return self.fieldsets['New Model']
+        else:
+            return self._common_fields(self.fieldsets[self.fieldset])

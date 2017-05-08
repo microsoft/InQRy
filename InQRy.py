@@ -15,10 +15,12 @@ class InQRyGUI:
         self.create_widgets()
 
     def click(self):
-        data = FormInstructions(systemspecs.SystemSpecs(), self.form_factor.get(), self.alias_entry.get())
         if self.new_model_selected.get():
             print('You want a new model?')
+            data = FormInstructions(systemspecs.SystemSpecs(), 'New Model')
+            AssetQRCode(data).display()
         else:
+            data = FormInstructions(systemspecs.SystemSpecs(), self.form_factor.get(), self.alias_entry.get())
             AssetQRCode(data).display()
 
     def create_widgets(self):
