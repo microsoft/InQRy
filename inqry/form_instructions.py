@@ -18,8 +18,11 @@ class FormInstructions:
         self.fieldsets = {'Desktop': (self._text_box(self.processor) + self._text_box(self.memory) +
                                       self._text_box(self.drive1) + self._text_box(self.drive2) +
                                       self._text_box(self.drive3) + self._text_box(self.drive4)),
+
                           'Portable': (self._text_box(self.processor) + self._text_box(self.memory) +
-                                       self._text_box(self.drive1))}
+                                       self._text_box(self.drive1)),
+
+                          'New Model': (self._text_box(self.model))}
 
     def _common_fields(self, unique_fields):
         return (self._list_box(self.model) + unique_fields + self._list_box(self.status) +
