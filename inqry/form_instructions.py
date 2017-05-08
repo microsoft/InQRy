@@ -23,7 +23,7 @@ class FormInstructions:
                           'Portable': (self._text_box(self.processor) + self._text_box(self.memory) +
                                        self._text_box(self.drive1)),
 
-                          'New Model': (self._text_box(self.model_name) + [self.tab, self.tab + self.model_id])}
+                          'New Model': (self._text_box(self.model_name) + [self.tab, self.tab, self.delay + self.model_id])}
 
     def _common_fields(self, unique_fields):
         return (self._list_box(self.model_id) + unique_fields + self._list_box(self.status) +
