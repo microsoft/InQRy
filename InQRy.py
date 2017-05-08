@@ -23,10 +23,10 @@ if __name__ == '__main__':
 
     ROOT.title("InQRy")
 
-    form_factor = tk.IntVar()
+    form_factor = tk.StringVar()
     generate_qr_button = tk.Button(ROOT, text="Generate QR Code", command=click)
-    desktop_radio_button = tk.Radiobutton(ROOT, text="Desktop", variable=form_factor, value='Desktop')
-    portable_radio_button = tk.Radiobutton(ROOT, text="Portable", variable=form_factor, value='Portable')
+    desktop_radio_button = tk.Radiobutton(ROOT, text="Desktop", variable=form_factor, value="Desktop")
+    portable_radio_button = tk.Radiobutton(ROOT, text="Portable", variable=form_factor, value="Portable")
 
     alias_label = tk.Label(ROOT, text="Alias:")
     alias_entry = tk.Entry(ROOT)
