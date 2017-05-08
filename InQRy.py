@@ -12,15 +12,15 @@ class InQRyGUI:
         self.new_model_selected = tk.IntVar()
         self.alias_entry = tk.Entry(self.win)
         self.alias_entry.grid(row=0, column=1, pady=5)
+        self.systemspecs = systemspecs.SystemSpecs()
         self.create_widgets()
 
     def click(self):
         if self.new_model_selected.get():
-            print('You want a new model?')
-            data = FormInstructions(systemspecs.SystemSpecs(), 'New Model')
+            data = FormInstructions(self.systemspecs, 'New Model')
             AssetQRCode(data).display()
         else:
-            data = FormInstructions(systemspecs.SystemSpecs(), self.form_factor.get(), self.alias_entry.get())
+            data = FormInstructions(self.systemspecs, self.form_factor.get(), self.alias_entry.get())
             AssetQRCode(data).display()
 
     def create_widgets(self):
