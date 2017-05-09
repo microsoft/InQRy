@@ -8,7 +8,7 @@ class FormInstructions:
         self.model_id = specs.model_identifier
         self.model_name = specs.model_name
         self.fieldset = form_factor or "Desktop"
-        self.processor = "{} {}".format(specs.cpu_speed, specs.cpu_name)
+        self.processor = "{} {}".format(specs.processor_speed, specs.processor_name)
         self.memory = specs.memory
         self.drive1 = specs.drive1
         self.drive2 = specs.drive2

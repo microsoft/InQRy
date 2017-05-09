@@ -6,10 +6,10 @@ def test_getting_memory_in_gigabytes():
 
 
 def test_getting_speed_only_from_wmi32_processor():
-    assert windows_system_profiler.WindowsProfile.get_cpu_speed(
+    assert windows_system_profiler.WindowsProfile.get_processor_speed(
         'Intel(R) Xeon(R) CPU E5-1650 v3 @ 3.50GHz') == '3.50GHz'
 
 
 def test_getting_name_only_from_wmi32_processor():
-    assert windows_system_profiler.WindowsProfile.get_cpu_name(
+    assert windows_system_profiler.WindowsProfile.get_processor_name(
         'Intel(R) Xeon(R) CPU E5-1650 v3 @ 3.50GHz') == 'Intel Xeon CPU E5-1650 v3'
