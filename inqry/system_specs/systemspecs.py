@@ -26,23 +26,32 @@ class SystemSpecs(object):
 
     def _identify_mac_form_factor(self):
         mac_portable_pattern = re.compile(r'MacBook(Pro|Air|)([0-9]|[1-9][0-9]),[1-9]')
-        return 'Portable' if re.match(mac_portable_pattern, self.model) else 'Desktop'
+        return 'Portable' if re.match(mac_portable_pattern, self.model_identifier) else 'Desktop'
 
     def _identify_pc_form_factor(self):
         pc_portable_pattern = re.compile(r'')  # TODO: Write regexp for PC form factor
-        return 'Portable' if not re.match(pc_portable_pattern, self.model) else 'Desktop'
+        return 'Portable' if not re.match(pc_portable_pattern, self.model_identifier) else 'Desktop'
 
     @property
-    def name(self):
-        return self.hardware_overview.get('Model Name')
+    def model_name(self):
+        try:
+            return self.hardware_overview.get('Model Name')
+        except AssertionError:
+            raise AssertionError('Model Name key contains no value')
 
     @property
-    def model(self):
-        return self.hardware_overview.get('Model Identifier')
+    def model_identifier(self):
+        try:
+            return self.hardware_overview.get('Model Identifier')
+        except AssertionError:
+            raise AssertionError('Model Identifier key contains no value')
 
     @property
-    def serial(self):
-        return self.hardware_overview.get('Serial Number (system)')
+    def serial_number(self):
+        try:
+            return self.hardware_overview.get('Serial Number (system)')
+        except AssertionError:
+            raise AssertionError('Serial Number key contains no value')
 
     @property
     def cpu_name(self):

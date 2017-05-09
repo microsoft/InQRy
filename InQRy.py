@@ -1,30 +1,48 @@
-import tkinter as tk
+import tkinter
 from inqry.asset_qrcode import AssetQRCode
 from inqry.system_specs import systemspecs
 from inqry.form_instructions import FormInstructions
 
-ROOT = tk.Tk()
 
+class InQRyGUI:
+    def __init__(self):
+        self.root_window = tkinter.Tk()
+        self.root_window.title('InQRy')
+        self.form_factor = tkinter.StringVar()
+        self.new_model_selected = tkinter.IntVar()
+        self.alias_entry = tkinter.Entry(self.root_window)
+        self.alias_entry.grid(row=1, column=1, pady=5)
+        self.systemspecs = systemspecs.SystemSpecs()
+        self.create_widgets()
 
-def calculate_center_coordinates(screen_dimension, current_dimension):
-    return (screen_dimension / 2) - (current_dimension / 2)
+    def click(self):
+        if self.new_model_selected.get():
+            form_instructions = FormInstructions(self.systemspecs, 'New Model')
+            AssetQRCode(form_instructions).display()
+        else:
+            form_instructions = FormInstructions(self.systemspecs, self.form_factor.get(), self.alias_entry.get())
+            AssetQRCode(form_instructions).display()
 
+    def create_widgets(self):
+        generate_qr_button = tkinter.Button(self.root_window, text='Generate QR Code', command=self.click)
+        generate_qr_button.grid(row=6, columnspan=2, pady=15)
 
-def obtain_default_dimensions_for_the_root_gui_object():
-    return tuple(int(_) for _ in ROOT.geometry().split('+')[0].split('x'))
+        desktop_radio_button = tkinter.Radiobutton(self.root_window, text='Desktop', variable=self.form_factor, value='Desktop')
+        desktop_radio_button.select()
+        desktop_radio_button.grid(row=2, columnspan=2)
 
+        portable_radio_button = tkinter.Radiobutton(self.root_window, text='Portable', variable=self.form_factor, value='Portable')
+        portable_radio_button.deselect()
+        portable_radio_button.grid(row=3, columnspan=2)
 
-def click():
-    data = FormInstructions(systemspecs.SystemSpecs(), alias_entry.get())
-    AssetQRCode(data).display()
+        alias_label = tkinter.Label(self.root_window, text='Alias:')
+        alias_label.grid(row=1, column=0, pady=5, sticky=tkinter.E)
+
+        new_model_checkbutton = tkinter.Checkbutton(self.root_window, text='New Model', variable=self.new_model_selected)
+        new_model_checkbutton.deselect()
+        new_model_checkbutton.grid(row=0, columnspan=2)
 
 
 if __name__ == '__main__':
-    ROOT.title("InQRy")
-    generate_qr_button = tk.Button(ROOT, text="Generate QR Code", command=click)
-    generate_qr_button.grid(row=1, column=1)
-    tk.Label(ROOT, text="Alias").grid(row=0)
-    alias_entry = tk.Entry(ROOT)
-    alias_entry.grid(row=0, column=1)
-    ROOT.focus_force()
-    ROOT.mainloop()
+    gui = InQRyGUI()
+    gui.root_window.mainloop()

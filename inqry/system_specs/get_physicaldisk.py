@@ -6,7 +6,7 @@ BASE_COMMAND = 'C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\powershell.exe G
 
 def get_physical_disk_identifiers(unique_id_output=None):
     unique_id_output = unique_id_output or list_all()
-    physical_disk_id_pattern = re.compile(r'(\b[A-Z0-9]+\b|{.*})(?=-*)')
+    physical_disk_id_pattern = re.compile(r'(?!UniqueId)(\b.+\b|{.*})(?=-*)')
     return re.findall(physical_disk_id_pattern, unique_id_output)
 
 
