@@ -54,19 +54,11 @@ class SystemSpecs(object):
             raise AssertionError('Serial Number key contains no value')
 
     @property
-    def cpu_name(self):
+    def processor_name(self):
         return self.hardware_overview.get('Processor Name')
 
     @property
-    def cpu_processors(self):
-        return self.hardware_overview.get('Number of Processors')
-
-    @property
-    def cpu_cores(self):
-        return self.hardware_overview.get('Total Number of Cores')
-
-    @property
-    def cpu_speed(self):
+    def processor_speed(self):
         return self.hardware_overview.get('Processor Speed')
 
     @property

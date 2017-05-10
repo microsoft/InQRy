@@ -23,8 +23,8 @@ class WindowsProfile:
                 'Number of Processors': self.win32_computer_system.NumberOfProcessors,
                 'Total Number of Cores': self.win32_processor.NumberOfCores,
                 'Memory': self.get_memory_in_gigabytes(self.win32_computer_system.TotalPhysicalMemory),
-                'Processor Name': self.get_cpu_name(self.win32_processor.Name),
-                'Processor Speed': self.get_cpu_speed(self.win32_processor.Name)}
+                'Processor Name': self.get_processor_name(self.win32_processor.Name),
+                'Processor Speed': self.get_processor_speed(self.win32_processor.Name)}
 
     @staticmethod
     def _human_readable(component):
@@ -45,13 +45,13 @@ class WindowsProfile:
         return self.win32_bios.SerialNumber or self.win32_computer_system_product.IdentifyingNumber
 
     @staticmethod
-    def get_cpu_name(full_cpu_name):
+    def get_processor_name(full_cpu_name):
         pattern = re.compile(r'\(\w\)')
         return re.sub(pattern, '', WindowsProfile._split_processor(full_cpu_name)[0])
 
     @staticmethod
-    def get_cpu_speed(full_cpu_name):
-        return WindowsProfile._split_processor(full_cpu_name)[1]
+    def get_processor_speed(full_processor_name):
+        return WindowsProfile._split_processor(full_processor_name)[1]
 
     @staticmethod
     def get_memory_in_gigabytes(memory_bytes):
