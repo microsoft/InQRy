@@ -27,7 +27,7 @@ class FormInstructions:
 
     def _common_fields(self, unique_fields):
         return (self._list_box(self.model_id) + unique_fields + self._list_box(self.status) +
-                [self.space, self.delay, self.user, self.delay, self.delay, self.enter, self.delay, self.tab] + [self.delay, self.serial])
+                [self.delay, self.space, self.delay, self.user, self.delay, self.enter, self.delay, self.tab] + [self.delay, self.serial])
 
     def _text_box(self, field):
         return [self.delay, field, self.tab]
