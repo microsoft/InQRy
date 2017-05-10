@@ -17,6 +17,18 @@ class PropertyNames(Enum):
     STORAGE = 'totalDiskCapacity'
 
 
+class DeviceSpecs:
+    def __init__(self, device_hardware_overview):
+        self.serial_number = device_hardware_overview['serialNumber']
+        self.device_type = device_hardware_overview['deviceType']
+        self.storage = device_hardware_overview['totalDisk';Capacity']
+        self.imei = device_hardware_overview['totalDiskCapacity']
+
+
+def get_device_ecids(cfgutil_output):
+    return parse_command_output(cfgutil_output)['Devices']
+
+
 def parse_command_output(output):
     return json.loads(output)
 

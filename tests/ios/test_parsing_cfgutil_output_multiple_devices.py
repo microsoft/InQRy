@@ -13,7 +13,7 @@ RESULT = cfgutil.parse_command_output(CFGUTIL_OUTPUT)
 
 
 def test_getting_device_ecid():
-    assert RESULT['Devices'] == ["0x970E80428AC26", "0xA64D620D30D26"]
+    assert cfgutil.get_device_ecids(RESULT) == ["0x970E80428AC26", "0xA64D620D30D26"]
 
 
 def test_getting_serial_of_first_device_using_device_value():
