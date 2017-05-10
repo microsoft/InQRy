@@ -27,4 +27,4 @@ setup(app=APP,
       packages=['inqry', "inqry.system_specs"],
       tests_require=['pytest'],
       url="https://office.visualstudio.com/APEX/Lab-Projects/_git/InQRy",
-      version='1.1')
+      version='1.2')
