@@ -40,9 +40,9 @@ class FormInstructions:
                 self._list_box(self.status) +
                 [self.short_delay,
                  self.space,
-                 self.long_delay,
+                 self.short_delay,
                  self.user,
-                 self.long_delay,
+                 self.short_delay,
                  self.enter,
                  self.short_delay,
                  self.tab] +
@@ -61,7 +61,8 @@ class FormInstructions:
                 self.short_delay,
                 self.enter,
                 self.short_delay,
-                self.tab]
+                self.tab,
+                self.short_delay]
 
     def instruction_steps(self):
         if self.fieldset == 'New Model':
