@@ -29,9 +29,13 @@ class DeviceSpecs:
     def __init__(self, device_hardware_overview):
         self.serial_number = device_hardware_overview['serialNumber']
         self.model_identifier = device_hardware_overview['deviceType']
-        self.imei = device_hardware_overview['IMEI']
         self.storage = _human_readable(device_hardware_overview['totalDiskCapacity'])
         self.color = device_hardware_overview['color']
+
+        try:
+            self.imei = device_hardware_overview['IMEI']
+        except KeyError:
+            self.imei = None
 
 
 def create_from_device_hardware_overview(cfgutil_output):

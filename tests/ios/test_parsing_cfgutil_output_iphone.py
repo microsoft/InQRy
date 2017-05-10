@@ -31,6 +31,10 @@ def test_getting_serial_number_from_device_specs_objects():
     assert DEVICE.serial_number == 'F71SHPP0HG6W'
 
 
+def test_getting_imei_from_device_specs_object():
+    assert DEVICE.imei == '359167076630320'
+
+
 def test_getting_device_hardware_overview():
     assert cfgutil.get_hardware_overview_for_all_devices(CFGUTIL_OUTPUT) == [{
         'serialNumber': 'F71SHPP0HG6W', 'totalDiskCapacity': 32000000000,
