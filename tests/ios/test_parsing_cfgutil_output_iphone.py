@@ -33,6 +33,6 @@ def test_getting_serial_using_device_value():
 #     assert d1.serial_number == 'F71SHPP0HG6W'
 
 def test_getting_device_hardware_overview():
-    assert cfgutil.get_device_hardware_overview(CFGUTIL_OUTPUT, '0xA64D620D30D26') == {
+    assert cfgutil.get_device_hardware_overview(CFGUTIL_OUTPUT) == [{
         'serialNumber': 'F71SHPP0HG6W', 'totalDiskCapacity': 32000000000,
-        'deviceType': 'iPhone9,1', 'IMEI': '359167076630320', 'color': '1'}
+        'deviceType': 'iPhone9,1', 'IMEI': '359167076630320', 'color': '1'}]

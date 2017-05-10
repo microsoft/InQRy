@@ -2,6 +2,8 @@ import json
 import shlex
 import subprocess
 
+from inqry.system_specs import _human_readable
+
 BASE_COMMAND = '/usr/local/bin/cfgutil --foreach --format JSON get color IMEI serialNumber deviceType totalDiskCapacity'
 
 
@@ -19,16 +21,18 @@ def _get_output_of_cfgutil_command(arguments=None):
     return subprocess.check_output(full_command).decode('utf-8')
 
 
-def get_device_hardware_overview(output, ecid):
-    return parse_cfgutil_output(output)['Output'][ecid]
+def get_device_hardware_overview(output):
+    return [parse_cfgutil_output(output)['Output'][ecid] for ecid in get_device_ecids(output)]
 
 
-def get_individual_device_specs_via_ecid(output):
-    return [device_overview for device_overview in get_device_ecids(output)]
+class DeviceSpecs:
+    def __init__(self, device_hardware_overview):
+        self.serial_number = device_hardware_overview['serialNumber']
+        self.model_identifier = device_hardware_overview['deviceType']
+        self.imei = device_hardware_overview['IMEI']
+        self.storage = _human_readable(device_hardware_overview['totalDiskCapacity'])
+        self.color = device_hardware_overview['color']
 
-# class DeviceSpecs:
-#     def __init__(self, device_hardware_overview):
-#         self.serial_number = device_hardware_overview['serialNumber']
-#         self.device_type = device_hardware_overview['deviceType']
-#         self.imei = device_hardware_overview['IMEI']
-#         self.storage = device_hardware_overview['totalDiskCapacity']
+
+# def create_device_spec_objects(output):
+#     return [DeviceSpecs(get_individual_device_specs_via_ecid(output)) for in]

@@ -24,7 +24,6 @@ def test_getting_ecid():
 
 
 def test_getting_device_hardware_overview():
-    assert cfgutil.get_device_hardware_overview(CFGUTIL_OUTPUT, '0x970E80428AC26') == {
+    assert cfgutil.get_device_hardware_overview(CFGUTIL_OUTPUT) == [{
         'serialNumber': 'DLXQK7WRGMLD', 'totalDiskCapacity': 31708938240,
-        'deviceType': 'iPad6,7',
-        'color': '#3b3b3c'}
+        'deviceType': 'iPad6,7', 'color': '#3b3b3c'}]
