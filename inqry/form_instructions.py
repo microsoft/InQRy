@@ -1,11 +1,11 @@
 class FormInstructions:
     def __init__(self, specs, form_factor=None, user=None):
         self.short_delay = '~d'
-        self.long_delay = '~d~d~d~d'
+        self.long_delay = '~d~d'
         self.tab = '~t'
         self.enter = '~e'
         self.space = '\x20'
-        self.status = 'Deploy'
+        self.status = 'Ready'
         self.model_id = specs.model_identifier
         self.model_name = specs.model_name
         self.fieldset = form_factor or "Desktop"
@@ -58,9 +58,9 @@ class FormInstructions:
         return [self.space,
                 self.short_delay,
                 field_content,
-                self.short_delay,
+                self.long_delay,
                 self.enter,
-                self.short_delay,
+                self.long_delay,
                 self.tab,
                 self.short_delay]
 
