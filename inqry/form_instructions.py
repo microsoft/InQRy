@@ -8,7 +8,7 @@ class FormInstructions:
         self.model_id = specs.model_identifier
         self.model_name = specs.model_name
         self.fieldset = form_factor or "Desktop"
-        self.processor = "{} {}".format(specs.cpu_speed, specs.cpu_name)
+        self.processor = "{} {}".format(specs.processor_speed, specs.processor_name)
         self.memory = specs.memory
         self.drive1 = specs.drive1
         self.drive2 = specs.drive2
@@ -27,7 +27,7 @@ class FormInstructions:
 
     def _common_fields(self, unique_fields):
         return (self._list_box(self.model_id) + unique_fields + self._list_box(self.status) +
-                self._list_box(self.user) + [self.delay, self.serial])
+                [self.delay, self.space, self.delay, self.user, self.delay, self.enter, self.delay, self.tab] + [self.delay, self.serial])
 
     def _text_box(self, field):
         return [self.delay, field, self.tab]
