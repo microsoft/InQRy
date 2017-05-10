@@ -6,23 +6,12 @@ import subprocess
 BASE_COMMAND = '/usr/local/bin/cfgutil --foreach --format JSON get totalDiskCapacity color IMEI serialNumber deviceType'
 
 
-class PropertyNames(Enum):
-    def __str__(self):
-        return self.value
-
-    COLOR = 'color'
-    DEVICE_TYPE = 'deviceType'
-    IMEI = 'IMEI'
-    SERIAL_NUMBER = 'serialNumber'
-    STORAGE = 'totalDiskCapacity'
-
-
 class DeviceSpecs:
     def __init__(self, device_hardware_overview):
         self.serial_number = device_hardware_overview['serialNumber']
         self.device_type = device_hardware_overview['deviceType']
-        self.storage = device_hardware_overview['totalDisk';Capacity']
-        self.imei = device_hardware_overview['totalDiskCapacity']
+        self.imei = device_hardware_overview['IMEI']
+        self.storage = device_hardware_overview['totalDiskCapacity']
 
 
 def get_device_ecids(cfgutil_output):
