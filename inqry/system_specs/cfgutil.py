@@ -11,8 +11,8 @@ def parse_cfgutil_output(output):
     return json.loads(output)
 
 
-def get_device_ecids(output):
-    return parse_cfgutil_output(output)['Devices']
+def get_all_device_ecids(cfgutil_output):
+    return parse_cfgutil_output(cfgutil_output)['Devices']
 
 
 def _get_output_of_cfgutil_command(arguments=None):
@@ -21,8 +21,8 @@ def _get_output_of_cfgutil_command(arguments=None):
     return subprocess.check_output(full_command).decode('utf-8')
 
 
-def get_device_hardware_overview(output):
-    return [parse_cfgutil_output(output)['Output'][ecid] for ecid in get_device_ecids(output)]
+def get_hardware_overview_for_all_devices(cfgutil_output):
+    return [parse_cfgutil_output(cfgutil_output)['Output'][ecid] for ecid in get_all_device_ecids(cfgutil_output)]
 
 
 class DeviceSpecs:
@@ -34,5 +34,6 @@ class DeviceSpecs:
         self.color = device_hardware_overview['color']
 
 
-# def create_device_spec_objects(output):
-#     return [DeviceSpecs(get_individual_device_specs_via_ecid(output)) for in]
+def create_from_device_hardware_overview(cfgutil_output):
+    return [DeviceSpecs(device_hardware_overview) for device_hardware_overview in
+            get_hardware_overview_for_all_devices(cfgutil_output)]
