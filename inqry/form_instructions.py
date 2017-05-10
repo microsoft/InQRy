@@ -42,7 +42,7 @@ class FormInstructions:
                  self.space,
                  self.long_delay,
                  self.user,
-                 self.short_delay,
+                 self.long_delay,
                  self.enter,
                  self.short_delay,
                  self.tab] +
