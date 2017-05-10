@@ -1,4 +1,4 @@
-from inqry.system_specs import cfgutil
+from inqry.system_specs import devicespecs
 
 CFGUTIL_OUTPUT = '''
 {"Command":"get","Output":{"0xA64D620D30D26":{"serialNumber":"F71SHPP0HG6W", "totalDiskCapacity":32000000000,
@@ -9,13 +9,13 @@ CFGUTIL_OUTPUT = '''
 "0xA64D620D30D26"]}
 '''
 
-RESULT = cfgutil.parse_command_output(CFGUTIL_OUTPUT)
+RESULT = devicespecs.parse_cfgutil_output(CFGUTIL_OUTPUT)
 
 
-# def test_getting_device_ecid():
-#     assert cfgutil.get_device_ecids(RESULT) == ["0x970E80428AC26", "0xA64D620D30D26"]
-#
-#
+def test_getting_device_ecid():
+    assert devicespecs.get_device_ecids(CFGUTIL_OUTPUT) == ["0x970E80428AC26", "0xA64D620D30D26"]
+
+
 def test_getting_serial_of_first_device_using_device_value():
     ecid = RESULT['Devices'][0]
     assert RESULT['Output'][ecid]['serialNumber'] == 'DLXQK7WRGMLD'

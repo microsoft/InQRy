@@ -5,8 +5,12 @@ import subprocess
 BASE_COMMAND = '/usr/local/bin/cfgutil --foreach --format JSON get color IMEI serialNumber deviceType totalDiskCapacity'
 
 
-def parse_command_output(output):
+def parse_cfgutil_output(output):
     return json.loads(output)
+
+
+def get_device_ecids(output):
+    return parse_cfgutil_output(output)['Devices']
 
 
 def _get_output_of_cfgutil_command(arguments=None):

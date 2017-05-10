@@ -1,4 +1,4 @@
-from inqry.system_specs import cfgutil
+from inqry.system_specs import devicespecs
 
 CFGUTIL_OUTPUT = '''
 {"Command":"get","Output":{"0x970E80428AC26":{"serialNumber":"DLXQK7WRGMLD",
@@ -7,11 +7,11 @@ CFGUTIL_OUTPUT = '''
 "Code":-402653163}}}},"Type":"CommandOutput","Devices":["0x970E80428AC26"]}
 '''
 
-RESULT = cfgutil.parse_command_output(CFGUTIL_OUTPUT)
+RESULT = devicespecs.parse_cfgutil_output(CFGUTIL_OUTPUT)
 
 
-# def test_getting_device_ecid():
-#     assert cfgutil.get_device_ecids(RESULT) == ["0x970E80428AC26"]
+def test_getting_device_ecid():
+    assert devicespecs.get_device_ecids(CFGUTIL_OUTPUT) == ["0x970E80428AC26"]
 
 
 def test_getting_serial_using_device_value():
