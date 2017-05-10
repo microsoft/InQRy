@@ -19,13 +19,16 @@ def _get_output_of_cfgutil_command(arguments=None):
     return subprocess.check_output(full_command).decode('utf-8')
 
 
+def get_device_hardware_overview(output, ecid):
+    return parse_cfgutil_output(output)['Output'][ecid]
+
+
+def get_individual_device_specs_via_ecid(output):
+    return [device_overview for device_overview in get_device_ecids(output)]
+
 # class DeviceSpecs:
 #     def __init__(self, device_hardware_overview):
 #         self.serial_number = device_hardware_overview['serialNumber']
 #         self.device_type = device_hardware_overview['deviceType']
 #         self.imei = device_hardware_overview['IMEI']
 #         self.storage = device_hardware_overview['totalDiskCapacity']
-
-
-def _get_command_output(*arguments):
-    return subprocess.check_output([BASE_COMMAND] + list(arguments)).decode('utf-8')
