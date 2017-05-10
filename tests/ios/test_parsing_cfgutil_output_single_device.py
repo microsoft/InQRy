@@ -1,0 +1,12 @@
+CFGUTIL_OUTPUT = '''serialNumber:
+F71SHPP0HG6W
+
+IMEI:
+359167076630320
+
+totalDiskCapacity:
+32000000000
+
+color:
+1
+'''
