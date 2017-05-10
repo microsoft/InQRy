@@ -17,6 +17,14 @@ class Properties(Enum):
     SERIAL_NUMBER = 'serialNumber'
 
 
+def parse_command_output(output):
+    pass
+
+
+def _get_command_output(*arguments):
+    return subprocess.check_output([BASE_COMMAND] + list(arguments)).decode('utf-8')
+
+
 def _get_output_of_cfgutil_command(arguments=None):
     arguments = arguments or ''
     full_command = shlex.split(' '.join([BASE_COMMAND, arguments]))
