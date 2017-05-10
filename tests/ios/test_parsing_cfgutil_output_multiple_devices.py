@@ -18,9 +18,10 @@ def test_getting_device_ecid():
 
 def test_getting_serial_of_first_device_using_device_value():
     ecid = RESULT['Devices'][0]
-    assert RESULT['Output'][ecid]['serialNumber'] == 'F71SHPP0HG6W'
+    assert RESULT['Output'][ecid]['serialNumber'] == 'DLXQK7WRGMLD'
 
 
 def test_getting_serial_of_second_device_using_device_value():
     ecid = RESULT['Devices'][1]
-    assert RESULT['Output'][ecid]['serialNumber'] == 'DLXQK7WRGMLD'
+    assert RESULT['Output'][ecid]['serialNumber'] == 'F71SHPP0HG6W'
+
