@@ -35,6 +35,10 @@ class InQRyGUI:
         portable_radio_button.deselect()
         portable_radio_button.grid(row=3, columnspan=2)
 
+        portable_radio_button = tkinter.Radiobutton(self.root_window, text='Mobile', variable=self.form_factor, value='Mobile')
+        portable_radio_button.deselect()
+        portable_radio_button.grid(row=4, columnspan=2)
+
         alias_label = tkinter.Label(self.root_window, text='Alias:')
         alias_label.grid(row=1, column=0, pady=5, sticky=tkinter.E)
 

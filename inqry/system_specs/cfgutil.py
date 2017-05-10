@@ -31,6 +31,7 @@ class DeviceSpecs:
         self.model_identifier = device_hardware_overview['deviceType']
         self.storage = _human_readable(device_hardware_overview['totalDiskCapacity'])
         self.color = device_hardware_overview['color']
+        self.os_type = 'iOS'
 
         try:
             self.imei = device_hardware_overview['IMEI']
