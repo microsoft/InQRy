@@ -1,6 +1,7 @@
 class FormInstructions:
     def __init__(self, specs, form_factor=None, user=None):
-        self.delay = '~d'
+        self.short_delay = '~d'
+        self.long_delay = '~d~d~d~d'
         self.tab = '~t'
         self.enter = '~e'
         self.space = '\x20'
@@ -16,24 +17,51 @@ class FormInstructions:
         self.drive4 = specs.drive4
         self.serial = specs.serial_number
         self.user = user or ''
-        self.fieldsets = {'Desktop': (self._text_box(self.processor) + self._text_box(self.memory) +
-                                      self._text_box(self.drive1) + self._text_box(self.drive2) +
-                                      self._text_box(self.drive3) + self._text_box(self.drive4)),
+        self.fieldsets = {'Desktop': (self._text_box(self.processor) +
+                                      self._text_box(self.memory) +
+                                      self._text_box(self.drive1) +
+                                      self._text_box(self.drive2) +
+                                      self._text_box(self.drive3) +
+                                      self._text_box(self.drive4)),
 
-                          'Portable': (self._text_box(self.processor) + self._text_box(self.memory) +
+                          'Portable': (self._text_box(self.processor) +
+                                       self._text_box(self.memory) +
                                        self._text_box(self.drive1)),
 
-                          'New Model': (self._text_box(self.model_name) + [self.tab, self.tab, self.delay + self.model_id])}
+                          'New Model': (self._text_box(self.model_name) +
+                                        [self.tab,
+                                         self.tab,
+                                         self.short_delay +
+                                         self.model_id])}
 
     def _common_fields(self, unique_fields):
-        return (self._list_box(self.model_id) + unique_fields + self._list_box(self.status) +
-                [self.delay, self.space, self.delay, self.user, self.delay, self.enter, self.delay, self.tab] + [self.delay, self.serial])
+        return (self._list_box(self.model_id) +
+                unique_fields +
+                self._list_box(self.status) +
+                [self.short_delay,
+                 self.space,
+                 self.long_delay,
+                 self.user,
+                 self.short_delay,
+                 self.enter,
+                 self.short_delay,
+                 self.tab] +
+                [self.short_delay,
+                 self.serial])
 
-    def _text_box(self, field):
-        return [self.delay, field, self.tab]
+    def _text_box(self, field_content):
+        return [self.short_delay,
+                field_content,
+                self.tab]
 
-    def _list_box(self, field):
-        return [self.space, self.delay, field, self.delay, self.enter, self.delay, self.tab]
+    def _list_box(self, field_content):
+        return [self.space,
+                self.short_delay,
+                field_content,
+                self.short_delay,
+                self.enter,
+                self.short_delay,
+                self.tab]
 
     def instruction_steps(self):
         if self.fieldset == 'New Model':
