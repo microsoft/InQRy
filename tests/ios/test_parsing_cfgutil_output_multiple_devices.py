@@ -10,8 +10,8 @@ CFGUTIL_OUTPUT = '''
 '''
 
 RESULT = cfgutil.parse_cfgutil_output(CFGUTIL_OUTPUT)
-DEVICE0 = cfgutil.create_from_device_hardware_overview(CFGUTIL_OUTPUT)[0]
-DEVICE1 = cfgutil.create_from_device_hardware_overview(CFGUTIL_OUTPUT)[1]
+test_device1 = cfgutil.create_from_device_hardware_overview(CFGUTIL_OUTPUT)[0]
+test_device2 = cfgutil.create_from_device_hardware_overview(CFGUTIL_OUTPUT)[1]
 
 
 def test_getting_device_ecid():
@@ -33,15 +33,15 @@ def test_getting_ecid():
 
 
 def test_getting_serial_number_from_device_specs_objects():
-    assert DEVICE1.serial_number == 'F71SHPP0HG6W'
+    assert test_device2.serial_number == 'F71SHPP0HG6W'
 
 
 def test_getting_storage_returns_as_human_readable_string():
-    assert DEVICE1.storage == '32 GB'
+    assert test_device1.storage == '32 GB'
 
 
 def test_getting_storage_returns_as_human_readable_string_from_second_device():
-    assert DEVICE1.storage == '32 GB'
+    assert test_device2.storage == '32 GB'
 
 
 def test_getting_device_hardware_overview():

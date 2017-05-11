@@ -8,7 +8,8 @@ CFGUTIL_OUTPUT = '''
 '''
 
 RESULT = cfgutil.parse_cfgutil_output(CFGUTIL_OUTPUT)
-DEVICE = cfgutil.create_from_device_hardware_overview(CFGUTIL_OUTPUT)[0]
+
+test_device = cfgutil.create_from_device_hardware_overview(CFGUTIL_OUTPUT)[0]
 
 
 def test_getting_device_ecid():
@@ -31,4 +32,4 @@ def test_getting_device_hardware_overview():
 
 
 def test_imei_value_is_none():
-    assert DEVICE.imei is None
+    assert test_device.imei is None

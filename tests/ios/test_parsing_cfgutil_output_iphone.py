@@ -7,7 +7,8 @@ CFGUTIL_OUTPUT = '''
 '''
 
 RESULT = cfgutil.parse_cfgutil_output(CFGUTIL_OUTPUT)
-DEVICE = cfgutil.create_from_device_hardware_overview(CFGUTIL_OUTPUT)[0]
+
+test_device = cfgutil.create_from_device_hardware_overview(CFGUTIL_OUTPUT)[0]
 
 
 def test_getting_device_ecid():
@@ -28,11 +29,11 @@ def test_creating():
 
 
 def test_getting_serial_number_from_device_specs_objects():
-    assert DEVICE.serial_number == 'F71SHPP0HG6W'
+    assert test_device.serial_number == 'F71SHPP0HG6W'
 
 
 def test_getting_imei_from_device_specs_object():
-    assert DEVICE.imei == '359167076630320'
+    assert test_device.imei == '359167076630320'
 
 
 def test_getting_device_hardware_overview():
