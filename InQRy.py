@@ -40,7 +40,6 @@ class InQRyGUI:
             form_instructions = FormInstructions(self.systemspecs, 'New Model')
             AssetQRCode(form_instructions).display()
         elif self.form_factor.get() == 'Mobile':
-            print('okay')
             for devicespecs in ios_system_profiler.get_hardware_overview():
                 form_instructions = FormInstructions(devicespecs, self.form_factor.get(), self.alias_entry.get())
                 AssetQRCode(form_instructions).display()
