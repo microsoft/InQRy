@@ -44,7 +44,3 @@ def test_processor_name_returns_name():
 
 def test_system_specs_os_type():
     assert WINDOWS_SYSTEM_SPECS.os_type == 'win32'
-
-
-def test_instructions_defaults_to_desktop_without_pc_model():
-    assert WINDOWS_SYSTEM_SPECS.form_factor == 'Desktop'

@@ -1,5 +1,4 @@
 import platform
-import re
 from inqry.system_specs import diskutility
 from inqry.system_specs import system_profiler
 
@@ -19,18 +18,6 @@ class SystemSpecs(object):
         self.os_type = os_type or platform.system()
         self.hardware_overview = hardware_overview or system_profiler.get_hardware_overview()
         self.internal_storage = internal_storage or diskutility.get_internal_storage()
-
-    @property
-    def form_factor(self):
-        return self._identify_mac_form_factor() if self.os_type == 'Darwin' else self._identify_pc_form_factor()
-
-    def _identify_mac_form_factor(self):
-        mac_portable_pattern = re.compile(r'MacBook(Pro|Air|)([0-9]|[1-9][0-9]),[1-9]')
-        return 'Portable' if re.match(mac_portable_pattern, self.model_identifier) else 'Desktop'
-
-    def _identify_pc_form_factor(self):
-        pc_portable_pattern = re.compile(r'')  # TODO: Write regexp for PC form factor
-        return 'Portable' if not re.match(pc_portable_pattern, self.model_identifier) else 'Desktop'
 
     @property
     def model_name(self):
@@ -68,6 +55,19 @@ class SystemSpecs(object):
     @property
     def drive_count(self):
         return len(self.storage)
+
+    @property
+    def imei(self):
+        try:
+            self.hardware_overview.get('IMEI')
+        except AssertionError:
+            return None
+
+    def mobile_storage(self):
+        try:
+            self.hardware_overview.get('IMEI')
+        except AssertionError:
+            return None
 
     @property
     def storage(self):

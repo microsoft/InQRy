@@ -42,7 +42,3 @@ def test_system_specs_drive_count_returns_correct_amount():
 
 def test_drive_bay_1_returns_correct_data():
     assert MAC_SYSTEM_SPECS.drive1 == '3.0 TB HDD (APPLE HDD ST3000DM001)'
-
-
-def test_instructions_return_correct_form_factor():
-    assert MAC_SYSTEM_SPECS.form_factor == 'Desktop'
