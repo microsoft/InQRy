@@ -7,20 +7,22 @@ from inqry.system_specs import ios_system_profiler
 from inqry.form_instructions import FormInstructions
 
 
-def machine_has_cfgutil():
-    return subprocess.getstatusoutput(['type', '/usr/local/bin/cfgutil'])
-
-
 def devices_are_attached():
-    return subprocess.check_output(['/usr/local/bin/cfgutil', 'list'])
+    try:
+        return subprocess.check_output(['/usr/local/bin/cfgutil', 'list'])
+    except:
+        return False
 
 
 def operating_system_is_macos():
-    return sys.platform == 'darwin'
+    try:
+        return sys.platform == 'darwin'
+    except:
+        return False
 
 
 def mobile_device_capability():
-    return 'active' if operating_system_is_macos() and machine_has_cfgutil() and devices_are_attached() else 'disabled'
+    return 'active' if operating_system_is_macos() and devices_are_attached() else 'disabled'
 
 
 class InQRyGUI:
