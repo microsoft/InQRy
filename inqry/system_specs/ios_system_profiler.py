@@ -23,11 +23,12 @@ class DeviceSpecs:
         except KeyError:
             self.imei = None
 
-    def get_all_ios_system_components(self):
+    def get_all_device_components(self):
         return {'Model Identifier': self.model_identifier,
                 'Manufacturer': 'Apple',
                 'Serial Number (system)': self.serial_number,
-                'IMEI': self.imei}
+                'IMEI': self.imei,
+                'Storage': self.storage}
 
 
 def get_hardware_overview():

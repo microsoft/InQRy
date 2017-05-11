@@ -2,7 +2,7 @@ import tkinter
 import subprocess
 import sys
 from inqry.asset_qrcode import AssetQRCode
-from inqry.system_specs import systemspecs
+from inqry.system_specs.systemspecs import SystemSpecs
 from inqry.form_instructions import FormInstructions
 
 
@@ -30,7 +30,7 @@ class InQRyGUI:
         self.new_model_selected = tkinter.IntVar()
         self.alias_entry = tkinter.Entry(self.root_window)
         self.alias_entry.grid(row=1, column=1, pady=5)
-        self.systemspecs = systemspecs.SystemSpecs()
+        self.systemspecs = SystemSpecs()
         self.mobile_device_capability = mobile_device_capability()
         self.create_widgets()
 

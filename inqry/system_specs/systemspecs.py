@@ -21,18 +21,6 @@ class SystemSpecs(object):
         self.internal_storage = internal_storage or diskutility.get_internal_storage()
 
     @property
-    def form_factor(self):
-        return self._identify_mac_form_factor() if self.os_type == 'Darwin' else self._identify_pc_form_factor()
-
-    def _identify_mac_form_factor(self):
-        mac_portable_pattern = re.compile(r'MacBook(Pro|Air|)([0-9]|[1-9][0-9]),[1-9]')
-        return 'Portable' if re.match(mac_portable_pattern, self.model_identifier) else 'Desktop'
-
-    def _identify_pc_form_factor(self):
-        pc_portable_pattern = re.compile(r'')  # TODO: Write regexp for PC form factor
-        return 'Portable' if not re.match(pc_portable_pattern, self.model_identifier) else 'Desktop'
-
-    @property
     def model_name(self):
         try:
             return self.hardware_overview.get('Model Name')
@@ -71,8 +59,11 @@ class SystemSpecs(object):
 
     @property
     def storage(self):
-        return {'Drive {}'.format(disk_count): '{} {} ({})'.format(disk.size, disk.type, disk.device_name) for
-                disk_count, disk in enumerate(self.internal_storage, 1)}
+        try:
+            return self.hardware_overview.get('Storage')
+        except AttributeError:
+            return {'Drive {}'.format(disk_count): '{} {} ({})'.format(disk.size, disk.type, disk.device_name) for
+                    disk_count, disk in enumerate(self.internal_storage, 1)}
 
     @property
     def drive1(self):

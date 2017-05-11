@@ -16,6 +16,7 @@ class FormInstructions:
         self.drive3 = specs.drive3
         self.drive4 = specs.drive4
         self.serial = specs.serial_number
+        self.imei = specs.imei
         self.user = user or ''
         self.fieldsets = {'Desktop': (self._text_box(self.processor) +
                                       self._text_box(self.memory) +
@@ -32,7 +33,9 @@ class FormInstructions:
                                         [self.tab,
                                          self.tab,
                                          self.short_delay +
-                                         self.model_id])}
+                                         self.model_id]),
+
+                          'Mobile': (self._text_box(self.imei))}
 
     def _common_fields(self, unique_fields):
         return (self._list_box(self.model_id) +
