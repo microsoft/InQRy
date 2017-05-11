@@ -1,4 +1,5 @@
 import re
+
 import wmi
 
 
@@ -39,7 +40,7 @@ class WindowsProfile:
         return self.win32_computer_system_product.Name or self.win32_computer_system.Model
 
     def _get_model_identifier(self):
-        return self.win32_computer_system.SystemSKUNumber or self.win32_computer_system_product.Version
+        return self.win32_computer_system.SystemSKUNumber or self.win32_computer_system_product.Version or self._get_model_name()
 
     def _get_serial_number(self):
         return self.win32_bios.SerialNumber or self.win32_computer_system_product.IdentifyingNumber
