@@ -4,7 +4,7 @@ import subprocess
 
 from inqry.system_specs import _human_readable
 
-BASE_COMMAND = '/usr/local/bin/cfgutil --foreach --format JSON get color IMEI serialNumber deviceType totalDiskCapacity'
+BASE_COMMAND = '/usr/local/bin/cfgutil --foreach --format JSON get IMEI serialNumber deviceType totalDiskCapacity'
 
 
 def parse_cfgutil_output(output):
@@ -30,7 +30,6 @@ class DeviceSpecs:
         self.serial_number = device_hardware_overview['serialNumber']
         self.model_identifier = device_hardware_overview['deviceType']
         self.storage = _human_readable(device_hardware_overview['totalDiskCapacity'])
-        self.color = device_hardware_overview['color']
         self.os_type = 'iOS'
 
         try:
@@ -38,7 +37,17 @@ class DeviceSpecs:
         except KeyError:
             self.imei = None
 
+    def get_all_ios_system_components(self):
+        return {'Model Identifier': self.model_identifier,
+                'Manufacturer': 'Apple',
+                'Serial Number (system)': self.serial_number,
+                'IMEI': self.imei}
 
-def create_from_device_hardware_overview(cfgutil_output):
-    return [DeviceSpecs(device_hardware_overview) for device_hardware_overview in
+
+def create_devices_from_cfgutil_output(cfgutil_output):
+    return [create_from_device_hardware_overview(device_hardware_overview) for device_hardware_overview in
             get_hardware_overview_for_all_devices(cfgutil_output)]
+
+
+def create_from_device_hardware_overview(hardware_overview):
+    return DeviceSpecs(hardware_overview)
