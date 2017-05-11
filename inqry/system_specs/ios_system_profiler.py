@@ -13,10 +13,19 @@ def create_devices_from_cfgutil_output():
 
 class DeviceSpecs:
     def __init__(self, device_hardware_overview):
+        print('creating disk')
         self.serial_number = device_hardware_overview['serialNumber']
         self.model_identifier = device_hardware_overview['deviceType']
-        self.storage = _human_readable(device_hardware_overview['totalDiskCapacity'])
+        self.mobile_storage = _human_readable(device_hardware_overview['totalDiskCapacity'])
         self.os_type = 'iOS'
+        self.processor_speed = None
+        self.processor_name = None
+        self.memory = None
+        self.drive1 = None
+        self.drive2 = None
+        self.drive3 = None
+        self.drive4 = None
+        self.model_name = None
 
         try:
             self.imei = device_hardware_overview['IMEI']
@@ -28,8 +37,9 @@ class DeviceSpecs:
                 'Manufacturer': 'Apple',
                 'Serial Number (system)': self.serial_number,
                 'IMEI': self.imei,
-                'Storage': self.storage}
+                'Storage': self.mobile_storage}
 
 
 def get_hardware_overview():
+    print('getting hardware overview')
     return create_devices_from_cfgutil_output()

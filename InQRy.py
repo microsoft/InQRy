@@ -3,7 +3,7 @@ import subprocess
 import sys
 from inqry.asset_qrcode import AssetQRCode
 from inqry.system_specs.systemspecs import SystemSpecs
-from inqry.system_specs import cfgutil
+from inqry.system_specs import ios_system_profiler
 from inqry.form_instructions import FormInstructions
 
 
@@ -39,9 +39,10 @@ class InQRyGUI:
         if self.new_model_selected.get():
             form_instructions = FormInstructions(self.systemspecs, 'New Model')
             AssetQRCode(form_instructions).display()
-        if self.form_factor == 'Mobile':
-            for devicespecs in cfgutil.get_hardware_overview_for_all_devices():
-                form_instructions = FormInstructions(devicespecs)
+        elif self.form_factor.get() == 'Mobile':
+            print('okay')
+            for devicespecs in ios_system_profiler.get_hardware_overview():
+                form_instructions = FormInstructions(devicespecs, self.form_factor.get(), self.alias_entry.get())
                 AssetQRCode(form_instructions).display()
         else:
             form_instructions = FormInstructions(self.systemspecs, self.form_factor.get(), self.alias_entry.get())

@@ -1,5 +1,4 @@
 import platform
-import re
 from inqry.system_specs import diskutility
 from inqry.system_specs import system_profiler
 
@@ -58,12 +57,22 @@ class SystemSpecs(object):
         return len(self.storage)
 
     @property
-    def storage(self):
+    def imei(self):
         try:
-            return self.hardware_overview.get('Storage')
-        except AttributeError:
-            return {'Drive {}'.format(disk_count): '{} {} ({})'.format(disk.size, disk.type, disk.device_name) for
-                    disk_count, disk in enumerate(self.internal_storage, 1)}
+            self.hardware_overview.get('IMEI')
+        except AssertionError:
+            return None
+
+    def mobile_storage(self):
+        try:
+            self.hardware_overview.get('IMEI')
+        except AssertionError:
+            return None
+
+    @property
+    def storage(self):
+        return {'Drive {}'.format(disk_count): '{} {} ({})'.format(disk.size, disk.type, disk.device_name) for
+                disk_count, disk in enumerate(self.internal_storage, 1)}
 
     @property
     def drive1(self):
