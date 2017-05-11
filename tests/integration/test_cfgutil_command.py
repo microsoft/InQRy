@@ -1,11 +1,21 @@
 from inqry.system_specs import cfgutil
 
+hardware_overview = cfgutil.get_hardware_overview_for_all_devices()
+device_properties = cfgutil.get_device_properties_from_cfgutil_output()
+
 
 def test_get_hardware_overview_for_all_devices():
-    device_summary = cfgutil.get_hardware_overview_for_all_devices()
-    assert str(device_summary[0].keys()) == "dict_keys(['serialNumber', 'totalDiskCapacity', 'IMEI', 'deviceType'])"
+    assert hardware_overview
 
 
-def test_get_device_properties_from_cfgutil_output():
-    hardware_overview = cfgutil.get_device_properties_from_cfgutil_output()
-    assert str(hardware_overview.keys()) == "dict_keys(['Command', 'Output', 'Type', 'Devices'])"
+def test_get_device_properties_for_all_devices():
+    assert device_properties
+
+
+def test_hardware_overview_keys_are_correct_for_attached_device():
+    first_device = hardware_overview[0]
+    assert str(first_device.keys()) == "dict_keys(['serialNumber', 'totalDiskCapacity', 'IMEI', 'deviceType'])"
+
+
+def test_device_property_keys_are_correct_for_attached_device():
+    assert str(device_properties.keys()) == "dict_keys(['Command', 'Output', 'Type', 'Devices'])"
