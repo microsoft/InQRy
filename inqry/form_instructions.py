@@ -10,14 +10,15 @@ class FormInstructions:
         self.serial = specs.serial_number
         self.fieldset = form_factor or 'Desktop'
         self.user = user or ''
-        self.fieldsets = {'Desktop': (self._text_box('{} {}'.format(specs.processor_speed, specs.processor_name)) +
+        self.processor = '{} {}'.format(specs.processor_speed, specs.processor_name)
+        self.fieldsets = {'Desktop': (self._text_box(self.processor) +
                                       self._text_box(specs.memory) +
                                       self._text_box(specs.drive1) +
                                       self._text_box(specs.drive2) +
                                       self._text_box(specs.drive3) +
                                       self._text_box(specs.drive4)),
 
-                          'Portable': (self._text_box('{} {}'.format(specs.processor_speed, specs.processor_name)) +
+                          'Portable': (self._text_box(self.processor) +
                                        self._text_box(specs.memory) +
                                        self._text_box(specs.drive1)),
 
