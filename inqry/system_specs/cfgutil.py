@@ -9,14 +9,14 @@ def parse_cfgutil_output(output):
     return json.loads(output)
 
 
-def get_device_summary_from_cfgutil_output(cfgutil_output=None):
+def get_device_properties_from_cfgutil_output(cfgutil_output=None):
     cfgutil_output = cfgutil_output or _get_output_of_cfgutil_command()
     return parse_cfgutil_output(cfgutil_output)
 
 
-def get_hardware_overview_for_all_devices(device_summary=None):
-    device_summary = device_summary or get_device_summary_from_cfgutil_output()
-    return [device_summary['Output'][ecid] for ecid in device_summary['Devices']]
+def get_hardware_overview_for_all_devices(device_properties=None):
+    device_properties = device_properties or get_device_properties_from_cfgutil_output()
+    return [device_properties['Output'][ecid] for ecid in device_properties['Devices']]
 
 
 def _get_output_of_cfgutil_command(arguments=None):

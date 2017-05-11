@@ -6,7 +6,7 @@ CFGUTIL_OUTPUT = '''
 "Type":"CommandOutput","Devices":["0xA64D620D30D26"]}
 '''
 
-RESULT = cfgutil.get_device_summary_from_cfgutil_output(CFGUTIL_OUTPUT)
+RESULT = cfgutil.get_device_properties_from_cfgutil_output(CFGUTIL_OUTPUT)
 SUMMARY = cfgutil.get_hardware_overview_for_all_devices(RESULT)
 
 

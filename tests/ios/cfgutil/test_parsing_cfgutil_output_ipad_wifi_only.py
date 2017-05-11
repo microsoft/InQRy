@@ -7,7 +7,7 @@ CFGUTIL_OUTPUT = '''
 "Code":-402653163}}}},"Type":"CommandOutput","Devices":["0x970E80428AC26"]}
 '''
 
-RESULT = cfgutil.get_device_summary_from_cfgutil_output(CFGUTIL_OUTPUT)
+RESULT = cfgutil.get_device_properties_from_cfgutil_output(CFGUTIL_OUTPUT)
 
 
 def test_getting_serial_using_device_value():
