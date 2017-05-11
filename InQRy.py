@@ -7,11 +7,11 @@ from inqry.form_instructions import FormInstructions
 
 
 def machine_has_cfgutil():
-    return subprocess.call(['type', '/usr/local/bin/cfgutil'])
+    return subprocess.getstatusoutput(['type', '/usr/local/bin/cfgutil'])
 
 
 def devices_are_attached():
-    return subprocess.call(['/usr/local/bin/cfgutil', 'list'])
+    return subprocess.check_output(['/usr/local/bin/cfgutil', 'list'])
 
 
 def operating_system_is_macos():
@@ -19,7 +19,7 @@ def operating_system_is_macos():
 
 
 def mobile_device_capability():
-    return 'enabled' if operating_system_is_macos() and machine_has_cfgutil() and devices_are_attached() else 'disabled'
+    return 'active' if operating_system_is_macos() and machine_has_cfgutil() and devices_are_attached() else 'disabled'
 
 
 class InQRyGUI:
@@ -31,8 +31,8 @@ class InQRyGUI:
         self.alias_entry = tkinter.Entry(self.root_window)
         self.alias_entry.grid(row=1, column=1, pady=5)
         self.systemspecs = systemspecs.SystemSpecs()
+        self.mobile_device_capability = mobile_device_capability()
         self.create_widgets()
-        self.mobile_device_capability = mobile_device_capability
 
     def click(self):
         if self.new_model_selected.get():
