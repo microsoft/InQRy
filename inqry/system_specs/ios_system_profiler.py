@@ -6,9 +6,9 @@ def create_from_device_hardware_overview(hardware_overview):
     return DeviceSpecs(hardware_overview)
 
 
-def create_devices_from_cfgutil_output(cfgutil_output):
+def create_devices_from_cfgutil_output():
     return [create_from_device_hardware_overview(device_hardware_overview) for device_hardware_overview in
-            cfgutil.get_hardware_overview_for_all_devices(cfgutil_output)]
+            cfgutil.get_hardware_overview_for_all_devices()]
 
 
 class DeviceSpecs:
@@ -28,3 +28,7 @@ class DeviceSpecs:
                 'Manufacturer': 'Apple',
                 'Serial Number (system)': self.serial_number,
                 'IMEI': self.imei}
+
+
+def get_hardware_overview():
+    return create_devices_from_cfgutil_output()

@@ -6,11 +6,8 @@ CFGUTIL_OUTPUT = '''
 "Type":"CommandOutput","Devices":["0xA64D620D30D26"]}
 '''
 
-RESULT = cfgutil.parse_cfgutil_output(CFGUTIL_OUTPUT)
-
-
-def test_getting_device_ecid():
-    assert cfgutil.get_all_device_ecids(CFGUTIL_OUTPUT) == ["0xA64D620D30D26"]
+RESULT = cfgutil.get_device_summary_from_cfgutil_output(CFGUTIL_OUTPUT)
+SUMMARY = cfgutil.get_hardware_overview_for_all_devices(RESULT)
 
 
 def test_getting_ecid():
@@ -20,9 +17,3 @@ def test_getting_ecid():
 def test_getting_serial_using_device_value():
     ecid = RESULT['Devices'][0]
     assert RESULT['Output'][ecid]['serialNumber'] == 'F71SHPP0HG6W'
-
-
-def test_getting_device_hardware_overview():
-    assert cfgutil.get_hardware_overview_for_all_devices(CFGUTIL_OUTPUT) == [{
-        'serialNumber': 'F71SHPP0HG6W', 'totalDiskCapacity': 32000000000,
-        'deviceType': 'iPhone9,1', 'IMEI': '359167076630320', 'color': '1'}]
