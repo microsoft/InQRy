@@ -15,8 +15,8 @@ def test_getting_serial_number_from_device_specs_objects():
 
 
 def test_getting_storage_returns_as_human_readable_string():
-    assert test_device_1.storage == '32 GB'
+    assert test_device_1.mobile_storage == '32 GB'
 
 
 def test_getting_storage_returns_as_human_readable_string_from_second_device():
-    assert test_device_2.storage == '32 GB'
+    assert test_device_2.mobile_storage == '32 GB'

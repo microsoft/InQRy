@@ -8,7 +8,7 @@ class FormInstructions:
         self.status = 'Ready'
         self.model_id = specs.model_identifier
         self.serial = specs.serial_number
-        self.fieldset = form_factor
+        self.fieldset = form_factor or 'Desktop'
         self.user = user or ''
         self.fieldsets = {'Desktop': (self._text_box('{} {}'.format(specs.processor_speed, specs.processor_name)) +
                                       self._text_box(specs.memory) +
@@ -61,7 +61,6 @@ class FormInstructions:
                 self.short_delay]
 
     def instruction_steps(self):
-        print(self.fieldset)
         if self.fieldset == 'New Model':
             return self.fieldsets['New Model']
         else:

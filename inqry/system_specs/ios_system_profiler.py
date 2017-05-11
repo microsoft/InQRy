@@ -13,7 +13,6 @@ def create_devices_from_cfgutil_output():
 
 class DeviceSpecs:
     def __init__(self, device_hardware_overview):
-        print('creating disk')
         self.serial_number = device_hardware_overview['serialNumber']
         self.model_identifier = device_hardware_overview['deviceType']
         self.mobile_storage = _human_readable(device_hardware_overview['totalDiskCapacity'])
@@ -41,5 +40,4 @@ class DeviceSpecs:
 
 
 def get_hardware_overview():
-    print('getting hardware overview')
     return create_devices_from_cfgutil_output()
