@@ -1,6 +1,6 @@
 from inqry.system_specs import get_physicaldisk
 
-UNIQUE_ID_OUTPUT = '''
+UNIQUE_ID_OUTPUT = """
 UniqueId
 --------
 {256a2559-ce63-5434-1bee-3ff629daa3a7}
@@ -11,7 +11,8 @@ eui.0025384161B6798A
 5000C5007A75E216
 500A07510F1A545C
 ATA     LITEONIT LMT-256M6M mSATA 256GB         TW0XXM305508532M0705
-'''
+IDE\Diskpacker-virtualbox-iso-1421140659-disk1__F.R7BNPC\5&1944dbef&0&0.0.0:vagrant-2012-r2
+"""
 
 
 def test_creating_list_of_unique_disk_ids():
@@ -22,5 +23,6 @@ def test_creating_list_of_unique_disk_ids():
                                'eui.0025384161B6798A',
                                '5000C5007A75E216',
                                '500A07510F1A545C',
-                               'ATA     LITEONIT LMT-256M6M mSATA 256GB         TW0XXM305508532M0705'}
+                               'ATA     LITEONIT LMT-256M6M mSATA 256GB         TW0XXM305508532M0705',
+                               "IDE\Diskpacker-virtualbox-iso-1421140659-disk1__F.R7BNPC\5&1944dbef&0&0.0.0:vagrant-2012-r2"}
     assert expected_physical_disks == set(get_physicaldisk.get_physical_disk_identifiers(UNIQUE_ID_OUTPUT))
