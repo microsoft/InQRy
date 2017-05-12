@@ -20,8 +20,8 @@ def get_disk_info(unique_id):
     return _get_output_of_get_physical_disk_command(arguments='-UniqueID \'{}\' | Select *'.format(unique_id))
 
 
-def get_disk_info_from_friend(friendlyname):
-    return _get_output_of_get_physical_disk_command(arguments='-FriendlyName \'{}\' | Select *'.format(friendlyname))
+def get_disk_info_from_friendly_name(friendly_name):
+    return _get_output_of_get_physical_disk_command(arguments='-FriendlyName \'{}\' | Select *'.format(friendly_name))
 
 
 def list_all_ids():
