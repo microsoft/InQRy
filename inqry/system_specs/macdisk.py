@@ -38,7 +38,6 @@ class Disk:
 
     def is_virtual(self):
         try:
-            print(self.attributes.get('Virtual'))
             return self.attributes.get('Virtual')
         except KeyError:
             return False
