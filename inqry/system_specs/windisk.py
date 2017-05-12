@@ -1,5 +1,6 @@
 import re
 from inqry.system_specs import get_physicaldisk
+import subprocess
 
 
 def create_disk_from_get_physical_disk_output(get_physical_disk_output):
@@ -17,7 +18,10 @@ def get_all_physical_disks_from_friendlynames():
 
 
 def get_internal_storage():
-    internal_disks = get_all_physical_disks_from_ids() or get_all_physical_disks_from_friendlynames()
+    try:
+        internal_disks = get_all_physical_disks_from_ids()
+    except subprocess.CalledProcessError:
+        internal_disks = get_all_physical_disks_from_friendlynames()
     return [disk for disk in internal_disks if disk.is_internal]
 
 
