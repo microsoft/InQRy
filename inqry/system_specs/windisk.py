@@ -18,10 +18,7 @@ def get_all_physical_disks_from_friendlynames():
 
 
 def get_internal_storage():
-    try:
-        internal_disks = get_all_physical_disks_from_friendlynames()
-    except subprocess.CalledProcessError:
-        internal_disks = get_all_physical_disks_from_ids()
+    internal_disks = get_all_physical_disks_from_friendlynames()
     return [disk for disk in internal_disks if disk.is_internal]
 
 
