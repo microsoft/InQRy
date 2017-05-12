@@ -6,13 +6,18 @@ def create_disk_from_get_physical_disk_output(get_physical_disk_output):
     return Disk(get_physical_disk_output)
 
 
-def get_all_physical_disk():
+def get_all_physical_disks_from_ids():
     return [create_disk_from_get_physical_disk_output(get_physicaldisk.get_disk_info(unique_disk_id)) for
             unique_disk_id in get_physicaldisk.get_physical_disk_identifiers()]
 
 
+def get_all_physical_disks_from_friendlynames():
+    return [create_disk_from_get_physical_disk_output(get_physicaldisk.get_physical_disk_friendly_names(friendlyname))
+            for friendlyname in get_physicaldisk.get_physical_disk_identifiers()]
+
+
 def get_internal_storage():
-    internal_disks = get_all_physical_disk()
+    internal_disks = get_all_physical_disks_from_ids() or get_all_physical_disks_from_friendlynames()
     return [disk for disk in internal_disks if disk.is_internal]
 
 

@@ -10,6 +10,7 @@ UniqueId
 eui.0025384161B6798A
 5000C5007A75E216
 500A07510F1A545C
+ATA     LITEONIT LMT-256M6M mSATA 256GB         TW0XXM305508532M0705
 '''
 
 
@@ -20,5 +21,6 @@ def test_creating_list_of_unique_disk_ids():
                                '50014EE20D887D66',
                                'eui.0025384161B6798A',
                                '5000C5007A75E216',
-                               '500A07510F1A545C'}
+                               '500A07510F1A545C',
+                               'ATA     LITEONIT LMT-256M6M mSATA 256GB         TW0XXM305508532M0705'}
     assert expected_physical_disks == set(get_physicaldisk.get_physical_disk_identifiers(UNIQUE_ID_OUTPUT))
