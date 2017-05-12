@@ -58,16 +58,7 @@ DISKUTIL_LIST_OUTPUT = '''
 '''
 
 
-def test_getting_internal_physical_drives():
-    expected_internal_disks = ['/dev/disk0']
-    assert expected_internal_disks == diskutil.get_internal_physical_disk_ids(DISKUTIL_LIST_OUTPUT)
-
-
-def test_only_physical_drives_included():
-    expected_physical_disks = ['/dev/disk4', '/dev/disk5', '/dev/disk6', '/dev/disk7']
-    assert expected_physical_disks == diskutil.get_external_physical_disk_ids(DISKUTIL_LIST_OUTPUT)
-
-
 def test_all_physical_disk_identifiers():
-    expected_disk_ids = ['/dev/disk0', '/dev/disk4', '/dev/disk5', '/dev/disk6', '/dev/disk7']
+    expected_disk_ids = ['/dev/disk0', '/dev/disk1', '/dev/disk2', '/dev/disk3', '/dev/disk4', '/dev/disk5',
+                         '/dev/disk6', '/dev/disk7', '/dev/disk8']
     assert expected_disk_ids == diskutil.get_all_physical_ids(DISKUTIL_LIST_OUTPUT)

@@ -65,15 +65,15 @@ def test_disk_is_virtual():
 
 
 def test_device_name_is_correct():
-    assert test_disk.device_name == 'G-DRIVE PRO Thunderbolt'
+    assert test_disk.device_name == 'APPLE SSD AP0256J'
 
 
-def test_disk_is_not_ssd():
-    assert test_disk.is_ssd is False
+def test_disk_is_ssd():
+    assert test_disk.is_ssd
 
 
 def test_size_is_correct():
-    assert test_disk.size == '2.0 TB'
+    assert test_disk.size == '249.7 GB'
 
 
 def test_removable_media():

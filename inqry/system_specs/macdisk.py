@@ -13,7 +13,7 @@ def create_disks_from_physical_disk_ids():
 
 def get_internal_storage():
     internal_disks = create_disks_from_physical_disk_ids()
-    return [disk for disk in internal_disks if disk.is_internal]
+    return [disk for disk in internal_disks if disk.is_internal and not disk.is_virtual()]
 
 
 class Disk:
@@ -35,6 +35,13 @@ class Disk:
     @property
     def is_internal(self):
         return self.device_location != 'External'
+
+    def is_virtual(self):
+        try:
+            print(self.attributes.get('Virtual'))
+            return self.attributes.get('Virtual')
+        except KeyError:
+            return False
 
     @property
     def is_external(self):
