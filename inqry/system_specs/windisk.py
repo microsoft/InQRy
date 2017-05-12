@@ -19,7 +19,9 @@ def get_internal_storage():
 
 class Disk(object):
     def __init__(self, windows_disk):
-        self.windows_disk = windows_disk
+        self.windows_disk = windows_disk[0]
+        print(self.windows_disk)
+        print(type(self.windows_disk))
 
     @property
     def bustype(self):
