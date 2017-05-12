@@ -27,11 +27,15 @@ def get_internal_storage():
 
 class Disk(object):
     def __init__(self, windows_disk):
+        print(self.windows_disk)
+        print(type(self.windows_disk))
         self.windows_disk = windows_disk
 
     @property
     def bustype(self):
         pattern = re.compile(r'(?:BusType\s+:\s)([a-zA-Z]+)')
+        print(self.windows_disk)
+        print(type(self.windows_disk))
         return re.findall(pattern, self.windows_disk)[0]
 
     @property
