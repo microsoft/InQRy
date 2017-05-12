@@ -1,38 +1,29 @@
 import re
-from inqry.system_specs import get_physicaldisk
+from inqry.system_specs import win_physical_disk
 import subprocess
 
 
-def create_disk_from_get_physical_disk_output(get_physical_disk_output):
-    return Disk(get_physical_disk_output)
+def create_disk_from_win_physical_disk_output(win_physical_disk_output):
+    return Disk(win_physical_disk_output)
 
 
-def get_all_physical_disks_from_ids():
-    return [create_disk_from_get_physical_disk_output(get_physicaldisk.get_disk_info(unique_disk_id)) for
-            unique_disk_id in get_physicaldisk.get_physical_disk_identifiers()]
-
-
-def get_all_physical_disks_from_friendlynames():
-    return [create_disk_from_get_physical_disk_output(get_physicaldisk.get_physical_disk_friendly_names(friendlyname))
-            for friendlyname in get_physicaldisk.get_physical_disk_identifiers()]
+def get_all_physical_disks_from_friendly_names():
+    return [create_disk_from_win_physical_disk_output(win_physical_disk.get_physical_disk_friendly_names(friendlyname))
+            for friendlyname in win_physical_disk.get_physical_disk_friendly_names()]
 
 
 def get_internal_storage():
-    internal_disks = get_all_physical_disks_from_friendlynames()
+    internal_disks = get_all_physical_disks_from_friendly_names()
     return [disk for disk in internal_disks if disk.is_internal]
 
 
 class Disk(object):
     def __init__(self, windows_disk):
         self.windows_disk = windows_disk
-        print(self.windows_disk)
-        print(type(self.windows_disk))
 
     @property
     def bustype(self):
         pattern = re.compile(r'(?:BusType\s+:\s)([a-zA-Z]+)')
-        print(self.windows_disk)
-        print(type(self.windows_disk))
         return re.findall(pattern, self.windows_disk)[0]
 
     @property

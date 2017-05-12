@@ -1,4 +1,4 @@
-from inqry.system_specs import get_physicaldisk
+from inqry.system_specs import win_physical_disk
 
 UNIQUE_ID_OUTPUT = """
 UniqueId
@@ -25,4 +25,4 @@ def test_creating_list_of_unique_disk_ids():
                                '500A07510F1A545C',
                                'ATA     LITEONIT LMT-256M6M mSATA 256GB         TW0XXM305508532M0705',
                                "IDE\Diskpacker-virtualbox-iso-1421140659-disk1__F.R7BNPC\5&1944dbef&0&0.0.0:vagrant-2012-r2"}
-    assert expected_physical_disks == set(get_physicaldisk.get_physical_disk_identifiers(UNIQUE_ID_OUTPUT))
+    assert expected_physical_disks == set(win_physical_disk.get_physical_disk_identifiers(UNIQUE_ID_OUTPUT))
