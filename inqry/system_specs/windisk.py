@@ -26,7 +26,7 @@ class Disk(object):
     @property
     def bustype(self):
         pattern = re.compile(r'(?:BusType\s+:\s)([a-zA-Z]+)')
-        return re.findall(pattern, self.windows_disk)[0]
+        return re.findall(pattern, self.windows_disk)
 
     @property
     def device_location(self):
@@ -35,7 +35,7 @@ class Disk(object):
     @property
     def device_name(self):
         pattern = re.compile(r'(?:FriendlyName\s+:\s)([\w\d\-._ ]+)')
-        return re.findall(pattern, self.windows_disk)[0]
+        return re.findall(pattern, self.windows_disk)
 
     @property
     def is_internal(self):
