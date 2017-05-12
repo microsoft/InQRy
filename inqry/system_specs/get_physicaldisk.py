@@ -13,7 +13,7 @@ def get_physical_disk_identifiers(unique_id_output=None):
 def get_physical_disk_friendly_names(friendly_name_output=None):
     friendly_name_output = friendly_name_output or list_all_friendly_names()
     friendly_name_pattern = re.compile(r'(?!FriendlyName)(\b.+\b)')
-    return re.findall((friendly_name_pattern, friendly_name_output))
+    return re.findall(friendly_name_pattern, friendly_name_output)
 
 
 def get_disk_info(unique_id):
