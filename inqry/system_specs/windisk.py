@@ -33,7 +33,7 @@ class Disk(object):
 
     @property
     def is_internal(self):
-        valid_bus_types = ['SATA', 'RAID', 'NVMe']
+        valid_bus_types = ['SATA', 'RAID', 'NVMe', 'ATA']
         return self.bustype in valid_bus_types
 
     @property
