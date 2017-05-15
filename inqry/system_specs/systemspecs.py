@@ -21,24 +21,15 @@ class SystemSpecs(object):
 
     @property
     def model_name(self):
-        try:
-            return self.hardware_overview.get('Model Name')
-        except AssertionError:
-            raise AssertionError('Model Name key contains no value')
+        return self.hardware_overview.get('Model Name')
 
     @property
     def model_identifier(self):
-        try:
-            return self.hardware_overview.get('Model Identifier')
-        except AssertionError:
-            raise AssertionError('Model Identifier key contains no value')
+        return self.hardware_overview.get('Model Identifier')
 
     @property
     def serial_number(self):
-        try:
-            return self.hardware_overview.get('Serial Number (system)')
-        except AssertionError:
-            raise AssertionError('Serial Number key contains no value')
+        return self.hardware_overview.get('Serial Number (system)')
 
     @property
     def processor_name(self):
@@ -58,16 +49,10 @@ class SystemSpecs(object):
 
     @property
     def imei(self):
-        try:
-            self.hardware_overview.get('IMEI')
-        except AssertionError:
-            return None
+        return self.hardware_overview.get('IMEI')
 
     def mobile_storage(self):
-        try:
-            self.hardware_overview.get('IMEI')
-        except AssertionError:
-            return None
+        return self.hardware_overview.get('Storage')
 
     @property
     def storage(self):
@@ -76,28 +61,16 @@ class SystemSpecs(object):
 
     @property
     def drive1(self):
-        try:
-            return self.storage['Drive 1']
-        except KeyError:
-            return str("")
+        return self.storage.get('Drive 1')
 
     @property
     def drive2(self):
-        try:
-            return self.storage['Drive 2']
-        except KeyError:
-            return str("")
+        return self.storage.get('Drive 2')
 
     @property
     def drive3(self):
-        try:
-            return self.storage['Drive 3']
-        except KeyError:
-            return str("")
+        return self.storage.get('Drive 3')
 
     @property
     def drive4(self):
-        try:
-            return self.storage['Drive 4']
-        except KeyError:
-            return str("")
+        return self.storage.get('Drive 4')
