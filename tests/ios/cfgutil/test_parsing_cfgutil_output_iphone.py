@@ -7,7 +7,7 @@ CFGUTIL_OUTPUT = '''
 '''
 
 RESULT = cfgutil.get_device_properties_from_cfgutil_output(CFGUTIL_OUTPUT)
-SUMMARY = cfgutil.get_hardware_overview_for_all_devices(RESULT)
+SUMMARY = cfgutil.get_hardware_properties_for_attached_devices(RESULT)
 
 
 def test_getting_ecid():
