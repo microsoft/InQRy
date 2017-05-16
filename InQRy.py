@@ -1,6 +1,5 @@
 from tkinter import *
 import subprocess
-import sys
 from inqry.asset_qrcode import AssetQRCode
 from inqry.system_specs.systemspecs import SystemSpecs
 from inqry.system_specs import ios_system_profiler
