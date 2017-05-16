@@ -3,7 +3,7 @@ from inqry.system_specs import ios_system_profiler
 DEVICE_HARDWARE_OVERVIEW = {'serialNumber': 'DLXQK7WRGMLD', 'totalDiskCapacity': 31708938240,
                             'deviceType': 'iPad6,7', 'color': '#3b3b3c'}
 
-test_device = ios_system_profiler.create_from_device_hardware_overview(DEVICE_HARDWARE_OVERVIEW)
+test_device = ios_system_profiler.create_device_from_device_properties(DEVICE_HARDWARE_OVERVIEW)
 
 
 def test_imei_value_is_none():

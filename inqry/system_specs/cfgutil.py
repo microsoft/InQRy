@@ -14,7 +14,7 @@ def get_device_properties_from_cfgutil_output(cfgutil_output=None):
     return parse_cfgutil_output(cfgutil_output)
 
 
-def get_hardware_overview_for_all_devices(device_properties=None):
+def get_hardware_properties_for_attached_devices(device_properties=None):
     device_properties = device_properties or get_device_properties_from_cfgutil_output()
     return [device_properties['Output'][ecid] for ecid in device_properties['Devices']]
 

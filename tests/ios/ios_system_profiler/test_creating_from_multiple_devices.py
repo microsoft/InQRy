@@ -6,8 +6,8 @@ DEVICE_1_HARDWARE_OVERVIEW = {"serialNumber": "F71SHPP0HG6W", "totalDiskCapacity
 DEVICE_2_HARDWARE_OVERVIEW = {"serialNumber": "DLXQK7WRGMLD",
                               "totalDiskCapacity": 31708938240, "deviceType": "iPad6,7", "color": "#3b3b3c"}
 
-test_device_1 = ios_system_profiler.create_from_device_hardware_overview(DEVICE_1_HARDWARE_OVERVIEW)
-test_device_2 = ios_system_profiler.create_from_device_hardware_overview(DEVICE_2_HARDWARE_OVERVIEW)
+test_device_1 = ios_system_profiler.create_device_from_device_properties(DEVICE_1_HARDWARE_OVERVIEW)
+test_device_2 = ios_system_profiler.create_device_from_device_properties(DEVICE_2_HARDWARE_OVERVIEW)
 
 
 def test_getting_serial_number_from_device_specs_objects():

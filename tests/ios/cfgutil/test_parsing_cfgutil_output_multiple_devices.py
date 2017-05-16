@@ -10,7 +10,7 @@ CFGUTIL_OUTPUT = '''
 '''
 
 RESULT = cfgutil.get_device_properties_from_cfgutil_output(CFGUTIL_OUTPUT)
-SUMMARY = cfgutil.get_hardware_overview_for_all_devices(RESULT)
+SUMMARY = cfgutil.get_hardware_properties_for_attached_devices(RESULT)
 
 
 def test_getting_serial_of_first_device_using_device_value():
@@ -28,7 +28,7 @@ def test_getting_ecid():
 
 
 def test_getting_hardware_overview_for_all_devices():
-    hardware_overview = cfgutil.get_hardware_overview_for_all_devices(RESULT)
+    hardware_overview = cfgutil.get_hardware_properties_for_attached_devices(RESULT)
     assert hardware_overview[0] == {"serialNumber": "DLXQK7WRGMLD",
                                     "totalDiskCapacity": 31708938240,
                                     "deviceType": "iPad6,7",
