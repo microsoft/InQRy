@@ -1,6 +1,9 @@
 ## InQRy
 Obtains machine hardware specifications and generates a QR code containing the data.
 
+##### macOS: ![macOS](https://office.visualstudio.com/_apis/public/build/definitions/59d72877-1cea-4eb6-9d06-66716573631a/1174/badge)
+##### Windows: ![Windows](https://office.visualstudio.com/_apis/public/build/definitions/59d72877-1cea-4eb6-9d06-66716573631a/1167/badge)
+
 ### Install (run from the command line)
  
 ##### Requirements
