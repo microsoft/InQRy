@@ -10,6 +10,10 @@ test_device_iphone = ios_system_profiler.create_device_from_device_properties(IP
 test_device_ipad = ios_system_profiler.create_device_from_device_properties(IPAD_PROPERTIES)
 
 
+def test_creating_device_from_hardware_overview():
+    assert ios_system_profiler.create_device_from_device_properties(IPHONE_PROPERTIES)
+
+
 def test_getting_serial_number_from_device_specs_objects():
     assert test_device_ipad.serial_number == 'DLXQK7WRGMLD'
 
