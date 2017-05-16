@@ -23,7 +23,7 @@ def test_getting_non_existent_imei_from_ipad():
 
 
 def test_getting_non_existent_imei_from_iphone():
-    assert test_device_ipad.imei == '359167076630320'
+    assert test_device_iphone.imei == '359167076630320'
 
 
 def test_getting_storage_returns_as_human_readable_string():
