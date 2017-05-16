@@ -37,10 +37,7 @@ class Disk:
         return self.device_location != 'External'
 
     def is_virtual(self):
-        try:
-            return self.attributes.get('Virtual')
-        except KeyError:
-            return False
+        return self.attributes.get('Virtual')
 
     @property
     def is_external(self):
