@@ -1,18 +1,15 @@
 import re
-from inqry.system_specs import get_physicaldisk
+from inqry.system_specs import win_physical_disk
 
 
-def create_disk_from_get_physical_disk_output(get_physical_disk_output):
-    return Disk(get_physical_disk_output)
-
-
-def get_all_physical_disk():
-    return [create_disk_from_get_physical_disk_output(get_physicaldisk.get_disk_info(unique_disk_id)) for
-            unique_disk_id in get_physicaldisk.get_physical_disk_identifiers()]
+def get_all_physical_disks_from_friendly_names():
+    friendly_names = win_physical_disk.get_physical_disk_friendly_names()
+    return [Disk(win_physical_disk.get_disk_info_from_friendly_name(friendly_name))
+            for friendly_name in friendly_names]
 
 
 def get_internal_storage():
-    internal_disks = get_all_physical_disk()
+    internal_disks = get_all_physical_disks_from_friendly_names()
     return [disk for disk in internal_disks if disk.is_internal]
 
 
@@ -36,7 +33,7 @@ class Disk(object):
 
     @property
     def is_internal(self):
-        valid_bus_types = ['SATA', 'RAID', 'NVMe']
+        valid_bus_types = ['SATA', 'RAID', 'NVMe', 'ATA']
         return self.bustype in valid_bus_types
 
     @property

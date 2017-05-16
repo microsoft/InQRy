@@ -8,3 +8,8 @@ def test_hardware_function_returns_dictionary():
 
 def test_diskutility_gets_internal_storage():
     assert diskutility.get_internal_storage()
+
+
+def test_all_disks_return_as_internal():
+    for disk in diskutility.get_internal_storage():
+        assert disk.is_internal

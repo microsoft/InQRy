@@ -1,4 +1,5 @@
 import sys
+
 from setuptools import setup
 
 APP = ['InQRy.py']
@@ -7,16 +8,16 @@ OPTIONS = {}
 
 if sys.platform == 'darwin':
     extra_options = dict(
-        setup_requires=['py2app'],
-        install_requires=['qrcode', 'PyYAML', 'Pillow'],
+            setup_requires=['py2app'],
+            install_requires=['qrcode', 'PyYAML', 'Pillow'],
     )
 elif sys.platform == 'win32':
     extra_options = dict(
-        install_requires=['wmi', 'pypiwin32', 'qrcode', 'Pillow'],
+            install_requires=['wmi', 'pypiwin32', 'qrcode', 'Pillow'],
     )
 
 setup(app=APP,
-      author=['OXO Hub Lab', 'Eric Hanko', 'Jacob Zaval'],
+      author=['Apex Lab'],
       author_email='apxlab@microsoft.com',
       data_files=DATA_FILES,
       description='Gets machine specs and generates a QR code containing them',
@@ -27,4 +28,4 @@ setup(app=APP,
       packages=['inqry', "inqry.system_specs"],
       tests_require=['pytest'],
       url="https://office.visualstudio.com/APEX/Lab-Projects/_git/InQRy",
-      version='1.1')
+      version='1.2')

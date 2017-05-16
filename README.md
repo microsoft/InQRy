@@ -1,16 +1,20 @@
 ## InQRy
 Obtains machine hardware specifications and generates a QR code containing the data.
 
+##### macOS: ![macOS](https://office.visualstudio.com/_apis/public/build/definitions/59d72877-1cea-4eb6-9d06-66716573631a/1174/badge)
+##### Windows: ![Windows](https://office.visualstudio.com/_apis/public/build/definitions/59d72877-1cea-4eb6-9d06-66716573631a/1167/badge)
+
 ### Install (run from the command line)
  
 ##### Requirements
-- Python 3.4.4 or later ([Homebrew](https://brew.sh/) installed version of Python 3 is recommended)
+- Python 3.4.4 or later
+- Note: If you are using the ([Homebrew](https://brew.sh/)-installed version of Python, the Python commands below will need to be appended with `3`. For example, `python` is `python3`, `pip` is `pip3`, etc.
 
 ##### Instructions
 - clone the repository
 - `cd InQRy`
-- `pip3 install .`
-- Run: `python3 InQRy.py`
+- `pip install .`
+- Run: `python InQRy.py`
 - Use the InQRy API from the Python interpreter with `import inqry`
 
 ###### Example API usage:
@@ -28,20 +32,21 @@ Obtains machine hardware specifications and generates a QR code containing the d
 ### Build (run as compiled binary)
 #### Mac
 ##### Requirements
+- ([Homebrew](https://brew.sh/)-installed version of Python 3 (`brew install python3`)
 - OS X 10.10 or later (OS X 10.10 is recommended for forward compatibility)
 - Xcode Command Line Tools (7.2.0)
-- py2app (0.12) (`pip3 install py2app`)
+- py2app (0.12) (`pip install py2app`)
 
 ##### Instructions
 - clone the repository
-- `python3 setup.py py2app --iconfile icon/inqry.icns`
+- `python setup.py py2app --iconfile icon/inqry.icns`
 - **InQRy.app** is in `dist/`
 
 #### Windows
 ##### Requirements
 - Windows 10
 - Python 3.4 or 3.5 (32-bit)
-    - **Note**: InQRy will **not** build on Python 3.6 or later _or_ 64-bit Python)
+    - **Note**: InQRy will **not** build on Python 3.6 or later)
 - pyinstaller (3.2.1 or later)
 
 ##### Instructions
