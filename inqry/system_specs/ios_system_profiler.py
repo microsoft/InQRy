@@ -13,9 +13,10 @@ def create_devices_from_cfgutil_output():
 
 class DeviceSpecs:
     def __init__(self, device_hardware_overview):
-        self.serial_number = device_hardware_overview['serialNumber']
-        self.model_identifier = device_hardware_overview['deviceType']
-        self.mobile_storage = _human_readable(device_hardware_overview['totalDiskCapacity'])
+        self.serial_number = device_hardware_overview.get('serialNumber')
+        self.model_identifier = device_hardware_overview.get('deviceType')
+        self.mobile_storage = _human_readable(device_hardware_overview.get('totalDiskCapacity'))
+        self.imei = device_hardware_overview.get('IMEI')
         self.os_type = 'iOS'
         self.processor_speed = None
         self.processor_name = None
@@ -25,11 +26,6 @@ class DeviceSpecs:
         self.drive3 = None
         self.drive4 = None
         self.model_name = None
-
-        try:
-            self.imei = device_hardware_overview['IMEI']
-        except KeyError:
-            self.imei = None
 
     def get_all_device_components(self):
         return {'Model Identifier': self.model_identifier,
