@@ -17,5 +17,5 @@ def test_getting_name_only_from_wmi32_processor():
         'Intel(R) Xeon(R) CPU E5-1650 v3 @ 3.50GHz') == 'Intel Xeon CPU E5-1650 v3'
 
 
-def tests_instantiating_a_windows_profiler():
+def test_instantiating_a_windows_profiler():
     assert windows_profile

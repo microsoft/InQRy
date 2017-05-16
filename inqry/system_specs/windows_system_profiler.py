@@ -1,6 +1,6 @@
 import re
 
-# import wmi
+import wmi
 
 
 class WindowsProfile:
