@@ -48,13 +48,14 @@ class WindowsProfile:
     def _get_serial_number(self):
         return self.win32_bios.SerialNumber or self.win32_computer_system_product.IdentifyingNumber
 
-    @staticmethod
-    def get_processor_name(full_cpu_name):
+    def _remove_extra_processor_data(self, processor):
         pattern = re.compile(r'\(\w\)')
-        return re.sub(pattern, '', WindowsProfile._split_processor(full_cpu_name)[0])
+        return re.sub(pattern, '', processor)
 
-    @staticmethod
-    def get_processor_speed(full_processor_name):
+    def get_processor_name(self, full_cpu_name):
+        return self._remove_extra_processor_data(WindowsProfile._split_processor(full_cpu_name)[0])
+
+    def get_processor_speed(self, full_processor_name):
         return WindowsProfile._split_processor(full_processor_name)[1]
 
     @staticmethod
