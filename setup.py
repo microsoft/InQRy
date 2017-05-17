@@ -1,6 +1,9 @@
 import sys
 
-from setuptools import setup
+try:
+    from setuptools import setup
+except ModuleNotFoundError:
+    from distutils.core import setup
 
 APP = ['InQRy.py']
 OPTIONS = {}
