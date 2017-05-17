@@ -10,7 +10,7 @@ A light-weight, cross-platform utility used to generate a QR code containing har
     - [Windows](#windows)
 - [How It Works](#how-it-works)
 - [Usage](#usage)
-- [Screenshots](#screenshots)
+- [Screenshot](#screenshot)
 - [Issue submission](#issue-submission)
 
 ### Supported Platforms
@@ -93,9 +93,9 @@ an initial physical inventory procedure, as well as subsequent hardware audits.
 {'Drive 1': '251.0 GB SSD (APPLE SSD AP0256J)'}
 ```
 
-### Screenshots
+### Screenshot
 
-![InQRy GUI](docs/Screenshots/inqry_gui.png)
+![InQRy GUI](docs/Screenshots/inqry_fullscreenshot.png)
 
 ## Issues
 - Create a [GitHub Issue](https://github.com/Microsoft/InQRy/issues/new)
