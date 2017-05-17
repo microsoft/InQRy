@@ -2,14 +2,16 @@
 
 A light-weight, cross-platform utility used to generate a QR code containing hardware specs.
 
-- [About](#InQRy)
-- [Installing](#Installing)
-- [Build](#Build)
+- [About](#About)
+- [Installing from source](#Installing)
+- [Building from source](#Build)
     - [macOS](#Mac)
     - [Windows](#Windows)
 - [How It Works](#How It Works)
-- [Support Platforms](#Supported Platforms)
-- [Issues](#Issues)
+- [Usage](#Usage)
+- [Screenshots](#Screenshots)
+- [Supported Platforms](#Supported Platforms)
+- [Issue submission](#Issues)
 
 ## About
 InQRy is a cross-platform application that generates a single QR code containing the machine's hardware
@@ -89,9 +91,9 @@ an initial physical inventory procedure, as well as subsequent hardware audits.
 {'Drive 1': '251.0 GB SSD (APPLE SSD AP0256J)'}
 ```
 
-### Screen shots
+### Screenshots
 
-
+![InQRy GUI](docs/Screenshots/inqry_gui.png)
 
 ### Issues
 - Create a [GitHub Issue](https://github.com/Microsoft/InQRy/issues/new)
