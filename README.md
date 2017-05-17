@@ -2,16 +2,16 @@
 
 A light-weight, cross-platform utility used to generate a QR code containing hardware specs.
 
-- [About](#About)
-- [Supported Platforms](#Supported Platforms)
-- [Installing from source](#Installing from source)
-- [Building from source](#Building from source)
-    - [macOS](#macOS)
-    - [Windows](#Windows)
-- [How It Works](#How It Works)
-- [Usage](#Usage)
-- [Screenshots](#Screenshots)
-- [Issue submission](#Issue submission)
+- [About](#about)
+- [Supported Platforms](#supported-platforms)
+- [Installing from source](#installing-from-source)
+- [Building from source](#building-from-source)
+    - [macOS](#macos)
+    - [Windows](#windows)
+- [How It Works](#how-it-works)
+- [Usage](#usage)
+- [Screenshots](#screenshots)
+- [Issue submission](#issue-submission)
 
 ### Supported Platforms
 - OS X 10.10 or later
