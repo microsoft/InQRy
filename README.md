@@ -65,7 +65,7 @@ will need to be appended with `3`. For example, `python` is `python3`, `pip` is 
 
 
 
-### How It Works
+## How It Works
 
 InQRy obtains hardware specs using platform-specific shell commands and Python modules. Data is parsed and 
 homogenized into a single `SystemSpecs` object, which is passed to a `FormInstructions` object, where data is added and
@@ -97,11 +97,11 @@ an initial physical inventory procedure, as well as subsequent hardware audits.
 
 ![InQRy GUI](docs/Screenshots/inqry_gui.png)
 
-### Issue submission
+## Issues
 - Create a [GitHub Issue](https://github.com/Microsoft/InQRy/issues/new)
 - Send us an email: [apxlab@microsoft.com](mailto:apxlab@microsoft.com)
 
-#### Microsoft Internal Only
+##### Microsoft Internal Only:
 - Submit a VSTS bug: [aka.ms/hubenglabsr](https://office.visualstudio.com/DefaultCollection/APEX/Lab-Support/_dashboards?activeDashboardId=88948f37-eb9b-4b40-a59a-b615aff02d4d)
 - Slack (apex-autoinfra.slack.com): **#inqry**
 
