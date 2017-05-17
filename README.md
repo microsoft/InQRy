@@ -3,15 +3,20 @@
 A light-weight, cross-platform utility used to generate a QR code containing hardware specs.
 
 - [About](#About)
-- [Installing from source](#Installing)
-- [Building from source](#Build)
-    - [macOS](#Mac)
+- [Supported Platforms](#Supported Platforms)
+- [Installing from source](#Installing from source)
+- [Building from source](#Building from source)
+    - [macOS](#macOS)
     - [Windows](#Windows)
 - [How It Works](#How It Works)
 - [Usage](#Usage)
 - [Screenshots](#Screenshots)
-- [Supported Platforms](#Supported Platforms)
-- [Issue submission](#Issues)
+- [Issue submission](#Issue submission)
+
+### Supported Platforms
+- OS X 10.10 or later
+- Windows 10
+- Windows Server 2012 R2
 
 ## About
 InQRy is a cross-platform application that generates a single QR code containing the machine's hardware
@@ -58,10 +63,7 @@ will need to be appended with `3`. For example, `python` is `python3`, `pip` is 
 - `pyinstaller --onefile --icon icon/inqry.ico InQRy.py`
 - **InQRy.exe** is in `dist/`
 
-### Supported Platforms
-- OS X 10.10 or later
-- Windows 10
-- Windows Server 2012 R2
+
 
 ### How It Works
 
@@ -95,7 +97,7 @@ an initial physical inventory procedure, as well as subsequent hardware audits.
 
 ![InQRy GUI](docs/Screenshots/inqry_gui.png)
 
-### Issues
+### Issue submission
 - Create a [GitHub Issue](https://github.com/Microsoft/InQRy/issues/new)
 - Send us an email: [apxlab@microsoft.com](mailto:apxlab@microsoft.com)
 
