@@ -5,7 +5,6 @@ except ImportError:
 
 setup(
     name='inqry',
-    app='launcher.py',
     author=['Apex Lab'],
     author_email='apxlab@microsoft.com',
     description='A cross-platform utility used to generate a QR code containing hardware specs',
