@@ -28,15 +28,11 @@ which can then be scanned it quickly add assets into a [Snipe-IT](https://github
 ## Installing from source
 ### Requirements
 - Python 3.4.4 or later
-- *Note*: If you are using the ([Homebrew](https://brew.sh/)-installed version of Python, the Python commands below
-will need to be appended with `3`. For example, `python` is `python3`, `pip` is `pip3`, etc.
 
 ### Instructions
-- clone the repository
-- `cd InQRy`
 - `pip install .`
 - Run: `python InQRy.py`
-- Use the InQRy API from the Python interpreter with `import inqry`
+- Use the InQRy API from the Python interpreter with `from inqry.system_specs import systemspecs`
 
 ## Building from source
 ### macOS
@@ -44,10 +40,9 @@ will need to be appended with `3`. For example, `python` is `python3`, `pip` is 
 - ([Homebrew](https://brew.sh/)-installed version of Python 3 (`brew install python3`)
 - OS X 10.10 or later (OS X 10.10 is recommended for forward compatibility)
 - Xcode Command Line Tools (7.2.0)
-- py2app (0.12) (`pip install py2app`)
+- `py2app>=0.12`
 
 #### Instructions
-- clone the repository
 - `python setup.py py2app --iconfile icon/inqry.icns`
 - **InQRy.app** is in `dist/`
 
@@ -56,14 +51,11 @@ will need to be appended with `3`. For example, `python` is `python3`, `pip` is 
 - Windows 10
 - Python 3.4 or 3.5 (32-bit)
     - **Note**: InQRy will **not** build on Python 3.6 or later)
-- pyinstaller (3.2.1 or later)
+- `pyinstaller>=3.2.1`
 
 #### Instructions
-- clone the repository
 - `pyinstaller --onefile --icon icon/inqry.ico InQRy.py`
 - **InQRy.exe** is in `dist/`
-
-
 
 ## How It Works
 
