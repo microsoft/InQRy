@@ -18,7 +18,7 @@ setup(
                       'pypiwin32;platform_system=="Windows"'],
     tests_require=['pytest'],
     url='https://github.com/Microsoft/InQRy',
-    version='1.2.1',
+    version='1.2.2',
     classifiers=[
         'License :: OSI Approved :: MIT License',
         'Natural Language :: English',
