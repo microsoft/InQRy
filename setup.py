@@ -26,7 +26,7 @@ plist.update(dict(
         CFBundleShortVersionString=__version__,
         CFBundleName='InQRy',
         NSHumanReadableCopyright=__copyright__,
-        CFBundleIconFile='')
+        CFBundleIconFile='icon/inqry.icns')
 )
 
 setup(
@@ -35,7 +35,7 @@ setup(
         author=[__author__],
         author_email=__email__,
         description='A cross-platform utility used to generate a QR code containing hardware specs',
-        license='MIT',
+        license=__license__,
         long_description=long_description,
         packages=['inqry', 'inqry.system_specs'],
         install_requires=['Pillow',
