@@ -1,3 +1,5 @@
+from plistlib import Plist
+
 try:
     from setuptools import setup
 except ImportError:
@@ -11,8 +13,16 @@ The QR code contains detailed information about the client machine or device, wh
 assets into a Snipe-IT database.
 """
 
+name = 'inqry'
+version = '1.2.3'
+
+plist = Plist.fromFile('Info.plist')
+plist.update(dict(
+        CFBundleVersion=version,
+        CFBundleName=name))
+
 setup(
-        name='inqry',
+        name=name,
         app=['inqry/__main__.py'],
         author=['Microsoft Apex Lab'],
         author_email='apxlab@microsoft.com',
@@ -28,7 +38,7 @@ setup(
                           'pypiwin32;platform_system=="Windows"'],
         tests_require=['pytest'],
         url='https://github.com/Microsoft/InQRy',
-        version='1.2.3',
+        version=version,
         classifiers=[
             'License :: OSI Approved :: MIT License',
             'Natural Language :: English',
@@ -38,5 +48,7 @@ setup(
             'Programming Language :: Python :: 3.4',
             'Programming Language :: Python :: 3.5',
             'Programming Language :: Python :: 3.6',
-            'Programming Language :: Python :: 3 :: Only']
-)
+            'Programming Language :: Python :: 3 :: Only'],
+        options=dict(
+                py2app=dict(
+                        plist=plist)))
