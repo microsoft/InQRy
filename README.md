@@ -44,7 +44,7 @@ obtaining the hardware specs of any number of attached iOS devices, pending that
 - `py2app>=0.12`
 
 #### Instructions
-    $ python setup.py py2app --iconfile icon/inqry.icns
+    $ python setup.py py2app --iconfile icon/Icon.icns
 - **InQRy.app** is in `dist/`
 
 ### Windows
@@ -54,7 +54,7 @@ obtaining the hardware specs of any number of attached iOS devices, pending that
 - `pyinstaller>=3.2.1`
 
 #### Instructions
-    $ pyinstaller --onefile --icon icon/inqry.ico inqry
+    $ pyinstaller --onefile --icon icon/Icon.ico inqry/__main__.py
 - **InQRy.exe** is in `dist/`
 
 ## How it works
