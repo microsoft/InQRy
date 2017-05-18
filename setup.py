@@ -3,13 +3,21 @@ try:
 except ImportError:
     from distutils.core import setup
 
+long_description="""
+InQRy is a cross-platform application that generates a single QR code containing the machine's hardware specifications.
+This application is designed primarily to be used during a physical inventory procedure.
+
+The QR code contains detailed information about the client machine or device, which can then be scanned it quickly add
+assets into a Snipe-IT database.
+"""
+
 setup(
     name='inqry',
     author=['Apex Lab'],
     author_email='apxlab@microsoft.com',
     description='A cross-platform utility used to generate a QR code containing hardware specs',
     license='MIT',
-    long_description=open('README.md').read(),
+    long_description=long_description,
     packages=['inqry', 'inqry.system_specs'],
     install_requires=['Pillow',
                       'pytest',
@@ -30,3 +38,4 @@ setup(
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3 :: Only']
 )
+
