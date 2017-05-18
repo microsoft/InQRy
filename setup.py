@@ -5,14 +5,6 @@ try:
 except ImportError:
     from distutils.core import setup
 
-long_description = """
-InQRy is a cross-platform application that generates a single QR code containing the machine's hardware specifications.
-This application is designed primarily to be used during a physical inventory procedure.
-
-The QR code contains detailed information about the client machine or device, which can then be scanned it quickly add
-assets into a Snipe-IT database.
-"""
-
 __version__ = '1.2.3'
 __author__ = "Microsoft Apex Lab"
 __copyright__ = 'Copyright © 2017 Microsoft. All rights reserved.'
@@ -20,13 +12,20 @@ __credits__ = ["Eric Hanko", "Jacob Zaval", "Michael Brown", "Andre Shields", "R
 __license__ = 'MIT'
 __email__ = 'apxlab@microsoft.com'
 
+__description__ = '''
+InQRy is a cross-platform application that generates a single QR code containing the machine's hardware specifications.
+This application is designed primarily to be used during a physical inventory procedure.
+
+The QR code contains detailed information about the client machine or device, which can then be scanned it quickly add
+assets into a Snipe-IT database.
+'''
+
 plist = Plist.fromFile('Info.plist')
 plist.update(dict(
         CFBundleVersion=__version__,
         CFBundleShortVersionString=__version__,
         CFBundleName='InQRy',
-        NSHumanReadableCopyright=__copyright__,
-        CFBundleIconFile='icon/inqry.icns')
+        NSHumanReadableCopyright=__copyright__)
 )
 
 setup(
@@ -36,7 +35,7 @@ setup(
         author_email=__email__,
         description='A cross-platform utility used to generate a QR code containing hardware specs',
         license=__license__,
-        long_description=long_description,
+        long_description=__description__,
         packages=['inqry', 'inqry.system_specs'],
         install_requires=['Pillow',
                           'pytest',
