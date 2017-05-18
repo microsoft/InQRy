@@ -13,7 +13,7 @@ assets into a Snipe-IT database.
 
 setup(
     name='inqry',
-    author=['Apex Lab'],
+    author=['Microsoft Apex Lab'],
     author_email='apxlab@microsoft.com',
     description='A cross-platform utility used to generate a QR code containing hardware specs',
     license='MIT',
@@ -26,7 +26,7 @@ setup(
                       'pypiwin32;platform_system=="Windows"'],
     tests_require=['pytest'],
     url='https://github.com/Microsoft/InQRy',
-    version='1.2.2',
+    version='1.2.3',
     classifiers=[
         'License :: OSI Approved :: MIT License',
         'Natural Language :: English',
