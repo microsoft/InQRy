@@ -4,7 +4,7 @@ A robust, cross-platform utility that generates a QR code containing hardware sp
 
 - [About](#about)
 - [Supported platforms](#supported-platforms)
-- [Installing from source](#installing-from-source)
+- [Installing and running](#installing-from-source)
 - [Building from source](#building-from-source)
     - [macOS](#macos)
     - [Windows](#windows)
@@ -30,11 +30,8 @@ obtaining the hardware specs of any number of attached iOS devices, pending that
 [`cfgutil`](https://www.k12techsystems.com/2015/10/cfgutil-missing-man-page/) is installed via
 [Apple Configurator 2](https://itunes.apple.com/us/app/apple-configurator-2/id1037126344?mt=12).
 
-## Installing and running from source
-#### Requirements
-- Python 3.4.4 or later
+## Installing and running
 
-#### Instructions
     $ pip install inqry
     $ python -m inqry
 
@@ -42,8 +39,8 @@ obtaining the hardware specs of any number of attached iOS devices, pending that
 ### macOS
 #### Requirements
 - OS X 10.10 or later 
-- ([Homebrew](https://brew.sh/)-installed version of Python 3
-- Xcode Command Line Tools (7.2.0)
+- [Homebrew](https://brew.sh/)-installed version of Python 3.4 or later
+- Xcode Command Line Tools
 - `py2app>=0.12`
 
 #### Instructions
@@ -53,12 +50,11 @@ obtaining the hardware specs of any number of attached iOS devices, pending that
 ### Windows
 #### Requirements
 - Windows 10
-- Python 3.4 or 3.5
-    - **Note**: InQRy will **not** build on Python 3.6 or later)
+- Python 3.4 or Python 3.5
 - `pyinstaller>=3.2.1`
 
 #### Instructions
-    $ pyinstaller --onefile --icon icon/inqry.ico InQRy.py
+    $ pyinstaller --onefile --icon icon/inqry.ico inqry
 - **InQRy.exe** is in `dist/`
 
 ## How it works
@@ -108,5 +104,4 @@ However, most of its attributes should be completely capable of working with oth
 
 ##### Microsoft Internal Only:
 - Submit a bug on our VSTS board: [aka.ms/hubenglabsr](https://office.visualstudio.com/DefaultCollection/APEX/Lab-Support/_dashboards?activeDashboardId=88948f37-eb9b-4b40-a59a-b615aff02d4d)
-- Slack (apex-autoinfra.slack.com): **#inqry**
 
