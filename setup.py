@@ -22,6 +22,7 @@ setup(
     install_requires=['Pillow',
                       'pytest',
                       'PyYAML',
+                      'qrcode',
                       'wmi;platform_system=="Windows"',
                       'pypiwin32;platform_system=="Windows"'],
     tests_require=['pytest'],
