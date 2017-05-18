@@ -4,7 +4,7 @@ A robust, cross-platform utility that generates a QR code containing hardware sp
 
 - [About](#about)
 - [Supported platforms](#supported-platforms)
-- [Installing and running](#installing-from-source)
+- [Installing and running](#installing-and-running)
 - [Building from source](#building-from-source)
     - [macOS](#macos)
     - [Windows](#windows)
