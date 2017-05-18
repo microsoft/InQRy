@@ -1,31 +1,41 @@
-import sys
+try:
+    from setuptools import setup
+except ImportError:
+    from distutils.core import setup
 
-from setuptools import setup
+long_description="""
+InQRy is a cross-platform application that generates a single QR code containing the machine's hardware specifications.
+This application is designed primarily to be used during a physical inventory procedure.
 
-APP = ['InQRy.py']
-DATA_FILES = []
-OPTIONS = {}
+The QR code contains detailed information about the client machine or device, which can then be scanned it quickly add
+assets into a Snipe-IT database.
+"""
 
-if sys.platform == 'darwin':
-    extra_options = dict(
-            setup_requires=['py2app'],
-            install_requires=['qrcode', 'PyYAML', 'Pillow'],
-    )
-elif sys.platform == 'win32':
-    extra_options = dict(
-            install_requires=['wmi', 'pypiwin32', 'qrcode', 'Pillow'],
-    )
+setup(
+    name='inqry',
+    author=['Microsoft Apex Lab'],
+    author_email='apxlab@microsoft.com',
+    description='A cross-platform utility used to generate a QR code containing hardware specs',
+    license='MIT',
+    long_description=long_description,
+    packages=['inqry', 'inqry.system_specs'],
+    install_requires=['Pillow',
+                      'pytest',
+                      'PyYAML',
+                      'wmi;platform_system=="Windows"',
+                      'pypiwin32;platform_system=="Windows"'],
+    tests_require=['pytest'],
+    url='https://github.com/Microsoft/InQRy',
+    version='1.2.3',
+    classifiers=[
+        'License :: OSI Approved :: MIT License',
+        'Natural Language :: English',
+        'Intended Audience :: Information Technology',
+        'Intended Audience :: System Administrators',
+        'Operating System :: OS Independent',
+        'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3 :: Only']
+)
 
-setup(app=APP,
-      author=['Apex Lab'],
-      author_email='apxlab@microsoft.com',
-      data_files=DATA_FILES,
-      description='Gets machine specs and generates a QR code containing them',
-      license='MIT',
-      long_description=open('README.md').read(),
-      name='InQRy',
-      options={'py2app': OPTIONS},
-      packages=['inqry', "inqry.system_specs"],
-      tests_require=['pytest'],
-      url="https://office.visualstudio.com/APEX/Lab-Projects/_git/InQRy",
-      version='1.2')

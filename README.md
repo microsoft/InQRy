@@ -1,23 +1,80 @@
-## InQRy
-Obtains machine hardware specifications and generates a QR code containing the data.
+# InQRy
 
-##### macOS: ![macOS](https://office.visualstudio.com/_apis/public/build/definitions/59d72877-1cea-4eb6-9d06-66716573631a/1174/badge)
-##### Windows: ![Windows](https://office.visualstudio.com/_apis/public/build/definitions/59d72877-1cea-4eb6-9d06-66716573631a/1167/badge)
+A robust, cross-platform utility that generates a QR code containing hardware specs of the target machine or device.
 
-### Install (run from the command line)
- 
-##### Requirements
+- [About](#about)
+- [Supported platforms](#supported-platforms)
+- [Installing from source](#installing-from-source)
+- [Building from source](#building-from-source)
+    - [macOS](#macos)
+    - [Windows](#windows)
+- [How it works](#how-it-works)
+- [Usage](#usage)
+- [Screenshot](#screenshot)
+- [Limitations](#limitations)
+- [Issue submission](#issue-submission)
+
+### Supported platforms
+- OS X 10.10 or later
+- Windows 10
+- Windows Server 2012 R2
+
+## About
+Written in pure Python, InQRy is designed to obtain asset information both quickly and accurately, without
+having to rely on data imports or asset-owner participation during physical inventory. The QR code contains detailed
+information about the client machine or device, which can then be scanned to quickly add the asset into a web-based
+inventory system, such as [Snipe-IT](https://github.com/snipe/snipe-it).
+
+Though originally designed to work on only laptop and desktop computers, it is now capable of
+obtaining the hardware specs of any number of attached iOS devices, pending that Apple's command-line utility
+[`cfgutil`](https://www.k12techsystems.com/2015/10/cfgutil-missing-man-page/) is installed via
+[Apple Configurator 2](https://itunes.apple.com/us/app/apple-configurator-2/id1037126344?mt=12).
+
+## Installing and running from source
+### Requirements
 - Python 3.4.4 or later
-- Note: If you are using the ([Homebrew](https://brew.sh/)-installed version of Python, the Python commands below will need to be appended with `3`. For example, `python` is `python3`, `pip` is `pip3`, etc.
 
-##### Instructions
-- clone the repository
-- `cd InQRy`
-- `pip install .`
-- Run: `python InQRy.py`
-- Use the InQRy API from the Python interpreter with `import inqry`
+### Instructions
+- `$ pip install .`
+- `$ python InQRy.py`
 
-###### Example API usage:
+## Building from source
+### macOS
+#### Requirements
+- OS X 10.10 or later 
+- ([Homebrew](https://brew.sh/)-installed version of Python 3
+- Xcode Command Line Tools (7.2.0)
+- `py2app>=0.12`
+
+#### Instructions
+- `$ python setup.py py2app --iconfile icon/inqry.icns`
+- **InQRy.app** is in `dist/`
+
+### Windows
+#### Requirements
+- Windows 10
+- Python 3.4 or 3.5
+    - **Note**: InQRy will **not** build on Python 3.6 or later)
+- `pyinstaller>=3.2.1`
+
+#### Instructions
+- `$ pyinstaller --onefile --icon icon/inqry.ico InQRy.py`
+- **InQRy.exe** is in `dist/`
+
+## How it works
+
+InQRy obtains hardware specs using platform-specific shell commands and Python modules. Data is parsed and 
+given to `SystemSpecs` object, where it is homogenized and passed to the `FormInstructions` class, where even more data
+is added and manipulated to work with the [Snipe-IT](https://github.com/snipe/snipe-it) inventory system. Instructions
+containing that data are used to create a [python-qrcode](https://github.com/lincolnloop/python-qrcode)-generated code,
+which is displayed on the screen for scanning.
+
+InQRy determines which instructions to follow based on a combination of user input and the machine itself. Those
+instructions contain other important information that allow it to move fluidly through different types of fields
+in the [Snipe-IT](https://github.com/snipe/snipe-it) asset entry form.
+
+### Usage:
+Example usage of an InQRy `SystemSpecs` object:
 ```
 >>> from inqry.system_specs import systemspecs
 >>> ss = systemspecs.SystemSpecs()
@@ -29,63 +86,27 @@ Obtains machine hardware specifications and generates a QR code containing the d
 {'Drive 1': '251.0 GB SSD (APPLE SSD AP0256J)'}
 ```
 
-### Build (run as compiled binary)
-#### Mac
-##### Requirements
-- ([Homebrew](https://brew.sh/)-installed version of Python 3 (`brew install python3`)
-- OS X 10.10 or later (OS X 10.10 is recommended for forward compatibility)
-- Xcode Command Line Tools (7.2.0)
-- py2app (0.12) (`pip install py2app`)
+### Screenshot
 
-##### Instructions
-- clone the repository
-- `python setup.py py2app --iconfile icon/inqry.icns`
-- **InQRy.app** is in `dist/`
+![InQRy GUI](docs/Screenshots/inqry_fullscreenshot.png)
 
-#### Windows
-##### Requirements
-- Windows 10
-- Python 3.4 or 3.5 (32-bit)
-    - **Note**: InQRy will **not** build on Python 3.6 or later)
-- pyinstaller (3.2.1 or later)
+### Limitations
+- The CR1400 series QR code reader is required to use the QR code with an entry form.
+See the [barcode scanner README](docs/QRreader-config/README.md) for more information.
 
-##### Instructions
-- clone the repository
-- `pyinstaller --onefile --icon icon/inqry.ico InQRy.py`
-- **InQRy.exe** is in `dist/`
+- Provided you have a working barcode scanner, the `FormInstructions` class is written to work _only_ with our own
+[custom fields](https://snipe-it.readme.io/v3.6.2/docs/custom-fields) in our instance of Snipe-IT. 
+The `FormInstructions` class would need to be modified to use in your own Snipe-IT environment or inventory system.
+However, most of its attributes should be completely capable of working with other types of asset-entry forms.
 
-### Description
-InQRy is a cross-platform application that generates a single QR code containing the machine's hardware
-specifications. This application is designed primarily to be used during a physical inventory procedure.
+- Obtaining mobile device hardware specs is limited to iOS devices, and contigent upon having installed `cfgutil` via
+[Apple Configurator 2](https://itunes.apple.com/us/app/apple-configurator-2/id1037126344?mt=12).
 
-The QR code contains detailed information about the client machine or device,
-which can then be scanned it quickly add assets into a [Snipe-IT](https://github.com/snipe/snipe-it) database.
+## Issues
+- Create a [GitHub Issue](https://github.com/Microsoft/InQRy/issues/new)
+- [apxlab@microsoft.com](mailto:apxlab@microsoft.com)
 
-### How It Works
-
-InQRy obtains hardware specs using shell commands and parses the output for
-the desired information. It then takes that information, processes it and
-instructs [python-qrcode](https://github.com/lincolnloop/python-qrcode) to create a QR code, which is displayed
-on the screen for scanning.
-
-InQRy determines which instructions to follow based on the
-machine itself. Those instructions contain other necessary information that
-allow it to move fluidly through different types of fields in the [Snipe-IT](https://github.com/snipe/snipe-it) asset
-entry form.
-
-InQRy was written to obtain asset information quickly and accurately for both
-an initial physical inventory procedure, as well as subsequent hardware audits.
-
-### Currently Supported Platforms
-- OS X 10.10 or later
-- Windows 10
-
-#### Issues? Suggestions? Questions?
-- Submit a bug: [aka.ms/hubenglabsr](https://office.visualstudio.com/DefaultCollection/APEX/Lab-Support/_dashboards?activeDashboardId=88948f37-eb9b-4b40-a59a-b615aff02d4d)
-- Email: [apxlab@microsoft.com](mailto:apxlab@microsoft.com)
+##### Microsoft Internal Only:
+- Submit a bug on our VSTS board: [aka.ms/hubenglabsr](https://office.visualstudio.com/DefaultCollection/APEX/Lab-Support/_dashboards?activeDashboardId=88948f37-eb9b-4b40-a59a-b615aff02d4d)
 - Slack (apex-autoinfra.slack.com): **#inqry**
-
-###### For bug submission or emails
-- Title should be formatted as "**InQRy:** _short description here_"
-- Body should contain a longer description with steps to reproduce, screen shots, etc.
 
