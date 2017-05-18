@@ -31,12 +31,12 @@ obtaining the hardware specs of any number of attached iOS devices, pending that
 [Apple Configurator 2](https://itunes.apple.com/us/app/apple-configurator-2/id1037126344?mt=12).
 
 ## Installing and running from source
-### Requirements
+#### Requirements
 - Python 3.4.4 or later
 
-### Instructions
-- `$ pip install .`
-- `$ python InQRy.py`
+#### Instructions
+    $ pip install inqry
+    $ python -m inqry
 
 ## Building from source
 ### macOS
@@ -47,7 +47,7 @@ obtaining the hardware specs of any number of attached iOS devices, pending that
 - `py2app>=0.12`
 
 #### Instructions
-- `$ python setup.py py2app --iconfile icon/inqry.icns`
+    $ python setup.py py2app --iconfile icon/inqry.icns
 - **InQRy.app** is in `dist/`
 
 ### Windows
@@ -58,7 +58,7 @@ obtaining the hardware specs of any number of attached iOS devices, pending that
 - `pyinstaller>=3.2.1`
 
 #### Instructions
-- `$ pyinstaller --onefile --icon icon/inqry.ico InQRy.py`
+    $ pyinstaller --onefile --icon icon/inqry.ico InQRy.py
 - **InQRy.exe** is in `dist/`
 
 ## How it works
@@ -75,16 +75,16 @@ in the [Snipe-IT](https://github.com/snipe/snipe-it) asset entry form.
 
 ### Usage:
 Example usage of an InQRy `SystemSpecs` object:
-```
->>> from inqry.system_specs import systemspecs
->>> ss = systemspecs.SystemSpecs()
->>> ss.os_type
-'Darwin'
->>> ss.memory
-'8 GB'
->>> ss.storage
-{'Drive 1': '251.0 GB SSD (APPLE SSD AP0256J)'}
-```
+
+    >>> from inqry.system_specs import systemspecs
+    >>> ss = systemspecs.SystemSpecs()
+    >>> ss.os_type
+    'Darwin'
+    >>> ss.memory
+    '8 GB'
+    >>> ss.storage
+    {'Drive 1': '251.0 GB SSD (APPLE SSD AP0256J)'}
+
 
 ### Screenshot
 
