@@ -13,16 +13,16 @@ The QR code contains detailed information about the client machine or device, wh
 assets into a Snipe-IT database.
 """
 
-name = 'inqry'
 version = '1.2.3'
 
 plist = Plist.fromFile('Info.plist')
 plist.update(dict(
         CFBundleVersion=version,
-        CFBundleName=name))
+        CFBundleShortVersionString=version,
+        CFBundleName='InQRy'))
 
 setup(
-        name=name,
+        name='inqry',
         app=['inqry/__main__.py'],
         author=['Microsoft Apex Lab'],
         author_email='apxlab@microsoft.com',
