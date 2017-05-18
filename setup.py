@@ -13,19 +13,27 @@ The QR code contains detailed information about the client machine or device, wh
 assets into a Snipe-IT database.
 """
 
-version = '1.2.3'
+__version__ = '1.2.3'
+__author__ = "Microsoft Apex Lab"
+__copyright__ = 'Copyright © 2017 Microsoft. All rights reserved.'
+__credits__ = ["Eric Hanko", "Jacob Zaval", "Michael Brown", "Andre Shields", "Ryan Dominguez", "Eammon Hanlon"]
+__license__ = 'MIT'
+__email__ = 'apxlab@microsoft.com'
 
 plist = Plist.fromFile('Info.plist')
 plist.update(dict(
-        CFBundleVersion=version,
-        CFBundleShortVersionString=version,
-        CFBundleName='InQRy'))
+        CFBundleVersion=__version__,
+        CFBundleShortVersionString=__version__,
+        CFBundleName='InQRy',
+        NSHumanReadableCopyright=__copyright__,
+        CFBundleIconFile='')
+)
 
 setup(
         name='inqry',
         app=['inqry/__main__.py'],
-        author=['Microsoft Apex Lab'],
-        author_email='apxlab@microsoft.com',
+        author=[__author__],
+        author_email=__email__,
         description='A cross-platform utility used to generate a QR code containing hardware specs',
         license='MIT',
         long_description=long_description,
@@ -38,7 +46,7 @@ setup(
                           'pypiwin32;platform_system=="Windows"'],
         tests_require=['pytest'],
         url='https://github.com/Microsoft/InQRy',
-        version=version,
+        version=__version__,
         classifiers=[
             'License :: OSI Approved :: MIT License',
             'Natural Language :: English',
