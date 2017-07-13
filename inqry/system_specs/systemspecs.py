@@ -1,4 +1,3 @@
-import io
 import json
 import platform
 
@@ -26,8 +25,7 @@ class SystemSpecs(object):
         return {'os_type': self.os_type, 'hardware': self.hardware_overview, 'storage': self.storage}
 
     def serializer(self):
-        s = io.StringIO()
-        return json.dump(self.hardware_overview_summary(), s)
+        return json.dumps(self.hardware_overview_summary())
 
     @property
     def model_name(self):
