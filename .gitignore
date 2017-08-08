@@ -139,3 +139,6 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 /.vs
+
+# Visual Studio Code
+.vscode/
