@@ -9,4 +9,4 @@ def test_instructions_object_instantiates():
 
 
 def test_instructions_object_returns_model():
-    assert INSTRUCTIONS.model_id == 'Surface Pro 3'
+    assert INSTRUCTIONS.model_identifier == 'Surface Pro 3'

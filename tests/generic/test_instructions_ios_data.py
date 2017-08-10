@@ -9,4 +9,4 @@ def test_instructions_object_instantiates():
 
 
 def test_instructions_object_returns_model():
-    assert INSTRUCTIONS.model_id == 'iPhone9,1'
+    assert INSTRUCTIONS.model_identifier == 'iPhone9,1'
