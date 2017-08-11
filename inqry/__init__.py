@@ -22,10 +22,10 @@ class InQRyGUI:
 
     def save(self):
         name = self.form_instructions.serial_number
-        return self.asset_qr.save(name, self.form_instructions.new_model())
+        return self.asset_qr.save(name, self.form_instructions.new_asset())
 
     def display(self):
-        return self.asset_qr.display(self.form_instructions.new_model())
+        return self.asset_qr.display(self.form_instructions.new_asset())
 
     def create_widgets(self):
         generate_qr_button = Button(self.root_window, text='Display QR Code', command=self.display)
