@@ -72,7 +72,7 @@ class AssetQRCode(qrcode.QRCode):
 
     def save(self, file_name, data):
         desktop = os.path.expanduser('~/Desktop')
-        with open(os.path.join(desktop, f'{file_name}.png'), 'wb') as fp:
+        with open(os.path.join(desktop, '{}.png'.format(file_name)), 'wb') as fp:
             return self.make_new_asset_qr(data).save(fp)
 
     def display(self, data):
