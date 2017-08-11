@@ -14,29 +14,35 @@ class InQRyGUI:
         self.root_window = Tk()
         self.root_window.title('InQRy')
 
+        self.alias_label = Label(self.root_window, text='Alias:')
+        self.alias_label.grid(row=1, column=1, sticky=E)
+
+        self.alias_entry = Entry(self.root_window)
+        self.alias_entry.grid(row=1, column=2)
+
+        self.asset_tag_label = Label(self.root_window, text='Asset Tag:')
+        self.asset_tag_label.grid(row=2, column=1, sticky=E)
+
+        self.asset_tag_entry = Entry(self.root_window)
+        self.asset_tag_entry.grid(row=2, column=2)
+
         self.form_options = tuple(self.form_instructions.form_types.keys())
         self.form_selection = StringVar()
         self.form_selection.set(self.form_options[0])
         self.form_menu = OptionMenu(self.root_window, self.form_selection, *self.form_options)
-        self.form_menu.grid(row=1, column=1)
+        self.form_menu.grid(row=3, column=1)
 
         self.qrcode_options = ('Asset', 'Model')
         self.qrcode_selection = StringVar()
         self.qrcode_selection.set(self.qrcode_options[0])
         self.qrcode_menu = OptionMenu(self.root_window, self.qrcode_selection, *self.qrcode_options)
-        self.qrcode_menu.grid(row=1, column=2)
-
-        self.alias_label = Label(self.root_window, text='Alias:')
-        self.alias_label.grid(row=2, column=1, sticky=E)
-
-        self.alias_entry = Entry(self.root_window)
-        self.alias_entry.grid(row=2, column=2)
+        self.qrcode_menu.grid(row=3, column=2)
 
         self.generate_qr_button = Button(self.root_window, text='Display', command=self.display)
-        self.generate_qr_button.grid(row=3, column=1)
+        self.generate_qr_button.grid(row=4, column=1)
 
         self.generate_qr_button = Button(self.root_window, text='Save to Desktop', command=self.save)
-        self.generate_qr_button.grid(row=3, column=2)
+        self.generate_qr_button.grid(row=4, column=2)
 
     def save(self):
         name = self.form_instructions.serial_number
