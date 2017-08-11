@@ -46,17 +46,23 @@ class InQRyGUI:
         self.generate_qr_button.grid(row=4, column=2)
 
     def save(self):
-        file_name = self.alias_entry.get() + self.asset_tag_entry.get()
-        data = self.gather_gui_data()
-        return self.asset_qr.save(file_name, self.form_instructions.gui_helper(*data))
+        file_name = self.alias_entry.get() + '-' + self.asset_tag_entry.get()
+        data = self.gather_user_input()
+        if '' in data:
+            self.missing_value_message()
+        else:
+            return self.asset_qr.save(file_name, self.form_instructions.gui_helper(*data))
 
     def display(self):
-        data = self.gather_gui_data()
+        data = self.gather_user_input()
         return self.asset_qr.display(self.form_instructions.gui_helper(*data))
 
-    def gather_gui_data(self) -> tuple:
+    def gather_user_input(self) -> tuple:
         return (
             self.qrcode_selection.get(), self.asset_tag_entry.get(), self.alias_entry.get(), self.form_selection.get())
+
+    def missing_value_message(self):
+        messagebox.showerror('Oops! You\'re missing a required value.', 'Missing Value')
 
 
 class AssetQRCode(qrcode.QRCode):
