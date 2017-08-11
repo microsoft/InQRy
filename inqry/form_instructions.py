@@ -7,11 +7,11 @@ class BarcodeData:
     enter = '~e'
     space = '\x20'
 
-    def textify(self, value: str) -> list:
-        return [self.delayify(item) for item in [value, self.tab]]
+    def textify(self, value: str) -> str:
+        return ''.join([self.delayify(item) for item in [value, self.tab] if item is not None])
 
-    def listify(self, value: str) -> list:
-        return [self.delayify(item) for item in [self.space, value, self.enter, self.tab]]
+    def listify(self, value: str) -> str:
+        return ''.join([self.delayify(item) for item in [self.space, value, self.enter, self.tab]])
 
     def delayify(self, value: str, amount=1) -> str:
         delay_count = self.delay * amount
