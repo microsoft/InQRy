@@ -2,6 +2,7 @@ import os
 import subprocess
 
 from tkinter import *
+from tkinter import messagebox
 import qrcode
 from inqry.form_instructions import FormInstructions
 
