@@ -10,7 +10,7 @@ class AssetQRCode:
 
     def _make_qrcode_image(self) -> qrcode.image:
         qr = qrcode.QRCode()
-        for instruction in self.instructions:
+        for instruction in self.instructions.instruction_steps():
             qr.add_data(instruction)
         return qr.make_image()
 
