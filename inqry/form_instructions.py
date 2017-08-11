@@ -22,9 +22,8 @@ class BarcodeData:
 class FormInstructions(SystemSpecs, BarcodeData):
     def __init__(self, form_factor=None, user=None):
         super().__init__()
-        self.status = 'Ready'
         self.form_factor = form_factor or 'Desktop'
-        self.user_sequence = [self.space, user, self.enter, self.tab]
+        self.user = user or ''
         self.fieldset_table = {
             'Desktop': [self.processor, self.memory, self.drive1, self.drive2, self.drive3, self.drive4],
             'Portable': [self.processor, self.memory, self.drive1],  # TODO: Use enumerate() for storage
@@ -47,9 +46,10 @@ class FormInstructions(SystemSpecs, BarcodeData):
             asset_fieldset = self.fieldset_table['New Model']
         return self.add_text_to_components(asset_fieldset)
 
-    def basic_fields(self, unique_fields: list, user_sequence: list) -> list:
+    def basic_fields(self, unique_fields: list, user_sequence: list, status=None) -> list:
+        status = status or 'Ready'
         return self.listify(self.model_identifier) + unique_fields + \
-               self.listify(self.status) + user_sequence + self.delayify(self.serial_number)
+               self.listify(status) + user_sequence + self.delayify(self.serial_number)
 
     def add_text_to_components(self, *args) -> list:
         return [self.textify(component) for component in args]
@@ -58,4 +58,5 @@ class FormInstructions(SystemSpecs, BarcodeData):
         return [self.textify(model), self.tab * 2, self.delay, identifier]
 
     def user_sequence_fields(self):
-        return [self.delayify(char) for char in self.user_sequence]
+        user_sequence = [self.space, self.user, self.enter, self.tab]
+        return [self.delayify(char) for char in user_sequence]
