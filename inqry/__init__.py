@@ -80,16 +80,19 @@ class AssetQRCode(qrcode.QRCode):
         img.show()
 
 
-def devices_are_attached():
+def mobile_capability():  # TODO: Re-implement mobile_capability() into GUI
     if sys.platform == 'darwin':
         try:
-            return subprocess.check_output(['/usr/local/bin/cfgutil'])
+            subprocess.check_output(['/usr/local/bin/cfgutil'])
+            return 'active'
         except FileNotFoundError:
-            print('No such file or directory: "/usr/local/bin/cfgutil"')
-            return False
+            print(
+                '''
+                No such file or directory: "/usr/local/bin/cfgutil"
+
+                You must install cfgutil using Apple Configurator in order to
+                use InQRy with a mobile device.
+                ''')
+            return 'disable'
     else:
         pass
-
-
-def mobile_capability():
-    return 'active' if devices_are_attached() else 'disabled'
