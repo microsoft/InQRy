@@ -144,3 +144,5 @@ fabric.properties
 
 # Visual Studio Code
 .vscode/
+
+\.idea/markdown-navigator\.xml
