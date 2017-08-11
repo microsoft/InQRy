@@ -33,7 +33,7 @@ class FormInstructions(SystemSpecs):
                           'Mobile': (self._text_box(self.imei) +
                                      self._text_box(self.mobile_storage))}
 
-    def __iter__(self):
+    def get_instructions(self):
         if self.form_factor == 'New Model':
             return self.fieldsets['New Model']
         else:
