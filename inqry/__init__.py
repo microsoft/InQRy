@@ -49,6 +49,7 @@ class InQRyGUI:
                                                                        self.form_selection.get(),
                                                                        self.alias_entry.get()))
 
+
 class AssetQRCode(qrcode.QRCode):
     def __init__(self):
         super().__init__()
@@ -72,11 +73,14 @@ class AssetQRCode(qrcode.QRCode):
 
 
 def devices_are_attached():
-    try:
-        return subprocess.check_output(['/usr/local/bin/cfgutil', 'list'])
-    except FileNotFoundError:
-        print('No such file or directory: "/usr/local/bin/cfgutil"')
-        return False
+    if sys.platform == 'darwin':
+        try:
+            return subprocess.check_output(['/usr/local/bin/cfgutil', 'list'])
+        except FileNotFoundError:
+            print('No such file or directory: "/usr/local/bin/cfgutil"')
+            return False
+    else:
+        pass
 
 
 def mobile_capability():
