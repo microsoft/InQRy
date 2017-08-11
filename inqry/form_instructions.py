@@ -45,10 +45,10 @@ class FormInstructions(SystemSpecs, BarcodeData):
         except TypeError('User entry is required.'):
             sys.exit(1)
 
-    def new_asset(self, form_type, user, status=None) -> str:
+    def new_asset(self, asset_tag, form_type, user, status=None) -> str:
         status = status or 'Ready'
-        return self.listify(self.model_identifier) + self.get_asset_sequence(form_type) + self.listify(
-            status) + self.get_user_sequence(user) + self.delayify(self.serial_number)
+        return self.textify(asset_tag) + self.listify(self.model_identifier) + self.get_asset_sequence(
+            form_type) + self.listify(status) + self.get_user_sequence(user) + self.delayify(self.serial_number)
 
     def new_model(self) -> str:
         return self.textify(self.model_name) + self.tab * 2 + self.delayify(self.model_identifier)
