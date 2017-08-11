@@ -2,11 +2,10 @@ from inqry.system_specs.systemspecs import SystemSpecs
 
 
 class BarcodeData:
-    def __init__(self):
-        self.delay = '~d'
-        self.tab = '~t'
-        self.enter = '~e'
-        self.space = '\x20'
+    delay = '~d'
+    tab = '~t'
+    enter = '~e'
+    space = '\x20'
 
     def textify(self, value: str) -> list:
         return [self.delay, value, self.tab]
