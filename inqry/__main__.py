@@ -1,8 +1,8 @@
-from tkinter import *
+import os
 import subprocess
-from inqry.asset_qrcode import AssetQRCode
-from inqry.system_specs.systemspecs import SystemSpecs
-from inqry.system_specs import ios_system_profiler
+
+from tkinter import *
+import qrcode
 from inqry.form_instructions import FormInstructions
 
 
@@ -20,27 +20,18 @@ def mobile_capability():
 
 class InQRyGUI:
     def __init__(self):
+        super().__init__()
         self.root_window = Tk()
         self.root_window.title('InQRy')
         self.form_factor = StringVar()
         self.new_model_selected = IntVar()
         self.alias_entry = Entry(self.root_window)
         self.alias_entry.grid(row=1, column=1, pady=5)
-        self.systemspecs = SystemSpecs()
         self.mobile_capability = mobile_capability()
         self.create_widgets()
 
     def click(self):
-        if self.new_model_selected.get():
-            form_instructions = FormInstructions(self.systemspecs, 'New Model')
-            AssetQRCode(form_instructions).display()
-        elif self.form_factor.get() == 'Mobile':
-            for devicespecs in ios_system_profiler.get_hardware_overview():
-                form_instructions = FormInstructions(devicespecs, self.form_factor.get(), self.alias_entry.get())
-                AssetQRCode(form_instructions).display()
-        else:
-            form_instructions = FormInstructions(self.systemspecs, self.form_factor.get(), self.alias_entry.get())
-            AssetQRCode(form_instructions).display()
+        pass
 
     def create_widgets(self):
         generate_qr_button = Button(self.root_window, text='Generate QR Code', command=self.click)
@@ -68,6 +59,29 @@ class InQRyGUI:
             self.root_window, text='New Model', variable=self.new_model_selected)
         new_model_checkbutton.deselect()
         new_model_checkbutton.grid(row=0, columnspan=2)
+
+
+class AssetQRCode(FormInstructions, qrcode.QRCode):
+    def __init__(self):
+        super().__init__()
+        self.asset_data = self.new_asset()
+        self.new_model_data = self.new_model()
+
+    def make_new_asset_qr(self) -> qrcode.image:
+        self.add_data(self.asset_data)
+        return self.make_image()
+
+    def make_new_model_qr(self) -> qrcode.image:
+        self.add_data(self.new_model_data)
+        return self.make_image()
+
+    def save(self, file_name):
+        home = os.path.expanduser('~')
+        with open(os.path.join(home, f'{file_name}.png'), 'wb') as fp:
+            return self.make_new_asset_qr().save(fp)
+
+    def display(self):
+        self.make_new_asset_qr().show()
 
 
 if __name__ == '__main__':
