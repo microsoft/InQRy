@@ -13,37 +13,19 @@ class FormInstructions(SystemSpecs):
         self.status = 'Ready'
         self.form_factor = form_factor or 'Desktop'
         self.user = user or ''
-        self.fieldsets = {'Desktop': (self._text_box(self.processor) +
-                                      self._text_box(self.memory) +
-                                      self._text_box(self.drive1) +
-                                      self._text_box(self.drive2) +
-                                      self._text_box(self.drive3) +
-                                      self._text_box(self.drive4)),
+        self.fieldsets = self._create_fieldset_table()
 
-                          'Portable': (self._text_box(self.processor) +
-                                       self._text_box(self.memory) +
-                                       self._text_box(self.drive1)),
-
-                          'New Model': (self._text_box(self.model_name) +
-                                        [self.tab,
-                                         self.tab,
-                                         self.short_delay +
-                                         self.model_identifier]),
-
-                          'Mobile': (self._text_box(self.imei) +
-                                     self._text_box(self.mobile_storage))}
-
-    def get_instructions(self):
+    def instruction_steps(self) -> list:
         if self.form_factor == 'New Model':
             return self.fieldsets['New Model']
         else:
             fieldset = self.fieldsets[self.form_factor]
             return self._common_fields(fieldset)
 
-    def format_processor(self):
+    def format_processor(self) -> str:
         return '{} {}'.format(self.processor_speed, self.processor_name)
 
-    def _common_fields(self, unique_fields):
+    def _common_fields(self, unique_fields) -> list:
         user_sequence = [self.short_delay, self.space,
                          self.short_delay, self.user,
                          self.short_delay, self.enter,
@@ -51,9 +33,30 @@ class FormInstructions(SystemSpecs):
         return (self._list_box(self.model_identifier) + unique_fields + self._list_box(self.status) + user_sequence + [
             self.short_delay, self.serial_number])
 
-    def _text_box(self, field_content):
+    def _text_box(self, field_content) -> list:
         return [self.short_delay, field_content, self.tab]
 
-    def _list_box(self, field_content):
+    def _list_box(self, field_content) -> list:
         return [self.space, self.short_delay, field_content, self.long_delay, self.enter, self.long_delay, self.tab,
                 self.short_delay]
+
+    def _create_fieldset_table(self) -> dict:
+        return {'Desktop': (self._text_box(self.processor) +
+                            self._text_box(self.memory) +
+                            self._text_box(self.drive1) +
+                            self._text_box(self.drive2) +
+                            self._text_box(self.drive3) +
+                            self._text_box(self.drive4)),
+
+                'Portable': (self._text_box(self.processor) +
+                             self._text_box(self.memory) +
+                             self._text_box(self.drive1)),
+
+                'New Model': (self._text_box(self.model_name) +
+                              [self.tab,
+                               self.tab,
+                               self.short_delay +
+                               self.model_identifier]),
+
+                'Mobile': (self._text_box(self.imei) +
+                           self._text_box(self.mobile_storage))}
