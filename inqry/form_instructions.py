@@ -1,3 +1,4 @@
+import sys
 from inqry.system_specs.systemspecs import SystemSpecs
 
 
@@ -19,10 +20,8 @@ class BarcodeData:
 
 
 class FormInstructions(SystemSpecs, BarcodeData):
-    def __init__(self, form_type=None, user=None):
+    def __init__(self):
         super().__init__()
-        self.form_type = form_type or 'Desktop'
-        self.user = user or ''
         self.form_types = {
             'Desktop': [self.processor, self.memory, self.drive1, self.drive2, self.drive3, self.drive4],
             'Portable': [self.processor, self.memory, self.drive1],  # TODO: Use enumerate() for storage
@@ -32,21 +31,29 @@ class FormInstructions(SystemSpecs, BarcodeData):
     def processor(self) -> str:
         return '{} {}'.format(self.processor_speed, self.processor_name)
 
-    def get_form_type_data(self) -> list:
-        return self.form_types[self.form_type]
+    def get_asset_sequence(self, form_type) -> str:
+        try:
+            asset_data = self.form_types[form_type]
+            return ''.join([self.textify(component) for component in asset_data])
+        except TypeError('Form type is required.'):
+            sys.exit(1)
 
-    def get_asset_sequence(self) -> str:
-        asset_data = self.get_form_type_data()
-        return ''.join([self.textify(component) for component in asset_data])
+    def get_user_sequence(self, user) -> str:
+        try:
+            user_sequence = [self.space, user, self.enter, self.tab]
+            return ''.join([self.delayify(char) for char in user_sequence])
+        except TypeError('User entry is required.'):
+            sys.exit(1)
 
-    def get_user_sequence(self) -> str:
-        user_sequence = [self.space, self.user, self.enter, self.tab]
-        return ''.join([self.delayify(char) for char in user_sequence])
-
-    def new_asset(self, status=None) -> str:
+    def new_asset(self, form_type, user, status=None) -> str:
         status = status or 'Ready'
-        return self.listify(self.model_identifier) + self.get_asset_sequence() + self.listify(
-            status) + self.get_user_sequence() + self.delayify(self.serial_number)
+        return self.listify(self.model_identifier) + self.get_asset_sequence(form_type) + self.listify(
+            status) + self.get_user_sequence(user) + self.delayify(self.serial_number)
 
     def new_model(self) -> str:
         return self.textify(self.model_name) + self.tab * 2 + self.delayify(self.model_identifier)
+
+    def gui_helper(self, qrcode_type, form_type, user, status=None) -> str:
+        gui_options = {'Asset': self.new_asset(form_type, user, status),
+                       'Model': self.new_model()}
+        return gui_options[qrcode_type]
