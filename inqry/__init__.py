@@ -45,10 +45,12 @@ class InQRyGUI:
         self.generate_qr_button.grid(row=4, column=2)
 
     def save(self):
-        name = self.form_instructions.serial_number
-        return self.asset_qr.save(name, self.form_instructions.gui_helper(self.qrcode_selection.get(),
-                                                                          self.form_selection.get(),
-                                                                          self.alias_entry.get()))
+        alias = self.alias_entry.get()
+        name = self.asset_tag_entry.get()
+        file_name = alias + name
+        return self.asset_qr.save(file_name, self.form_instructions.gui_helper(self.qrcode_selection.get(),
+                                                                               self.form_selection.get(),
+                                                                               self.alias_entry.get()))
 
     def display(self):
         return self.asset_qr.display(self.form_instructions.gui_helper(self.qrcode_selection.get(),
