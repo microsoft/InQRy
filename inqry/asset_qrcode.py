@@ -1,20 +1,22 @@
 import qrcode
 
+from inqry.form_instructions import FormInstructions
 
-class AssetQRCode(qrcode.QRCode):
-    """An AssetQRCode instance generates and displays a QR code. At the time
-    of writing this. The QR code is built only by being passed a list of string
-     objects using the add_data() method"""
 
-    def __init__(self, instructions):
-        self.qr = qrcode.QRCode(error_correction=qrcode.constants.ERROR_CORRECT_L)
-        super(AssetQRCode, self).__init__()
-        self.build(instructions)
+class AssetQRCode:
+    def __init__(self, instructions: FormInstructions):
+        self.instructions = instructions
+        self.image = self._make_qrcode_image()
 
-    def build(self, instructions):
-        for step in instructions.instruction_steps():
-            self.qr.add_data(step)
-        return self.qr
+    def _make_qrcode_image(self) -> qrcode.image:
+        qr = qrcode.QRCode()
+        for instruction in self.instructions:
+            qr.add_data(instruction)
+        return qr.make_image()
+
+    def save(self):
+        with open('asset.png', 'wb') as fp:
+            return self.image.save(fp)
 
     def display(self):
-        return self.qr.make_image().show()
+        self.image.show()
