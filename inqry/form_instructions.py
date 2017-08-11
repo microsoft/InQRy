@@ -53,7 +53,7 @@ class FormInstructions(SystemSpecs, BarcodeData):
     def new_model(self) -> str:
         return self.textify(self.model_name) + self.tab * 2 + self.delayify(self.model_identifier)
 
-    def gui_helper(self, qrcode_type, form_type, user, status=None) -> str:
-        gui_options = {'Asset': self.new_asset(form_type, user, status),
+    def gui_helper(self, qrcode_type, asset_tag, form_type, user, status=None) -> str:
+        gui_options = {'Asset': self.new_asset(asset_tag, form_type, user, status),
                        'Model': self.new_model()}
         return gui_options[qrcode_type]
