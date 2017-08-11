@@ -8,10 +8,13 @@ from inqry.form_instructions import FormInstructions
 
 class InQRyGUI:
     def __init__(self):
+        self.form_instructions = FormInstructions()
+        self.asset_qr = AssetQRCode()
+
         self.root_window = Tk()
         self.root_window.title('InQRy')
 
-        self.form_options = ('Desktop', 'Portable')
+        self.form_options = tuple(self.form_instructions.form_types.keys())
         self.form_selection = StringVar()
         self.form_selection.set(self.form_options[0])
         self.form_menu = OptionMenu(self.root_window, self.form_selection, *self.form_options)
@@ -19,27 +22,21 @@ class InQRyGUI:
 
         self.qrcode_options = ('Asset', 'Model')
         self.qrcode_selection = StringVar()
-        self.qrcode_selection.set(self.form_options[0])
-        self.qrcode_menu = OptionMenu(self.root_window, self.form_selection, *self.qrcode_options)
+        self.qrcode_selection.set(self.qrcode_options[0])
+        self.qrcode_menu = OptionMenu(self.root_window, self.qrcode_selection, *self.qrcode_options)
         self.qrcode_menu.grid(row=1, column=2)
 
         self.alias_label = Label(self.root_window, text='Alias:')
-        self.alias_label.grid(row=2, column=2, pady=5, sticky=E)
+        self.alias_label.grid(row=2, column=1, sticky=E)
 
         self.alias_entry = Entry(self.root_window)
-        self.alias_entry.grid(row=2, column=1, pady=5)
+        self.alias_entry.grid(row=2, column=2)
 
-        self.generate_qr_button = Button(self.root_window, text='Display', command=self.save)
+        self.generate_qr_button = Button(self.root_window, text='Display', command=self.display)
         self.generate_qr_button.grid(row=3, column=1)
 
-        self.generate_qr_button = Button(self.root_window, text='Save to Desktop', command=self.display)
+        self.generate_qr_button = Button(self.root_window, text='Save to Desktop', command=self.save)
         self.generate_qr_button.grid(row=3, column=2)
-
-        self.form_instructions = FormInstructions()
-        self.asset_qr = AssetQRCode()
-
-        print(self.form_selection.get())
-        print(self.qrcode_selection.get())
 
     def save(self):
         name = self.form_instructions.serial_number
