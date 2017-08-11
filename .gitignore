@@ -146,3 +146,4 @@ fabric.properties
 .vscode/
 
 \.idea/markdown-navigator\.xml
+.idea/dictionaries/
