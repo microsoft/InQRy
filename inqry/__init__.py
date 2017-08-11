@@ -45,17 +45,17 @@ class InQRyGUI:
         self.generate_qr_button.grid(row=4, column=2)
 
     def save(self):
-        alias = self.alias_entry.get()
-        name = self.asset_tag_entry.get()
-        file_name = alias + name
-        return self.asset_qr.save(file_name, self.form_instructions.gui_helper(self.qrcode_selection.get(),
-                                                                               self.form_selection.get(),
-                                                                               self.alias_entry.get()))
+        file_name = self.alias_entry.get() + self.asset_tag_entry.get()
+        data = self.gather_gui_data()
+        return self.asset_qr.save(file_name, self.form_instructions.gui_helper(*data))
 
     def display(self):
-        return self.asset_qr.display(self.form_instructions.gui_helper(self.qrcode_selection.get(),
-                                                                       self.form_selection.get(),
-                                                                       self.alias_entry.get()))
+        data = self.gather_gui_data()
+        return self.asset_qr.display(self.form_instructions.gui_helper(*data))
+
+    def gather_gui_data(self) -> tuple:
+        return (
+            self.qrcode_selection.get(), self.asset_tag_entry.get(), self.alias_entry.get(), self.form_selection.get())
 
 
 class AssetQRCode(qrcode.QRCode):
@@ -83,7 +83,7 @@ class AssetQRCode(qrcode.QRCode):
 def devices_are_attached():
     if sys.platform == 'darwin':
         try:
-            return subprocess.check_output(['/usr/local/bin/cfgutil', 'list'])
+            return subprocess.check_output(['/usr/local/bin/cfgutil'])
         except FileNotFoundError:
             print('No such file or directory: "/usr/local/bin/cfgutil"')
             return False
