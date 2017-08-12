@@ -1,4 +1,5 @@
 import os
+import re
 import subprocess
 
 from tkinter import *
@@ -62,7 +63,15 @@ class InQRyGUI:
             self.qrcode_selection.get(), self.asset_tag_entry.get(), self.alias_entry.get(), self.form_selection.get())
 
     def missing_value_message(self):
-        messagebox.showerror('Oops! You\'re missing a required value.', 'Missing Value')
+        messagebox.showerror('Oops! That isn\'t a valid entry.', 'Missing Value')
+
+    def valid_asset(self, asset_tag: str):  # TODO: Define custom exceptions inside FormInstructions
+        pattern = re.compile(r'^E?\d{7}$')
+        return asset_tag if bool(re.match(pattern, asset_tag)) else ''
+
+    def valid_alias(self, alias: str):  # TODO: Define custom exception inside FormInstructions
+        pattern = re.compile(r'^(v\-)?[a-z]+$')
+        return alias if bool(re.match(pattern, alias)) else False
 
 
 class AssetQRCode(qrcode.QRCode):
