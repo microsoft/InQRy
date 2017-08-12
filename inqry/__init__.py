@@ -8,7 +8,7 @@ import qrcode
 from inqry.form_instructions import FormInstructions
 
 
-class InQRyGUI:
+class InQRyGUI:  # TODO: Extract GUI attributes to methods
     def __init__(self):
         self.form_instructions = FormInstructions()
         self.asset_qr = AssetQRCode()
@@ -67,7 +67,7 @@ class InQRyGUI:
 
     def valid_asset(self, asset_tag: str):  # TODO: Define custom exceptions inside FormInstructions
         pattern = re.compile(r'^E?\d{7}$')
-        return asset_tag if bool(re.match(pattern, asset_tag)) else ''
+        return asset_tag if bool(re.match(pattern, asset_tag)) else False
 
     def valid_alias(self, alias: str):  # TODO: Define custom exception inside FormInstructions
         pattern = re.compile(r'^(v\-)?[a-z]+$')
