@@ -46,12 +46,12 @@ class InQRyGUI:
         self.generate_qr_button.grid(row=4, column=2)
 
     def save(self):
-        file_name = self.alias_entry.get() + '-' + self.asset_tag_entry.get()
-        data = self.gather_user_input()
-        if '' in data:
-            self.missing_value_message()
-        else:
+        try:
+            file_name = self.valid_alias(self.alias_entry.get()) + '-' + self.valid_asset(self.asset_tag_entry.get())
+            data = self.gather_user_input()
             return self.asset_qr.save(file_name, self.form_instructions.gui_helper(*data))
+        except TypeError:
+            self.missing_value_message()
 
     def display(self):
         data = self.gather_user_input()
