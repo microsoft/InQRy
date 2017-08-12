@@ -30,4 +30,4 @@ def test_form_instructions_object_instantiates():
 
 def test_get_instructions_method():
     form = form_instructions.FormInstructions()
-    assert form.new_asset()
+    assert form.new_asset('1234567', 'admin', 'Desktop')  # FIXME: Test failing
