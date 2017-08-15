@@ -46,30 +46,31 @@ class InQRyGUI:  # TODO: Extract GUI attributes to methods
         self.generate_qr_button.grid(row=4, column=2)
 
     def save(self):
-        alias = self.alias_entry.get().lower()
-        asset_tag = self.asset_tag_entry.get()
+        data = self.gather_user_input()
         try:
-            file_name = alias + '-' + asset_tag
-            data = self.gather_user_input()
+            file_name = data[1] + '-' + data[2]
             return self.asset_qr.save(file_name, self.form_instructions.gui_helper(*data))
         except TypeError:
-            error_message_box('Missing or improperly\nformatted entry.')
+            print('Improper formatting.')
 
     def display(self):
         data = self.gather_user_input()
         return self.asset_qr.display(self.form_instructions.gui_helper(*data))
 
     def gather_user_input(self) -> tuple:
-        return (
-            self.qrcode_selection.get(), self.asset_tag_entry.get(), self.alias_entry.get(), self.form_selection.get())
+        return (self.qrcode_selection.get(), self.get_alias(), self.get_asset_tag(), self.form_selection.get())
 
-    def valid_asset(self, asset_tag: str):  # TODO: Define custom exceptions inside FormInstructions
-        pattern = re.compile(r'^E?\d{7}$')
-        return asset_tag if bool(re.match(pattern, asset_tag)) else False
+    def validate(self, contents, field):
+        patterns = {'Alias': re.compile(r'^(v\-)?[A-Za-z]+$'),
+                    'Asset Tag': re.compile(r'^E?\d{7}$')}
+        return contents if bool(re.match(patterns[field], contents)) else error_message_box(
+                '{} is not properly formatted.'.format(field))
 
-    def valid_alias(self, alias: str):  # TODO: Define custom exception inside FormInstructions
-        pattern = re.compile(r'^(v\-)?[A-Za-z]+$')
-        return alias if bool(re.match(pattern, alias)) else False
+    def get_alias(self):
+        return self.validate(self.alias_entry.get(), 'Alias')
+
+    def get_asset_tag(self):
+        return self.validate(self.asset_tag_entry.get(), 'Asset Tag')
 
 
 def error_message_box(message: str):
