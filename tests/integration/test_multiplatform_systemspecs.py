@@ -1,7 +1,7 @@
 from inqry.system_specs import systemspecs
 
 
-def test_instatiating_systemspecs_instance():
+def test_instantiating_systemspecs_instance():
     assert systemspecs.SystemSpecs()
 
 
