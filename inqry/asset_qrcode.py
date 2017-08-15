@@ -10,10 +10,12 @@ class AssetQRCode(qrcode.QRCode):
         super().__init__()
 
     def make_new_asset_qr(self, data) -> qrcode.image:
+        self.clear()
         self.add_data(data)
         return self.make_image()
 
     def make_new_model_qr(self, data) -> qrcode.image:
+        self.clear()
         self.add_data(data)
         return self.make_image()
 
