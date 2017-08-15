@@ -1,4 +1,6 @@
+import json
 import platform
+
 from inqry.system_specs import diskutility
 from inqry.system_specs import system_profiler
 
@@ -18,6 +20,12 @@ class SystemSpecs(object):
         self.os_type = os_type or platform.system()
         self.hardware_overview = hardware_overview or system_profiler.get_hardware_overview()
         self.internal_storage = internal_storage or diskutility.get_internal_storage()
+
+    def hardware_overview_summary(self):
+        return {'os_type': self.os_type, 'hardware': self.hardware_overview, 'storage': self.storage}
+
+    def serializer(self):
+        return json.dumps(self.hardware_overview_summary())
 
     @property
     def model_name(self):
