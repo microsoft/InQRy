@@ -56,7 +56,7 @@ class InQRyGUI:  # TODO: Extract GUI attributes to methods
     def save(self):
         data = self.gather_user_input()
         try:
-            file_name = data[1] + '-' + data[2]
+            file_name = data[2] + '-' + data[1]
             return self.asset_qr.save(file_name, self.form_instructions.gui_helper(*data))
         except TypeError:
             print('Improper formatting.')
