@@ -1,25 +1,10 @@
 import sys
+
+from inqry import barcode
 from inqry.system_specs.systemspecs import SystemSpecs
 
 
-class BarcodeData:
-    delay = '~d'
-    tab = '~t'
-    enter = '~e'
-    space = '\x20'
-
-    def textify(self, value: str) -> str:
-        return ''.join([self.delayify(item) for item in [value, self.tab] if item is not None])
-
-    def listify(self, value: str) -> str:
-        return ''.join([self.delayify(item) for item in [self.space, value, self.enter, self.tab]])
-
-    def delayify(self, value: str, amount=1) -> str:
-        delay_count = self.delay * amount
-        return delay_count + value
-
-
-class FormInstructions(SystemSpecs, BarcodeData):
+class FormInstructions(SystemSpecs):
     def __init__(self):
         super().__init__()
         self.form_types = {
@@ -34,24 +19,25 @@ class FormInstructions(SystemSpecs, BarcodeData):
     def get_asset_sequence(self, form_type) -> str:
         try:
             asset_data = self.form_types[form_type]
-            return ''.join([self.textify(component) for component in asset_data])
+            return ''.join([barcode.textify(component) for component in asset_data])
         except TypeError('Form type is required.'):
             sys.exit(1)
 
     def get_user_sequence(self, user) -> str:
         try:
-            user_sequence = [self.space, user, self.enter, self.tab]
-            return ''.join([self.delayify(char) for char in user_sequence])
+            user_sequence = [barcode.SPACE, user, barcode.ENTER, barcode.TAB]
+            return ''.join([barcode.delayify(char) for char in user_sequence])
         except TypeError('User entry is required.'):
             sys.exit(1)
 
     def new_asset(self, asset_tag, user, form_type) -> str:
         status = 'Ready'
-        return self.textify(asset_tag) + self.listify(self.model_identifier) + self.get_asset_sequence(
-            form_type) + self.listify(status) + self.get_user_sequence(user) + self.delayify(self.serial_number)
+        return barcode.textify(asset_tag) + barcode.listify(self.model_identifier) + self.get_asset_sequence(
+                form_type) + barcode.listify(status) + self.get_user_sequence(user) + barcode.delayify(
+            self.serial_number)
 
     def new_model(self) -> str:
-        return self.textify(self.model_name) + self.tab * 2 + self.delayify(self.model_identifier)
+        return barcode.textify(self.model_name) + barcode.tabify(2) + barcode.delayify(self.model_identifier)
 
     def gui_helper(self, qrcode_type, *args) -> str:
         qrcode_types = {'Asset': self.new_asset(*args),

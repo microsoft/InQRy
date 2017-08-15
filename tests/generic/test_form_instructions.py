@@ -1,11 +1,7 @@
+from inqry import barcode
 from inqry import form_instructions
 
-barcode = form_instructions.BarcodeData()
 instructions = form_instructions.FormInstructions()
-
-
-def test_barcode_data_instantiates():
-    assert form_instructions.BarcodeData()
 
 
 def test_barcode_data_delayify():

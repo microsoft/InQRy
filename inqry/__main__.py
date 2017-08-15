@@ -1,5 +1,5 @@
-import inqry
+import inqry.gui
 
 if __name__ == '__main__':
-    gui = inqry.InQRyGUI()
+    gui = inqry.gui.InQRyGUI()
     gui.root_window.mainloop()
