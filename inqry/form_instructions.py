@@ -40,6 +40,6 @@ class FormInstructions(SystemSpecs):
         return barcode.textify(self.model_name) + barcode.tabify(2) + barcode.delayify(self.model_identifier)
 
     def gui_helper(self, qrcode_type, *args) -> str:
-        qrcode_types = {'Asset': self.new_asset(*args),
-                        'Model': self.new_model()}
+        qrcode_types = {'Create Asset': self.new_asset(*args),
+                        'New Model': self.new_model()}
         return qrcode_types[qrcode_type]

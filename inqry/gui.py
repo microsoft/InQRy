@@ -1,7 +1,7 @@
 import re
 import subprocess
 import sys
-from tkinter import Button, E, Entry, Label, OptionMenu, StringVar, Tk, messagebox
+from tkinter import Button, E, Entry, Label, OptionMenu, StringVar, Tk, W, messagebox
 
 from inqry.asset_qrcode import AssetQRCode
 from inqry.form_instructions import FormInstructions
@@ -15,35 +15,41 @@ class InQRyGUI:  # TODO: Extract GUI attributes to methods
         self.root_window = Tk()
         self.root_window.title('InQRy')
 
-        self.alias_label = Label(self.root_window, text='Alias:')
-        self.alias_label.grid(row=1, column=1, sticky=E)
+        self.form_options_label = Label(self.root_window, text='Form Factor:')
+        self.form_options_label.grid(row=1, column=1, sticky=E)
 
-        self.alias_entry = Entry(self.root_window)
-        self.alias_entry.grid(row=1, column=2)
-
-        self.asset_tag_label = Label(self.root_window, text='Asset Tag:')
-        self.asset_tag_label.grid(row=2, column=1, sticky=E)
-
-        self.asset_tag_entry = Entry(self.root_window)
-        self.asset_tag_entry.grid(row=2, column=2)
-
-        self.form_options = tuple(self.form_instructions.form_types.keys())
+        self.form_options = tuple(self.form_instructions.form_types.keys())[0:2]
         self.form_selection = StringVar()
         self.form_selection.set(self.form_options[0])
         self.form_menu = OptionMenu(self.root_window, self.form_selection, *self.form_options)
-        self.form_menu.grid(row=3, column=1)
+        self.form_menu.grid(row=1, column=2, sticky=W)
 
-        self.qrcode_options = ('Asset', 'Model')
+        self.qrcode_options_label = Label(self.root_window, text='QR Code Type:')
+        self.qrcode_options_label.grid(row=2, column=1, sticky=E)
+
+        self.qrcode_options = ['Create Asset']
         self.qrcode_selection = StringVar()
         self.qrcode_selection.set(self.qrcode_options[0])
         self.qrcode_menu = OptionMenu(self.root_window, self.qrcode_selection, *self.qrcode_options)
-        self.qrcode_menu.grid(row=3, column=2)
+        self.qrcode_menu.grid(row=2, column=2, sticky=W)
 
-        self.generate_qr_button = Button(self.root_window, text='Display', command=self.display)
-        self.generate_qr_button.grid(row=4, column=1)
+        self.alias_label = Label(self.root_window, text='Alias:')
+        self.alias_label.grid(row=3, column=1, sticky=E)
 
-        self.generate_qr_button = Button(self.root_window, text='Save to Desktop', command=self.save)
-        self.generate_qr_button.grid(row=4, column=2)
+        self.alias_entry = Entry(self.root_window)
+        self.alias_entry.grid(row=3, column=2)
+
+        self.asset_tag_label = Label(self.root_window, text='Asset Tag:')
+        self.asset_tag_label.grid(row=4, column=1, sticky=E)
+
+        self.asset_tag_entry = Entry(self.root_window)
+        self.asset_tag_entry.grid(row=4, column=2)
+
+        self.generate_qr_button = Button(self.root_window, text='Show QR Code', command=self.display)
+        self.generate_qr_button.grid(row=5, column=1)
+
+        self.generate_qr_button = Button(self.root_window, text='Save QR Code to Desktop', command=self.save)
+        self.generate_qr_button.grid(row=5, column=2)
 
     def save(self):
         data = self.gather_user_input()
@@ -71,6 +77,22 @@ class InQRyGUI:  # TODO: Extract GUI attributes to methods
 
     def get_asset_tag(self):
         return self.validate(self.asset_tag_entry.get(), 'Asset Tag')
+
+    def obtain_default_dimensions_for_the_root_gui_object(self):
+        return tuple(int(_) for _ in self.root_window.geometry().split('+')[0].split('x'))
+
+    def calculate_center_coordinates(self, screen_dimension, current_dimension):
+        return (screen_dimension // 2) - (current_dimension // 2)
+
+    def center(self):
+        self.root_window.update_idletasks()
+        size = self.obtain_default_dimensions_for_the_root_gui_object()
+        height = size[0]
+        width = size[1]
+
+        x = self.calculate_center_coordinates(self.root_window.winfo_screenwidth(), height)
+        y = self.calculate_center_coordinates(self.root_window.winfo_screenheight(), width)
+        self.root_window.geometry('{}x{}+{}+{}'.format(height, width, x, y))
 
 
 def error_message_box(message: str):
