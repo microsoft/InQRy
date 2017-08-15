@@ -24,7 +24,7 @@ class FormInstructions(SystemSpecs, BarcodeData):
         super().__init__()
         self.form_types = {
             'Desktop': [self.processor, self.memory, self.drive1, self.drive2, self.drive3, self.drive4],
-            'Portable': [self.processor, self.memory, self.drive1],  # TODO: Use enumerate() for storage
+            'Portable': [self.processor, self.memory, self.drive1],
             'Mobile': [self.imei, self.mobile_storage]}
 
     @property
