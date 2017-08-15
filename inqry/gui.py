@@ -5,11 +5,13 @@ from tkinter import Button, E, Entry, Label, OptionMenu, StringVar, Tk, W, messa
 
 from inqry.asset_qrcode import AssetQRCode
 from inqry.form_instructions import FormInstructions
+from inqry.system_specs.systemspecs import SystemSpecs
 
 
 class InQRyGUI:  # TODO: Extract GUI attributes to methods
     def __init__(self):
-        self.form_instructions = FormInstructions()
+        self.specs = SystemSpecs()
+        self.form_instructions = FormInstructions(self.specs.serializer())
         self.asset_qr = AssetQRCode()
 
         self.root_window = Tk()
