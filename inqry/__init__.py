@@ -1,10 +1,10 @@
 import os
-import re
 import subprocess
-
 from tkinter import *
 from tkinter import messagebox
+
 import qrcode
+
 from inqry.form_instructions import FormInstructions
 
 
@@ -48,11 +48,12 @@ class InQRyGUI:  # TODO: Extract GUI attributes to methods
 
     def save(self):
         try:
-            file_name = self.valid_alias(self.alias_entry.get().lower()) + '-' + self.valid_asset(self.asset_tag_entry.get())
+            file_name = self.valid_alias(self.alias_entry.get().lower()) + '-' + self.valid_asset(
+                    self.asset_tag_entry.get())
             data = self.gather_user_input()
             return self.asset_qr.save(file_name, self.form_instructions.gui_helper(*data))
         except TypeError:
-            self.missing_value_message()
+            error_message_box('Missing or improperly\nformatted entry.')
 
     def display(self):
         data = self.gather_user_input()
@@ -61,9 +62,6 @@ class InQRyGUI:  # TODO: Extract GUI attributes to methods
     def gather_user_input(self) -> tuple:
         return (
             self.qrcode_selection.get(), self.asset_tag_entry.get(), self.alias_entry.get(), self.form_selection.get())
-
-    def missing_value_message(self):
-        messagebox.showerror('Oops! That isn\'t a valid entry.', 'Missing Value')
 
     def valid_asset(self, asset_tag: str):  # TODO: Define custom exceptions inside FormInstructions
         pattern = re.compile(r'^E?\d{7}$')
@@ -88,15 +86,18 @@ class AssetQRCode(qrcode.QRCode):
 
     def save(self, file_name, data):
         desktop = os.path.expanduser('~/Desktop')
-        with open(os.path.join(desktop, '{}.png'.format(file_name)), 'wb') as fp:
-            if os._exists(fp):
-                messagebox.showinfo('QR code already exists.')
-            else:
-                return self.make_new_asset_qr(data).save(fp)
+        qrcode_png = os.path.join(desktop, '{}.png'.format(file_name))
+        self.prevent_duplicate_file(qrcode_png)
+        with open(qrcode_png, 'wb') as fp:
+            return self.make_new_asset_qr(data).save(fp)
 
     def display(self, data):
         img = self.make_new_asset_qr(data)
         img.show()
+
+    def prevent_duplicate_file(self, file):
+        if os.path.exists(file):
+            error_message_box('QR code already exists.')
 
 
 def mobile_capability():  # TODO: Re-implement mobile_capability() into GUI
@@ -106,12 +107,16 @@ def mobile_capability():  # TODO: Re-implement mobile_capability() into GUI
             return 'active'
         except FileNotFoundError:
             print(
-                '''
-                No such file or directory: "/usr/local/bin/cfgutil"
+                    '''
+                    No such file or directory: "/usr/local/bin/cfgutil"
 
-                You must install cfgutil using Apple Configurator in order to
-                use InQRy with a mobile device.
-                ''')
+                    You must install cfgutil using Apple Configurator in order to
+                    use InQRy with a mobile device.
+                    ''')
             return 'disable'
     else:
         pass
+
+
+def error_message_box(message: str):
+    messagebox.showerror('Oops!', message)
