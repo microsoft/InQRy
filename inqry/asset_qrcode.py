@@ -2,7 +2,7 @@ import os
 
 import qrcode
 
-from inqry.gui import error_message_box
+from inqry import gui
 
 
 class AssetQRCode(qrcode.QRCode):
@@ -30,4 +30,4 @@ class AssetQRCode(qrcode.QRCode):
 
     def prevent_duplicate_file(self, file):
         if os.path.exists(file):
-            error_message_box('QR code already exists.')
+            gui.error_message_box('QR code already exists.')
