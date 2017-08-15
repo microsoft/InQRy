@@ -48,7 +48,7 @@ class InQRyGUI:  # TODO: Extract GUI attributes to methods
 
     def save(self):
         try:
-            file_name = self.valid_alias(self.alias_entry.get()) + '-' + self.valid_asset(self.asset_tag_entry.get())
+            file_name = self.valid_alias(self.alias_entry.get().lower()) + '-' + self.valid_asset(self.asset_tag_entry.get())
             data = self.gather_user_input()
             return self.asset_qr.save(file_name, self.form_instructions.gui_helper(*data))
         except TypeError:
@@ -70,7 +70,7 @@ class InQRyGUI:  # TODO: Extract GUI attributes to methods
         return asset_tag if bool(re.match(pattern, asset_tag)) else False
 
     def valid_alias(self, alias: str):  # TODO: Define custom exception inside FormInstructions
-        pattern = re.compile(r'^(v\-)?[a-z]+$')
+        pattern = re.compile(r'^(v\-)?[A-Za-z]+$')
         return alias if bool(re.match(pattern, alias)) else False
 
 
