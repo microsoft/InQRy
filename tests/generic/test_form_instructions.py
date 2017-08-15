@@ -21,9 +21,7 @@ def test_barcode_data_listify():
 
 
 def test_form_instructions_object_instantiates():
-    assert form_instructions.FormInstructions()
-
+    assert instructions
 
 def test_get_instructions_method():
-    form = form_instructions.FormInstructions()
-    assert form.new_asset('1234567', 'admin', 'Desktop')
+    assert instructions.new_asset('1234567', 'admin', 'Desktop')
