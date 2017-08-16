@@ -3,23 +3,30 @@
 A robust, cross-platform utility that generates a QR code containing hardware specs of the target machine or device.
 
 - [About](#about)
+- [Requirements](#requirements)
 - [Supported platforms](#supported-platforms)
-- [Installing and running](#installing-and-running)
-- [Building from source](#building-from-source)
-    - [macOS](#macos)
-    - [Windows](#windows)
+- [Install and run](#install-and-run)
+- Build
+  - [macOS](#build-on-macos)
+  - [Windows](#build-on-windows)
 - [How it works](#how-it-works)
 - [Usage](#usage)
 - [Screenshot](#screenshot)
 - [Limitations](#limitations)
 - [Issue submission](#issue-submission)
 
-### Supported platforms
-- OS X 10.10 or later
+## Requirements
+
+- Python 3.4 and later
+
+## Supported platforms
+
+- OS X 10.10 and later
 - Windows 10
-- Windows Server 2012 R2
+- Windows Server 2012 R2 and later
 
 ## About
+
 Written in pure Python, InQRy is designed to obtain asset information both quickly and accurately, without
 having to rely on data imports or asset-owner participation during physical inventory. The QR code contains detailed
 information about the client machine or device, which can then be scanned to quickly add the asset into a web-based
@@ -30,37 +37,44 @@ obtaining the hardware specs of any number of attached iOS devices, pending that
 [`cfgutil`](https://www.k12techsystems.com/2015/10/cfgutil-missing-man-page/) is installed via
 [Apple Configurator 2](https://itunes.apple.com/us/app/apple-configurator-2/id1037126344?mt=12).
 
-## Installing and running
+## Install and run
 
-    $ pip install inqry
-    $ python -m inqry
+  ```bash
+  pip3 install inqry
+  python3 -m inqry
+  ```
 
-## Building from source
-### macOS
-#### Requirements
-- OS X 10.10 or later 
-- [Homebrew](https://brew.sh/)-installed version of Python 3.4 or later
-- Xcode Command Line Tools
-- `py2app>=0.12`
+## Build on macOS
 
-#### Instructions
-    $ python setup.py py2app --iconfile icon/inqry.icns
-- **InQRy.app** is in `dist/`
+### Requirements
 
-### Windows
-#### Requirements
-- Windows 10
-- Python 3.4 or Python 3.5
-- `pyinstaller>=3.2.1`
+- [py2app 0.12](https://py2app.readthedocs.io/en/latest/install.html) and later
 
 #### Instructions
-    $ pyinstaller --onefile --icon icon/inqry.ico inqry
-- **InQRy.exe** is in `dist/`
+
+Run the following command to build the InQRy app. The output will be under `dist/`
+
+```bash
+python3 setup.py py2app --iconfile icon/Icon.icns
+```
+
+## Build on Windows
+
+### Requirements
+
+- [pyinstaller 3.2.1](http://www.pyinstaller.org/) and later
+
+### Instructions
+
+Run the following command to build the InQRy app. The output will be under `dist/`
+
+```bash
+pyinstaller --onefile --icon icon/Icon.ico inqry/__main__.py
+```
 
 ## How it works
 
-InQRy obtains hardware specs using platform-specific shell commands and Python modules. Data is parsed and 
-given to `SystemSpecs` object, where it is homogenized and passed to the `FormInstructions` class, where even more data
+InQRy obtains hardware specs using platform-specific shell commands and Python modules. Data is parsed and given to `SystemSpecs` object, where it is homogenized and passed to the `FormInstructions` class, where even more data
 is added and manipulated to work with the [Snipe-IT](https://github.com/snipe/snipe-it) inventory system. Instructions
 containing that data are used to create a [python-qrcode](https://github.com/lincolnloop/python-qrcode)-generated code,
 which is displayed on the screen for scanning.
@@ -69,39 +83,38 @@ InQRy determines which instructions to follow based on a combination of user inp
 instructions contain other important information that allow it to move fluidly through different types of fields
 in the [Snipe-IT](https://github.com/snipe/snipe-it) asset entry form.
 
-### Usage:
+### Usage
+
 Example usage of an InQRy `SystemSpecs` object:
 
-    >>> from inqry.system_specs import systemspecs
-    >>> ss = systemspecs.SystemSpecs()
-    >>> ss.os_type
-    'Darwin'
-    >>> ss.memory
-    '8 GB'
-    >>> ss.storage
-    {'Drive 1': '251.0 GB SSD (APPLE SSD AP0256J)'}
-
+```python
+>>> from inqry.system_specs import systemspecs
+>>> ss = systemspecs.SystemSpecs()
+>>> ss.os_type
+'Darwin'
+>>> ss.memory
+'8 GB'
+>>> ss.storage
+{'Drive 1': '251.0 GB SSD (APPLE SSD AP0256J)'}
+```
 
 ### Screenshot
 
 ![InQRy GUI](docs/Screenshots/inqry_fullscreenshot.png)
 
 ### Limitations
-- The CR1400 series QR code reader is required to use the QR code with an entry form.
-See the [barcode scanner README](docs/QRreader-config/README.md) for more information.
 
-- Provided you have a working barcode scanner, the `FormInstructions` class is written to work _only_ with our own
-[custom fields](https://snipe-it.readme.io/v3.6.2/docs/custom-fields) in our instance of Snipe-IT. 
-The `FormInstructions` class would need to be modified to use in your own Snipe-IT environment or inventory system.
-However, most of its attributes should be completely capable of working with other types of asset-entry forms.
+- The CR1400 series QR code reader is required to use the QR code with an entry form. See the [barcode scanner README](docs/QRreader-config/README.md) for more information.
 
-- Obtaining mobile device hardware specs is limited to iOS devices, and contigent upon having installed `cfgutil` via
-[Apple Configurator 2](https://itunes.apple.com/us/app/apple-configurator-2/id1037126344?mt=12).
+- The `FormInstructions` class is written to support our own [custom fields and fieldsets](https://snipe-it.readme.io/v3.6.2/docs/custom-fields) for Snipe-IT. You may need to modify the `FormInstructions` class in order to use this in your environment. However, most of its attributes should be compatible with similar asset-entry forms.
+
+- Obtaining mobile device hardware specs is limited to iOS devices, and contingent upon having installed `cfgutil` via [Apple Configurator 2](https://itunes.apple.com/us/app/apple-configurator-2/id1037126344?mt=12).
 
 ## Issues
+
 - Create a [GitHub Issue](https://github.com/Microsoft/InQRy/issues/new)
 - [apxlab@microsoft.com](mailto:apxlab@microsoft.com)
 
-##### Microsoft Internal Only:
-- Submit a bug on our VSTS board: [aka.ms/hubenglabsr](https://office.visualstudio.com/DefaultCollection/APEX/Lab-Support/_dashboards?activeDashboardId=88948f37-eb9b-4b40-a59a-b615aff02d4d)
+### Microsoft Internal Only
 
+- Submit a bug on our VSTS board: [aka.ms/apexlabsr](https://aka.ms/apexlabsr)

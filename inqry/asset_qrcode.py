@@ -1,20 +1,35 @@
+import os
+
 import qrcode
+
+from inqry import gui
 
 
 class AssetQRCode(qrcode.QRCode):
-    """An AssetQRCode instance generates and displays a QR code. At the time
-    of writing this. The QR code is built only by being passed a list of string
-     objects using the add_data() method"""
+    def __init__(self):
+        super().__init__()
 
-    def __init__(self, instructions):
-        self.qr = qrcode.QRCode(error_correction=qrcode.constants.ERROR_CORRECT_L)
-        super(AssetQRCode, self).__init__()
-        self.build(instructions)
+    def make_new_asset_qr(self, data) -> qrcode.image:
+        self.clear()
+        self.add_data(data)
+        return self.make_image()
 
-    def build(self, instructions):
-        for step in instructions.instruction_steps():
-            self.qr.add_data(step)
-        return self.qr
+    def make_new_model_qr(self, data) -> qrcode.image:
+        self.clear()
+        self.add_data(data)
+        return self.make_image()
 
-    def display(self):
-        return self.qr.make_image().show()
+    def save(self, file_name, data):
+        desktop = os.path.expanduser('~/Desktop')
+        qrcode_png = os.path.join(desktop, '{}.png'.format(file_name))
+        self.prevent_duplicate_file(qrcode_png)
+        with open(qrcode_png, 'wb') as fp:
+            return self.make_new_asset_qr(data).save(fp)
+
+    def display(self, data):
+        img = self.make_new_asset_qr(data)
+        img.show()
+
+    def prevent_duplicate_file(self, file):
+        if os.path.exists(file):
+            gui.error_message_box('QR code already exists.')

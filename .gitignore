@@ -129,6 +129,8 @@ ENV/
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/
+.idea/markdown-exported-files.xml
+.idea/markdown-navigator
 
 # JIRA plugin
 atlassian-ide-plugin.xml
@@ -139,3 +141,9 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 /.vs
+
+# Visual Studio Code
+.vscode/
+
+\.idea/markdown-navigator\.xml
+.idea/dictionaries/
