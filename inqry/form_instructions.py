@@ -4,14 +4,16 @@ from inqry import barcode
 
 
 class FormInstructions:
-    def __init__(self, system_specs: SystemSpecs):
-        self.specs = system_specs
-        self.processor = '{} {}'.format(self.specs.processor_speed, self.specs.processor_name)
-        self.form_types = {'Desktop': [self.processor, self.specs.memory,
-                                       self.specs.drive1, self.specs.drive2,
-                                       self.specs.drive3, self.specs.drive4],
-                           'Portable': [self.processor, self.specs.memory,
-                                        self.specs.drive1]}
+    def __init__(self, specs: SystemSpecs):
+        self.processor = '{} {}'.format(specs.processor_speed, specs.processor_name)
+        self.form_types = {'Desktop': [self.processor, specs.memory,
+                                       specs.drive1, specs.drive2,
+                                       specs.drive3, specs.drive4],
+                           'Portable': [self.processor, specs.memory,
+                                        specs.drive1]}
+        self.model_identifier = specs.model_identifier
+        self.model_name = specs.model_name
+        self.serial_number = specs.serial_number
 
     def get_asset_sequence(self, form_type) -> str:
         try:
@@ -29,13 +31,13 @@ class FormInstructions:
 
     def new_asset(self, asset_tag, user, form_type) -> str:
         status = 'Ready'
-        return barcode.textify(asset_tag) + barcode.listify(self.specs.model_identifier) + self.get_asset_sequence(
+        return barcode.textify(asset_tag) + barcode.listify(self.model_identifier) + self.get_asset_sequence(
             form_type) + barcode.listify(status) + self.get_user_sequence(user) + barcode.delayify(
-            self.specs.serial_number)
+            self.serial_number)
 
     def new_model(self) -> str:
-        return barcode.textify(self.specs.model_name) + barcode.tabify(2) + barcode.delayify(
-            self.specs.model_identifier)
+        return barcode.textify(self.model_name) + barcode.tabify(2) + barcode.delayify(
+            self.model_identifier)
 
     def gui_helper(self, qrcode_type, *args) -> str:
         qrcode_types = {'Create Asset': self.new_asset(*args),

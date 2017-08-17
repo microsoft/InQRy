@@ -11,7 +11,7 @@ from inqry.system_specs.systemspecs import SystemSpecs
 class InQRyGUI:  # TODO: Extract GUI attributes to methods
     def __init__(self):
         self.specs = SystemSpecs()
-        self.form_instructions = FormInstructions(self.specs.serializer())
+        self.form_instructions = FormInstructions(self.specs)
         self.asset_qr = AssetQRCode()
 
         self.root_window = Tk()
@@ -66,7 +66,7 @@ class InQRyGUI:  # TODO: Extract GUI attributes to methods
         return self.asset_qr.display(self.form_instructions.gui_helper(*data))
 
     def gather_user_input(self) -> tuple:
-        return (self.qrcode_selection.get(), self.get_asset_tag(), self.get_alias(), self.form_selection.get())
+        return self.qrcode_selection.get(), self.get_asset_tag(), self.get_alias(), self.form_selection.get()
 
     def validate(self, contents, field):
         patterns = {'Alias': re.compile(r'^(v\-)?[A-Za-z]+$'),
