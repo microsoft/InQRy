@@ -55,11 +55,13 @@ class InQRyGUI:  # TODO: Extract GUI attributes to methods
 
     def save(self):
         data = self.gather_user_input()
+        filename = data[2] + '-' + data[1]
         try:
-            file_name = data[2] + '-' + data[1]
-            return self.asset_qr.save(file_name, self.form_instructions.gui_helper(*data))
+            return self.asset_qr.save(filename, self.form_instructions.gui_helper(*data))
         except TypeError:
             print('Improper formatting.')
+        except FileExistsError:
+            error_message_box('File already exists.')
 
     def display(self):
         data = self.gather_user_input()

@@ -2,8 +2,6 @@ import os
 
 import qrcode
 
-from inqry import gui
-
 
 class AssetQRCode(qrcode.QRCode):
     def __init__(self):
@@ -21,9 +19,9 @@ class AssetQRCode(qrcode.QRCode):
 
     def save(self, file_name, data):
         desktop = os.path.expanduser('~/Desktop')
-        qrcode_png = os.path.join(desktop, '{}.png'.format(file_name))
-        self.prevent_duplicate_file(qrcode_png)
-        with open(qrcode_png, 'wb') as fp:
+        full_path = os.path.join(desktop, '{}.png'.format(file_name))
+        self.prevent_duplicate_file(full_path)
+        with open(full_path, 'wb') as fp:
             return self.make_new_asset_qr(data).save(fp)
 
     def display(self, data):
@@ -32,4 +30,4 @@ class AssetQRCode(qrcode.QRCode):
 
     def prevent_duplicate_file(self, file):
         if os.path.exists(file):
-            gui.error_message_box('QR code already exists.')
+            raise FileExistsError
