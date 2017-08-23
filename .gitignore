@@ -129,6 +129,8 @@ ENV/
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/
+.idea/markdown-exported-files.xml
+.idea/markdown-navigator
 
 # JIRA plugin
 atlassian-ide-plugin.xml
@@ -142,3 +144,6 @@ fabric.properties
 
 # Visual Studio Code
 .vscode/
+
+\.idea/markdown-navigator\.xml
+.idea/dictionaries/

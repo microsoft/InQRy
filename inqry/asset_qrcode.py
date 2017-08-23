@@ -1,20 +1,33 @@
+import os
+
 import qrcode
 
 
 class AssetQRCode(qrcode.QRCode):
-    """An AssetQRCode instance generates and displays a QR code. At the time
-    of writing this. The QR code is built only by being passed a list of string
-     objects using the add_data() method"""
+    def __init__(self):
+        super().__init__()
 
-    def __init__(self, instructions):
-        self.qr = qrcode.QRCode(error_correction=qrcode.constants.ERROR_CORRECT_L)
-        super(AssetQRCode, self).__init__()
-        self.build(instructions)
+    def make_new_asset_qr(self, data) -> qrcode.image:
+        self.clear()
+        self.add_data(data)
+        return self.make_image()
 
-    def build(self, instructions):
-        for step in instructions.instruction_steps():
-            self.qr.add_data(step)
-        return self.qr
+    def make_new_model_qr(self, data) -> qrcode.image:
+        self.clear()
+        self.add_data(data)
+        return self.make_image()
 
-    def display(self):
-        return self.qr.make_image().show()
+    def save(self, file_name, data):
+        desktop = os.path.expanduser('~/Desktop')
+        full_path = os.path.join(desktop, '{}.png'.format(file_name))
+        self.prevent_duplicate_file(full_path)
+        with open(full_path, 'wb') as fp:
+            return self.make_new_asset_qr(data).save(fp)
+
+    def display(self, data):
+        img = self.make_new_asset_qr(data)
+        img.show()
+
+    def prevent_duplicate_file(self, file):
+        if os.path.exists(file):
+            raise FileExistsError
