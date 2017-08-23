@@ -21,11 +21,11 @@ class SystemSpecs(object):
         self.hardware_overview = hardware_overview or system_profiler.get_hardware_overview()
         self.internal_storage = internal_storage or diskutility.get_internal_storage()
 
-    def hardware_overview_summary(self):
+    def summary(self):
         return {'os_type': self.os_type, 'hardware': self.hardware_overview, 'storage': self.storage}
 
-    def serializer(self):
-        return json.dumps(self.hardware_overview_summary())
+    def to_json(self):
+        return json.dumps(self.summary())
 
     @property
     def model_name(self):
