@@ -9,8 +9,8 @@ class FormInstructions:
         self.form_types = {'Desktop': [self.processor, specs.memory,
                                        specs.drive1, specs.drive2,
                                        specs.drive3, specs.drive4],
-                        #    'Portable': [self.processor, specs.memory,
-                        #                 specs.drive1]
+                           'Portable': [self.processor, specs.memory,
+                                        specs.drive1]
                             }
         self.model_identifier = specs.model_identifier
         self.model_name = specs.model_name
