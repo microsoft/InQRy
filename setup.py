@@ -5,7 +5,7 @@ try:
 except ImportError:
     from distutils.core import setup
 
-__version__ = '1.3.1'
+__version__ = '1.3.2'
 __author__ = "Microsoft Apex Lab"
 __copyright__ = 'Copyright © 2017 Microsoft. All rights reserved.'
 __credits__ = ["Eric Hanko", "Jacob Zaval", "Michael Brown", "Andre Shields", "Ryan Dominguez", "Eammon Hanlon"]
@@ -20,13 +20,15 @@ The QR code contains detailed information about the client machine or device, wh
 assets into a Snipe-IT database.
 '''
 
-plist = Plist.fromFile('Info.plist')
-plist.update(dict(
-        CFBundleVersion=__version__,
-        CFBundleShortVersionString=__version__,
-        CFBundleName='InQRy',
-        NSHumanReadableCopyright=__copyright__)
-)
+try:
+    plist = Plist.fromFile('Info.plist')
+    plist.update(dict(
+            CFBundleVersion=__version__,
+            CFBundleShortVersionString=__version__,
+            CFBundleName='InQRy',
+            NSHumanReadableCopyright=__copyright__))
+except FileNotFoundError:
+    plist = None
 
 setup(
         name='inqry',
