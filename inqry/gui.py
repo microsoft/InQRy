@@ -47,8 +47,9 @@ class InQRyGUI:  # TODO: Extract GUI attributes to methods
         self.asset_tag_entry = Entry(self.root_window)
         self.asset_tag_entry.grid(row=4, column=2)
 
-        self.generate_qr_button = Button(self.root_window, text='Show QR Code', command=self.display)
-        self.generate_qr_button.grid(row=5, column=1)
+        # Don't instantiate the "Show" button during inventory
+        # self.generate_qr_button = Button(self.root_window, text='Show QR Code', command=self.display)
+        # self.generate_qr_button.grid(row=5, column=1)
 
         self.generate_qr_button = Button(self.root_window, text='Save QR Code to Desktop', command=self.save)
         self.generate_qr_button.grid(row=5, column=2)
