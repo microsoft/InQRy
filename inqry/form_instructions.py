@@ -23,7 +23,7 @@ class FormInstructions:
 
     def get_user_sequence(self, user) -> str:
         try:
-            user_sequence = [barcode.SPACE, f'({user})', barcode.ENTER, barcode.TAB]
+            user_sequence = [barcode.SPACE, '({})'.format(user), barcode.ENTER, barcode.TAB]
             return ''.join([barcode.delayify(char) for char in user_sequence])
         except TypeError('User entry is required.'):
             sys.exit(1)
