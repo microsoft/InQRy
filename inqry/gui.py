@@ -29,7 +29,7 @@ class InQRyGUI:  # TODO: Extract GUI attributes to methods
         self.qrcode_options_label = Label(self.root_window, text='QR Code Type:')
         self.qrcode_options_label.grid(row=2, column=1, sticky=E)
 
-        self.qrcode_options = ['Create Asset']
+        self.qrcode_options = ['Create Asset', 'New Model']
         self.qrcode_selection = StringVar()
         self.qrcode_selection.set(self.qrcode_options[0])
         self.qrcode_menu = OptionMenu(self.root_window, self.qrcode_selection, *self.qrcode_options)
