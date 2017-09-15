@@ -72,7 +72,10 @@ class InQRyGUI:  # TODO: Extract GUI attributes to methods
         return self.asset_qr.display(self.form_instructions.gui_helper(*data))
 
     def gather_user_input(self) -> tuple:
-        return self.qrcode_selection.get(), self.get_asset_tag(), self.get_alias(), self.form_selection.get()
+        if self.qrcode_selection.get() == 'New Model':
+            return self.qrcode_selection.get(), None, None, self.form_selection.get()
+        else:
+            return self.qrcode_selection.get(), self.get_asset_tag(), self.get_alias(), self.form_selection.get()
 
     def validate(self, contents, field):
         patterns = {'Alias': re.compile(r'^(v\-)?[A-Za-z]+$'),
