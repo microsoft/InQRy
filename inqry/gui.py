@@ -56,7 +56,10 @@ class InQRyGUI:  # TODO: Extract GUI attributes to methods
 
     def save(self):
         data = self.gather_user_input()
-        filename = data[2] + '-' + data[1]
+        try:
+            filename = data[2] + '-' + data[1]
+        except TypeError:
+            filename = data[3] + '-' + data[0]
         try:
             return self.asset_qr.save(filename, self.form_instructions.gui_helper(*data))
         except TypeError:
