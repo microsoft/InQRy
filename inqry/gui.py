@@ -77,7 +77,7 @@ class InQRyGUI:  # TODO: Extract GUI attributes to methods
         else:
             return self.qrcode_selection.get(), self.get_asset_tag(), self.get_alias(), self.form_selection.get()
 
-    def validate(self, contents, field):
+    def _validate_field_contents(self, contents, field):
         patterns = {'Alias': re.compile(r'^(v\-)?[A-Za-z]+$'),
                     'Asset Tag': re.compile(r'^E?\d{7}$')}
         if bool(re.match(patterns[field], contents)):
@@ -88,10 +88,10 @@ class InQRyGUI:  # TODO: Extract GUI attributes to methods
             raise ValueError(error_message)
 
     def get_alias(self):
-        return self.validate(self.alias_entry.get(), 'Alias')
+        return self._validate_field_contents(self.alias_entry.get(), 'Alias')
 
     def get_asset_tag(self):
-        return self.validate(self.asset_tag_entry.get(), 'Asset Tag')
+        return self._validate_field_contents(self.asset_tag_entry.get(), 'Asset Tag')
 
     def obtain_default_dimensions_for_the_root_gui_object(self):
         return tuple(int(_) for _ in self.root_window.geometry().split('+')[0].split('x'))
