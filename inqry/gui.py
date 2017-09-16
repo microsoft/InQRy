@@ -29,7 +29,7 @@ class InQRyGUI:  # TODO: Extract GUI attributes to methods
         self.qrcode_options_label = Label(self.root_window, text='QR Code Type:')
         self.qrcode_options_label.grid(row=2, column=1, sticky=E)
 
-        self.qrcode_options = ['Create Asset']
+        self.qrcode_options = ['Create Asset', 'New Model']
         self.qrcode_selection = StringVar()
         self.qrcode_selection.set(self.qrcode_options[0])
         self.qrcode_menu = OptionMenu(self.root_window, self.qrcode_selection, *self.qrcode_options)
@@ -56,7 +56,10 @@ class InQRyGUI:  # TODO: Extract GUI attributes to methods
 
     def save(self):
         data = self.gather_user_input()
-        filename = data[2] + '-' + data[1]
+        try:
+            filename = data[2] + '-' + data[1]
+        except TypeError:
+            filename = data[3] + '-' + data[0]
         try:
             return self.asset_qr.save(filename, self.form_instructions.gui_helper(*data))
         except TypeError:
@@ -69,19 +72,26 @@ class InQRyGUI:  # TODO: Extract GUI attributes to methods
         return self.asset_qr.display(self.form_instructions.gui_helper(*data))
 
     def gather_user_input(self) -> tuple:
-        return self.qrcode_selection.get(), self.get_asset_tag(), self.get_alias(), self.form_selection.get()
+        if self.qrcode_selection.get() == 'New Model':
+            return self.qrcode_selection.get(), None, None, self.form_selection.get()
+        else:
+            return self.qrcode_selection.get(), self.get_asset_tag(), self.get_alias(), self.form_selection.get()
 
-    def validate(self, contents, field):
+    def _validate_field_contents(self, contents, field):
         patterns = {'Alias': re.compile(r'^(v\-)?[A-Za-z]+$'),
                     'Asset Tag': re.compile(r'^E?\d{7}$')}
-        return contents if bool(re.match(patterns[field], contents)) else error_message_box(
-                '{} is not properly formatted.'.format(field))
+        if bool(re.match(patterns[field], contents)):
+            return contents
+        else:
+            error_message = '{} is not properly formatted.'.format(field)
+            error_message_box(error_message)
+            raise ValueError(error_message)
 
     def get_alias(self):
-        return self.validate(self.alias_entry.get(), 'Alias')
+        return self._validate_field_contents(self.alias_entry.get(), 'Alias')
 
     def get_asset_tag(self):
-        return self.validate(self.asset_tag_entry.get(), 'Asset Tag')
+        return self._validate_field_contents(self.asset_tag_entry.get(), 'Asset Tag')
 
     def obtain_default_dimensions_for_the_root_gui_object(self):
         return tuple(int(_) for _ in self.root_window.geometry().split('+')[0].split('x'))
