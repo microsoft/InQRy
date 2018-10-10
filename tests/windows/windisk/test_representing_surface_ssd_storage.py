@@ -27,7 +27,7 @@ Model                            : SAMSUNG MZFLV256HCHP-000MV
 OperationalDetails               :
 PhysicalLocation                 : PCI Slot 4 : Adapter 0
 SerialNumber                     : 0025_3841_61B6_798A.
-AdapterSerialNumber              : S245NXCH108281      
+AdapterSerialNumber              : S245NXCH108281
 AllocatedSize                    : 256060514304
 CanPool                          : False
 DeviceId                         : 0
