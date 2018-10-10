@@ -32,9 +32,10 @@ class FormInstructions:
 
     def new_asset(self, asset_tag, user, form_type) -> str:
         status = 'Ready'
-        return barcode.textify(asset_tag) + barcode.listify(self.model_identifier) + self.get_asset_sequence(
-            form_type) + barcode.listify(status) + self.get_user_sequence(user) + barcode.delayify(
-            self.serial_number)
+        return (
+            barcode.textify(asset_tag) + barcode.listify(self.model_identifier) + self.get_asset_sequence(form_type)
+            + barcode.listify(status) + self.get_user_sequence(user) + barcode.delayify(self.serial_number)
+        )
 
     def new_model(self) -> str:
         return barcode.textify(self.model_name) + barcode.tabify(2) + barcode.delayify(
