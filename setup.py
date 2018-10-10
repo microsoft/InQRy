@@ -1,4 +1,4 @@
-from plistlib import Plist
+import plistlib
 
 try:
     from setuptools import setup
@@ -21,7 +21,8 @@ assets into a Snipe-IT database.
 '''
 
 try:
-    plist = Plist.fromFile('Info.plist')
+    with open('Info.plist', 'rb') as plist_file:
+        plist = plistlib.load(plist_file)
     plist.update(dict(
             CFBundleVersion=__version__,
             CFBundleShortVersionString=__version__,
