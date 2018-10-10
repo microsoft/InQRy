@@ -59,5 +59,5 @@ class Disk(object):
         size = round(int(component) / 10 ** 9)
         if size >= 1000:
             return str(size / 1000) + " TB"
-        else:
-            return str(size) + " GB"
+
+        return str(size) + " GB"
