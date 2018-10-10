@@ -50,7 +50,7 @@ DISKUTIL_LIST_OUTPUT = '''
    1:                        EFI EFI                     209.7 MB   disk7s1
    2:                 Apple_RAID                         999.9 GB   disk7s2
    3:                 Apple_Boot Boot OS X               134.2 MB   disk7s3
-   
+
 /dev/disk8 (external, virtual):
    #:                       TYPE NAME                    SIZE       IDENTIFIER
    0:                  Apple_HFS RedBackup              +2.0 TB     disk8
