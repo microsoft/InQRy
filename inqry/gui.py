@@ -121,12 +121,13 @@ def mobile_capability():  # TODO: Re-implement mobile_capability() into GUI
             return 'active'
         except FileNotFoundError:
             print(
-                    '''
-                    No such file or directory: "/usr/local/bin/cfgutil"
+                '''
+                No such file or directory: "/usr/local/bin/cfgutil"
 
-                    You must install cfgutil using Apple Configurator in order to
-                    use InQRy with a mobile device.
-                    ''')
+                You must install cfgutil using Apple Configurator in order to
+                use InQRy with a mobile device.
+                '''
+            )
             return 'disable'
     else:
         pass

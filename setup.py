@@ -24,41 +24,45 @@ try:
     with open('Info.plist', 'rb') as plist_file:
         plist = plistlib.load(plist_file)
     plist.update(dict(
-            CFBundleVersion=__version__,
-            CFBundleShortVersionString=__version__,
-            CFBundleName='InQRy',
-            NSHumanReadableCopyright=__copyright__))
+        CFBundleVersion=__version__,
+        CFBundleShortVersionString=__version__,
+        CFBundleName='InQRy',
+        NSHumanReadableCopyright=__copyright__
+    ))
 except FileNotFoundError:
     plist = None
 
 setup(
-        name='inqry',
-        app=['inqry/__main__.py'],
-        author=[__author__],
-        author_email=__email__,
-        description='A cross-platform utility used to generate a QR code containing hardware specs',
-        license=__license__,
-        long_description=__description__,
-        packages=['inqry', 'inqry.system_specs'],
-        install_requires=['Pillow',
-                          'pytest',
-                          'PyYAML',
-                          'qrcode',
-                          'wmi;platform_system=="Windows"',
-                          'pypiwin32;platform_system=="Windows"'],
-        tests_require=['pytest'],
-        url='https://github.com/Microsoft/InQRy',
-        version=__version__,
-        classifiers=[
-            'License :: OSI Approved :: MIT License',
-            'Natural Language :: English',
-            'Intended Audience :: Information Technology',
-            'Intended Audience :: System Administrators',
-            'Operating System :: OS Independent',
-            'Programming Language :: Python :: 3.4',
-            'Programming Language :: Python :: 3.5',
-            'Programming Language :: Python :: 3.6',
-            'Programming Language :: Python :: 3 :: Only'],
-        options=dict(
-                py2app=dict(
-                        plist=plist)))
+    name='inqry',
+    app=['inqry/__main__.py'],
+    author=[__author__],
+    author_email=__email__,
+    description='A cross-platform utility used to generate a QR code containing hardware specs',
+    license=__license__,
+    long_description=__description__,
+    packages=['inqry', 'inqry.system_specs'],
+    install_requires=['Pillow',
+                      'pytest',
+                      'PyYAML',
+                      'qrcode',
+                      'wmi;platform_system=="Windows"',
+                      'pypiwin32;platform_system=="Windows"'],
+    tests_require=['pytest'],
+    url='https://github.com/Microsoft/InQRy',
+    version=__version__,
+    classifiers=[
+        'License :: OSI Approved :: MIT License',
+        'Natural Language :: English',
+        'Intended Audience :: Information Technology',
+        'Intended Audience :: System Administrators',
+        'Operating System :: OS Independent',
+        'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3 :: Only'],
+    options=dict(
+        py2app=dict(
+            plist=plist
+        )
+    )
+)
