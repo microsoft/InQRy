@@ -15,35 +15,35 @@ SpindleSpeed                     : 0
 ObjectId                         : {1}\\MININT-MSGHJGV\root/Microsoft/Windows/Storage/Providers_v2
 \SPACES_PhysicalDisk.ObjectId="{7869a9f6-d79a-11e6-84dd-806e6f6e6963}:PD:{ed172607-d72a-1b5a-f
                                    367-403fe45ca8d5}"
-PassThroughClass                 : 
-PassThroughIds                   : 
-PassThroughNamespace             : 
-PassThroughServer                : 
+PassThroughClass                 :
+PassThroughIds                   :
+PassThroughNamespace             :
+PassThroughServer                :
 UniqueId                         : eui.0025384161B6798A
-Description                      : 
+Description                      :
 FriendlyName                     : SAMSUNG MZFLV256HCHP-000MV
-Manufacturer                     : 
+Manufacturer                     :
 Model                            : SAMSUNG MZFLV256HCHP-000MV
-OperationalDetails               : 
+OperationalDetails               :
 PhysicalLocation                 : PCI Slot 4 : Adapter 0
 SerialNumber                     : 0025_3841_61B6_798A.
-AdapterSerialNumber              : S245NXCH108281      
+AdapterSerialNumber              : S245NXCH108281
 AllocatedSize                    : 256060514304
 CanPool                          : False
 DeviceId                         : 0
-EnclosureNumber                  : 
+EnclosureNumber                  :
 FirmwareVersion                  : BXV75M0Q
-IsIndicationEnabled              : 
+IsIndicationEnabled              :
 IsPartial                        : True
 LogicalSectorSize                : 512
-OtherCannotPoolReasonDescription : 
-PartNumber                       : 
+OtherCannotPoolReasonDescription :
+PartNumber                       :
 PhysicalSectorSize               : 512
 Size                             : 256060514304
-SlotNumber                       : 
-SoftwareVersion                  : 
+SlotNumber                       :
+SoftwareVersion                  :
 VirtualDiskFootprint             : 0
-PSComputerName                   : 
+PSComputerName                   :
 CimClass                         : root/microsoft/windows/storage:MSFT_PhysicalDisk
 CimInstanceProperties            : {ObjectId, PassThroughClass, PassThroughIds, PassThroughNamespace...}
 CimSystemProperties              : Microsoft.Management.Infrastructure.CimSystemProperties
