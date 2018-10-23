@@ -78,9 +78,14 @@ class InQRyGUI:  # TODO: Extract GUI attributes to methods
         return self.qrcode_selection.get(), self.get_asset_tag(), self.get_alias(), self.form_selection.get()
 
     def _validate_field_contents(self, contents, field):
-        patterns = {'Alias': re.compile(r'^(v\-)?[A-Za-z]+$'),
-                    'Asset Tag': re.compile(r'^E?\d{7}$')}
-        if bool(re.match(patterns[field], contents)):
+        patterns = {'Alias': (re.compile(r'^(v\-)?[A-Za-z]+$'),
+                              'The Alias has to be a v- followed by more then one letter. The v- can be ommited.'),
+                    'Asset Tag': (re.compile(r'^E?\d{7}$'),
+                                  'The Asset Tag has to be an E followed by 7 numbers. The E can be ommited.')}
+
+        validator, human_readable = patterns[field]
+
+        if bool(re.match(validator, contents)):
             return contents
 
         error_message = '{} is not properly formatted.'.format(field)
