@@ -74,8 +74,8 @@ class InQRyGUI:  # TODO: Extract GUI attributes to methods
     def gather_user_input(self) -> tuple:
         if self.qrcode_selection.get() == 'New Model':
             return self.qrcode_selection.get(), None, None, self.form_selection.get()
-        else:
-            return self.qrcode_selection.get(), self.get_asset_tag(), self.get_alias(), self.form_selection.get()
+
+        return self.qrcode_selection.get(), self.get_asset_tag(), self.get_alias(), self.form_selection.get()
 
     def _validate_field_contents(self, contents, field):
         patterns = {'Alias': (re.compile(r'^(v\-)?[A-Za-z]+$'),
@@ -84,12 +84,13 @@ class InQRyGUI:  # TODO: Extract GUI attributes to methods
                                   'The Asset Tag has to be an E followed by 7 numbers. The E can be ommited.')}
 
         validator, human_readable = patterns[field]
+
         if bool(re.match(validator, contents)):
             return contents
-        else:
-            error_message = '{} is not properly formatted. {}'.format(field, human_readable)
-            error_message_box(error_message)
-            raise ValueError(error_message)
+
+        error_message = '{} is not properly formatted.'.format(field)
+        error_message_box(error_message)
+        raise ValueError(error_message)
 
     def get_alias(self):
         return self._validate_field_contents(self.alias_entry.get(), 'Alias')
@@ -125,12 +126,13 @@ def mobile_capability():  # TODO: Re-implement mobile_capability() into GUI
             return 'active'
         except FileNotFoundError:
             print(
-                    '''
-                    No such file or directory: "/usr/local/bin/cfgutil"
+                '''
+                No such file or directory: "/usr/local/bin/cfgutil"
 
-                    You must install cfgutil using Apple Configurator in order to
-                    use InQRy with a mobile device.
-                    ''')
+                You must install cfgutil using Apple Configurator in order to
+                use InQRy with a mobile device.
+                '''
+            )
             return 'disable'
     else:
         pass
