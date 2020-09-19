@@ -2,6 +2,8 @@
 
 A robust, cross-platform utility that generates a QR code containing hardware specs of the target machine or device.
 
+:warning: InQRy is not actively maintained. However, pull requests will not be ignored.
+
 - [About](#about)
 - [Requirements](#requirements)
 - [Supported platforms](#supported-platforms)
