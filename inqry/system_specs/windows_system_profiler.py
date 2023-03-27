@@ -59,7 +59,10 @@ class WindowsProfile:
 
     @staticmethod
     def get_processor_speed(full_processor_name):
-        return WindowsProfile._split_processor(full_processor_name)[1]
+        try:
+            return WindowsProfile._split_processor(full_processor_name)[1]
+        except IndexError:
+            return ''
 
     @staticmethod
     def get_memory_in_gigabytes(memory_bytes):
